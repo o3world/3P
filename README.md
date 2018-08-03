@@ -5,7 +5,7 @@
 
 Brief overview of functionality including major components, which may including external APIs, SaaS vendors, and of course the tech stack.
 
-[Front-end Design Documentation](README.md)
+[Front-end Design Documentation](DESIGN.md)
 
 ### Production Environment
 [https://www.triplepundit.com/](https://www.triplepundit.com/)  
