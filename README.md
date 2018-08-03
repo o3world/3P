@@ -55,10 +55,12 @@ And state what happens step-by-step. If there is any virtual environment, local 
 ### Building
 
 ```shell
-npm run build
+npm run build && rsync -zvr ~/sites/3p-2018/build/ staging:/var/www/vhosts/triplepundit-dev.3blmedia.com/
 ```
 
-This will transpile all of the React code into the files you need to deploy and put them in the `build` directory. This directory is ignored by git.
+The above makes two assumptions:
+1. Your repo is in a `~/sites/` directory and is named `3p-2018`.
+2. You have an SSH config for the `staging` server.
 
 ### Deploying / Publishing
 Deploy to the production environment with `rsync`. Eventually, we'll use Acquia's git tagging procedure on our NodeJS instance.
