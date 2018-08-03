@@ -52,21 +52,14 @@ And state what happens step-by-step. If there is any virtual environment, local 
 
 ### Building
 
-If your project needs some additional steps for the developer to build the
-project after some code changes, state them here. for example:
-
 ```shell
-./configure
-make
-make install
+npm run build
 ```
 
-Here again you should state what actually happens when the code above gets
-executed.
+This will transpile all of the React code into the files you need to deploy and put them in the `build` directory. This directory is ignored by git.
 
 ### Deploying / Publishing
-give instructions on how to build and release a new version
-In case there's some step you have to take that publishes this project to a server, this is the right time to state it.
+Deploy to the production environment with `rsync`. Eventually, we'll use Acquia's git tagging procedure on our NodeJS instance.
 
 ```shell
 packagemanager deploy your-project -s server.com -u username -p password
@@ -90,7 +83,7 @@ Give an example
 
 ## Version Control
 
-Explain VCS methodology, including branch names and their purposes and when to merge features and bugs, etc.
+Git. Normal "Git Flow" methodology. All branches should be off "develop" and be named with the Jira task id. For example: `feature/TP-23` or `hotfix/TP-263`.
 
 ## Style guide
 
@@ -103,8 +96,7 @@ If the api is external, link to api documentation. If not describe your api incl
 
 ## Database
 
-Explaining what database (and version) has been used. Provide download links.
-Documents your database design and schemas, relations etc...
+This is a decoupled site and, as such, does not have it's own backend. All content is requested via various APIs.
 
 ## Licensing
 
@@ -118,6 +110,9 @@ List links to additional resources, which could be developer tools (browser exte
 ## Some notes on documentation
 Not everything has to be in the README. Database host, name, and password are in the config file, and should stay there and not be repeated. Same with API access URLs, etc. Keep documentation as close to the code as possible, but assume the reader of the docs is a new developer who’s never worked with it. Guide them to where they need to go, but don’t give it all to them here.
 
+--- 
+
+## From create-react-app
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
