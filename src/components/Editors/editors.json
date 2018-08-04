@@ -1,0 +1,22 @@
+[
+  {
+    "id": 3,
+    "displayName": "Becky Smith",
+    "twitter": "beckysmith"
+  },
+  {
+    "id": 4,
+    "displayName": "Clyde Monroe",
+    "twitter": "clyde_monroe"
+  },
+  {
+    "id": 5,
+    "displayName": "John Doe",
+    "twitter": "moneybags"
+  },
+  {
+    "id": 6,
+    "displayName": "Julia Diamond",
+    "twitter": "travel_junkie"
+  }
+]

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header/Header";
+import Editors from "./components/Editors/Editors";
 import Footer from "./components/Footer/Footer";
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
       <div className="App">
         <Header site_title="Triple Pundit"/>
         <p>Content</p>
+          <Editors/>
           <Footer/>
       </div>
     );
