@@ -2,7 +2,7 @@ import React from 'react';
 // import './Editors.css';
 import Editor from './Editor';
 
-const data = require("./editors.json");
+const data = require("../../data/editors.json");
 
 const Editors = () => (
     <div className="editors__container">
@@ -11,6 +11,6 @@ const Editors = () => (
             <Editor {...editor}/>
         )}
     </div>
-)
+);
 
 export default Editors;
