@@ -1,0 +1,22 @@
+[
+  {
+    "id": 3,
+    "displayName": "John Howell",
+    "title": "Editorial Director",
+    "company": "3BL Media",
+    "email": "jhowell@3blmedia.com",
+    "icon": "",
+    "twitter": "jhowell",
+    "instagram": "jhowell"
+  },
+  {
+    "id": 4,
+    "displayName": "Leon Kaye",
+    "title": "Director of Social Media and Engagement",
+    "company": "3BL Media",
+    "email": "lkaye@3blmedia.com",
+    "icon": "",
+    "twitter": "lkaye",
+    "instagram": "lkaye"
+  }
+]
