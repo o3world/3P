@@ -9,13 +9,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header site_title="Triple Pundit"/>
-        <p>Content</p>
-          <Editors/>
+          <Header site_title="Triple Pundit"/>
+          <Home/>
           <Footer/>
+          <img src={logo} />
       </div>
     );
   }
 }
+
+const Home = () => (
+    <Editors/>
+);
 
 export default App;
