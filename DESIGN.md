@@ -6,9 +6,36 @@
 ### Colors
 $color_primary: #??????;
 ### Fonts
+***
+## Routes
+#### Home
+https://triplepundit.com/
+#### Prime Stories
+https://triplepundit.com/stories/
+#### Prime Story
+https://triplepundit.com/stories/ID/harness-the-power-of-trees
+#### Editors
+https://triplepundit.com/editors/
+#### Editor
+https://triplepundit.com/editors/ID/john-howell
 
 ***
+## Site Map
 
+- Home
+- Stories
+    - Story
+    - Feed?
+    - Media?
+- Stands
+    - BTS Archive
+- Events
+    - Webinars
+    - Conferences
+- Editors
+    - Editor
+    
+***
 ## Header
 ### Logo
 The logo is dependent on the context. Clicking it will always take the user Home.
