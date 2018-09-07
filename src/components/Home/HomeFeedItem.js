@@ -1,7 +1,7 @@
 import React from 'react';
-import './FeedItem.css';
+import './HomeFeedItem.css';
 
-const FeedItem = (props) => {
+const HomeFeedItem = (props) => {
     const {thumbnailLink, publishedDate, title} = props;
     return (
         <div className="feed-item" style={{backgroundImage: `url(${thumbnailLink})`}}>
@@ -12,4 +12,4 @@ const FeedItem = (props) => {
 };
 
 
-export default FeedItem;
+export default HomeFeedItem;

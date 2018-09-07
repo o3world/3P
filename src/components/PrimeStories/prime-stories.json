@@ -1,0 +1,97 @@
+{
+  "metadata": {},
+  "data": {
+    "posts": [
+      {
+        "id": 382,
+        "author_name": "Tina Casey",
+        "author_id": 32,
+        "title": "New Solar Financing Model for Nonprofits Blows a Hole in Tariff Barrier",
+        "summary": "",
+        "body": "",
+        "special_series": 3,
+        "featured_image": "bulldog",
+        "canonical_url": "",
+        "industry": "Manufacturing",
+        "category": 873,
+        "category_name": "Energy",
+        "date": "2015-03-25T12:00:00Z"
+      },
+      {
+        "id": 383,
+        "author_name": "Leon Kaye",
+        "author_id": 33,
+        "title": "Your ‘Urban Forests’ and Why They’re Important for Recycled Paper Supplies",
+        "summary": "",
+        "body": "",
+        "special_series": 4,
+        "featured_image": "recycling",
+        "canonical_url": "",
+        "industry": "",
+        "category": 4327,
+        "category_name": "Climate & Environment",
+        "date": "2016-01-25T12:00:00Z"
+      },
+      {
+        "id": 384,
+        "author_name": "John Howell",
+        "author_id": 36,
+        "title": "Business 2018: Values Matter, More Than Ever",
+        "summary": "",
+        "body": "",
+        "special_series": 6,
+        "featured_image": "",
+        "canonical_url": "",
+        "industry": "",
+        "category": 873,
+        "category_name": "Climate & Environment",
+        "date": "2018-12-25T12:00:00Z"
+      },
+      {
+        "id": 385,
+        "author_name": "Tina Casey",
+        "author_id": 32,
+        "title": "Sustainable Charities: Operation Warm Makes it Easy to Give Green",
+        "summary": "",
+        "body": "",
+        "special_series": 6,
+        "featured_image": "",
+        "canonical_url": "",
+        "industry": "",
+        "category": 3,
+        "category_name": "Agriculture",
+        "date": "2017-05-25T12:00:00Z"
+      },
+      {
+        "id": 386,
+        "author_name": "Jo Piazza",
+        "author_id": 32,
+        "title": "Terranea Resort Shows Earth Day Spirt All Year Long",
+        "summary": "",
+        "body": "",
+        "special_series": 6,
+        "featured_image": "",
+        "canonical_url": "",
+        "industry": "",
+        "category": 3,
+        "category_name": "Human Resources",
+        "date": "2012-03-25T12:00:00Z"
+      },
+      {
+        "id": 387,
+        "author_name": "John Doe",
+        "author_id": 32,
+        "title": "REDD: A Vital Part of the International Effort to Address Climate Change",
+        "summary": "",
+        "body": "",
+        "special_series": 6,
+        "featured_image": "",
+        "canonical_url": "",
+        "industry": "",
+        "category": 3,
+        "category_name": "Climate",
+        "date": "2013-03-25T12:00:00Z"
+      }
+    ]
+  }
+}

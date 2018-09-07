@@ -1,0 +1,13 @@
+.prime-story {
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.category {
+    border-radius: 5px;
+    background-color: #ff983d;
+    color: white;
+    padding: 8px;
+    display: block;
+    margin: 0 auto;
+}

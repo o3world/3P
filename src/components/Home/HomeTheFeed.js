@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import FeedItem from '../Feed/FeedItem';
-import './TheFeed.css';
+import HomeFeedItem from './HomeFeedItem';
+import './HomeTheFeed.css';
 
-class TheFeed extends Component {
+class HomeTheFeed extends Component {
     constructor(props) {
         super(props)
-        this.state = require('./feed.json')[0].newsList;
+        this.state = require('../Feed/feed.json')[0].newsList;
     }
     render() {
         return (
@@ -13,7 +13,7 @@ class TheFeed extends Component {
                 <h3>The Feed</h3>
                 <div className="the-feed">
                     {this.state.map(feeditem =>
-                        <FeedItem {...feeditem} key={feeditem.id}/>
+                        <HomeFeedItem {...feeditem} key={feeditem.id}/>
                     )}
                 </div>
             </div>
@@ -21,4 +21,4 @@ class TheFeed extends Component {
     }
 }
 
-export default TheFeed;
+export default HomeTheFeed;

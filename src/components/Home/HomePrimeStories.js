@@ -1,10 +1,10 @@
 import React from 'react';
-import PrimeStory from './PrimeStory';
-import './PrimeStories.css';
+import PrimeStory from '../PrimeStories/PrimeStory';
+import './HomePrimeStories.css';
 
-const data = require('./prime-stories.json').data.posts;
+const data = require('../PrimeStories/prime-stories.json').data.posts;
 
-const PrimeStories = () =>
+const HomePrimeStories = () =>
     <div>
         <h3>Prime Stories</h3>
         <div className="prime-stories">
@@ -14,4 +14,4 @@ const PrimeStories = () =>
         </div>
     </div>;
 
-export default PrimeStories;
+export default HomePrimeStories;

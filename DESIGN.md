@@ -14,7 +14,7 @@ https://triplepundit.com/
 https://triplepundit.com/stories/
 #### Prime Story
 https://triplepundit.com/stories/ID/harness-the-power-of-trees
-#### Editors
+#### HomeEditors
 https://triplepundit.com/editors/
 #### Editor
 https://triplepundit.com/editors/ID/john-howell
@@ -32,7 +32,7 @@ https://triplepundit.com/editors/ID/john-howell
 - Events
     - Webinars
     - Conferences
-- Editors
+- HomeEditors
     - Editor
     
 ***
