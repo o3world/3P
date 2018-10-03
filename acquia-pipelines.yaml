@@ -2,6 +2,10 @@ version: 1.0.0
 variables:
   global:
     HOSTING_API_STAGE: canary
+    SLACK_HOSTNAME: "3blmedia.slack.com"
+    SLACK_TOKEN:
+      secure: xoxp-3859056761-143991398354-448322414964-e56dd75b08dda497a21699927641d9ae
+    SLACK_CHANNEL: "#tech_3p"
 events:
   build:
     steps:
@@ -15,6 +19,10 @@ events:
           script:
             - pipelines-artifact start
             - pipelines-artifact upload $SOURCE_DIR
+      - notify:
+          type: script
+          script:
+            - curl -X POST --data "payload={"channel": "${SLACK_CHANNEL}", "username": "${SLACK_USERNAME}", "text": "success"}" https://${SLACK_HOSTNAME}/services/hooks/incoming-webhook?token=${SLACK_TOKEN}
   fail-on-build:
     steps:
       - fail:
