@@ -2,10 +2,6 @@ version: 1.0.0
 variables:
   global:
     HOSTING_API_STAGE: canary
-    SLACK_HOSTNAME: "3blmedia.slack.com"
-    SLACK_TOKEN: "xoxp-3859056761-143991398354-448322414964-e56dd75b08dda497a21699927641d9ae"
-    SLACK_CHANNEL: "#release"
-    SLACK_USERNAME: "scarroll"
 events:
   build:
     steps:
@@ -22,7 +18,7 @@ events:
       - notify:
           type: script
           script:
-            - curl -d '{"channel":"${SLACK_CHANNEL}", "username":"${SLACK_USERNAME}", "text":"Build Succeeded"}' -X POST https://${SLACK_HOSTNAME}/services/hooks/incoming-webhook?token=${SLACK_TOKEN}
+            - curl -X POST -H 'Content-type: application/json' --data '{"text":"Build Success"}' https://hooks.slack.com/services/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
   fail-on-build:
     steps:
       - fail:
