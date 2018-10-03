@@ -6,6 +6,7 @@ variables:
     SLACK_TOKEN:
       secure: xoxp-3859056761-143991398354-448322414964-e56dd75b08dda497a21699927641d9ae
     SLACK_CHANNEL: "#tech_3p"
+    SLACK_USERNAME: "scarroll"
 events:
   build:
     steps:
