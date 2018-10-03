@@ -23,7 +23,7 @@ events:
       - notify:
           type: script
           script:
-            - curl -X POST --data "payload={"channel": "${SLACK_CHANNEL}", "username": "${SLACK_USERNAME}", "text": "success"}" https://${SLACK_HOSTNAME}/services/hooks/incoming-webhook?token=${SLACK_TOKEN}
+            - curl -d '{"channel":"${SLACK_CHANNEL}", "username":"${SLACK_USERNAME}", "text":"Build Succeeded"}' -X POST https://${SLACK_HOSTNAME}/services/hooks/incoming-webhook?token=${SLACK_TOKEN}
   fail-on-build:
     steps:
       - fail:
