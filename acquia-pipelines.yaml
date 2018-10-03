@@ -18,9 +18,13 @@ events:
       - notify:
           type: script
           script:
-            - curl --data '{"text":"Build Success"}' -X POST https://hooks.slack.com/services/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
+            - curl --data '{"text":"Build Success", "text":$PIPELINE_DEPLOY_VCS_PATH}' -X POST https://hooks.slack.com/services/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
   fail-on-build:
     steps:
       - fail:
           script:
             - pipelines-artifact fail
+      - notify:
+          type: script
+          script:
+            - curl --data '{"text":"Build Failed Check Log on Acquia"}' -X POST https://hooks.slack.com/services/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
