@@ -5,7 +5,7 @@ variables:
     SLACK_HOSTNAME: "3blmedia.slack.com"
     SLACK_TOKEN:
       secure: xoxp-3859056761-143991398354-448322414964-e56dd75b08dda497a21699927641d9ae
-    SLACK_CHANNEL: "#tech_3p"
+    SLACK_CHANNEL: "#release"
     SLACK_USERNAME: "scarroll"
 events:
   build:
