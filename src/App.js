@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Brent from './components/Brent';
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
             rel="noopener noreferrer"
           >
             Learn React
+              <Brent/>
           </a>
         </header>
       </div>
