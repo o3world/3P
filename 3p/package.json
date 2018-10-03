@@ -2,6 +2,7 @@
   "name": "3p",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://node3blmediadev.prod.acquia-sites.com/3p",
   "homepage": "/3p",
   "dependencies": {
     "react": "^16.5.2",
