@@ -18,7 +18,7 @@ events:
       - notify:
           type: script
           script:
-            - curl --data '{"text":"Build Success -- '"$PIPELINE_DEPLOY_VCS_PATH"''"$PIPELINE_JOB_ID"'"}' -X POST https://hooks.slack.com/services/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
+            - curl --data '{"text":"Build Success -- '"$PIPELINE_DEPLOY_VCS_PATH"' "--" '"$PIPELINE_JOB_ID"'"}' -X POST https://hooks.slack.com/services/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
   fail-on-build:
     steps:
       - fail:
