@@ -1,0 +1,16 @@
+version: 1.0.0
+events:
+  build:
+    steps:
+      - build:
+          script:
+            - npm run build
+      - upload-artifact:
+          script:
+            - pipelines-artifact start
+            - pipelines-artifact upload $SOURCE_DIR
+  fail-on-build:
+    steps:
+      - fail:
+          script:
+            - pipelines-artifact fail
