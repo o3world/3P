@@ -27,4 +27,4 @@ events:
       - notify:
           type: script
           script:
-            - curl --data '{"text":"Build Failed Check Log on Acquia"}' -X POST https://hooks.slack.com/services/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
+            - curl --data '{"text":"Build Failed Check Log on Acquia | '"$PIPELINE_VCS_PATH"' | '"$PIPELINE_JOB_ID"'"}' -X POST https://hooks.slack.com/services/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
