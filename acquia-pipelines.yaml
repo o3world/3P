@@ -1,0 +1,24 @@
+version: 1.0.0
+variables:
+  global:
+    HOSTING_API_STAGE: canary
+events:
+  build:
+    steps:
+      - build:
+          script:
+            - nvm install v6.11.1
+            - nvm use 6.11.1
+            - npm install
+            - npm run build
+            - npm install ./3p
+            - npm run build ./3p
+      - upload-artifact:
+          script:
+            - pipelines-artifact start
+            - pipelines-artifact upload $SOURCE_DIR
+  fail-on-build:
+    steps:
+      - fail:
+          script:
+            - pipelines-artifact fail
