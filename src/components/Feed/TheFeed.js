@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import FeedItem from '../Feed/FeedItem';
+import FeedItem from './FeedItem';
 import './TheFeed.css';
 
 class TheFeed extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = require('./feed.json')[0].newsList;
     }
     render() {

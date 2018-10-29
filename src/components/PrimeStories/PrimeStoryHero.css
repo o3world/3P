@@ -1,0 +1,18 @@
+.prime-story--hero {
+}
+
+.prime-story-hero__image {
+    width: 100%;
+}
+
+.hero-meta {
+    display: flex;
+    flex-direction: column;
+    background-color: #006BFF;
+    text-align: left;
+    color: black;
+    width: 80%;
+    margin: -130px auto 0;
+    padding: 14px;
+    border-radius: 4px 4px 0 0;
+}

@@ -1,13 +1,67 @@
 .prime-story {
-    border: 1px solid black;
-    padding: 20px;
+    width: 100%;
+}
+
+.prime-story--wide {
+    display: grid;
+    background-size: cover;
+    height: 100%;
+}
+
+.prime-story--tall {
+    display: grid;
+    --aspect-ratio: 3/2;
+    background-size: cover;
+}
+
+.prime-story--tall::before {
+    width: 1px;
+    height: 0;
+    content: "";
+    display: inline-block;
+    padding-bottom: calc(100% * var(--aspect-ratio));
+    grid-area: 1/1/-1/-1;
 }
 
 .category {
-    border-radius: 5px;
-    background-color: #ff983d;
+}
+
+.story-card--content {
+    grid-area: 1/1/-1/-1;
+    background: rgba(0, 0, 0, 0.2);
     color: white;
-    padding: 8px;
-    display: block;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr min-content min-content;
+    grid-template-areas: "category date" "title title" "author author";
+    align-items: start;
+    padding: 25px;
+    text-align: left;
+}
+
+.story-card--content > * {
+    padding: 0;
+    margin:0;
+}
+
+.story-publish-date {
+    grid-area: date;
+    justify-self: end;
+    font-size: small;
+    text-transform: uppercase;
+}
+
+.story-title {
+    grid-area: title;
+    margin-bottom: 13px;
+    font-size: 1.7rem;
+}
+.story-author {
+    grid-area: author;
+}
+
+.story-category {
+    grid-area: category;
+    font-size: small;
+    text-transform: uppercase;
 }

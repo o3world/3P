@@ -1,25 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './PrimeStory.css';
 
-const PrimeStory = (props) => {
-    let indexClass = "";
-    switch(props.index) {
-        case 0:
-            indexClass = " prime-story--hero";
-            break;
-        case 1:
-            indexClass = " prime-story--wide";
-            break;
-        default:
+class PrimeStory extends Component {
+    render() {
+        const storyStyle = {
+            backgroundImage: "url(" + this.props.featured_image__tall + ")"
+        };
+        return (
+            <div className={this.props.storyClass} style={storyStyle}>
+                <div className="story-card--content">
+                <h3 className="story-title">{this.props.title}</h3>
+                <p className="story-author">Words by {this.props.author_name}</p>
+                <p className="story-category">{this.props.category_name}</p>
+                <time className="story-publish-date"e>{this.props.date}</time>
+                </div>
+            </div>
+        );
     }
-    return (
-    <div className={"prime-story" + indexClass}>
-        <h3 className="prime-story__name">{props.title}</h3>
-        <p className="author">{props.author_name}</p>
-        <p className="category">{props.category_name}</p>
-        <time>{props.date}</time>
-    </div>
-    );
 };
 
 

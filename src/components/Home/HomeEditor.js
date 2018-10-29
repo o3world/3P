@@ -1,5 +1,5 @@
 import React from 'react';
-import './HomeEditors.css';
+import './HomeEditor.css';
 
 const HomeEditor = ({displayName, twitter, index}) => {
     let indexClass = "";

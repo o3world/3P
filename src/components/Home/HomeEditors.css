@@ -1,25 +1,8 @@
 .editors__container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas:
-            "editor--first editor--second"
-            "editor--first editor--third";
-}
-
-.editor {
-    border: 1px solid green;
-    padding: 7px;
-    margin: 12px;
-}
-
-.editor--first {
-    grid-area: editor--first;
-}
-
-.editor--second {
-    grid-area: editor--second;
-}
-
-.editor--third {
-    grid-area: editor--third;
+    grid-template-columns: repeat(3, minmax(250px, 300px));
+    background-color: lightblue;
+    grid-gap: 40px;
+    margin: 60px 40px;
+    justify-content: center;
 }

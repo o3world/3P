@@ -2,12 +2,24 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas: "hero hero hero"
+        "primeheading primeheading primeheading"
+        "story2 story2 story3"
+        "story4 story5 story6";
+    grid-gap: 30px;
+    padding: 30px;
 }
 
-.prime-story--hero {
-    grid-column: 1/-1;
+.prime-story-hero {
+    grid-area: hero;
+    width: 100%;
+    display: grid;
+}
+
+.prime-stories__heading {
+    grid-area: primeheading;
 }
 
 .prime-story--wide {
-    grid-column: 1 / span 2;
+    grid-area: story2;
 }
