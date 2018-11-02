@@ -1,11 +1,9 @@
 .prime-story {
-    width: 100%;
 }
 
 .prime-story--wide {
     display: grid;
     background-size: cover;
-    height: 100%;
 }
 
 .prime-story--tall {
@@ -15,7 +13,6 @@
 }
 
 .prime-story--tall::before {
-    width: 1px;
     height: 0;
     content: "";
     display: inline-block;
@@ -47,7 +44,7 @@
 .story-publish-date {
     grid-area: date;
     justify-self: end;
-    font-size: small;
+    font-size: 0.7rem;
     text-transform: uppercase;
 }
 
@@ -55,13 +52,18 @@
     grid-area: title;
     margin-bottom: 13px;
     font-size: 1.7rem;
+    font-family: 'Unna', serif;
+    line-height: 1.7rem;
 }
 .story-author {
     grid-area: author;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
 }
 
 .story-category {
     grid-area: category;
-    font-size: small;
+    font-size: 0.8rem;
     text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
 }

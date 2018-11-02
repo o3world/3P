@@ -10,7 +10,10 @@ class HomeTheFeed extends Component {
     render() {
         return (
             <div className="the-feed__container">
-                <h3>The Feed</h3>
+              <div className={'the-feed__title-wrapper'}>
+                <h3 className={'the-feed__title'}>The Feed</h3>
+                <p className={'the-feed__title--subtitle'}>Latest News from Leaders in Corporate Social Responsibility</p>
+              </div>
                 <div className="the-feed">
                     {this.state.map(feeditem =>
                         <HomeFeedItem {...feeditem} key={feeditem.id}/>

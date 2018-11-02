@@ -1,25 +1,52 @@
 .prime-stories {
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-areas: "hero hero hero"
-        "primeheading primeheading primeheading"
-        "story2 story2 story3"
-        "story4 story5 story6";
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-gap: 30px;
     padding: 30px;
 }
 
 .prime-story-hero {
-    grid-area: hero;
-    width: 100%;
+    grid-area: 1/1/2/-1;
     display: grid;
+    grid-template-columns: 5% 1fr 5%;
+    grid-template-rows: 1fr min-content;
 }
 
 .prime-stories__heading {
-    grid-area: primeheading;
+  grid-area: 2/1/3/-1;
+  display: flex;
+  align-items: center;
+  margin-left: calc(20% - 110px);
+  margin-bottom: -46px;
+  z-index: 2;
+}
+
+.prime-stories__heading img {
+    width: 110px;
+}
+
+.prime-stories__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.9rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    align-self: center;
+    margin: 0 20px;
+}
+
+.prime-stories__title--subtitle {
+  font-family: 'Montserrat', sans-serif;
+  color: black;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: normal;
+  line-height: 1.9rem;
+  border-top: 1px solid #D8D8D8;
+  border-bottom: 1px solid #D8D8D8;
+  margin-left: 20px;
 }
 
 .prime-story--wide {
-    grid-area: story2;
+    grid-area: 3/1/4/span 2;
 }

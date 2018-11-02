@@ -1,23 +1,17 @@
 import React from 'react';
 import './HomeEditor.css';
 
-const HomeEditor = ({displayName, twitter, index}) => {
-    let indexClass = "";
-    switch (index) {
-        case 0:
-            indexClass = " editor--first";
-            break;
-        case 1:
-            indexClass = " editor--second";
-            break;
-        case 2:
-            indexClass = " editor--third";
-            break;
-        default:
-    }
+const HomeEditor = (props) => {
     return (
-        <div className={"editor" + indexClass}><span className="editor_name">{displayName}</span>
-            <span className="editor__twitter">Twitter: @{twitter}</span>
+        <div className={'home-editor__wrapper'}>
+            <img className={'home-editor__headshot'} src={props.icon} />
+            <div className={'home-editor__meta-wrapper'}>
+                <h3 className="home-editor__name">{props.displayName}</h3>
+                <p className={'home-editor__title'}>{props.title}</p>
+                <div className={'home-editor__social-wrapper'}>
+                    <p className="home-editor__twitter">@{props.twitter}</p>
+                </div>
+            </div>
         </div>
     );
 };

@@ -6,13 +6,15 @@ const data = require("../Editors/editors.json");
 
 const HomeEditors = () => (
     <div className="editors__wrapper">
-        <h3>Editorial Team</h3>
-        <h4>Critical Writers & Purpose Driven News Tellers</h4>
-        <div className="editors__container">
-            {data.map((editor, index) =>
-                <HomeEditor {...editor} key={editor.id} index={index}/>
-            )}
-        </div>
+      <div className={'editors__title-wrapper'}>
+        <h3 className={'editors__title'}>Editorial Team</h3>
+        <h4 className={'editors__title--subtitle'}>Critical Writers & Purpose Driven News Tellers</h4>
+      </div>
+      <div className="editors__container">
+          {data.map((editor, index) =>
+              <HomeEditor {...editor} key={editor.id} index={index}/>
+          )}
+      </div>
     </div>
 );
 

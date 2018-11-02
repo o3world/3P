@@ -13,10 +13,14 @@ const Home = () => {
         <div className={'home-content'}>
             <HomePrimeStories/>
             <HomeTheFeed/>
+          <div className={'bts_podcast_wrapper'}>
             <HomeBTS/>
             <HomeMultimedia/>
+          </div>
+          <div className={'home_events-wrapper'}>
             <HomeAssoc/>
             <HomeForum/>
+          </div>
             <HomeEditors/>
         </div>
     )

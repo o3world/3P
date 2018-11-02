@@ -1,7 +1,63 @@
+.home-bts__wrapper {
+  display: grid;
+  grid-template-rows: 200px 1fr 50px;
+  background-size: cover;
+}
 
+.bts_background {
+    width: 100%;
+  grid-area: 1/1/-1/-1;
+}
 
-.editor {
-    background-color: white;
-    display: grid;
-    border-bottom: 3px solid blue;
+.bts_content-wrapper {
+  grid-area: 2/1/3/2;
+  color: #006BFF;
+  text-align: left;
+  margin: 0 30px;
+}
+
+.bts_title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 3.0rem;
+  margin: 0;
+  line-height: 3.0rem;
+}
+
+.bts_publication-date {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.bts_author {
+  text-align: right;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 1.0rem;
+}
+
+.bts_subscribe-button {
+  grid-area: 3/1/4/2;
+  background-color: #006BFF;
+  color: white;
+  text-transform: uppercase;
+  margin: 0 30px;
+  border: none;
+}
+
+.bts_date-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  border-top: 3px solid #006bff;
+  padding: 15px 0;
+}
+
+.bts_date-wrapper h4 {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 0.9rem;
 }

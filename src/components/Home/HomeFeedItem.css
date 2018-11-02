@@ -2,8 +2,9 @@
     background-size: cover;
     color: white;
     display: grid;
+    width: 311.5px;
     border-radius: 4px;
-    grid-template-rows: 1fr 115px;
+    grid-template-rows: 1fr minmax(115px, max-content);
 }
 
 .feed-item__meta-container {
