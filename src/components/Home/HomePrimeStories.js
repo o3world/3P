@@ -17,7 +17,7 @@ const HomePrimeStories = () =>
             <h3 className={'prime-stories__title'}>Prime Stories</h3>
             <h4 className={'prime-stories__title--subtitle'}>Editor Curated</h4>
           </div>
-            <PrimeStory {...data[1]} key={1} index={1} storyClass={'prime-story prime-story--wide'}/>
+            <PrimeStory {...data[1]} key={1} index={1} storyClass={'prime-story prime-story--second'}/>
             <PrimeStory {...data[2]} key={2} index={2} storyClass={'prime-story prime-story--tall'}/>
             <PrimeStory {...data[3]} key={3} index={3} storyClass={'prime-story prime-story--tall'}/>
             <PrimeStory {...data[4]} key={4} index={4} storyClass={'prime-story prime-story--tall'}/>

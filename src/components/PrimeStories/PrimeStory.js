@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './PrimeStory.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class PrimeStory extends Component {
     render() {
@@ -9,7 +10,7 @@ class PrimeStory extends Component {
         return (
             <div className={this.props.storyClass} style={storyStyle}>
                 <div className="story-card--content">
-                <h3 className="story-title">{this.props.title}</h3>
+                  <FontAwesomeIcon icon="angry" /><h3 className="story-title">{this.props.title}</h3>
                 <p className="story-author">Words by {this.props.author_name}</p>
                 <p className="story-category">{this.props.category_name}</p>
                 <time className="story-publish-date"e>{this.props.date}</time>

@@ -8,6 +8,11 @@ import HomeTheFeed from "./components/Home/HomeTheFeed";
 import HomeEditors from "./components/Home/HomeEditors";
 import Footer from "./components/Footer/Footer";
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faRocket, faAngry } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faRocket, faAngry);
+
 class App extends Component {
     constructor(props) {
         super(props);
