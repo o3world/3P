@@ -7,6 +7,10 @@ import HomePrimeStories from "./components/Home/HomePrimeStories";
 import HomeTheFeed from "./components/Home/HomeTheFeed";
 import HomeEditors from "./components/Home/HomeEditors";
 import Footer from "./components/Footer/Footer";
+import { ApolloClient } from "apollo-boost";
+import { ApolloProvider } from 'react-apollo';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 
 class App extends Component {
     constructor(props) {
