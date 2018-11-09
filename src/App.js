@@ -19,7 +19,7 @@ const httpLink = createHttpLink({
 const client = new ApolloClient({
   link: httpLink,
   cache: new InMemoryCache()
-})
+});
 
 class App extends Component {
     constructor(props) {
