@@ -12,6 +12,15 @@ import { ApolloProvider } from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
+const httpLink = createHttpLink({
+  uri: 'http://back.3blmedia.com/graphql'
+});
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache()
+})
+
 class App extends Component {
     constructor(props) {
         super(props);
