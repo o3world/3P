@@ -38,12 +38,14 @@ class App extends Component {
     return (
         <Router>
             <div className="App">
-                <Header site_title={this.state.pageTitle}/>
-                <Route exact path="/" render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
-                <Route path="/stories" component={HomePrimeStories}/>
-                <Route path="/the-feed" render={(props) => <HomeTheFeed {...props} newTitle={this.setPageTitle} />}/>
-                <Route path="/editors" component={HomeEditors}/>
-                <Footer/>
+              <ApolloProvider client={client}>
+                  <Header site_title={this.state.pageTitle}/>
+                  <Route exact path="/" render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
+                  <Route path="/stories" component={HomePrimeStories}/>
+                  <Route path="/the-feed" render={(props) => <HomeTheFeed {...props} newTitle={this.setPageTitle} />}/>
+                  <Route path="/editors" component={HomeEditors}/>
+                  <Footer/>
+              </ApolloProvider>
             </div>
         </Router>
     );
