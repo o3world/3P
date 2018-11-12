@@ -4,7 +4,7 @@ import './PrimeStoryHero.css';
 class PrimeStoryHero extends Component {
     render() {
         const storyStyle = {
-            backgroundImage: "url(" + this.props.featured_image_wide + ")"
+            backgroundImage: "url(" + this.props.fieldFeaturedImageWide.url + ")"
         };
         return (
             <div className={this.props.storyClass}>
