@@ -25,6 +25,14 @@ const Stories = gql`
         height
         url
       }
+      fieldFeaturedImageTall {
+        targetId
+        alt
+        title
+        width
+        height
+        url
+      } 
      }
    }
   }
