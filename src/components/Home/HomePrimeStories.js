@@ -33,6 +33,19 @@ const Stories = gql`
         height
         url
       } 
+      author: entityOwner {
+        first: fieldFirstName
+        last: fieldLastName
+      }
+      category: fieldPrimaryCategory {
+        targetId
+        ... on FieldNodeFieldPrimaryCategory {
+          term: entity {
+            name
+          }
+        }
+      }
+      date: created
      }
    }
   }
