@@ -7,7 +7,7 @@ import gql from 'graphql-tag';
 
 import prime_logo from '../../assets/images/prime_circle.svg';
 
-const data = require('../PrimeStories/prime-stories.json').data.posts;
+//const data = require('../PrimeStories/prime-stories.json').data.posts;
 
 const Stories = gql`
  query storyQuery($offset: Int, $limit: Int) {
