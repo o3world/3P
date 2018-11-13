@@ -33,5 +33,11 @@
 }
 
 .home-editor__social-wrapper {
+  display: flex;
+}
+
+.social-icon {
   color: #006bff;
+  margin-right: 8px;
+  font-size: 16px;
 }
