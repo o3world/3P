@@ -7,6 +7,19 @@ import HomePrimeStories from "./components/Home/HomePrimeStories";
 import HomeTheFeed from "./components/Home/HomeTheFeed";
 import HomeEditors from "./components/Home/HomeEditors";
 import Footer from "./components/Footer/Footer";
+import { ApolloClient } from "apollo-boost";
+import { ApolloProvider } from 'react-apollo';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+const httpLink = createHttpLink({
+  uri: 'http://back.3blmedia.com/graphql'
+});
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache()
+});
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -30,12 +43,14 @@ class App extends Component {
     return (
         <Router>
             <div className="App">
-                <Header site_title={this.state.pageTitle}/>
-                <Route exact path="/" render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
-                <Route path="/stories" component={HomePrimeStories}/>
-                <Route path="/the-feed" render={(props) => <HomeTheFeed {...props} newTitle={this.setPageTitle} />}/>
-                <Route path="/editors" component={HomeEditors}/>
-                <Footer/>
+              <ApolloProvider client={client}>
+                  <Header site_title={this.state.pageTitle}/>
+                  <Route exact path="/" render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
+                  <Route path="/stories" component={HomePrimeStories}/>
+                  <Route path="/the-feed" render={(props) => <HomeTheFeed {...props} newTitle={this.setPageTitle} />}/>
+                  <Route path="/editors" component={HomeEditors}/>
+                  <Footer/>
+              </ApolloProvider>
             </div>
         </Router>
     );
