@@ -11,14 +11,20 @@ events:
             - nvm use 6.11.1
             - npm install
             - npm run build
-            - npm install ./3p
-            - npm run build ./3p
       - upload-artifact:
           script:
             - pipelines-artifact start
             - pipelines-artifact upload $SOURCE_DIR
+      - notify:
+          type: script
+          script:
+            - curl --data '{"text":"Build Success | '"$PIPELINE_VCS_PATH"' | '"$PIPELINE_JOB_ID"'"}' -X POST https://hooks.slack.com/services/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
   fail-on-build:
     steps:
       - fail:
           script:
             - pipelines-artifact fail
+      - notify:
+          type: script
+          script:
+            - curl --data '{"text":"Build Failed Check Log on Acquia | '"$PIPELINE_VCS_PATH"' | '"$PIPELINE_JOB_ID"'"}' -X POST https://hooks.slack.com/services/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
