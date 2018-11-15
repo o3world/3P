@@ -1,4 +1,16 @@
 .prime-story {
+    display: grid;
+    --aspect-ratio: 3/2;
+    background-image: var(--tall-bg-image);
+    background-size: cover;
+}
+
+.prime-story::before {
+    height: 0;
+    content: "";
+    display: inline-block;
+    padding-bottom: calc(100% * var(--aspect-ratio));
+    grid-area: 1/1/-1/-1;
 }
 
 .prime-story--second {
@@ -7,51 +19,31 @@
     background-size: cover;
 }
 
+@media only screen and (min-width: 900px) {
+    .prime-story--second::before {
+        padding-bottom: 0;
+    }
+}
+
 @media only screen and (max-width: 900px) {
 
   .prime-story--second {
     --aspect-ratio: 2/3;
   }
-
-  .prime-story--second::before {
-    height: 0;
-    content: "";
-    display: inline-block;
-    padding-bottom: calc(100% * var(--aspect-ratio));
-    grid-area: 1/1/-1/-1;
-  }
 }
 
 @media only screen and (max-width: 600px) {
 
-  .prime-story--second {
-    --aspect-ratio: 3/2;
-  }
-
-  .prime-story--second::before {
-    height: 0;
-    content: "";
-    display: inline-block;
-    padding-bottom: calc(100% * var(--aspect-ratio));
-    grid-area: 1/1/-1/-1;
-  }
+    .prime-story--second {
+        --aspect-ratio: 3/2;
+    }
 }
 
-.prime-story--tall {
-    display: grid;
-    --aspect-ratio: 3/2;
-    background-size: cover;
-}
+@media only screen and (min-width: 600px) {
 
-.prime-story--tall::before {
-    height: 0;
-    content: "";
-    display: inline-block;
-    padding-bottom: calc(100% * var(--aspect-ratio));
-    grid-area: 1/1/-1/-1;
-}
-
-.category {
+    .prime-story--second {
+        background-image: var(--wide-bg-image);
+    }
 }
 
 .story-card--content {

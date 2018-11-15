@@ -6,7 +6,8 @@ import Moment from 'react-moment';
 class PrimeStory extends Component {
     render() {
         const storyStyle = {
-            backgroundImage: `url(${this.props.fieldFeaturedImageTall.url})`
+            "--tall-bg-image": `url(${this.props.fieldFeaturedImageTall.url})`,
+            "--wide-bg-image": `url(${this.props.fieldFeaturedImageWide.url})`
         };
         const published_date = new Date(this.props.date * 1000);
         return (
