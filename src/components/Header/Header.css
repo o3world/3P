@@ -1,0 +1,6 @@
+header {
+    max-width: 1366px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: min-content 1fr max-content;
+}
