@@ -64,7 +64,6 @@ const HomePrimeStories = () =>
             if (loading) return "Loading...";
             if (error) return `Error! ${error.message}`;
             const stories = data.nodeQuery.entities;
-            console.log(stories);
 
             return (
     <div className={'home__prime-stories'}>

@@ -12,9 +12,9 @@ class HomeTheFeed extends Component {
   }
 
   componentDidMount() {
-    fetch('https://3blmedia.com/3bl_widgets_json_data?t=ZGY3ZjI4YWM4OWNhMzdiZjFhYmQyZjZjMTg0ZmUxY2Y=&p=list&pg=1&n=10')
+    fetch('https://3blmedia.com/api/v1/feed')
         .then(response => response.json())
-        .then(data => this.setState({ data: data[0].newsList }));
+        .then(data => this.setState({ data: data.results }));
   }
 
   render() {
