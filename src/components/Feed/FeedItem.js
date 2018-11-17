@@ -6,7 +6,7 @@ const FeedItem = (props) => {
     return (
         <div className="feed-item" style={{backgroundImage: `url(${thumbnailLink})`}}>
             <div className="feed-item__meta-container">
-                <time className="feed-item__published-date">Funky {publishedDate}</time>
+                <time className="feed-item__published-date">{publishedDate}</time>
                 <h3 className="feed-item__name">Brent {title}</h3>
             </div>
         </div>
