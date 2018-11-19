@@ -8,21 +8,14 @@ import gql from 'graphql-tag';
 import prime_logo from '../../assets/images/prime_circle.svg';
 
 const Stories = gql`
- query storyQuery($offset: Int, $limit: Int) {
-   nodeQuery(offset: $offset, limit: $limit, filter: {conditions: [{field: "type", value: "story"}]}) {
-   entities {
-     entityId
-     entityBundle
-     ... on NodeStory {
-       title
-       fieldFeaturedImageWide {
-        targetId
-        alt
-        title
-        width
-        height
-        url
-      }
+ query storyQuery {
+   primeStories {
+    results {
+      title
+      author: entityOwner {
+        first: fieldFirstName
+        last: fieldLastName
+      } 
       fieldFeaturedImageTall {
         targetId
         alt
@@ -30,10 +23,14 @@ const Stories = gql`
         width
         height
         url
-      } 
-      author: entityOwner {
-        first: fieldFirstName
-        last: fieldLastName
+      }
+      fieldFeaturedImageWide {
+        targetId
+        alt
+        title
+        width
+        height
+        url
       }
       category: fieldPrimaryCategory {
         targetId
@@ -44,8 +41,7 @@ const Stories = gql`
         }
       }
       date: created
-     }
-   }
+    }
   }
  }
 `;
@@ -55,16 +51,12 @@ const Stories = gql`
 const HomePrimeStories = () =>
     <Query
         query={Stories}
-        variables={{
-            offset: 0,
-            limit: 10
-        }}
+        variables={{}}
     >
         {({ loading, error, data }) => {
             if (loading) return "Loading...";
             if (error) return `Error! ${error.message}`;
-            const stories = data.nodeQuery.entities;
-            console.log(stories);
+            const stories = data.primeStories.results;
 
             return (
     <div className={'home__prime-stories'}>
