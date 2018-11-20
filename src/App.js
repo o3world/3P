@@ -14,6 +14,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 const httpLink = createHttpLink({
@@ -25,7 +26,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-library.add( faTwitter, faInstagram );
+library.add( faTwitter, faInstagram, faSearch, faBars );
 
 class App extends Component {
     constructor(props) {
