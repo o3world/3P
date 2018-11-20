@@ -1,6 +1,27 @@
 header {
-    max-width: 1366px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: min-content 1fr max-content;
+  max-width: 1366px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: min-content 1fr min-content min-content;
+  grid-template-areas: "logo . search hamburger";
+  padding: 40px 130px 8px;
+}
+
+.header-logo {
+  width: 170px;
+  grid-area: logo;
+}
+
+.search-button {
+  grid-area: search;
+  font-size: 20px;
+  margin: 0 20px;
+  align-self: center;
+}
+
+.hamburger-button {
+  grid-area: hamburger;
+  font-size: 20px;
+  margin: 0 0 0 20px;
+  align-self: center;
 }
