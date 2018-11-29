@@ -1,0 +1,40 @@
+.news-box {
+    background-color:#f4f4f4;
+    height:250px;
+    padding:30px 130px;
+    margin-top:50px;
+    text-align:left;
+    margin-bottom: 5px;
+}
+
+.news-box-heading {
+    margin-bottom: 15px;
+}
+
+ #title,#date {
+    display: inline;
+    font-size:11px;
+    text-transform:uppercase
+}
+
+#date {
+    float:right;
+    margin-top: 0px;
+}
+
+.news-box-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:35px;
+    margin-bottom: 15px;
+    margin-top: 0px
+}
+
+.news-box-description {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:16px;
+    margin-bottom:30px
+}
+
+.news-box-company {
+    font-size:16px
+}

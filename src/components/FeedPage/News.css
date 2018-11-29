@@ -13,7 +13,8 @@
 .page-title{
     display: flex;
     align-items: center;
-    margin: 50px 0 0 0;
+    margin-top:50px;
+    margin-left:135px
 }
 .main-title{
     color: rgba(0,0,0,0.9);
@@ -41,6 +42,7 @@
 }
 .feed-inner-box{
     display: grid;
+    max-height:208px;
     grid-template-columns:45% 1fr;
     margin: 55px 0 0 0;
     grid-column-gap: 50px;
@@ -53,11 +55,12 @@
     max-width: 100%;
 }
 .feed-right-content{
-    padding: 20px;
+    padding: 0px;
+    margin-top: -20px;
 }
 .feed-right-content ul{
     list-style-type: none;
-    margin: 0 0 10px;
+    /* margin: 0 0 10px; */
     padding: 0;
 }
 .feed-right-content ul li{
@@ -88,7 +91,7 @@
 .feed-author-box{
     display: grid;
     grid-template-columns: auto auto;
-    margin: 29px 0 0 0;
+    /* margin: 29px 0 0 0; */
 }
 .feed-author-box .author-name{
     color: #000000;

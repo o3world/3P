@@ -1,8 +1,19 @@
 import React from 'react';
-import temp from '/home/geeta/Desktop/3P/src/assets/images/assoc_stock.png';
 import "./Video.css";
+import video1 from '/home/abhishek/Desktop/3P/src/assets/images/video1.png';
+import video2 from '/home/abhishek/Desktop/3P/src/assets/images/video2.png';
+import video3 from '/home/abhishek/Desktop/3P/src/assets/images/video3.png';
 
 class VideoComponent extends React.Component {
+
+    state = {
+        img : [
+            video1,
+            video2,
+            video3
+        ]
+    }
+
 
     render() {
 
@@ -13,19 +24,19 @@ class VideoComponent extends React.Component {
                 </div>
                 <div className="video-inner-boxes">
                     <div className="video-box">
-                        <img src={temp}/>
+                        <img src={video1}/>
                         <div className="video-info">
                             <h3>The Corporate Responsibility Summer Must-Read for the C-Suite</h3>
                         </div>
                     </div>
                     <div className="video-box">
-                        <img src={temp}/>
+                        <img src={video2}/>
                         <div className="video-info">
                             <h3>The Corporate Responsibility Summer Must-Read for the C-Suite</h3>
                         </div>
                     </div>
                     <div className="video-box">
-                        <img src={temp}/>
+                        <img src={video3}/>
                         <div className="video-info">
                             <h3>The Corporate Responsibility Summer Must-Read for the C-Suite</h3>
                         </div>

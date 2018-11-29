@@ -1,22 +1,32 @@
 import React from 'react';
-import VideoComponent from './videoComponent';
-import temp from '/home/geeta/Desktop/3P/src/assets/images/assoc_stock.png';
+import temp from '/home/abhishek/Desktop/3P/src/assets/images/first.png';
+import temp2 from '/home/abhishek/Desktop/3P/src/assets/images/temp2.png';
+import news1 from '/home/abhishek/Desktop/3P/src/assets/images/news1.png';
+import news2 from '/home/abhishek/Desktop/3P/src/assets/images/news2.png';
+import news3 from '/home/abhishek/Desktop/3P/src/assets/images/news3.png';
 
-import "./Contact.css";
-class contactPage extends React.Component {
+import "./News.css";
+class NewsComponent extends React.Component {
+
+    state = {
+        image : [
+            temp,
+            temp2,
+            news1,
+            news2,
+            news3
+        ]
+    }
+
   
     render() {
+            let image = this.state.image[this.props.img];
 
         return(
-            <React.Fragment>
             <div className="the-feed-main-box">
-                <div className="page-title">
-                    <h3 className="main-title">The Feed</h3>
-                    <span className="title-info">Latest News from Leaders in Corporate Social Responsibility</span>
-                </div>
                 <div className="feed-inner-box">
                     <div className="feed-left-img">
-                        <img src={temp}/>
+                        <img src={image}/>
                     </div>
                     <div className="feed-right-content">
                         <ul>
@@ -36,14 +46,9 @@ class contactPage extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                <VideoComponent />
-            </div>
-            </React.Fragment>
-            
+            </div>    
         )
     }
 }
 
-export default contactPage;
+export default NewsComponent;

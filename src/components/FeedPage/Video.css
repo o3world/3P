@@ -2,7 +2,7 @@
     background-color: #EAF3FF;
     display: grid;
     max-width: 1366px;
-    margin: 80px auto 0;
+    margin: 80px auto 50px;
     padding: 0 130px;
 }
 .specific-title{
@@ -28,7 +28,7 @@
     grid-column-gap: 30px;
 }
 .video-box{
-    background-color: greenyellow;
+    background-color: white;
     position: relative;
     top: 47px;
 }
