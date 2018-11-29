@@ -44,11 +44,13 @@
     grid-template-columns:45% 1fr;
     margin: 55px 0 0 0;
     grid-column-gap: 50px;
-    background-color: #f0f0f0;
 }
 .feed-left-img{
-    background-color: red;
     border-radius: 4px;
+    overflow: hidden;
+}
+.feed-left-img img{
+    max-width: 100%;
 }
 .feed-right-content{
     padding: 20px;
