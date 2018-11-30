@@ -1,9 +1,9 @@
 import React from 'react';
-import temp from '/home/abhishek/Desktop/3P/src/assets/images/first.png';
-import temp2 from '/home/abhishek/Desktop/3P/src/assets/images/temp2.png';
-import news1 from '/home/abhishek/Desktop/3P/src/assets/images/news1.png';
-import news2 from '/home/abhishek/Desktop/3P/src/assets/images/news2.png';
-import news3 from '/home/abhishek/Desktop/3P/src/assets/images/news3.png';
+import temp from '../../assets/images/first.png';
+import temp2 from '../../assets/images/temp2.png';
+import news1 from '../../assets/images/news1.png';
+import news2 from '../../assets/images/news2.png';
+import news3 from '../../assets/images/news3.png';
 
 import "./News.css";
 class NewsComponent extends React.Component {

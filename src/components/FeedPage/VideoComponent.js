@@ -1,8 +1,8 @@
 import React from 'react';
 import "./Video.css";
-import video1 from '/home/abhishek/Desktop/3P/src/assets/images/video1.png';
-import video2 from '/home/abhishek/Desktop/3P/src/assets/images/video2.png';
-import video3 from '/home/abhishek/Desktop/3P/src/assets/images/video3.png';
+import video1 from '../../assets/images/video1.png';
+import video2 from '../../assets/images/video2.png';
+import video3 from '../../assets/images/video3.png';
 
 class VideoComponent extends React.Component {
 
