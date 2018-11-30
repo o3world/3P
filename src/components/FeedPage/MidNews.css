@@ -2,11 +2,11 @@
     background-color:#f4f4f4;
     height:250px;
     padding:30px 130px;
-    margin-top:50px;
     text-align:left;
-    margin-bottom: 5px;
+    max-width: 1442px;
+    margin: 50px auto 5px;
+    display: grid;
 }
-
 .news-box-heading {
     margin-bottom: 15px;
 }

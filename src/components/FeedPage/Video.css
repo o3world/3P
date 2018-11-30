@@ -1,9 +1,9 @@
 .video-section{
     background-color: #EAF3FF;
     display: grid;
-    max-width: 1366px;
+    max-width: 1271px;
     margin: 80px auto 50px;
-    padding: 0 130px;
+    padding: 0 110px;
 }
 .specific-title{
     color: rgba(0,0,0,0.9);
