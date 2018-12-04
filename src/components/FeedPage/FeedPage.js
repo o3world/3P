@@ -4,9 +4,7 @@ import VideoComponent from './VideoComponent';
 import MidNews from './MidNews';
 import "./News.css";
 
-
 class FeedPage extends React.Component {
-
     render() {
         return (
             <React.Fragment>

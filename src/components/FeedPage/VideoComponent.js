@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Video.css";
+import Video from './Video';
 import video1 from '../../assets/images/video1.png';
 import video2 from '../../assets/images/video2.png';
 import video3 from '../../assets/images/video3.png';
@@ -13,34 +14,16 @@ class VideoComponent extends React.Component {
             video3
         ]
     }
-
-
     render() {
-
         return(
             <div className="video-section">
                 <div className="specific-title">
                     <h3>VIDEOS</h3>
                 </div>
                 <div className="video-inner-boxes">
-                    <div className="video-box">
-                        <img src={video1}/>
-                        <div className="video-info">
-                            <h3>The Corporate Responsibility Summer Must-Read for the C-Suite</h3>
-                        </div>
-                    </div>
-                    <div className="video-box">
-                        <img src={video2}/>
-                        <div className="video-info">
-                            <h3>The Corporate Responsibility Summer Must-Read for the C-Suite</h3>
-                        </div>
-                    </div>
-                    <div className="video-box">
-                        <img src={video3}/>
-                        <div className="video-info">
-                            <h3>The Corporate Responsibility Summer Must-Read for the C-Suite</h3>
-                        </div>
-                    </div>
+                    <Video videoImage={video1} videoTitle="The Corporate Responsibility Summer Must-Read for the C-Suite"/>
+                    <Video videoImage={video2} videoTitle="The Corporate Responsibility Summer Must-Read for the C-Suite"/>
+                    <Video videoImage={video3} videoTitle="The Corporate Responsibility Summer Must-Read for the C-Suite"/>
                 </div>
             </div>
         )
