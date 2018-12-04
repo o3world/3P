@@ -1,0 +1,10 @@
+img{
+    max-width: 100%;
+    width: 100%;
+}
+.featured-sponser-box{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    /*grid-auto-rows: minmax(154px,194px);*/
+    grid-template-columns: auto auto auto auto;
+}
