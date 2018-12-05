@@ -1,12 +1,11 @@
 import React from "react";
 import image from './images/poona-gadgil-black.png';
 import './featuredSponser.css';
-import images from "./images/renewable-hydrogen-US-Army.jpg";
 
 const FeaturedSponser = (props) => {
     return (
         <div className="special-serises-content-main">
-            <img src={images} />
+            <img src="https://www.planwallpaper.com/static/images/0382763769f46da4ff3c6644eeac648c_large_iXL6SyF.jpeg" />
             <div className="featured-sponser-box">
                 <div className="blank"></div>
                 <div className="blank2"></div>
