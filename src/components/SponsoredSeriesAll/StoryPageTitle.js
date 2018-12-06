@@ -3,7 +3,7 @@ import './StoryPageTile.css';
 
 const StoryPageTile = (props) => {
     return (
-        <div className="special-series-titles">
+        <div className="special-series__container">
             <div className="page-title">
                 <h3 className="main-title">The Feed</h3>
                 <span className="title-info">SPONSORED STORY COLLECTIONS</span>

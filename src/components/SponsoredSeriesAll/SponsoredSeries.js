@@ -1,11 +1,11 @@
 import React, {Component, Fragment} from 'react';
-import './SpecialSeries.css';
+import './SponsoredSeries.css';
 
 import FeaturedSponser from "./featuredSponser";
 import StoryPageTile from "./StoryPageTitle";
 import Story from "./Story";
 
-class SpecialSeries extends Component {
+class SponsoredSeries extends Component {
     render() {
         return (
             <Fragment>
@@ -29,4 +29,4 @@ class SpecialSeries extends Component {
         )
     }
 }
-export default SpecialSeries;
+export default SponsoredSeries;
