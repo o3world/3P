@@ -1,5 +1,5 @@
 import React from "react";
-import './StoryPageTile.css';
+import '../CSS/StoryPageTile.css';
 
 const StoryPageTile = (props) => {
     return (

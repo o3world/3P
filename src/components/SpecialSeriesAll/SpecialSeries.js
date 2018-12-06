@@ -1,29 +1,27 @@
 import React, {Component, Fragment} from 'react';
-import './SpecialSeries.css';
-
-import FeaturedSponser from "./featuredSponser";
-import StoryPageTile from "./StoryPageTitle";
-import Story from "./Story";
+import './CSS/SpecialSeries.css';
+import FeaturedSponser from "./Component/featuredSponser";
+import StoryPageTile from "./Component/StoryPageTitle";
+import Story from "./Component/Story";
+import QueryHoc from "../Common/Query";
+import * as SpecialStory from "./Service/SpecialStoryQuery";
 
 class SpecialSeries extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+        };
+    }
     render() {
+        const variables = {}
         return (
             <Fragment>
-                <FeaturedSponser />
+                <QueryHoc query={SpecialStory.FeaturedSpecialStoriesQuery} variables={variables} componentName={FeaturedSponser} />
                 <StoryPageTile />
                 <div className="article-main-boxs">
-                    <Story bgImage="article-box article-01" title="Responsible Forestry"/>
-                    <Story bgImage="article-box article-02" title="Maximizing Impact Through Workforce Development and Education"/>
-                    <Story bgImage="article-box article-01" title="Responsible Forestry"/>
-                    <Story bgImage="article-box article-02" title="Maximizing Impact Through Workforce Development and Education"/>
-                    <Story bgImage="article-box article-01" title="Responsible Forestry"/>
-                    <Story bgImage="article-box article-02" title="Maximizing Impact Through Workforce Development and Education"/>
-                    <Story bgImage="article-box article-01" title="Responsible Forestry"/>
-                    <Story bgImage="article-box article-02" title="Maximizing Impact Through Workforce Development and Education"/>
-                    <Story bgImage="article-box article-01" title="Responsible Forestry"/>
-                    <Story bgImage="article-box article-02" title="Maximizing Impact Through Workforce Development and Education"/>
-                    <Story bgImage="article-box article-01" title="Responsible Forestry"/>
-                    <Story bgImage="article-box article-02" title="Maximizing Impact Through Workforce Development and Education"/>
+                    <QueryHoc query={SpecialStory.AllSpecialStoriesQuery} variables={variables} componentName={Story} />
                 </div>
             </Fragment>
         )
