@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Video.css";
+import "../CSS/Video.css";
 import Video from './Video';
 import video1 from '../../assets/images/video1.png';
 import video2 from '../../assets/images/video2.png';

@@ -1,10 +1,11 @@
 import React from 'react';
-import NewsComponent from './NewsComponent';
+import News from './Components/News';
 import FeedInformation from './Service/Feed';
-import MidNews from './MidNews';
-import "./News.css";
+import NewsWithoutImage from './Components/NewsWithoutImage';
+import "./CSS/News.css";
 
-class FeedPage extends React.Component {
+class FeedPageContainer extends React.Component {
+
     render() {
         return (
             <React.Fragment>
@@ -12,7 +13,7 @@ class FeedPage extends React.Component {
                     <h3 className="main-title">The Feed</h3>
                     <span className="title-info">Latest News from Leaders in Corporate Social Responsibility</span>
                 </div>
-                { FeedInformation.feeds.map((feed) => (feed.image) ? <NewsComponent data={feed} /> : <MidNews data={feed} />
+                { FeedInformation.feeds.map((feed) => (feed.image) ? <News data={feed} /> : <NewsWithoutImage data={feed} />
                 )}
             </React.Fragment>
         )
@@ -20,4 +21,4 @@ class FeedPage extends React.Component {
 
 }
 
-export default FeedPage;
+export default FeedPageContainer;

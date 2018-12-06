@@ -7,7 +7,7 @@ import HomePrimeStories from "./components/Home/HomePrimeStories";
 import HomeTheFeed from "./components/Home/HomeTheFeed";
 import HomeEditors from "./components/Home/HomeEditors";
 import PrimeStoryPage from './components/PrimestoryPage/PrimeStoryPage';
-import FeedPage from './components/FeedPage/FeedPage';
+import FeedPageContainer from './components/FeedPage/FeedPageContainer';
 import Footer from "./components/Footer/Footer";
 import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from 'react-apollo';
@@ -54,7 +54,7 @@ class App extends Component {
                   <Route path="/the-feed" render={(props) => <HomeTheFeed {...props} newTitle={this.setPageTitle} />}/>
                   <Route path="/editors" component={HomeEditors}/>
                   <Route path="/primestories" component={PrimeStoryPage}></Route>
-                  <Route path="/feed" component={FeedPage}></Route>
+                  <Route path="/feed" component={FeedPageContainer}></Route>
                   <Footer/>
               </ApolloProvider>
             </div>

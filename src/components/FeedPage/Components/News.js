@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NewsComponent = (props) => {
+const News = (props) => {
     let objFeed = props.data;
     return(
         <div className="the-feed-main-box">
@@ -30,4 +30,4 @@ const NewsComponent = (props) => {
     )
 }
 
-export default NewsComponent;
+export default News;

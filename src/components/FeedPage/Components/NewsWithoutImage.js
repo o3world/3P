@@ -1,7 +1,7 @@
 import React from 'react';
-import "./MidNews.css";
+import "../CSS/MidNews.css";
 
-const MidNews = (props) => {
+const NewsWithoutImage = (props) => {
     let objFeed = props.data;
     return (
         <div className="news-box">
@@ -24,4 +24,4 @@ const MidNews = (props) => {
     )
 }
 
-export default MidNews;
+export default NewsWithoutImage;
