@@ -1,6 +1,6 @@
 import React from 'react';
-import PrimeStory from '../PrimeStories/PrimeStory';
-import PrimeStoryHero from '../PrimeStories/PrimeStoryHero';
+import PrimeStory from './PrimeStory';
+import PrimeStoryHero from './PrimeStoryHero';
 import './HomePrimeStories.css';
 import { Query } from "react-apollo";
 import gql from 'graphql-tag';

@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
-import HomePrimeStories from "./components/Home/HomePrimeStories";
-import HomeTheFeed from "./components/Home/HomeTheFeed";
-import HomeEditors from "./components/Home/HomeEditors";
+import HomePrimeStories from "./components/PrimeStories/HomePrimeStories";
+import HomeTheFeed from "./components/Feed/HomeTheFeed";
+import HomeEditors from "./components/Editors/HomeEditors";
 import Footer from "./components/Footer/Footer";
 import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from 'react-apollo';
