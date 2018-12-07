@@ -1,0 +1,64 @@
+$tp_color--primary: #006BFF;
+
+.primeStoryHero {
+    grid-area: hero;
+    display: grid;
+    grid-template-columns: 5% 1fr 5%;
+    grid-template-rows: 1fr min-content;
+    background-image: var(--wide-bg-image);
+    background-size: cover;
+
+    --aspect-ratio: 2/3;
+
+  &::before {
+    height: 0;
+    content: "";
+    display: inline-block;
+    padding-bottom: calc(100% * var(--aspect-ratio));
+    grid-area: 1/1/-1/-1;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .primeStoryHero {
+        background-image: var(--tall-bg-image);
+        --aspect-ratio: 3/2;
+    }
+}
+
+.heroMeta {
+    grid-area: 2/2/3/3;
+    background-color: $tp_color--primary;
+    text-align: left;
+    color: black;
+    border-radius: 4px 4px 0 0;
+    margin-bottom: -20px;
+    display: grid;
+    padding: 24px 80px;
+    grid-template-columns: 1fr;
+    grid-template-areas: "time" "title" "subtitle" "author";
+
+    .primeStory__name {
+        font-family: 'Unna', serif;
+        font-weight: bold;
+        font-size: 2.8rem;
+        line-height: 2.6rem;
+        letter-spacing: 1px;
+        margin: 14px 0;
+    }
+
+    .author {
+         grid-area: author;
+         text-align: right;
+         font-family: 'Montserrat', sans-serif;
+         font-size: 1.2rem;
+     }
+
+    time {
+          grid-area: time;
+          color: white;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.8rem;
+    }
+}

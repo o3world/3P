@@ -1,4 +1,4 @@
-.prime-stories {
+.primeStories {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -11,7 +11,7 @@
   padding: 30px;
 }
 
-.prime-stories__heading {
+.primeStories__heading {
   grid-area: title;
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@
   z-index: 2;
 }
 
-.prime-stories__heading img {
+.primeStories__heading img {
     width: 110px;
 }
 
@@ -33,7 +33,7 @@
     margin: 0 20px;
 }
 
-.prime-stories__title--subtitle {
+.primeStories__title__subtitle {
   font-family: 'Montserrat', sans-serif;
   color: black;
   text-transform: uppercase;
@@ -46,7 +46,7 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .prime-stories {
+  .primeStories {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "hero hero"
@@ -59,7 +59,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .prime-stories {
+  .primeStories {
     grid-template-columns: 1fr;
     grid-template-areas:
       "hero"

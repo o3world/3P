@@ -1,11 +1,11 @@
-.prime-story {
+.primeStory {
     display: grid;
     --aspect-ratio: 3/2;
     background-image: var(--tall-bg-image);
     background-size: cover;
 }
 
-.prime-story::before {
+.primeStory::before {
     height: 0;
     content: "";
     display: inline-block;
@@ -13,40 +13,40 @@
     grid-area: 1/1/-1/-1;
 }
 
-.prime-story--second {
+.primeStory__second {
     grid-area: second;
     display: grid;
     background-size: cover;
 }
 
 @media only screen and (min-width: 900px) {
-    .prime-story--second::before {
+    .primeStory__second::before {
         padding-bottom: 0;
     }
 }
 
 @media only screen and (max-width: 900px) {
 
-  .prime-story--second {
+  .primeStory__second {
     --aspect-ratio: 2/3;
   }
 }
 
 @media only screen and (max-width: 600px) {
 
-    .prime-story--second {
+    .primeStory__second {
         --aspect-ratio: 3/2;
     }
 }
 
 @media only screen and (min-width: 600px) {
 
-    .prime-story--second {
+    .primeStory__second {
         background-image: var(--wide-bg-image);
     }
 }
 
-.story-card--content {
+.storyCard__content {
     grid-area: 1/1/-1/-1;
     background: rgba(0, 0, 0, 0.2);
     color: white;
@@ -59,32 +59,32 @@
     text-align: left;
 }
 
-.story-card--content > * {
+.storyCard__content > * {
     padding: 0;
     margin:0;
 }
 
-.story-publish-date {
+.storyPublishDate {
     grid-area: date;
     justify-self: end;
     font-size: 0.7rem;
     text-transform: uppercase;
 }
 
-.story-title {
+.storyTitle {
     grid-area: title;
     margin-bottom: 13px;
     font-size: 1.7rem;
     font-family: 'Unna', serif;
     line-height: 1.7rem;
 }
-.story-author {
+.storyAuthor {
     grid-area: author;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1rem;
 }
 
-.story-category {
+.storyCategory {
     grid-area: category;
     font-size: 0.8rem;
     text-transform: uppercase;

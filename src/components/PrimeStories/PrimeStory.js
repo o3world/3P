@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './PrimeStory.css';
+import styles from './PrimeStory.module.scss';
 
 import Moment from 'react-moment';
 
@@ -11,12 +11,12 @@ class PrimeStory extends Component {
         };
         const published_date = new Date(this.props.date * 1000);
         return (
-            <div className={this.props.storyClass} style={storyStyle}>
-                <div className="story-card--content">
-                    <h3 className="story-title">{this.props.title}</h3>
-                    <p className="story-author">Words by {this.props.author.first} {this.props.author.last}</p>
-                    <p className="story-category">{this.props.category.entity.name}</p>
-                    <time className="story-publish-date"><Moment format="MMM DD">{published_date}</Moment></time>
+            <div className={styles.primeStory} style={storyStyle}>
+                <div className={styles.storyCard__content}>
+                    <h3 className={styles.storyTitle}>{this.props.title}</h3>
+                    <p className={styles.storyAuthor}>Words by {this.props.author.first} {this.props.author.last}</p>
+                    <p className={styles.storyCategory}>{this.props.category.entity.name}</p>
+                    <time className={styles.storyPublishDate}><Moment format="MMM DD">{published_date}</Moment></time>
                 </div>
             </div>
         );
