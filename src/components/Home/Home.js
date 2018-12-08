@@ -1,11 +1,11 @@
 import React from 'react';
-import HomeEditors from "./HomeEditors";
-import HomeForum from "./HomeForum";
-import HomeAssoc from "./HomeAssoc";
+import HomeEditors from "../Editors/HomeEditors";
+import HomeForum from "../Forum/HomeForum";
+import HomeAssoc from "../Association/HomeAssoc";
 import HomeMultimedia from "./HomeMultimedia";
-import HomeBTS from "./HomeBTS";
-import HomePrimeStories from "./HomePrimeStories";
-import HomeTheFeed from "./HomeTheFeed";
+import HomeBTS from "../BTS/HomeBTS";
+import HomePrimeStories from "../PrimeStories/HomePrimeStories";
+import HomeTheFeed from "../Feed/HomeTheFeed";
 import "./Home.css";
 
 const Home = () => {

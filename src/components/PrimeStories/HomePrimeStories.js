@@ -1,6 +1,6 @@
 import React from 'react';
-import PrimeStory from '../PrimeStories/PrimeStory';
-import PrimeStoryHero from '../PrimeStories/PrimeStoryHero';
+import PrimeStory from './PrimeStory';
+import PrimeStoryHero from './PrimeStoryHero';
 import './HomePrimeStories.css';
 import { Query } from "react-apollo";
 import gql from 'graphql-tag';
@@ -8,42 +8,51 @@ import gql from 'graphql-tag';
 import prime_logo from '../../assets/images/prime_circle.svg';
 
 const Stories = gql`
- query storyQuery {
-   primeStories {
-    results {
-      title
-      author: entityOwner {
-        first: fieldFirstName
-        last: fieldLastName
-      } 
-      fieldFeaturedImageTall {
-        targetId
-        alt
+query storyQuery {
+  nodeQuery(
+    filter: {
+      conditions: [
+        {field: "type", value: "story"},
+        {field: "status", value: "1"},
+        {field: "field_prime_position", value: "0", operator: GREATER_THAN}
+      ]
+    },
+    sort: {field: "field_prime_position", direction: ASC} 
+  ) 
+  {
+    entities {
+			... on NodeStory {
         title
-        width
-        height
-        url
-      }
-      fieldFeaturedImageWide {
-        targetId
-        alt
-        title
-        width
-        height
-        url
-      }
-      category: fieldPrimaryCategory {
-        targetId
-        ... on FieldNodeFieldPrimaryCategory {
-          term: entity {
-            name
-          }
+        author: entityOwner {
+          first: fieldFirstName
+          last: fieldLastName
+          headshot: userPicture { url }
         }
+        date: created
+        category: fieldPrimaryCategory { entity { name } }
+        body: fieldContent {
+          processed
+        }
+      tallImage: fieldFeaturedImageTall {
+        targetId
+        alt
+        title
+        width
+        height
+        url
       }
-      date: created
+      wideImage: fieldFeaturedImageWide {
+        targetId
+        alt
+        title
+        width
+        height
+        url
+      }
+      }
     }
   }
- }
+}
 `;
 
 
@@ -56,7 +65,7 @@ const HomePrimeStories = () =>
         {({ loading, error, data }) => {
             if (loading) return "Loading...";
             if (error) return `Error! ${error.message}`;
-            const stories = data.primeStories.results;
+            const stories = data.nodeQuery.entities;
 
             return (
     <div className={'home__prime-stories'}>
