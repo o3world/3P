@@ -1,15 +1,23 @@
 import React from 'react';
-import './FeedItem.css';
+import Moment from 'react-moment';
 
 const FeedItem = (props) => {
-    const {thumbnailLink, publishedDate, title} = props;
+
+    const feedThumbnail = (props.image) ? <img src={props.image} alt={''}/> : '';
+
+    const thumbnailClass = (props.image) ? ' has-thumbnail' : ' no-thumbnail';
+
     return (
-        <div className="feed-item" style={{backgroundImage: `url(${thumbnailLink})`}}>
-            <div className="feed-item__meta-container">
-                <time className="feed-item__published-date">{publishedDate}</time>
-                <h3 className="feed-item__name">Brent {title}</h3>
-            </div>
+      <div className={'feedItem' + thumbnailClass}>
+        {feedThumbnail}
+        <div>
+          <h3><a href={props.link}>{props.title}</a></h3>
+          <div>{props.category}</div>
+          <time><Moment format="MMM DD">{props.date}</Moment></time>
+          <p dangerouslySetInnerHTML={ {__html: props.body.slice(0,200)} } />
+          <div dangerouslySetInnerHTML={ {__html: props.company[0]}} />
         </div>
+      </div>
     )
 };
 
