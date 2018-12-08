@@ -1,9 +1,9 @@
 import React from "react";
-import './StoryPageTile.css';
+import '../CSS/StoryPageTile.css';
 
 const StoryPageTile = (props) => {
     return (
-        <div className="special-series__container">
+        <div className="special-series-titles">
             <div className="page-title">
                 <h3 className="main-title">The Feed</h3>
                 <span className="title-info">SPONSORED STORY COLLECTIONS</span>
