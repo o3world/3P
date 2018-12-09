@@ -55,8 +55,6 @@ query storyQuery {
 }
 `;
 
-
-
 const HomePrimeStories = () =>
     <Query
         query={Stories}
@@ -68,22 +66,21 @@ const HomePrimeStories = () =>
             const stories = data.nodeQuery.entities;
 
             return (
-    <div className={styles.home__prime-stories}>
-        <div className={styles.primeStories}>
-            <PrimeStoryHero {...stories[0]} key={0} index={0} storyClass={styles.primeStoryHero}/>
+        <div className={styles.wrapper}>
+            <PrimeStoryHero {...stories[0]} key={0} index={'0'}/>
 
-          <div className={styles.primeStories__heading}>
+          <div className={styles.heading}>
             <img src={prime_logo} alt={'prime_logo'} />
-            <h3 className={styles.primeStories__title}>Prime Stories</h3>
-            <h4 className={styles.primeStories__title__subtitle}>Editor Curated</h4>
+            <h3 className={styles.title}>Prime Stories</h3>
+            <h4 className={styles.subtitle}>Editor Curated</h4>
           </div>
-            <PrimeStory {...stories[1]} key={1} index={1} className={styles.primeStory__second}/>
-            <PrimeStory {...stories[2]} key={2} index={2} className={styles.primeStory}/>
-            <PrimeStory {...stories[3]} key={3} index={3} className={styles.primeStory}/>
-            <PrimeStory {...stories[4]} key={4} index={4} className={styles.primeStory}/>
-            <PrimeStory {...stories[5]} key={5} index={5} className={styles.primeStory}/>
+            <PrimeStory {...stories[1]} key={1} index={'1'}/>
+            <PrimeStory {...stories[2]} key={2} index={'2'}/>
+            <PrimeStory {...stories[3]} key={3} index={'3'}/>
+            <PrimeStory {...stories[4]} key={4} index={'4'}/>
+            <PrimeStory {...stories[5]} key={5} index={'5'}/>
         </div>
-    </div>);
+            );
         }}
     </Query>
 

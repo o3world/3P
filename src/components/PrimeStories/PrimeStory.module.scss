@@ -13,78 +13,80 @@
     grid-area: 1/1/-1/-1;
 }
 
-.primeStory__second {
+.primeStorySecond {
+    composes: primeStory;
     grid-area: second;
     display: grid;
     background-size: cover;
 }
 
 @media only screen and (min-width: 900px) {
-    .primeStory__second::before {
+    .primeStorySecond::before {
         padding-bottom: 0;
     }
 }
 
 @media only screen and (max-width: 900px) {
 
-  .primeStory__second {
+  .primeStorySecond {
     --aspect-ratio: 2/3;
   }
 }
 
 @media only screen and (max-width: 600px) {
 
-    .primeStory__second {
+    .primeStorySecond {
         --aspect-ratio: 3/2;
     }
 }
 
 @media only screen and (min-width: 600px) {
 
-    .primeStory__second {
+    .primeStorySecond {
         background-image: var(--wide-bg-image);
     }
 }
 
-.storyCard__content {
-    grid-area: 1/1/-1/-1;
-    background: rgba(0, 0, 0, 0.2);
-    color: white;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr min-content min-content;
-    grid-template-areas: "category date" "title title" "author author";
-    align-items: start;
-    padding: 25px;
-    text-align: left;
-}
+.content {
+  grid-area: 1/1/-1/-1;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr min-content min-content;
+  grid-template-areas: "category date" "title title" "author author";
+  align-items: start;
+  padding: 25px;
+  text-align: left;
 
-.storyCard__content > * {
+  & > * {
     padding: 0;
     margin:0;
+  }
 }
 
-.storyPublishDate {
+.date {
     grid-area: date;
     justify-self: end;
     font-size: 0.7rem;
     text-transform: uppercase;
 }
 
-.storyTitle {
+.title {
     grid-area: title;
     margin-bottom: 13px;
     font-size: 1.7rem;
     font-family: 'Unna', serif;
     line-height: 1.7rem;
 }
-.storyAuthor {
+
+.author {
     grid-area: author;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1rem;
 }
 
-.storyCategory {
+.category {
     grid-area: category;
     font-size: 0.8rem;
     text-transform: uppercase;

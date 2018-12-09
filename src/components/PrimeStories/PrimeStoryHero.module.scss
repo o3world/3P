@@ -1,6 +1,6 @@
 $tp_color--primary: #006BFF;
 
-.primeStoryHero {
+.wrapper {
     grid-area: hero;
     display: grid;
     grid-template-columns: 5% 1fr 5%;
@@ -21,13 +21,13 @@ $tp_color--primary: #006BFF;
 
 @media only screen and (max-width: 600px) {
 
-    .primeStoryHero {
+    .wrapper {
         background-image: var(--tall-bg-image);
         --aspect-ratio: 3/2;
     }
 }
 
-.heroMeta {
+.meta {
     grid-area: 2/2/3/3;
     background-color: $tp_color--primary;
     text-align: left;
@@ -39,7 +39,7 @@ $tp_color--primary: #006BFF;
     grid-template-columns: 1fr;
     grid-template-areas: "time" "title" "subtitle" "author";
 
-    .primeStory__name {
+    .name {
         font-family: 'Unna', serif;
         font-weight: bold;
         font-size: 2.8rem;
@@ -55,7 +55,7 @@ $tp_color--primary: #006BFF;
          font-size: 1.2rem;
      }
 
-    time {
+    .date {
           grid-area: time;
           color: white;
           font-family: 'Montserrat', sans-serif;

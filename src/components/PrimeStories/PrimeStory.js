@@ -10,18 +10,18 @@ class PrimeStory extends Component {
             "--wide-bg-image": `url(${this.props.wideImage.url})`
         };
         const published_date = new Date(this.props.date * 1000);
+        const storyClass = (this.props.index === '1') ? styles.primeStorySecond : styles.primeStory;
         return (
-            <div className={styles.primeStory} style={storyStyle}>
-                <div className={styles.storyCard__content}>
-                    <h3 className={styles.storyTitle}>{this.props.title}</h3>
-                    <p className={styles.storyAuthor}>Words by {this.props.author.first} {this.props.author.last}</p>
-                    <p className={styles.storyCategory}>{this.props.category.entity.name}</p>
-                    <time className={styles.storyPublishDate}><Moment format="MMM DD">{published_date}</Moment></time>
+            <div className={storyClass} style={storyStyle}>
+                <div className={styles.content}>
+                    <h3 className={styles.title}>{this.props.title}</h3>
+                    <p className={styles.author}>Words by {this.props.author.first} {this.props.author.last}</p>
+                    <p className={styles.category}>{this.props.category.entity.name}</p>
+                    <time className={styles.date}><Moment format="MMM DD">{published_date}</Moment></time>
                 </div>
             </div>
         );
     }
-};
-
+}
 
 export default PrimeStory;

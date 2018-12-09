@@ -6,18 +6,18 @@ import HomeMultimedia from "./HomeMultimedia";
 import HomeBTS from "../BTS/HomeBTS";
 import HomePrimeStories from "../PrimeStories/HomePrimeStories";
 import HomeTheFeed from "../Feed/HomeTheFeed";
-import "./Home.css";
+import styles from "./Home.module.scss";
 
 const Home = () => {
     return (
-        <div className={'home-content'}>
+        <div className={styles.wrapper}>
             <HomePrimeStories/>
             <HomeTheFeed/>
-          <div className={'bts_podcast_wrapper'}>
+          <div className={styles.bts_podcastWrapper}>
             <HomeBTS/>
             <HomeMultimedia/>
           </div>
-          <div className={'home_events-wrapper'}>
+          <div className={styles.eventsWrapper}>
             <HomeAssoc/>
             <HomeForum/>
           </div>
