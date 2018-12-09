@@ -4,9 +4,9 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import HomePrimeStories from "./components/PrimeStories/HomePrimeStories";
-import HomeTheFeed from "./components/Feed/HomeTheFeed";
 import HomeEditors from "./components/Editors/HomeEditors";
 import Footer from "./components/Footer/Footer";
+import TheFeedPage from "./components/Feed/TheFeedPage";
 import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';
@@ -49,7 +49,7 @@ class App extends Component {
                   <Header site_title={this.state.pageTitle}/>
                   <Route exact path="/" render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
                   <Route path="/stories" component={HomePrimeStories}/>
-                  <Route path="/the-feed" render={(props) => <HomeTheFeed {...props} newTitle={this.setPageTitle} />}/>
+                  <Route path="/the-feed" render={(props) => <TheFeedPage {...props} />}/>
                   <Route path="/editors" component={HomeEditors}/>
                   <Footer/>
               </ApolloProvider>
