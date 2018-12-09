@@ -1,24 +1,26 @@
 import React from 'react';
 import Moment from 'react-moment';
 
+import styles from './FeedItem.module.scss';
+
 const FeedItem = (props) => {
 
-    const feedThumbnail = (props.image) ? <img src={props.image} alt={''}/> : '';
+  const feedThumbnail = (props.image) ? <img className={styles.thumbnail} src={props.image} alt={''}/> : '';
 
-    const thumbnailClass = (props.image) ? ' has-thumbnail' : ' no-thumbnail';
+  const thumbnailClass = (props.image) ? styles.hasThumb : styles.noThumb;
 
-    return (
-      <div className={'feedItem' + thumbnailClass}>
-        {feedThumbnail}
-        <div>
-          <h3><a href={props.link}>{props.title}</a></h3>
-          <div>{props.category}</div>
-          <time><Moment format="MMM DD">{props.date}</Moment></time>
-          <p dangerouslySetInnerHTML={ {__html: props.body.slice(0,200)} } />
-          <div dangerouslySetInnerHTML={ {__html: props.company[0]}} />
-        </div>
+  return (
+    <div className={thumbnailClass}>
+      {feedThumbnail}
+      <div className={styles.meta}>
+        <h2 className={styles.title}><a href={props.link}>{props.title}</a></h2>
+        <div className={styles.description} dangerouslySetInnerHTML={ {__html: props.body.slice(0,200)} } />
+        <span className={styles.company} dangerouslySetInnerHTML={ {__html: props.company[0]}} />
+        <span className={styles.category}>{props.category}</span>
+        <time className={styles.date}><Moment format="MMM DD">{props.date}</Moment></time>
       </div>
-    )
+    </div>
+  )
 };
 
 export default FeedItem;

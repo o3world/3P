@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import FeedItem from './FeedItem';
 
+import styles from './TheFeedPage.module.scss';
+
 class TheFeedPage extends Component {
     constructor(props) {
         super(props);
@@ -18,10 +20,10 @@ class TheFeedPage extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <h3>The Feed</h3>
-                    <span>Latest News from Leaders in Corporate Social Responsibility</span>
+            <div className={styles.pageWrapper}>
+                <div className={styles.titleWrapper}>
+                    <h3 className={styles.pageTitle}>The Feed</h3>
+                    <span className={styles.pageSubtitle}>Latest News from Leaders in Corporate Social Responsibility</span>
                 </div>
 
               { this.state.data.map(feeditem =>
