@@ -1,10 +1,10 @@
 import gql from 'graphql-tag';
 
-const AllSpecialStoriesQuery = gql`
- query specialSeries {
+const AllSponsoredSeriesQuery = gql`
+ query sponsoredSeries {
   taxonomyTermQuery(filter: {
       conditions: [
-        {field: "vid", value: "special_s"},
+        {field: "vid", value: "Sponsored_s"},
       ]},
       sort: [
         {field: "field_featured_series", direction: DESC},
@@ -19,7 +19,7 @@ const AllSpecialStoriesQuery = gql`
           text: processed
         }
       }
-      ... on TaxonomyTermSpecialS {
+      ... on TaxonomyTermSponsoredS {
         featured: fieldFeaturedSeries
         company: fieldSsCompanyName
         logo: fieldSeriesImage {
@@ -52,11 +52,12 @@ const AllSpecialStoriesQuery = gql`
     }
   }
 }`;
-const FeaturedSpecialStoriesQuery = gql`
- query specialSeries {
+
+const FeaturedSponsoredSeriesQuery = gql`
+ query sponsoredSeries {
   taxonomyTermQuery(filter: {
       conditions: [
-        {field: "vid", value: "special_s"},
+        {field: "vid", value: "Sponsored_s"},
       ]},
       sort: [
         {field: "field_featured_series", direction: DESC},
@@ -71,7 +72,7 @@ const FeaturedSpecialStoriesQuery = gql`
           text: processed
         }
       }
-      ... on TaxonomyTermSpecialS {
+      ... on TaxonomyTermSponsoredS {
         featured: fieldFeaturedSeries
         company: fieldSsCompanyName
         logo: fieldSeriesImage {
@@ -104,4 +105,5 @@ const FeaturedSpecialStoriesQuery = gql`
     }
   }
 }`;
-export {AllSpecialStoriesQuery, FeaturedSpecialStoriesQuery};
+
+export {AllSponsoredSeriesQuery, FeaturedSponsoredSeriesQuery};
