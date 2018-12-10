@@ -1,4 +1,4 @@
-.prime-stories {
+.wrapper {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -11,20 +11,19 @@
   padding: 30px;
 }
 
-.prime-stories__heading {
+.heading {
   grid-area: title;
   display: flex;
   align-items: center;
   margin-left: calc(20% - 110px);
   margin-bottom: -46px;
   z-index: 2;
-}
-
-.prime-stories__heading img {
+  img {
     width: 110px;
+  }
 }
 
-.prime-stories__title {
+.title {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.9rem;
     text-transform: uppercase;
@@ -33,7 +32,7 @@
     margin: 0 20px;
 }
 
-.prime-stories__title--subtitle {
+.subtitle {
   font-family: 'Montserrat', sans-serif;
   color: black;
   text-transform: uppercase;
@@ -46,7 +45,7 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .prime-stories {
+  .wrapper {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "hero hero"
@@ -59,7 +58,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .prime-stories {
+  .wrapper {
     grid-template-columns: 1fr;
     grid-template-areas:
       "hero"

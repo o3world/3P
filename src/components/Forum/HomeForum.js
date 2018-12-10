@@ -1,5 +1,5 @@
 import React from 'react';
-import "./HomeForum.css";
+import styles from "./HomeForum.module.scss";
 
 import forum_background from '../../assets/images/forum_stock.png';
 
@@ -8,10 +8,10 @@ const HomeForum = () => {
     backgroundImage: `url(${forum_background})`
   };
     return (
-        <div className={'home-forum__wrapper'} style={homeForumStyle}>
-          <div className={'forum_meta-container'}>
-            <div className={'forum_tag'}>3BL Forum</div>
-            <h3 className={'forum_title'}>Join the Event that Matters</h3>
+        <div className={styles.wrapper} style={homeForumStyle}>
+          <div className={styles.meta}>
+            <div className={styles.tag}>3BL Forum</div>
+            <h3 className={styles.title}>Join the Event that Matters</h3>
           </div>
         </div>
     )
