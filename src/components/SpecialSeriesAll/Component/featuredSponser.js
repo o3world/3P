@@ -1,7 +1,5 @@
 import React from "react";
 import '../CSS/featuredSponser.css';
-import {FeaturedSpecialStoriesQuery} from "../Service/SpecialStoryQuery";
-import { Query } from "react-apollo";
 
 const FeaturedSponser = (props) => {
     const objStory = props.data.taxonomyTermQuery.entities[0];

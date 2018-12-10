@@ -14,6 +14,7 @@ import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import SetSpecialSeries from './components/SpecialSeriesAll/SetSpecialSeries'
 
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -55,7 +56,8 @@ class App extends Component {
                   <Route path="/the-feed" render={(props) => <HomeTheFeed {...props} newTitle={this.setPageTitle} />}/>
                   <Route path="/editors" component={HomeEditors}/>
                   <Route path="/contact" component={ContactPage} />
-                  <Route path="/special-stories" component={SpecialSeries} />
+                  <Route path="/special-stories/set" component={SetSpecialSeries} />
+                  <Route path="/special-stories" exact="true" component={SpecialSeries} />
                   <Route path='/primestories' component={PrimeStoryPage}></Route>
                   <Footer/>
               </ApolloProvider>
