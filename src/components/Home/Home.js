@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeEditors from "../Editors/HomeEditors";
+import EditorCardsWrapper from "../Editors/EditorCardsWrapper";
 import HomeForum from "../Forum/HomeForum";
 import HomeAssoc from "../Association/HomeAssoc";
 import HomeMultimedia from "./HomeMultimedia";
@@ -21,7 +21,7 @@ const Home = () => {
             <HomeAssoc/>
             <HomeForum/>
           </div>
-            <HomeEditors/>
+            <EditorCardsWrapper/>
         </div>
     )
 };
