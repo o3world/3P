@@ -2,10 +2,10 @@ import React from "react";
 
 const FeaturedSponsoredSeries = (props) => {
     let objStory = props.data.taxonomyTermQuery.entities[0];
-    objStory =  (objStory != undefined)? objStory: {"mainImage": "", "company": "", "logo":{"url":""}, "name": ""};
+    objStory =  (objStory != undefined)? objStory: {"mainImage": {"derivative":{"url":""}}, "company": "", "logo":{"url":""}, "name": ""};
     return (
         <div>
-            <img src={objStory.mainImage} alt={''}/>
+            <img src={objStory.mainImage.derivative.url} alt={''}/>
             <div>
                 <div>
                     <p>{objStory.company}</p>
