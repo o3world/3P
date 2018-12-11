@@ -7,7 +7,7 @@ const SponsoredSeriesMasonryTile = (props) => {
     return (
 
         <div style={{"backgroundImage": backgroundImage}}>
-            <h4><a href="#">{series.name}</a></h4>
+            <h4>{series.name}</h4> {/* @TODO Need to make this a link when we have single series route. */}
             <img src={logo} alt={""}/>
         </div>
 

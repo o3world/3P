@@ -14,7 +14,7 @@ const FeaturedSponsoredSeries = (props) => {
                 <div>
                     <div>
                         <h3>{series.company}</h3>
-                        <h2><a href="#">{series.name}</a></h2>
+                        <h2>{series.name}</h2> {/* @TODO Need to make this a link when we have single series route. */}
                     </div>
                     <button>Explore Series</button>
                 </div>
