@@ -19,7 +19,7 @@ const AllSponsoredSeriesQuery = gql`
           text: processed
         }
       }
-      ... on TaxonomyTermSponsoredS {
+      ... on TaxonomyTermSpecialS {
         featured: fieldFeaturedSeries
         company: fieldSsCompanyName
         logo: fieldSeriesImage {
@@ -72,7 +72,7 @@ const FeaturedSponsoredSeriesQuery = gql`
           text: processed
         }
       }
-      ... on TaxonomyTermSponsoredS {
+      ... on TaxonomyTermSpecialS {
         featured: fieldFeaturedSeries
         company: fieldSsCompanyName
         logo: fieldSeriesImage {
