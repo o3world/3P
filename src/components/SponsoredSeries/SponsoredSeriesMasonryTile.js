@@ -10,7 +10,7 @@ const SponsoredSeriesMasonryTile = (props) => {
                     <img src="https://images.pexels.com/photos/754082/pexels-photo-754082.jpeg?auto=compress&cs=tinysrgb&h=350" alt={''}/>
                 </div>
                 <div>
-                    <h4>{story.name}</h4>
+                    <h4><a href="#">{story.name}</a></h4>
                 </div>
                 <img src={logo} alt={''}/>
         </div>

@@ -26,7 +26,9 @@ class SponsoredSeriesAll extends Component {
                   <p>Interested in advancing conversations on key sustainability topics? Contact <a href={'mailto:jfoley@3blmedia.com'}>Jennifer Foley</a> for sponsoring a special series.</p>
                 </div>
               </div>
+                <div>
                 <QueryHoc query={SponsoredSeriesQueries.AllSponsoredSeriesQuery} variables={{}} componentName={SponsoredSeriesAllMasonryWrapper} />
+                </div>
             </div>
         )
     }
