@@ -1,5 +1,5 @@
 import React from "react";
-import '../CSS/Story.css';
+//import '../CSS/Story.css';
 
 const StoryInfo = (props) => {
     const story = props.data;

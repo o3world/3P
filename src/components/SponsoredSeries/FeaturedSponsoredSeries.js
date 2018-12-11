@@ -8,23 +8,15 @@ const FeaturedSponsoredSeries = (props) => {
           <img src={objStory.mainImage.derivative.url} alt={''}/>
           <div>
               <div>
-                  <h5>Featured Sponsor</h5>
-                  <span>{objStory.company}
-                      <img src={objStory.logo.url} alt={objStory.company} />
-                  </span>
+                  <p>{objStory.company}</p>
+                  <img src={objStory.logo.url} alt={objStory.company} />
               </div>
               <div>
                   <div>
-                      <div>
-                          <h6>{objStory.company} SPECIAL SERIES</h6>
-                      </div>
-                      <div>
-                          <h4>{objStory.name}</h4>
-                      </div>
+                      <h3>{objStory.company}</h3>
+                      <h2><a href="#">{objStory.name}</a></h2>
                   </div>
-                  <div>
-                      <button>Explore Series</button>
-                  </div>
+                  <button>Explore Series</button>
               </div>
           </div>
       </div>
