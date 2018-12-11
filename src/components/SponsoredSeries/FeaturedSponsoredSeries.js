@@ -1,34 +1,26 @@
 import React from "react";
 
 const FeaturedSponsoredSeries = (props) => {
-  console.log(props.data);
-  const objStory = props.data.taxonomyTermQuery.entities[0];
-  return (
-      <div>
-          <img src={objStory.mainImage.derivative.url} alt={''}/>
-          <div>
-              <div>
-                  <h5>Featured Sponsor</h5>
-                  <span>{objStory.company}
-                      <img src={objStory.logo.url} alt={objStory.company} />
-                  </span>
-              </div>
-              <div>
-                  <div>
-                      <div>
-                          <h6>{objStory.company} SPECIAL SERIES</h6>
-                      </div>
-                      <div>
-                          <h4>{objStory.name}</h4>
-                      </div>
-                  </div>
-                  <div>
-                      <button>Explore Series</button>
-                  </div>
-              </div>
-          </div>
-      </div>
-  );
+    let objStory = props.data.taxonomyTermQuery.entities[0];
+    objStory =  (objStory != undefined)? objStory: {"mainImage": {"derivative":{"url":""}}, "company": "", "logo":{"url":""}, "name": ""};
+    return (
+        <div>
+            <img src={objStory.mainImage.derivative.url} alt={''}/>
+            <div>
+                <div>
+                    <p>{objStory.company}</p>
+                    <img src={objStory.logo.url} alt={objStory.company} />
+                </div>
+                <div>
+                    <div>
+                        <h3>{objStory.company}</h3>
+                        <h2><a href="#">{objStory.name}</a></h2>
+                    </div>
+                    <button>Explore Series</button>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default FeaturedSponsoredSeries;

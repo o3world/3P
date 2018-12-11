@@ -4,7 +4,7 @@ const AllSponsoredSeriesQuery = gql`
  query sponsoredSeries {
   taxonomyTermQuery(filter: {
       conditions: [
-        {field: "vid", value: "Sponsored_s"},
+        {field: "vid", value: "special_s"},
       ]},
       sort: [
         {field: "field_featured_series", direction: DESC},
@@ -19,7 +19,7 @@ const AllSponsoredSeriesQuery = gql`
           text: processed
         }
       }
-      ... on TaxonomyTermSponsoredS {
+      ... on TaxonomyTermSpecialS {
         featured: fieldFeaturedSeries
         company: fieldSsCompanyName
         logo: fieldSeriesImage {
@@ -57,7 +57,7 @@ const FeaturedSponsoredSeriesQuery = gql`
  query sponsoredSeries {
   taxonomyTermQuery(filter: {
       conditions: [
-        {field: "vid", value: "Sponsored_s"},
+        {field: "vid", value: "special_s"},
       ]},
       sort: [
         {field: "field_featured_series", direction: DESC},
@@ -72,7 +72,7 @@ const FeaturedSponsoredSeriesQuery = gql`
           text: processed
         }
       }
-      ... on TaxonomyTermSponsoredS {
+      ... on TaxonomyTermSpecialS {
         featured: fieldFeaturedSeries
         company: fieldSsCompanyName
         logo: fieldSeriesImage {

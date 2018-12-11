@@ -56,8 +56,7 @@ class App extends Component {
                   <Route path="/editors" component={HomeEditors}/>
                   <Route path="/contact" component={ContactPage} />
                   <Route path="/special-stories/set" component={SetSpecialSeries} />
-                  <Route path="/special-stories" exact="true" component={SpecialSeries} />
-                  <Route path='/primestories' component={PrimeStoryPage}></Route>
+                  <Route path="/special-stories" exact="true" component={SponsoredSeriesAll} />
                   <Footer/>
               </ApolloProvider>
             </div>
