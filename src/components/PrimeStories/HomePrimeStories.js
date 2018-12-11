@@ -1,7 +1,7 @@
 import React from 'react';
-import PrimeStory from './PrimeStory';
-import PrimeStoryHero from './PrimeStoryHero';
-import './HomePrimeStories.css';
+import PrimeStory from '../PrimeStories/PrimeStory';
+import PrimeStoryHero from '../PrimeStories/PrimeStoryHero';
+import styles from './HomePrimeStories.module.scss';
 import { Query } from "react-apollo";
 import gql from 'graphql-tag';
 
@@ -55,8 +55,6 @@ query storyQuery {
 }
 `;
 
-
-
 const HomePrimeStories = () =>
     <Query
         query={Stories}
@@ -68,22 +66,21 @@ const HomePrimeStories = () =>
             const stories = data.nodeQuery.entities;
 
             return (
-    <div className={'home__prime-stories'}>
-        <div className="prime-stories">
-            <PrimeStoryHero {...stories[0]} key={0} index={0} storyClass={'prime-story-hero'}/>
+        <div className={styles.wrapper}>
+            <PrimeStoryHero {...stories[0]} key={0} index={'0'}/>
 
-          <div className={'prime-stories__heading'}>
+          <div className={styles.heading}>
             <img src={prime_logo} alt={'prime_logo'} />
-            <h3 className={'prime-stories__title'}>Prime Stories</h3>
-            <h4 className={'prime-stories__title--subtitle'}>Editor Curated</h4>
+            <h3 className={styles.title}>Prime Stories</h3>
+            <h4 className={styles.subtitle}>Editor Curated</h4>
           </div>
-            <PrimeStory {...stories[1]} key={1} index={1} storyClass={'prime-story prime-story--second'}/>
-            <PrimeStory {...stories[2]} key={2} index={2} storyClass={'prime-story'}/>
-            <PrimeStory {...stories[3]} key={3} index={3} storyClass={'prime-story'}/>
-            <PrimeStory {...stories[4]} key={4} index={4} storyClass={'prime-story'}/>
-            <PrimeStory {...stories[5]} key={5} index={5} storyClass={'prime-story'}/>
+            <PrimeStory {...stories[1]} key={1} index={'1'}/>
+            <PrimeStory {...stories[2]} key={2} index={'2'}/>
+            <PrimeStory {...stories[3]} key={3} index={'3'}/>
+            <PrimeStory {...stories[4]} key={4} index={'4'}/>
+            <PrimeStory {...stories[5]} key={5} index={'5'}/>
         </div>
-    </div>);
+            );
         }}
     </Query>
 

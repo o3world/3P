@@ -1,20 +1,20 @@
 import React from "react";
 
 const FeaturedSponsoredSeries = (props) => {
-    let objStory = props.data.taxonomyTermQuery.entities[0];
-    objStory =  (objStory != undefined)? objStory: {"mainImage": {"derivative":{"url":""}}, "company": "", "logo":{"url":""}, "name": ""};
+    let series = props.data.taxonomyTermQuery.entities[0];
+    series =  (series !== undefined)? series: {"mainImage": {"derivative":{"url":""}}, "company": "", "logo":{"url":""}, "name": ""};
     return (
         <div>
-            <img src={objStory.mainImage.derivative.url} alt={''}/>
+            <img src={series.mainImage.derivative.url} alt={''}/>
             <div>
                 <div>
-                    <p>{objStory.company}</p>
-                    <img src={objStory.logo.url} alt={objStory.company} />
+                    <p>{series.company}</p>
+                    <img src={series.logo.url} alt={series.company} />
                 </div>
                 <div>
                     <div>
-                        <h3>{objStory.company}</h3>
-                        <h2><a href="#">{objStory.name}</a></h2>
+                        <h3>{series.company}</h3>
+                        <h2><a href="#">{series.name}</a></h2>
                     </div>
                     <button>Explore Series</button>
                 </div>

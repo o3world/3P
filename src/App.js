@@ -4,16 +4,14 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import HomePrimeStories from "./components/PrimeStories/HomePrimeStories";
-import HomeTheFeed from "./components/Feed/HomeTheFeed";
 import HomeEditors from "./components/Editors/HomeEditors";
-import ContactPage from './components/Contact/contactPage';
 import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll'
 import Footer from "./components/Footer/Footer";
+import TheFeedPage from "./components/Feed/TheFeedPage";
 import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import SetSpecialSeries from './components/SpecialSeriesAll/SetSpecialSeries'
 
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -49,15 +47,13 @@ class App extends Component {
         <Router>
             <div className="App">
               <ApolloProvider client={client}>
-                  <Header site_title={this.state.pageTitle}/>
-                  <Route exact path="/" render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
-                  <Route path="/stories" component={HomePrimeStories}/>
-                  <Route path="/the-feed" render={(props) => <HomeTheFeed {...props} newTitle={this.setPageTitle} />}/>
-                  <Route path="/editors" component={HomeEditors}/>
-                  <Route path="/contact" component={ContactPage} />
-                  <Route path="/special-stories/set" component={SetSpecialSeries} />
-                  <Route path="/special-stories" exact="true" component={SponsoredSeriesAll} />
-                  <Footer/>
+                <Header site_title={this.state.pageTitle}/>
+                <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
+                <Route path={'/stories'} component={HomePrimeStories}/>
+                <Route path={'/the-feed'} render={(props) => <TheFeedPage {...props} />}/>
+                <Route path={'/editors'} component={HomeEditors}/>
+                <Route exact path={'/sponsored-series'} component={SponsoredSeriesAll}/>
+                <Footer/>
               </ApolloProvider>
             </div>
         </Router>

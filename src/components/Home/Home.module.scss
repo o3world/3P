@@ -1,16 +1,16 @@
-.home-content {
+.wrapper {
     max-width: 1366px;
     margin: 0 auto;
 }
 
-.bts_podcast_wrapper {
+.bts_podcastWrapper {
     display: grid;
     grid-template-columns: 40% 1fr;
     grid-gap: 40px;
     margin: 40px;
 }
 
-.home_events-wrapper {
+.eventsWrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-gap: 20px;
@@ -19,7 +19,7 @@
 
 @media only screen and (max-width: 1000px) {
 
-  .bts_podcast_wrapper {
+  .bts_podcastWrapper {
     grid-template-columns: 1fr;
     margin: 40px;
   }

@@ -1,16 +1,26 @@
 import React from 'react';
-import './FeedItem.css';
+import Moment from 'react-moment';
+
+import styles from './FeedItem.module.scss';
 
 const FeedItem = (props) => {
-    const {thumbnailLink, publishedDate, title} = props;
-    return (
-        <div className="feed-item" style={{backgroundImage: `url(${thumbnailLink})`}}>
-            <div className="feed-item__meta-container">
-                <time className="feed-item__published-date">{publishedDate}</time>
-                <h3 className="feed-item__name">Brent {title}</h3>
-            </div>
-        </div>
-    )
+
+  const feedThumbnail = (props.image) ? <img className={styles.thumbnail} src={props.image} alt={''}/> : '';
+
+  const thumbnailClass = (props.image) ? styles.hasThumb : styles.noThumb;
+
+  return (
+    <div className={thumbnailClass}>
+      {feedThumbnail}
+      <div className={styles.meta}>
+        <h2 className={styles.title}><a href={props.link}>{props.title}</a></h2>
+        <div className={styles.description} dangerouslySetInnerHTML={ {__html: props.body.slice(0,200)} } />
+        <span className={styles.company} dangerouslySetInnerHTML={ {__html: props.company[0]}} />
+        <span className={styles.category}>{props.category}</span>
+        <time className={styles.date}><Moment format="MMM DD">{props.date}</Moment></time>
+      </div>
+    </div>
+  )
 };
 
 export default FeedItem;

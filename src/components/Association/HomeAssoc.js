@@ -1,5 +1,5 @@
 import React from 'react';
-import "./HomeAssoc.css";
+import styles from "./HomeAssoc.module.scss";
 
 import assoc_background from '../../assets/images/assoc_stock.png';
 
@@ -8,10 +8,10 @@ const HomeAssoc = () => {
     backgroundImage: `url(${assoc_background})`
   };
     return (
-        <div className={'home-assoc__wrapper'} style={homeAssocStyle}>
-          <div className={'assoc_meta-container'}>
-            <div className={'assoc_tag'}>3BL Association</div>
-            <h3 className={'assoc_title'}>Bringing Leaders Together</h3>
+        <div className={styles.wrapper} style={homeAssocStyle}>
+          <div className={styles.meta}>
+            <div className={styles.tag}>3BL Association</div>
+            <h3 className={styles.title}>Bringing Leaders Together</h3>
           </div>
         </div>
     )
