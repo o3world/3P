@@ -4,6 +4,8 @@ import SponsoredSeriesAllMasonryWrapper from "./SponsoredSeriesAllMasonryWrapper
 import QueryHoc from "../Common/Query";
 import * as SponsoredSeriesQueries from "./SponsoredSeriesQueries";
 
+import styles from './SponsoredSeriesAll.module.scss';
+
 class SponsoredSeriesAll extends Component {
 
     constructor(props) {
@@ -15,20 +17,18 @@ class SponsoredSeriesAll extends Component {
 
     render() {
         return (
-            <div>
+            <div className={styles.pageWrapper}>
                 <QueryHoc query={SponsoredSeriesQueries.FeaturedSponsoredSeriesQuery} variables={{}} componentName={FeaturedSponsoredSeries} />
-              <div>
-                <div>
-                  <h3>Sponsored Series</h3>
-                  <span>Sponsored Story Collections</span>
+              <div className={styles.header}>
+                <div className={styles.titleWrapper}>
+                  <h1 className={styles.title}>Sponsored Series</h1>
+                  <span className={styles.subtitle}>Sponsored Story Collections</span>
                 </div>
-                <div>
+                <div className={styles.contact}>
                   <p>Interested in advancing conversations on key sustainability topics? Contact <a href={'mailto:jfoley@3blmedia.com'}>Jennifer Foley</a> for sponsoring a special series.</p>
                 </div>
               </div>
-                <div>
                 <QueryHoc query={SponsoredSeriesQueries.AllSponsoredSeriesQuery} variables={{}} componentName={SponsoredSeriesAllMasonryWrapper} />
-                </div>
             </div>
         )
     }
