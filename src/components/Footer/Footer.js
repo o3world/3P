@@ -8,10 +8,10 @@ const Footer = () =>
 
         <nav>
             <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/stories">Stories</Link></li>
-                <li><Link to="/the-feed">The Feed</Link></li>
-                <li><Link to="/editors">Editors</Link></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/the-feed">The Feed</Link></li>
+              <li><Link to="/editors">Editors</Link></li>
+              <li><Link to={'/sponsored-series'}>Sponsored Series</Link></li>
             </ul>
         </nav>
     </footer>;

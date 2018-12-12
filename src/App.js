@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import HomePrimeStories from "./components/PrimeStories/HomePrimeStories";
 import HomeEditors from "./components/Editors/HomeEditors";
+import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll'
 import Footer from "./components/Footer/Footer";
 import TheFeedPage from "./components/Feed/TheFeedPage";
 import { ApolloClient } from "apollo-boost";
@@ -46,12 +47,13 @@ class App extends Component {
         <Router>
             <div className="App">
               <ApolloProvider client={client}>
-                  <Header site_title={this.state.pageTitle}/>
-                  <Route exact path="/" render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
-                  <Route path="/stories" component={HomePrimeStories}/>
-                  <Route path="/the-feed" render={(props) => <TheFeedPage {...props} />}/>
-                  <Route path="/editors" component={HomeEditors}/>
-                  <Footer/>
+                <Header site_title={this.state.pageTitle}/>
+                <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
+                <Route path={'/stories'} component={HomePrimeStories}/>
+                <Route path={'/the-feed'} render={(props) => <TheFeedPage {...props} />}/>
+                <Route path={'/editors'} component={HomeEditors}/>
+                <Route exact path={'/sponsored-series'} component={SponsoredSeriesAll}/>
+                <Footer/>
               </ApolloProvider>
             </div>
         </Router>
