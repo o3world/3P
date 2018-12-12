@@ -10,9 +10,10 @@ const StoryMasonryTile = (props) => {
     return (
         <div className={styles.tile} style={{backgroundImage: `url(`+backgroundImage+`)`}}>
           <h2 className={styles.title}><a href={story.entityUrl}>{story.title}</a></h2>
-          <p className={styles.sponsored}>{story.field3pSpecialSeries}</p>
-          <p className={styles.author}>{story.entityOwner.name}</p>
-          <time className={styles.date}><Moment format="YYYY MMM DD">{story.changedentityCreated}</Moment></time>
+          <p className={styles.category}>CATEGORY{/* @TODo Add category */}</p>
+          <p className={styles.sponsored}>SPONSORED</p>
+          <p className={styles.author}>Words by {story.entityOwner.name}</p>
+          <time className={styles.date}><Moment format="MMM DD">{story.changedentityCreated}</Moment></time>
         </div>
     );
 };
