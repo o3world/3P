@@ -106,4 +106,105 @@ const FeaturedSponsoredSeriesQuery = gql`
   }
 }`;
 
-export {AllSponsoredSeriesQuery, FeaturedSponsoredSeriesQuery};
+const StoryDetailsById = gql`query story { 
+  nodeQuery(
+    filter: {
+      conditions: [        
+        {field: "nid", value: "10376", operator: EQUAL},        
+      ]},
+  ) 
+  {    
+    entities {
+      ... on NodeStory {
+        title
+        nid
+        field3pSpecialSeries {
+            entity {
+              ...on TaxonomyTermSpecialS{
+                fieldSsCompanyName
+              }
+            }
+        }
+        entityOwner {
+          name
+        }
+        entityUrl {
+          path
+        }        
+        entityCreated        
+        fieldFeaturedImageSquare {
+          url
+          width
+          height
+        }
+        fieldFeaturedImageWide {
+          url
+          width
+          height
+        }
+        fieldFeaturedImageTall {
+          url
+          width
+          height
+        }
+        body: fieldContent {
+          text: processed
+        }        
+      }
+      
+    }
+  }  
+}`;
+
+const AllStory = gql`
+query story {
+    nodeQuery(
+      filter:{
+        conditions: [
+          {field:"type", value:"story"},
+        ]
+      }
+    )
+  {    
+    entities {
+      ... on NodeStory {
+        title
+        nid
+        field3pSpecialSeries {
+            entity {
+              ...on TaxonomyTermSpecialS{
+                fieldSsCompanyName
+              }
+            }
+        }
+        entityOwner {
+          name
+        }
+        entityUrl {
+          path
+        }        
+        entityCreated        
+        fieldFeaturedImageSquare {
+          url
+          width
+          height
+        }
+        fieldFeaturedImageWide {
+          url
+          width
+          height
+        }
+        fieldFeaturedImageTall {
+          url
+          width
+          height
+        }
+        body: fieldContent {
+          text: processed
+        }        
+      }
+      
+    }
+  }  
+}`;
+export {AllSponsoredSeriesQuery, FeaturedSponsoredSeriesQuery, AllStory, StoryDetailsById};
