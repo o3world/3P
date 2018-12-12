@@ -2,6 +2,7 @@
   display: grid;
   grid-template-rows: 1fr min-content;
   grid-template-areas: "title"  "logo";
+  background-size: cover;
 
   &::before {
     height: 0;
