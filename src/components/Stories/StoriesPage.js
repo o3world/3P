@@ -9,7 +9,6 @@ const variables = {};
 const StoriesPage = () => (
     <div>
         <PrimeStoriesWrapper/>
-        <h4>More stories</h4>
         <QueryHoc query={Story.AllStoryQuery} variables={variables} componentName={StoriesMasonryWrapper} />
     </div>
 );
