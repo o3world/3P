@@ -4,7 +4,6 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import HomePrimeStories from "./components/PrimeStories/HomePrimeStories";
-import HomeEditors from "./components/Editors/HomeEditors";
 import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll';
 import Footer from "./components/Footer/Footer";
 import TheFeedPage from "./components/Feed/TheFeedPage";
