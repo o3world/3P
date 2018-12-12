@@ -22,7 +22,7 @@ class SponsoredSeriesAll extends Component {
               <div className={styles.header}>
                 <div className={styles.titleWrapper}>
                   <h1 className={styles.title}>Sponsored Series</h1>
-                  <span className={styles.subtitle}>Sponsored Story Collections</span>
+                  <span className={styles.subtitle}>Sponsored Series Collections</span>
                 </div>
                 <div className={styles.contact}>
                   <p>Interested in advancing conversations on key sustainability topics? Contact <a href={'mailto:jfoley@3blmedia.com'}>Jennifer Foley</a> for sponsoring a special series.</p>
