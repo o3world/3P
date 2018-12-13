@@ -106,4 +106,6 @@ const FeaturedSponsoredSeriesQuery = gql`
   }
 }`;
 
-export {AllSponsoredSeriesQuery, FeaturedSponsoredSeriesQuery};
+const SingleSeriesQuery = gql``;
+
+export {AllSponsoredSeriesQuery, FeaturedSponsoredSeriesQuery, SingleSeriesQuery};
