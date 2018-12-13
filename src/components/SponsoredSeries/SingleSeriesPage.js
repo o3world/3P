@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
-//import QueryHoc from "../Common/Query";
-//import * as SponseredSeries from "../SponsoredSeries/SponsoredSeriesQueries";
+import SeriesHeader from "./SeriesHeader";
+import QueryHoc from "../Common/Query";
+import * as SponseredSeries from "../SponsoredSeries/SponsoredSeriesQueries";
 
 class SingleSeriesPage extends Component {
 
@@ -11,7 +12,7 @@ class SingleSeriesPage extends Component {
         const variables = {}
         return (
             <Fragment>
-                {/* Series Page Header */}
+                <QueryHoc query={SponseredSeries.SingleSeriesQuery} variables={variables} componentName={SeriesHeader} />
                 {/* Stories Masonary Wrapper */}
             </Fragment>
         )
