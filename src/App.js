@@ -8,7 +8,7 @@ import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll'
 import Footer from "./components/Footer/Footer";
 import TheFeedPage from "./components/Feed/TheFeedPage";
 import EditorsPage from "./components/Editors/EditorsPage";
-import EditorDetailsPage from "./components/Editors/EditorDetailsPage";
+import EditorDetailsPage from "./components/Editors/SingleEditorPage";
 import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';

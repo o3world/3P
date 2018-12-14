@@ -46,7 +46,7 @@ const AllEditorsQueries = gql`
 }
 `;
 
-const SingleEditorSocialDetails = gql`
+const SingleEditorDetails = gql`
   query editors($id:String!) {
   userById(id:$id){
  	fieldFirstName
@@ -63,4 +63,4 @@ const SingleEditorSocialDetails = gql`
   }  
 }`;
 
-export {AllEditorsQueries,SingleEditorSocialDetails};
+export {AllEditorsQueries,SingleEditorDetails};
