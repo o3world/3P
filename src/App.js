@@ -8,6 +8,7 @@ import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll'
 import Footer from "./components/Footer/Footer";
 import TheFeedPage from "./components/Feed/TheFeedPage";
 import EditorsPage from "./components/Editors/EditorsPage";
+import EditorDetailsPage from "./components/Editors/EditorDetailsPage";
 import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';
@@ -51,7 +52,8 @@ class App extends Component {
                 <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
                 <Route path={'/stories'} component={HomePrimeStories}/>
                 <Route path={'/the-feed'} render={(props) => <TheFeedPage {...props} />}/>
-                <Route path="/editors" component={EditorsPage}/>
+                <Route exact path="/editors" component={EditorsPage}/>
+                <Route path="/editors/:id" component={EditorDetailsPage}/>
                 <Route exact path={'/sponsored-series'} component={SponsoredSeriesAll}/>
                 <Footer/>
               </ApolloProvider>
