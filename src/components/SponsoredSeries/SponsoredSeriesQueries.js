@@ -106,8 +106,7 @@ const FeaturedSponsoredSeriesQuery = gql`
   }
 }`;
 
-const SingleSeriesQuery = gql`query TaxonomyTerm($id:String!) 
-{ 
+const SingleSeriesQuery = gql`query TaxonomyTerm($id:String!){ 
     taxonomyTermById(id: $id) {
     	tid
     	name
@@ -148,5 +147,7 @@ const SingleSeriesQuery = gql`query TaxonomyTerm($id:String!)
       }
 	}
 }`;
+
+//const StoriesBySeriesId = gql`  `;
 
 export {AllSponsoredSeriesQuery, FeaturedSponsoredSeriesQuery, SingleSeriesQuery};

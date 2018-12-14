@@ -10,7 +10,8 @@ class SingleSeriesPage extends Component {
     }
     render() {
         console.log(this.props);
-        const variables = {"id": this.props.location.state.id};
+
+        const variables = {"id": this.props.match.params.id};
         return (
             <Fragment>
                 <QueryHoc query={SponseredSeries.SingleSeriesQuery} variables={variables} componentName={SeriesHeader} />
