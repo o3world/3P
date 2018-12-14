@@ -7,9 +7,9 @@ const QueryHOC = (props) => (
       if (loading) return "Loading...";
       if (error) return `Error! ${error.message}`;
       const ComponentName = props.componentName;
-      console.log(data);
+      const additional = (props.additional)?props.additional: {};
       return (
-          <ComponentName data={data}/>
+          <ComponentName data={data} other={{...additional}}/>
       )
     }}
   </Query>

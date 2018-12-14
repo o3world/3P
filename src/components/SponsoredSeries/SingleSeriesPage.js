@@ -9,11 +9,13 @@ class SingleSeriesPage extends Component {
         super(props);
     }
     render() {
-        const variables = {}
+        console.log(this.props);
+        const variables = {"id": this.props.location.state.id};
         return (
             <Fragment>
                 <QueryHoc query={SponseredSeries.SingleSeriesQuery} variables={variables} componentName={SeriesHeader} />
                 {/* Stories Masonary Wrapper */}
+
             </Fragment>
         )
     }

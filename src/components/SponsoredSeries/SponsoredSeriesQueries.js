@@ -106,26 +106,17 @@ const FeaturedSponsoredSeriesQuery = gql`
   }
 }`;
 
-const SingleSeriesQuery = () => gql`SingleSeries {
-  taxonomyTermQuery(filter: {
-      conditions: [
-        {field: "vid", value: "special_s"},
-        {field: "tid", value: "2466"}
-      ]},
-      sort: [
-        {field: "field_featured_series", direction: DESC},
-        {field: "changed", direction: DESC}
-      ]
-  ) {
-    entities {
-      ... on TaxonomyTerm {
-        name
-        tid
-        description {
-          text: processed
+const SingleSeriesQuery = gql`query TaxonomyTerm($id:String!) 
+{ 
+    taxonomyTermById(id: $id) {
+    	tid
+    	name
+        description{
+          processed
         }
-      }
-      ... on TaxonomyTermSpecialS {
+  		entityId
+  		entityType
+  		... on TaxonomyTermSpecialS {
         featured: fieldFeaturedSeries
         company: fieldSsCompanyName
         logo: fieldSeriesImage {
@@ -155,8 +146,7 @@ const SingleSeriesQuery = () => gql`SingleSeries {
           url
         }
       }
-    }
-  }
+	}
 }`;
 
 export {AllSponsoredSeriesQuery, FeaturedSponsoredSeriesQuery, SingleSeriesQuery};

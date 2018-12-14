@@ -17,6 +17,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import SingleSeriesPage from "./components/SponsoredSeries/SingleSeriesPage";
 
 const httpLink = createHttpLink({
   uri: 'http://back.3blmedia.com/graphql'
@@ -51,8 +52,9 @@ class App extends Component {
                 <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
                 <Route path={'/stories'} component={HomePrimeStories}/>
                 <Route path={'/the-feed'} render={(props) => <TheFeedPage {...props} />}/>
-                <Route path={'/editors'} component={HomeEditors}/>
+                <Route path={'/editors/'} component={HomeEditors}/>
                 <Route exact path={'/sponsored-series'} component={SponsoredSeriesAll}/>
+                <Route path={'/sponsored-series/:id/'} component={SingleSeriesPage}/>
                 <Footer/>
               </ApolloProvider>
             </div>
