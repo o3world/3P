@@ -1,7 +1,7 @@
 import React from 'react';
 import PrimeStory from '../PrimeStories/PrimeStory';
 import PrimeStoryHero from '../PrimeStories/PrimeStoryHero';
-import styles from './HomePrimeStories.module.scss';
+import styles from './PrimeStoriesWrapper.module.scss';
 import { Query } from "react-apollo";
 import gql from 'graphql-tag';
 
@@ -55,7 +55,7 @@ query storyQuery {
 }
 `;
 
-const HomePrimeStories = () =>
+const PrimeStoriesWrapper = () =>
     <Query
         query={Stories}
         variables={{}}
@@ -84,4 +84,4 @@ const HomePrimeStories = () =>
         }}
     </Query>
 
-export default HomePrimeStories;
+export default PrimeStoriesWrapper;
