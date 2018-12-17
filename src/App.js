@@ -8,6 +8,7 @@ import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll'
 import Footer from "./components/Footer/Footer";
 import TheFeedPage from "./components/Feed/TheFeedPage";
 import EditorsPage from "./components/Editors/EditorsPage";
+import SingleEditorPage from "./components/Editors/SingleEditorPage";
 import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';
@@ -19,7 +20,6 @@ import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 import Routes from './components/Common/RoutesConfig';
-import SingleEditorPage from "./components/Editors/SingleEditorPage";
 
 const httpLink = createHttpLink({
   uri: 'http://back.3blmedia.com/graphql'
