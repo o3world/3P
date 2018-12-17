@@ -4,14 +4,14 @@ import HomeForum from "../Forum/HomeForum";
 import HomeAssoc from "../Association/HomeAssoc";
 import HomeMultimedia from "./HomeMultimedia";
 import HomeBTS from "../BTS/HomeBTS";
-import HomePrimeStories from "../PrimeStories/HomePrimeStories";
+import PrimeStoriesWrapper from "../PrimeStories/PrimeStoriesWrapper";
 import HomeTheFeed from "../Feed/HomeTheFeed";
 import styles from "./Home.module.scss";
 
 const Home = () => {
     return (
         <div className={styles.wrapper}>
-            <HomePrimeStories/>
+            <PrimeStoriesWrapper/>
             <HomeTheFeed/>
           <div className={styles.bts_podcastWrapper}>
             <HomeBTS/>
