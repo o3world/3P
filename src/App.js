@@ -54,6 +54,12 @@ class App extends Component {
                 <Route path={Routes.FEED} render={(props) => <TheFeedPage {...props} />}/>
                 <Route path={Routes.EDIOTRS} component={HomeEditors}/>
                 <Route exact path={Routes.SPONSOREDSERIES} component={SponsoredSeriesAll}/>
+                <Route path={Routes.PRIMESTORIES} component={""}/>
+                <Route path={Routes.SINGLESERIES} component={""}/>
+                <Route path={Routes.STORYALL} component={""}/>
+                <Route path={Routes.STORYDETAIL} component={""}/>
+                <Route path={Routes.CONTACT} component={""}/>
+                <Route path={Routes.BTS} component={""}/>
                 <Footer/>
               </ApolloProvider>
             </div>
