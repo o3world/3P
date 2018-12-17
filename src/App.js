@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
-import HomePrimeStories from "./components/PrimeStories/HomePrimeStories";
-import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll';
+import StoriesPage from './components/Stories/StoriesPage';
+import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll'
 import Footer from "./components/Footer/Footer";
 import TheFeedPage from "./components/Feed/TheFeedPage";
 import EditorsPage from "./components/Editors/EditorsPage";
@@ -50,7 +50,7 @@ class App extends Component {
               <ApolloProvider client={client}>
                 <Header site_title={this.state.pageTitle}/>
                 <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
-                <Route path={'/stories'} component={HomePrimeStories}/>
+                <Route path="/stories" component={StoriesPage}/>
                 <Route path={'/the-feed'} render={(props) => <TheFeedPage {...props} />}/>
                 <Route exact path="/editors" component={EditorsPage}/>
                 <Route path="/editors/:id" component={EditorDetailsPage}/>
