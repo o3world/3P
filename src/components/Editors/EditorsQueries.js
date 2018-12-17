@@ -1,51 +1,5 @@
 import gql from 'graphql-tag';
 
-const AllEditorsQueries = gql`
-    query story {
-    nodeQuery(
-      filter:{
-        conditions: [
-          {field:"type", value:"story"},          
-          {field:"uid", value:"176", operator:EQUAL}
-        ]
-      }
-    )
-  {
-      entities{
-        ... on NodeStory{
-          entityId
-          title
-          changed
-          entityOwner {
-            name
-          }          
-          field3pSpecialSeries{
-            entity{
-              ...on TaxonomyTermSpecialS{
-                fieldSsCompanyName
-              }
-            }
-          }
-          fieldFeaturedImageTall{ 
-            url
-            width
-            height
-          }
-          uid{
-            entity{
-              ... on User{
-                name
-                uid
-              }
-            }
-          }
-          
-        }
-      }
-    }
-}
-`;
-
 const SingleEditorDetails = gql`
   query editors($id:String!) {
   userById(id:$id){
@@ -63,4 +17,59 @@ const SingleEditorDetails = gql`
   }  
 }`;
 
-export {AllEditorsQueries,SingleEditorDetails};
+const StoriesByEditor = gql`
+    query stories($id:String!) {
+        nodeQuery(filter: {
+    conjunction: AND
+    conditions: [{
+      field: "type"
+      value: "Story"
+      operator: EQUAL
+    }, {
+        field: "uid"
+        value: [$id]
+      }]
+  }) {
+    entities {      
+      ... on NodeStory {
+        title
+        nid
+        field3pSpecialSeries {
+            entity {
+              ...on TaxonomyTermSpecialS{
+                fieldSsCompanyName
+              }
+            }
+        }
+        entityOwner {
+          name
+        }
+        entityUrl {
+          path
+        }        
+        entityCreated        
+        fieldFeaturedImageSquare {
+          url
+          width
+          height
+        }
+        fieldFeaturedImageWide {
+          url
+          width
+          height
+        }
+        fieldFeaturedImageTall {
+          url
+          width
+          height
+        }
+        body: fieldContent {
+          text: processed
+        }        
+      }
+    }  
+  }
+    }
+`;
+
+export {SingleEditorDetails,StoriesByEditor};
