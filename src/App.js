@@ -5,7 +5,8 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import HomeEditors from "./components/Editors/HomeEditors";
 import StoriesPage from './components/Stories/StoriesPage';
-import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll'
+import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll';
+import SingleSeriesPage from "./components/SponsoredSeries/SingleSeriesPage";
 import Footer from "./components/Footer/Footer";
 import TheFeedPage from "./components/Feed/TheFeedPage";
 import { ApolloClient } from "apollo-boost";
@@ -17,7 +18,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import SingleSeriesPage from "./components/SponsoredSeries/SingleSeriesPage";
+
+import Routes from './components/Common/RoutesConfig';
 
 const httpLink = createHttpLink({
   uri: 'http://back.3blmedia.com/graphql'
@@ -50,11 +52,12 @@ class App extends Component {
               <ApolloProvider client={client}>
                 <Header site_title={this.state.pageTitle}/>
                 <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
-                <Route path="/stories" component={StoriesPage}/>
-                <Route path={'/the-feed'} render={(props) => <TheFeedPage {...props} />}/>
-                <Route path={'/editors/'} component={HomeEditors}/>
-                <Route exact path={'/sponsored-series'} component={SponsoredSeriesAll}/>
-                <Route path={'/sponsored-series/:id/'} component={SingleSeriesPage}/>
+                <Route path={Routes.THEFEED} render={(props) => <TheFeedPage {...props} />}/>
+                <Route path={Routes.EDITORS} component={HomeEditors}/>
+                <Route exact path={Routes.SPONSOREDSERIES} component={SponsoredSeriesAll}/>
+                <Route path={Routes.SINGLESPONSOREDSERIES} component={""}/>
+                <Route path={Routes.STORIES} component={StoriesPage}/>
+                <Route path={Routes.SINGLESTORY} component={""}/>
                 <Footer/>
               </ApolloProvider>
             </div>
