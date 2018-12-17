@@ -1,7 +1,7 @@
 import React from "react";
 import Moment from 'react-moment';
-import ConvertSeoUrl from "../Common/createSeoUrl";
 import styles from './StoryMasonryTile.module.scss';
+
 import ConvertSeoUrl from "../Common/createSeoUrl";
 
 const StoryMasonryTile = (props) => {
