@@ -13,12 +13,12 @@ class SingleEditorPage extends Component {
     render () {
         const editorId = {id: this.props.match.params.id};
         return (
-            <div>
+            <section>
                 <QueryHoc query={EditorQueries.SingleEditorDetails} variables={editorId} componentName={EditorBio}/>
                 {/* @TODO Add story masonry wrapper and tiles. */}
                 <QueryHoc query={EditorQueries.StoriesByEditor} variables={editorId}
                           componentName={EditorStoriesWrapper} additional={{ "click": (e, id, title) => this.clickHandler(e, id, title) }}/>
-            </div>
+            </section>
         )
     }
 
