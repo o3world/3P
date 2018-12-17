@@ -101,4 +101,55 @@ query story {
   }  
 }`;
 
-export {AllStoryQuery, StoryByIdQuery};
+const StoriesBySeriesId = gql`
+query story {
+    nodeQuery(
+      filter:{
+        conditions: [
+          {field:"type", value:"story"},
+        ]
+      }
+    )
+  {    
+    entities {
+      ... on NodeStory {
+        title
+        nid
+        field3pSpecialSeries {
+            entity {
+              ...on TaxonomyTermSpecialS{
+                fieldSsCompanyName
+              }
+            }
+        }
+        entityOwner {
+          name
+        }
+        entityUrl {
+          path
+        }        
+        entityCreated        
+        fieldFeaturedImageSquare {
+          url
+          width
+          height
+        }
+        fieldFeaturedImageWide {
+          url
+          width
+          height
+        }
+        fieldFeaturedImageTall {
+          url
+          width
+          height
+        }
+        body: fieldContent {
+          text: processed
+        }        
+      }
+      
+    }
+  }  
+}`;
+export {AllStoryQuery, StoryByIdQuery, StoriesBySeriesId};

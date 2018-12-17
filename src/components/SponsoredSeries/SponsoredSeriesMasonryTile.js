@@ -1,14 +1,15 @@
 import React from "react";
-
+import ConvertSeoUrl from "../Common/createSeoUrl";
 import styles from './SponsoredSeriesMasonryTile.module.scss';
 
 const SponsoredSeriesMasonryTile = (props) => {
     const series = {...props.data};
-    const logo = (series.logo !== null) ? series.logo.url : "https://upload.wikimedia.org/wikipedia/en/d/da/Rlbug_100x100.png";
+    const seoLink = ConvertSeoUrl(series.name);
+    const logo = (series.logo !== null) ? series.logo.url : "";
     const backgroundImage = (series.mainImage) ? series.mainImage.derivative.url : "";
     return (
         <div className={styles.tile} style={{backgroundImage: `url(`+backgroundImage+`)`}}>
-            <h4 className={styles.title}>{series.name}</h4> {/* @TODO Need to make this a link when we have single series route. */}
+            <h4 className={styles.title} onClick={(e)=> props.onclick(e, series.tid, seoLink)}>{series.name}</h4>
             <img className={styles.logo} src={logo} alt={''}/>
         </div>
 
