@@ -1,9 +1,11 @@
 import React from 'react';
 import _ from 'lodash';
+import ConvertSeoUrl from "../Common/createSeoUrl";
 
 
 class Contributors extends React.Component {
     render() {
+        console.log("contributors------->",this.props);
         let data = this.props.data.userQuery.entities
         let chunk = data.length / 3;
         let arr = _.chunk(data, chunk);
@@ -17,7 +19,7 @@ class Contributors extends React.Component {
                             list.map((obj, index) => {
                                 return (
                                     <li key={index}>
-                                        <h5>{obj.name}</h5>
+                                        <h5 onClick={(e)=> this.props.other.click(e,data.uid,ConvertSeoUrl(obj.name))}>{obj.name}</h5>
                                         <span></span> {/* @TODO This is a static span, for now */}
                                         {/* Why we need roles here ? Instead we can use users Designation */}
                                     </li>

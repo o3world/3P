@@ -7,6 +7,7 @@ import QueryHoc from "../Common/Query";
 class EditorsPage extends React.Component {
 
   clickHandler = (e, id, title = "") => {
+    console.log('click-------->',id,title);
     this.props.history.push({ pathname: "/editors/" + id + "/" + title, state: { id: id } });
   };
 
@@ -22,7 +23,7 @@ class EditorsPage extends React.Component {
         {/* @TODO This is dummy text, for now */}
         <QueryHoc query={EditorQueries.Contributors} variables={{}} componentName={EditorCardsWrapper} additional={{ "click": (e, id, title) => this.clickHandler(e, id, title) }} />
         <div>
-          <QueryHoc query={EditorQueries.Contributors} variables={{}} componentName={Contributors} />
+          <QueryHoc query={EditorQueries.Contributors} variables={{}} componentName={Contributors} additional={{ "click": (e, id, title) => this.clickHandler(e, id, title)}} />
         </div>
       </div>
     )

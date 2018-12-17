@@ -13,7 +13,7 @@ const EditorCardsWrapper = (props) =>{
                   {props.data.userQuery.entities.map((editor, index) =>{
                     if(editor.userPicture !== null) {
                         return(
-                            <EditorCard {...editor} key={editor.id} index={index}  onclick={props.other.click}/>
+                            <EditorCard {...editor} key={editor.uid} index={index}  onclick={props.other.click}/>
                           )
                     }
                   }

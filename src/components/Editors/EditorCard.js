@@ -5,7 +5,7 @@ import ConvertSeoUrl from "../Common/createSeoUrl";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const EditorCard = (props) => {
-
+console.log("--->",props)
     const seoLink = ConvertSeoUrl(props.name);
     return (
         <div className={styles.wrapper}>
