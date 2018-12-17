@@ -148,6 +148,4 @@ const SingleSeriesQuery = gql`query TaxonomyTerm($id:String!){
 	}
 }`;
 
-//const StoriesBySeriesId = gql`  `;
-
-export {AllSponsoredSeriesQuery, FeaturedSponsoredSeriesQuery, SingleSeriesQuery};
+export {AllSponsoredSeriesQuery, FeaturedSponsoredSeriesQuery, SingleSeriesQuery };

@@ -1,22 +1,27 @@
 import React, {Component, Fragment} from 'react';
 import SeriesHeader from "./SeriesHeader";
 import QueryHoc from "../Common/Query";
-import * as SponseredSeries from "../SponsoredSeries/SponsoredSeriesQueries";
+import * as SponsoredSeriesQuery from "../SponsoredSeries/SponsoredSeriesQueries";
+import SeriesStoriesMasonryWrapper from "./SeriesStoriesMasonryWrapper";
+import * as StoryQuery from "../Stories/StoryQueries";
 
 class SingleSeriesPage extends Component {
 
     constructor(props) {
         super(props);
     }
-    render() {
-        console.log(this.props);
 
+    clickHandler = (e, id, title = "") => {
+        this.props.history.push({pathname:"/story/"+id+"/"+title, state:{id: id} });
+    };
+
+    render() {
         const variables = {"id": this.props.match.params.id};
         return (
             <Fragment>
-                <QueryHoc query={SponseredSeries.SingleSeriesQuery} variables={variables} componentName={SeriesHeader} />
+                <QueryHoc query={SponsoredSeriesQuery.SingleSeriesQuery} variables={variables} componentName={SeriesHeader} />
                 {/* Stories Masonary Wrapper */}
-
+                <QueryHoc query={StoryQuery.StoriesBySeriesId} variables={{}} componentName={SeriesStoriesMasonryWrapper} additional={{"click": (e, id, title)=>this.clickHandler(e, id, title)}} />
             </Fragment>
         )
     }
