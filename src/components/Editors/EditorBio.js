@@ -7,7 +7,7 @@ const EditorBio = (props) => {
     return(
         <div>
           <div>
-            <img src={EditorDetails.userPicture.url} />
+            <img src={EditorDetails.userPicture.url} alt={EditorName + ' headshot'}/>
             <p>{EditorName} </p>
             <p>{/* @TODO Add job title. */}</p>
             <ul>{/* @TODO Add social icons and links. Use Font Awesome icons. */}</ul>

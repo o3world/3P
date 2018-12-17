@@ -5,9 +5,6 @@ import * as EditorQueries from "./EditorsQueries";
 import EditorStoriesWrapper from "./EditorStoriesWrapper"
 
 class SingleEditorPage extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     clickHandler = (e, id, title = "") => {
         this.props.history.push({ pathname: "/story/" + id + "/" + title, state: { id: id } });

@@ -4,7 +4,7 @@ const createSeoUrl =(url) => {
     var encodedUrl = url.toString().toLowerCase();
 
     // replace & with and
-    encodedUrl = encodedUrl.split(/\&+/).join("-and-")
+    encodedUrl = encodedUrl.split(/&+/).join("-and-")
 
     // remove invalid characters
     encodedUrl = encodedUrl.split(/[^a-z0-9]/).join("-");
