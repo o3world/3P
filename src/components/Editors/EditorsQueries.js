@@ -72,4 +72,4 @@ const StoriesByEditor = gql`
     }
 `;
 
-export {SingleEditorDetails,StoriesByEditor};
+export { SingleEditorDetails, StoriesByEditor };

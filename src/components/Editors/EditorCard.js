@@ -1,14 +1,16 @@
 import React from 'react';
 import styles from './EditorCard.module.scss';
+import ConvertSeoUrl from "../Common/createSeoUrl";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const EditorCard = (props) => {
+    const seoLink = ConvertSeoUrl(props.name);
     return (
         <div className={styles.wrapper}>
-            <img className={styles.headshot} src={props.icon} alt={'editor headshot'} />
+            <img className={styles.headshot} src={props.userPicture.url} alt={'editor headshot'} />
             <div className={styles.meta}>
-                <h3 className={styles.name}>{props.displayName}</h3>
+                <h3 className={styles.name} onClick={(e)=> props.onclick(e,props.uid,seoLink)}>{props.fieldFirstName+" "+props.fieldLastName}</h3>
                 <p className={styles.title}>{props.title}</p>
                 <div className={styles.socialWrapper}>
                   <a href={'https://instagram.com/' + props.instagram} target={'_blank'}><FontAwesomeIcon className={styles.socialIcon} icon={["fab", "instagram"]} /></a>

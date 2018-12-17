@@ -1,7 +1,7 @@
 const createSeoUrl =(url) => {
 
     // make the url lowercase
-    var encodedUrl = url.toString().toLowerCase();
+    let encodedUrl = url.toString().toLowerCase();
 
     // replace & with and
     encodedUrl = encodedUrl.split(/&+/).join("-and-")
@@ -17,4 +17,5 @@ const createSeoUrl =(url) => {
 
     return encodedUrl;
 };
+
 export default createSeoUrl;
