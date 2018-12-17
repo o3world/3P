@@ -63,4 +63,26 @@ const SingleEditorDetails = gql`
   }  
 }`;
 
-export {AllEditorsQueries,SingleEditorDetails};
+
+const Contributors = gql`
+  query {
+    userQuery(filter: {
+      conditions: [
+        { field: "roles", value: "editor" },
+      ]
+    }) {
+      entities {
+    ...on User {
+          uid
+          name
+          fieldFirstName
+          fieldLastName
+          userPicture {
+            url
+          }
+        }
+      }
+    }
+  }`;
+
+export { AllEditorsQueries, SingleEditorDetails, Contributors };
