@@ -7,10 +7,6 @@ import * as StoryQuery from "../Stories/StoryQueries";
 
 class SingleSeriesPage extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     clickHandler = (e, id, title = "") => {
         this.props.history.push({pathname:"/story/"+id+"/"+title, state:{id: id} });
     };

@@ -3,7 +3,7 @@ const SeriesHeader = (props) => {
     console.log("--->", props);
     const objStory = props.data.taxonomyTermById;
     const logo = (objStory.logo !== null) ? objStory.logo.url : "";
-    return(
+    return (
         <section>
             <div>
                 <div>
@@ -17,7 +17,7 @@ const SeriesHeader = (props) => {
                 </div>
             </div>
             <div>
-                <img src={objStory.mainImage.derivative.url}/>
+                <img src={objStory.mainImage.derivative.url} alt={''}/>
             </div>
         </section>
     );
