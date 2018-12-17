@@ -9,7 +9,7 @@ const QueryHOC = (props) => (
       const ComponentName = props.componentName;
       console.log(data);
       return (
-          <ComponentName data={data}/>
+          <ComponentName data={data} other={{...props.additional}}/>
       )
     }}
   </Query>
