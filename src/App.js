@@ -5,7 +5,8 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import HomeEditors from "./components/Editors/HomeEditors";
 import StoriesPage from './components/Stories/StoriesPage';
-import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll'
+import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll';
+import SingleSeriesPage from "./components/SponsoredSeries/SingleSeriesPage";
 import Footer from "./components/Footer/Footer";
 import TheFeedPage from "./components/Feed/TheFeedPage";
 import { ApolloClient } from "apollo-boost";
@@ -17,6 +18,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+
 import Routes from './components/Common/RoutesConfig';
 
 const httpLink = createHttpLink({
