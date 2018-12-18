@@ -10,14 +10,14 @@ const EditorCardsWrapper = (props) =>{
                 <h4 className={styles.subtitle}>Critical Writers & Purpose Driven News Tellers</h4>
               </div>
               <div className={styles.editorCardsWrapper}>
-                  { /* props.data.userQuery.entities.map((editor, index) =>{
-                    if(editor.userPicture !== null) {
+                  {  props.data.userQuery.entities.map((editor, index) =>{
+                    
                         return(
                             <EditorCard {...editor} key={editor.uid} index={index}  onclick={props.other.click}/>
                           )
-                    }
+              
                   }
-                  ) */ }
+                  )  }
               </div>
             </div>
     )

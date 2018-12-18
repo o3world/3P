@@ -72,4 +72,25 @@ const StoriesByEditor = gql`
     }
 `;
 
-export { SingleEditorDetails, StoriesByEditor };
+const Editors = gql`
+query editors($limit: Int!){
+  userQuery(filter: {
+    conditions: [
+      { field: "roles", value: "editor" },
+    ]
+  }, limit: $limit) {
+    entities {
+  ...on User {
+        uid
+        name
+        fieldFirstName
+        fieldLastName
+        userPicture {
+          url
+        }
+      }
+    }
+  }
+}`;
+
+export { SingleEditorDetails, StoriesByEditor,Editors };
