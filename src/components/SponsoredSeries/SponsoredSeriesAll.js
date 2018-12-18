@@ -15,13 +15,10 @@ class SponsoredSeriesAll extends Component {
             data: []
         };
     }
-    clickHandler = (e, id, title = "") => {
-        this.props.history.push({pathname:"/sponsored-series/"+id+"/"+title, state:{id: id} });
-    };
     render() {
         return (
             <div className={styles.pageWrapper}>
-                <QueryHoc query={SponsoredSeriesQueries.FeaturedSponsoredSeriesQuery} variables={{}} componentName={FeaturedSponsoredSeries} additional={{"click": (e, id, title)=>this.clickHandler(e, id, title)}} />
+                <QueryHoc query={SponsoredSeriesQueries.FeaturedSponsoredSeriesQuery} variables={{}} componentName={FeaturedSponsoredSeries} />
               <div className={styles.header}>
                 <div className={styles.titleWrapper}>
                   <h1 className={styles.title}>Sponsored Series</h1>
@@ -31,7 +28,7 @@ class SponsoredSeriesAll extends Component {
                   <p>Interested in advancing conversations on key sustainability topics? Contact <a href={'mailto:jfoley@3blmedia.com'}>Jennifer Foley</a> for sponsoring a special series.</p>
                 </div>
               </div>
-                <QueryHoc query={SponsoredSeriesQueries.AllSponsoredSeriesQuery} variables={{}} componentName={SponsoredSeriesAllMasonryWrapper} additional={{"click": (e, id, title)=>this.clickHandler(e, id, title)}} />
+                <QueryHoc query={SponsoredSeriesQueries.AllSponsoredSeriesQuery} variables={{}} componentName={SponsoredSeriesAllMasonryWrapper} />
             </div>
         )
     }

@@ -5,7 +5,6 @@ import ConvertSeoUrl from "../Common/createSeoUrl";
 
 class Contributors extends React.Component {
     render() {
-        console.log("contributors------->",this.props);
         let data = this.props.data.userQuery.entities
         let chunk = data.length / 3;
         let arr = _.chunk(data, chunk);

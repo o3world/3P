@@ -6,18 +6,13 @@ import EditorStoriesWrapper from "./EditorStoriesWrapper"
 
 class SingleEditorPage extends Component {
 
-    clickHandler = (e, id, title = "") => {
-        this.props.history.push({ pathname: "/story/" + id + "/" + title, state: { id: id } });
-    };
-
     render () {
         const editorId = {id: this.props.match.params.id};
         return (
             <section>
                 <QueryHoc query={EditorQueries.SingleEditorDetails} variables={editorId} componentName={EditorBio}/>
                 {/* @TODO Add story masonry wrapper and tiles. */}
-                <QueryHoc query={EditorQueries.StoriesByEditor} variables={editorId}
-                          componentName={EditorStoriesWrapper} additional={{ "click": (e, id, title) => this.clickHandler(e, id, title) }}/>
+                <QueryHoc query={EditorQueries.StoriesByEditor} variables={editorId} componentName={EditorStoriesWrapper}/>
             </section>
         )
     }
