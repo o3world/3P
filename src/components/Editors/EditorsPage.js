@@ -1,14 +1,7 @@
 import React from 'react';
 import EditorCardsWrapper from './EditorCardsWrapper';
-import * as EditorQueries from "./EditorsQueries";
-import QueryHoc from "../Common/Query";
 
 class EditorsPage extends React.Component {
-
-  clickHandler = (e, id, title = "") => {
-    this.props.history.push({ pathname: "/editors/" + id + "/" + title, state: { id: id } });
-  };
-
 
   render() {
     return (
