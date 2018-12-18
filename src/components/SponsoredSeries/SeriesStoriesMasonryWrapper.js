@@ -6,7 +6,7 @@ const SeriesStoriesMasonryWrapper = (props) => {
     const stories = props.data.nodeQuery.entities;
     return (
         <div className={styles.wrapper}> {/* TODO think about the CSS*/}
-            {stories.map((story, index) => <StoryMasonryTile data={story} key={index} onclick={props.other.click} isSponsered={false} />)}
+            {stories.map((story, index) => <StoryMasonryTile data={story} key={index} isSponsered={false} />)}
         </div>
     );
 };

@@ -7,7 +7,7 @@ const SponsoredSeriesAllMasonryWrapper = (props) => {
     const series = props.data.taxonomyTermQuery.entities;
     return (
         <div className={styles.wrapper}>
-          {series.map((series, index) => <SponsoredSeriesMasonryTile data={series} key={index} onclick={props.other.click}/>)}
+          {series.map((series, index) => <SponsoredSeriesMasonryTile data={series} key={index} />)}
         </div>
     );
 };
