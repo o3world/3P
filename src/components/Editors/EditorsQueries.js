@@ -72,7 +72,7 @@ const StoriesByEditor = gql`
     }
 `;
 
-const Editors = gql`
+const EditorsQuery = gql`
 query editors{
   userQuery(filter: {
     conditions: [
@@ -93,4 +93,4 @@ query editors{
   }
 }`;
 
-export { SingleEditorDetails, StoriesByEditor, Editors };
+export { SingleEditorDetails, StoriesByEditor, EditorsQuery };
