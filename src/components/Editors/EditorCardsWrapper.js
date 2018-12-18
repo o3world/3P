@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './EditorCardsWrapper.module.scss';
 import EditorCard from './EditorCard';
+import * as EditorQueries from "../Editors/EditorsQueries";
+import QueryHoc from "../Common/Query";
 
 const EditorCardsWrapper = (props) =>{
   return(
@@ -11,7 +13,7 @@ const EditorCardsWrapper = (props) =>{
       </div>
       <div className={styles.editorCardsWrapper}>
         { props.data.userQuery.entities.map((editor, index) => (
-          <EditorCard {...editor} key={editor.id} index={index}/>
+            <QueryHoc query={EditorQueries.Editors} componentName={EditorCard}/>
           )
         )}
       </div>
