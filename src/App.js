@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import StoriesPage from './components/Stories/StoriesPage';
 import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll';
+import SingleSeriesPage from "./components/SponsoredSeries/SingleSeriesPage";
 import Footer from "./components/Footer/Footer";
 import TheFeedPage from "./components/Feed/TheFeedPage";
 import EditorsPage from "./components/Editors/EditorsPage";
@@ -56,9 +57,8 @@ class App extends Component {
                 <Route path={Routes.EDITORS} component={EditorsPage}/>
                 <Route path={Routes.SINGLEEDITOR} component={SingleEditorPage}/>
                 <Route exact path={Routes.SPONSOREDSERIESALL} component={SponsoredSeriesAll}/>
-                <Route path={Routes.SINGLESPONSOREDSERIES} component={""}/>
+                <Route path={Routes.SINGLESPONSOREDSERIES} component={SingleSeriesPage}/>
                 <Route path={Routes.STORIES} component={StoriesPage}/>
-                <Route path={Routes.SINGLESTORY} component={""}/>
                 <Footer/>
               </ApolloProvider>
             </div>
