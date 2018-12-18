@@ -1,32 +1,43 @@
 import React from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import styles from "./EditorCard.module.scss";
 
 const EditorBio = (props) => {
-    const EditorDetails = props.data.userById;
-    const EditorName = EditorDetails.fieldFirstName + " " + EditorDetails.fieldLastName;
+  const editor = props.data.userById;
+  const fullName = editor.firstName + " " + editor.lastName;
 
-    return(
+  let twitterIcon;
+  if (editor.twitterUsername !== null) {
+    twitterIcon = <a href={'https://twitter.com/' + editor.twitterUsername} target={'_blank'}><FontAwesomeIcon className={styles.socialIcon} icon={["fab", "twitter"]} /></a>;
+  }
+
+  let instagramIcon;
+  if (editor.instagramUsername !== null) {
+    instagramIcon = <a href={'https://instagram.com/' + editor.instagramUsername} target={'_blank'}><FontAwesomeIcon className={styles.socialIcon} icon={["fab", "instagram"]} /></a>;
+  }
+
+  return(
+      <div>
         <div>
-          <div>
-            <img src={EditorDetails.userPicture.url} alt={EditorName + ' headshot'}/>
-            <p>{EditorName} </p>
-            <p>{/* @TODO Add job title. */}</p>
-            <ul>
-                <li>
-                    <p><a href={'https://instagram.com/jhowell'} target={'_blank'}><FontAwesomeIcon icon={["fab", "twitter"]} />ADD TWITTER ICON{/* @TODO Add Twitter icon */}</a></p>
-                </li>
-                <li>
-                    <p><a href={'https://twitter.com/jhowell'} target={'_blank'}><FontAwesomeIcon icon={["fab", "instagram"]} />ADD INSTAGRAM ICON{/* @TODO Add Instagram icon */}</a></p>
-                </li>
-            </ul>
-          </div>
-          <div dangerouslySetInnerHTML={{__html: EditorDetails.fieldUserBio.processed}} />
-          <div>
-            <p>Stories written by {EditorName}</p>
-          </div>
+          <img src={editor.headshot.url} alt={fullName + ' headshot'}/>
+          <h1>{fullName} </h1>
+          <p>{editor.jobTitle}</p>
+          <ul>
+              <li>
+                {twitterIcon}
+              </li>
+              <li>
+                {instagramIcon}
+              </li>
+          </ul>
         </div>
-    );
+        <div dangerouslySetInnerHTML={{__html: editor.bio.processed}} />
+        <div>
+          <p>Stories written by {fullName}</p>
+        </div>
+      </div>
+  );
 
 };
 

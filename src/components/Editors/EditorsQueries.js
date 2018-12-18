@@ -1,19 +1,22 @@
 import gql from 'graphql-tag';
 
-const SingleEditorDetails = gql`
+const SingleEditorBioQuery = gql`
   query editors($id:String!) {
   userById(id:$id){
- 	fieldFirstName
-    fieldLastName
-    userPicture {
+ 	  firstName: fieldFirstName
+    lastName: fieldLastName
+    headshot: userPicture {
         url
     }
-    fieldUserBio {
+    bio: fieldUserBio {
         processed
     }
     roles {
         targetId
     }
+     twitterUsername: fieldTwitterUsername
+      instagramUsername: fieldInstagramUsername
+      jobTitle: fieldJobTitle
   }  
 }`;
 
@@ -84,13 +87,17 @@ query editors{
         id: uid
         name
         firstName: fieldFirstName
-        lastName: fieldLastName
+        lastName:fieldLastName
         headshot: userPicture {
           url
         }
+        twitterUsername: fieldTwitterUsername
+        instagramUsername: fieldInstagramUsername
+        jobTitle: fieldJobTitle
       }
     }
   }
-}`;
+}
+`;
 
-export { SingleEditorDetails, StoriesByEditor, EditorsQuery };
+export { SingleEditorBioQuery, StoriesByEditor, EditorsQuery };

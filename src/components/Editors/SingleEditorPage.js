@@ -10,7 +10,7 @@ class SingleEditorPage extends Component {
         const editorId = {id: this.props.match.params.id};
         return (
             <section>
-                <QueryHoc query={EditorQueries.SingleEditorDetails} variables={editorId} componentName={EditorBio}/>
+                <QueryHoc query={EditorQueries.SingleEditorBioQuery} variables={editorId} componentName={EditorBio}/>
                 {/* @TODO Add story masonry wrapper and tiles. */}
                 <QueryHoc query={EditorQueries.StoriesByEditor} variables={editorId} componentName={EditorStoriesWrapper}/>
             </section>
@@ -18,6 +18,5 @@ class SingleEditorPage extends Component {
     }
 
 }
-
 
 export default SingleEditorPage;
