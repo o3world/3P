@@ -5,8 +5,7 @@ import styles from './FeaturedSponsoredSeries.module.scss';
 const FeaturedSponsoredSeries = (props) => {
     let series = props.data.taxonomyTermQuery.entities[0];
     series =  (series !== undefined)? series: {"mainImage": {"derivative":{"url":""}}, "company": "", "logo":{"url":""}, "name": ""};
-    const seoLink = ConvertSeoUrl(series.name);
-    const url = "/sponsored-series/" + series.tid + "/"+seoLink;
+    const url = "/sponsored-series/" + series.tid + "/" + ConvertSeoUrl(series.name);
     return (
         <div className={styles.seriesWrapper}>
             <img className={styles.heroImage} src={series.mainImage.derivative.url} alt={''}/>
@@ -18,7 +17,7 @@ const FeaturedSponsoredSeries = (props) => {
                 <div className={styles.meta}>
                     <span className={styles.company}>{series.company} Sponsored Series</span>
                     <h3 className={styles.title}><a href={url}>{series.name}</a></h3>
-                    <button onClick={url} className={styles.exploreButton}>Explore Series</button>
+                    <a href={url} className={styles.exploreButton}>Explore Series</a>
                 </div>
             </div>
         </div>
