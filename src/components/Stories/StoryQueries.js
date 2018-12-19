@@ -4,7 +4,7 @@ const StoryByIdQuery = gql`query story($id:String!) {
   nodeQuery(
     filter: {
       conditions: [        
-        {field: "nid", value: $id, operator: EQUAL},        
+        {field: "nid", value: [$id], operator: EQUAL},        
       ]},
   ) 
   {    
@@ -12,31 +12,41 @@ const StoryByIdQuery = gql`query story($id:String!) {
       ... on NodeStory {
         title
         id: nid
-        field3pSpecialSeries {
+        category: fieldPrimaryCategory {
+          entity {
+            name
+          }
+        }
+        sponsoredSeries: field3pSpecialSeries {
             entity {
               ...on TaxonomyTermSpecialS{
                 fieldSsCompanyName
               }
             }
         }
-        entityOwner {
+       author: entityOwner {
           name
+          first: fieldFirstName
+          last: fieldLastName
+          headshot: userPicture {
+            url
+          }
         }
         entityUrl {
           path
         }        
-        entityCreated        
-        fieldFeaturedImageSquare {
+        date: entityCreated        
+        squareImage: fieldFeaturedImageSquare {
           url
           width
           height
         }
-        fieldFeaturedImageWide {
+        wideImage: fieldFeaturedImageWide {
           url
           width
           height
         }
-        imageWide: fieldFeaturedImageTall {
+        tallImage: fieldFeaturedImageTall {
           url
           width
           height

@@ -60,7 +60,7 @@ class App extends Component {
                 <Route exact path={Routes.SPONSOREDSERIESALL} component={SponsoredSeriesAll}/>
                 <Route path={Routes.SINGLESPONSOREDSERIES} component={SingleSeriesPage}/>
                 <Route path={Routes.STORIES} component={StoriesPage}/>
-                <Route path={Routes.SINGLESTORY} componet={SingleStoryPage}/>
+                <Route path={Routes.SINGLESTORY} component={SingleStoryPage}/>
                 <Footer/>
               </ApolloProvider>
             </div>

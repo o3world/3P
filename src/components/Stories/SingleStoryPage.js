@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Moment from 'react-moment';
 import {Query} from "react-apollo";
 
-import styles from  './SingleStory.module.css';
+import styles from './SingleStoryPage.module.scss';
 import { StoryByIdQuery } from "./StoryQueries";
 
 class SingleStoryPage extends Component {
@@ -24,19 +24,24 @@ class SingleStoryPage extends Component {
         if (error) return `Error! ${error.message}`;
 
         const story = data.nodeQuery.entities[0];
+
+        let headshot;
+        if (story.author.headshot !== null) {
+          headshot = <img className={styles.headshot} src={story.author.headshot.url} alt={story.author.name + ' headshot'} />;
+        }
+        const fullName = story.author.first + ' ' + story.author.last;
+
         return (
             <div className={styles.wrapper}>
-              <img className={'story-hero'} src={story.wideImage.url} alt={story.wideImage.alt} />
-              <div className={'story-meta-container'}>
-                <h1 className={'story-title'}>{story.title}</h1>
-                <img className={'story-author-headshot'} src={story.author.headshot.url} alt={story.author.headshot.alt} />
-                <span className={'story-author'}>Words by {story.author.first + " " + story.author.last}</span>
-                <span className={'story-category'}>{story.category.entity.name}</span>
-                <time className={'story-date'}><Moment
-                    format="MMMM DD, YYYY">{story.date * 1000}</Moment>
-                </time>
+              <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
+              <div className={styles.meta}>
+                <h1 className={styles.title}>{story.title}</h1>
+                {headshot}
+                <span className={styles.authorName}>Words by {fullName}</span>
+                <span className={styles.category}>{story.category.entity.name}</span>
+                <time className={styles.date}><Moment format="MMM DD">{story.date}</Moment></time>
               </div>
-              <div className={'story-body'} dangerouslySetInnerHTML={{__html: story.body.processed}}></div>
+              <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}></div>
             </div>
         )
       }

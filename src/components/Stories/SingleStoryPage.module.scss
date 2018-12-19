@@ -1,14 +1,13 @@
-.story-wrapper {
+.wrapper {
   max-width: 1366px;
   margin: 0 auto;
-
 }
 
-.story-hero {
+.hero {
   display: none;
 }
 
-.story-meta-container {
+.meta {
   display: grid;
   grid-template-columns: min-content 1fr 1fr;
   grid-template-rows: 30px 1fr 30px;
@@ -20,14 +19,14 @@
   padding: 14px 15%;
 }
 
-.story-title {
+.title {
   grid-area: title;
   font-family: 'Unna', serif;
   margin: 0;
   text-align: left
 }
 
-.story-category {
+.category {
   grid-area: category;
   justify-self: start;
   color: #006BFF;
@@ -35,7 +34,7 @@
   font-size: 0.7rem;
 }
 
-.story-author-headshot {
+.headshot {
   grid-area: headshot;
   width: 90px;
   height: 90px;
@@ -44,14 +43,14 @@
   filter: grayscale(100%);
 }
 
-.story-author {
+.authorName {
   grid-area: author;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.7rem;
   align-self: end;
 }
 
-.story-date {
+.date {
   grid-area: date;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.7rem;
@@ -61,7 +60,7 @@
   font-weight: bold;
 }
 
-.story-body {
+.body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   margin: 0 30px;
@@ -70,21 +69,18 @@
   text-align: left;
   background-color: #f2f2f2;
   padding: 25px 14%;
-}
 
-.story-body img {
-  max-width: 40%;
-  height: auto;
-  float: left;
-  margin: 7px 10px 7px 0;
-}
+  img {
+    max-width: 40%;
+    height: auto;
+    float: left;
+    margin: 7px 10px 7px 0;
 
-.story-body img.alignnone {
-}
-
-.story-body img.aligncenter {
-  display: block;
-  float: none;
-  max-width: 600px;
-  margin: 15px auto;
+    .aligncenter {
+      display: block;
+      float: none;
+      max-width: 600px;
+      margin: 15px auto;
+    }
+  }
 }
