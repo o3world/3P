@@ -1,7 +1,8 @@
-.wrapper {
-    display: grid;
-  grid-template-columns: 1fr;
+$tp_color--primary: #006BFF;
 
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .headshot {
@@ -10,7 +11,7 @@
 }
 
 .meta {
-  border-bottom: 3px solid #006bff;
+  border-bottom: 3px solid $tp_color--primary;
   text-align: left;
   background-color: white;
   padding: 30px;
@@ -22,6 +23,11 @@
   text-transform: uppercase;
   font-family: 'Unna', serif;
   margin: 5px 0;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 .title {
