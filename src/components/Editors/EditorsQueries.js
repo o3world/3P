@@ -36,7 +36,7 @@ const StoriesByEditor = gql`
     entities {      
       ... on NodeStory {
         title
-        nid
+        id: nid
         field3pSpecialSeries {
             entity {
               ...on TaxonomyTermSpecialS{

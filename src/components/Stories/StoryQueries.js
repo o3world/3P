@@ -1,17 +1,17 @@
 import gql from 'graphql-tag';
 
-const StoryByIdQuery = gql`query story { 
+const StoryByIdQuery = gql`query story($id:String!) { 
   nodeQuery(
     filter: {
       conditions: [        
-        {field: "nid", value: "10376", operator: EQUAL},        
+        {field: "nid", value: $id, operator: EQUAL},        
       ]},
   ) 
   {    
     entities {
       ... on NodeStory {
         title
-        nid
+        id: nid
         field3pSpecialSeries {
             entity {
               ...on TaxonomyTermSpecialS{
@@ -36,7 +36,7 @@ const StoryByIdQuery = gql`query story {
           width
           height
         }
-        fieldFeaturedImageTall {
+        imageWide: fieldFeaturedImageTall {
           url
           width
           height
@@ -49,6 +49,7 @@ const StoryByIdQuery = gql`query story {
     }
   }  
 }`;
+
 const AllStoryQuery = gql`
 query story {
     nodeQuery(
@@ -62,7 +63,7 @@ query story {
     entities {
       ... on NodeStory {
         title
-        nid
+        id: nid
         field3pSpecialSeries {
             entity {
               ...on TaxonomyTermSpecialS{
@@ -114,7 +115,7 @@ query story {
     entities {
       ... on NodeStory {
         title
-        nid
+        id: nid
         field3pSpecialSeries {
             entity {
               ...on TaxonomyTermSpecialS{

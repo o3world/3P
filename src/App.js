@@ -21,6 +21,7 @@ import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 import Routes from './components/Common/RoutesConfig';
+import SingleStoryPage from "./components/Stories/SingleStoryPage";
 
 const httpLink = createHttpLink({
   uri: 'http://back.3blmedia.com/graphql'
@@ -59,6 +60,7 @@ class App extends Component {
                 <Route exact path={Routes.SPONSOREDSERIESALL} component={SponsoredSeriesAll}/>
                 <Route path={Routes.SINGLESPONSOREDSERIES} component={SingleSeriesPage}/>
                 <Route path={Routes.STORIES} component={StoriesPage}/>
+                <Route path={Routes.SINGLESTORY} componet={SingleStoryPage}/>
                 <Footer/>
               </ApolloProvider>
             </div>
