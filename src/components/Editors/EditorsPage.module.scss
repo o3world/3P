@@ -1,0 +1,29 @@
+.wrapper {
+  max-width: 1366px;
+  margin: 0 auto;
+}
+
+.hero {
+  position: relative;
+}
+
+.pageTitle {
+  position: absolute;
+  bottom: 0;
+  left: 100px;
+  background: white;
+  color: black;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  padding: 10px 20px;
+  margin: 0;
+}
+
+.editorsDescription {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  color: rgba(black, 0.6);
+  text-align: left;
+  margin: 40px 80px;
+}
