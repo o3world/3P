@@ -2,7 +2,6 @@ import React from "react";
 import { Query } from 'react-apollo';
 
 import StoryMasonryTile from "../Stories/StoryMasonryTile";
-import styles from '../Stories/StoriesMasonryWrapper.module.scss';
 import { StoriesBySeriesId } from "../Stories/StoryQueries";
 
 const SeriesStoriesMasonryWrapper = (props) => (

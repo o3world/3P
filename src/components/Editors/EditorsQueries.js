@@ -37,31 +37,36 @@ const StoriesByEditor = gql`
       ... on NodeStory {
         title
         id: nid
-        field3pSpecialSeries {
+        sponsoredSeries: field3pSpecialSeries {
             entity {
               ...on TaxonomyTermSpecialS{
-                fieldSsCompanyName
+                company: fieldSsCompanyName
               }
             }
         }
-        entityOwner {
+        author: entityOwner {
           name
         }
         entityUrl {
           path
         }        
-        entityCreated        
-        fieldFeaturedImageSquare {
+        date: entityCreated
+        category: fieldPrimaryCategory {
+          entity {
+            name
+          }
+        }         
+        squareImage: fieldFeaturedImageSquare {
           url
           width
           height
         }
-        fieldFeaturedImageWide {
+        wideImage: fieldFeaturedImageWide {
           url
           width
           height
         }
-        fieldFeaturedImageTall {
+        tallImage: fieldFeaturedImageTall {
           url
           width
           height
