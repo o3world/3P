@@ -138,7 +138,12 @@ query story($id: String!) {
             name
           }
         }     
-        date: entityCreated        
+        date: entityCreated 
+        category: fieldPrimaryCategory {
+          entity {
+            name
+          }
+        } 
         squareImage: fieldFeaturedImageSquare {
           url
           width

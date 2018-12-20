@@ -16,7 +16,7 @@ const SeriesStoriesMasonryWrapper = (props) => (
       return (
           <section>
             { data.nodeQuery.entities.map((story) =>
-                <StoryMasonryTile data={story} key={story.id} isSponsered={true} />
+                <StoryMasonryTile data={story} key={story.id}/>
             )}
           </section>
       )

@@ -37,7 +37,7 @@ const StoriesByEditor = gql`
       ... on NodeStory {
         title
         id: nid
-        sponsoredSeries: field3pSpecialSeries {
+        sponsoredBy: field3pSpecialSeries {
             entity {
               ...on TaxonomyTermSpecialS{
                 company: fieldSsCompanyName
