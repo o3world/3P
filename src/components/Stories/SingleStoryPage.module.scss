@@ -4,7 +4,7 @@
 }
 
 .hero {
-  display: none;
+  width: 100%;
 }
 
 .meta {
@@ -22,8 +22,10 @@
 .title {
   grid-area: title;
   font-family: 'Unna', serif;
+  font-size: 36px;
   margin: 0;
   text-align: left
+
 }
 
 .category {
@@ -60,27 +62,31 @@
   font-weight: bold;
 }
 
-.body {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  margin: 0 30px;
-  font-size: 1.0rem;
-  line-height: 1.5rem;
-  text-align: left;
+.bodyWrapper {
+  margin: 0 150px;
   background-color: #f2f2f2;
-  padding: 25px 14%;
 
-  img {
-    max-width: 40%;
-    height: auto;
-    float: left;
-    margin: 7px 10px 7px 0;
+  .body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1.0rem;
+    line-height: 1.5rem;
+    text-align: left;
+    padding: 25px 14%;
 
-    .aligncenter {
-      display: block;
-      float: none;
-      max-width: 600px;
-      margin: 15px auto;
+    img {
+      display: none; // Hides all body images.
+      max-width: 40%;
+      height: auto;
+      float: left;
+      margin: 7px 10px 7px 0;
+
+      .aligncenter {
+        display: block;
+        float: none;
+        max-width: 600px;
+        margin: 15px auto;
+      }
     }
   }
 }

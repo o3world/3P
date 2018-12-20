@@ -33,7 +33,6 @@ class SingleStoryPage extends Component {
 
         return (
             <div className={styles.wrapper}>
-              <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
               <div className={styles.meta}>
                 <h1 className={styles.title}>{story.title}</h1>
                 {headshot}
@@ -41,7 +40,10 @@ class SingleStoryPage extends Component {
                 <span className={styles.category}>{story.category.entity.name}</span>
                 <time className={styles.date}><Moment format="MMM DD">{story.date}</Moment></time>
               </div>
-              <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}></div>
+              <div className={styles.bodyWrapper}>
+                <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
+                <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
+              </div>
             </div>
         )
       }
