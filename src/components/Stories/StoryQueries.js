@@ -162,5 +162,6 @@ query story {
       
     }
   }  
-}`;
+}
+`;
 export {AllStoryQuery, StoryByIdQuery, StoriesBySeriesId};

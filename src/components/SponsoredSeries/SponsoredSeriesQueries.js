@@ -106,11 +106,12 @@ const FeaturedSponsoredSeriesQuery = gql`
   }
 }`;
 
-const SingleSeriesQuery = gql`query TaxonomyTerm($id:String!){ 
-    taxonomyTermById(id: $id) {
-    	tid
+const SingleSeriesQuery = gql`
+query TaxonomyTerm($id:String!){ 
+    series: taxonomyTermById(id: $id) {
+    	id: tid
     	name
-        description{
+        description {
           processed
         }
   		entityId
@@ -146,6 +147,7 @@ const SingleSeriesQuery = gql`query TaxonomyTerm($id:String!){
         }
       }
 	}
-}`;
+}
+`;
 
 export {AllSponsoredSeriesQuery, FeaturedSponsoredSeriesQuery, SingleSeriesQuery };

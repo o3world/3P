@@ -1,25 +1,35 @@
 import React from "react";
+
 const SeriesHeader = (props) => {
-    console.log("--->", props);
-    const objStory = props.data.taxonomyTermById;
-    const logo = (objStory.logo !== null) ? objStory.logo.url : "";
+    const series = props.series;
+
+    let logo;
+    if (series.logo !== null) {
+      logo = <img src={logo} alt={series.company}/>;
+    }
+
+    let hero;
+    if (series.mainImage !== null) {
+      hero = <img src={series.mainImage.derivative.url} alt={''}/>;
+    }
     return (
         <section>
             <div>
                 <div>
-                    <span>SPONSORED BY</span>
-                    <img src={logo} alt={objStory.company}/>
+                    <span>SPONSORED BY {series.company}</span>
+                  {logo}
                 </div>
                 <div>
-                    <span>{objStory.company} SPECIAL SERIES</span>
-                    <h1>{objStory.name}</h1>
-                    <p>{objStory.description.processed}</p>
+                    <span>{series.company} SPECIAL SERIES</span>
+                    <h1>{series.name}</h1>
+                    <p dangerouslySetInnerHTML={{__html: series.description.processed}}/>
                 </div>
             </div>
             <div>
-                <img src={objStory.mainImage.derivative.url} alt={''}/>
+              {hero}
             </div>
         </section>
     );
 };
+
 export default SeriesHeader;
