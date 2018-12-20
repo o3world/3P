@@ -67,38 +67,43 @@ query story {
         conditions: [
           {field:"type", value:"story"},
         ]
-      }
+      },
+      sort: [{ field: "created" direction: DESC }]
     )
   {    
     entities {
       ... on NodeStory {
         title
         id: nid
-        field3pSpecialSeries {
-            entity {
-              ...on TaxonomyTermSpecialS{
-                fieldSsCompanyName
-              }
-            }
+        sponsoredBy: field3pSpecialSeries {
+          targetId
+          entity {
+            name
+          }
         }
-        entityOwner {
+        author: entityOwner {
           name
         }
         entityUrl {
           path
         }        
-        entityCreated        
-        fieldFeaturedImageSquare {
+        date: entityCreated   
+        category: fieldPrimaryCategory {
+          entity {
+            name
+          }
+        }     
+        squareImage: fieldFeaturedImageSquare {
           url
           width
           height
         }
-        fieldFeaturedImageWide {
+        wideImage: fieldFeaturedImageWide {
           url
           width
           height
         }
-        fieldFeaturedImageTall {
+        tallImage: fieldFeaturedImageTall {
           url
           width
           height
@@ -113,11 +118,12 @@ query story {
 }`;
 
 const StoriesBySeriesId = gql`
-query story {
+query story($id: String!) {
     nodeQuery(
       filter:{
         conditions: [
           {field:"type", value:"story"},
+          {field:"field_3p_special_series", value: [$id]}
         ]
       }
     )
@@ -126,38 +132,31 @@ query story {
       ... on NodeStory {
         title
         id: nid
-        field3pSpecialSeries {
-            entity {
-              ...on TaxonomyTermSpecialS{
-                fieldSsCompanyName
-              }
-            }
+        sponsoredBy: field3pSpecialSeries {
+          targetId
+          entity {
+            name
+          }
+        }     
+        date: entityCreated        
+        squareImage: fieldFeaturedImageSquare {
+          url
+          width
+          height
         }
-        entityOwner {
+        author: entityOwner {
           name
         }
-        entityUrl {
-          path
-        }        
-        entityCreated        
-        fieldFeaturedImageSquare {
+        wideImage: fieldFeaturedImageWide {
           url
           width
           height
         }
-        fieldFeaturedImageWide {
+        tallImage: fieldFeaturedImageTall {
           url
           width
           height
-        }
-        fieldFeaturedImageTall {
-          url
-          width
-          height
-        }
-        body: fieldContent {
-          text: processed
-        }        
+        }    
       }
       
     }
