@@ -1,25 +1,25 @@
-header {
+.wrapper {
   max-width: 1366px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: min-content 1fr min-content min-content;
   grid-template-areas: "logo . search hamburger";
-  padding: 40px 130px 8px;
+  padding: 40px 130px 24px;
 }
 
-.header-logo {
-  width: 170px;
+.logo {
+  width: 210px;
   grid-area: logo;
 }
 
-.search-button {
+.searchButton {
   grid-area: search;
   font-size: 20px;
   margin: 0 20px;
   align-self: center;
 }
 
-.hamburger-button {
+.hamburgerButton {
   grid-area: hamburger;
   font-size: 20px;
   margin: 0 0 0 20px;
