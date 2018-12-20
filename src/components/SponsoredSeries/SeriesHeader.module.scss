@@ -1,0 +1,74 @@
+$seriesPrimaryColor: #F8AE0F;
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: min-content 1fr;
+  grid-template-areas: "logo-wrapper header-image"
+    "description-wrapper header-image";
+  text-align: left;
+
+  a {
+    color: $seriesPrimaryColor;
+    text-decoration: none;
+  }
+}
+
+.logoWrapper {
+  grid-area: logo-wrapper;
+  background-color: $seriesPrimaryColor;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .sponsoredByTag {
+    text-transform: uppercase;
+  }
+
+  .companyLogo {
+    height: 50px;
+  }
+}
+
+.descriptionWrapper {
+  grid-area: description-wrapper;
+  background-color: black;
+  padding: 20px;
+
+  .sponsoredTag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8px;
+    text-transform: uppercase;
+    color: $seriesPrimaryColor;
+    margin: 0;
+  }
+
+  .title {
+    font-family: 'Unna', serif;
+    color: white;
+    font-size: 34px;
+    margin: 5px 0 20px;
+  }
+
+  .description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    color: white;
+  }
+}
+
+.heroImage {
+  grid-area: header-image;
+  background-size: cover;
+  background-size: cover;
+  border-radius: 5px;
+
+  &::before {
+    height: 0;
+    content: "";
+    display: inline-block;
+    padding-bottom: 70%;
+    grid-area: 1/1/-1/-1;
+  }
+}
