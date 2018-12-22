@@ -1,11 +1,13 @@
 import React from 'react';
-import EditorCardsWrapper from "../Editors/EditorCardsWrapper";
+
+import PrimeStoriesWrapper from "../PrimeStories/PrimeStoriesWrapper";
+import HomeTheFeed from "../Feed/HomeTheFeed";
 import HomeForum from "../Forum/HomeForum";
 import HomeAssoc from "../Association/HomeAssoc";
 import HomeMultimedia from "./HomeMultimedia";
 import HomeBTS from "../BTS/HomeBTS";
-import PrimeStoriesWrapper from "../PrimeStories/PrimeStoriesWrapper";
-import HomeTheFeed from "../Feed/HomeTheFeed";
+import EditorCardsWrapper from "../Editors/EditorCardsWrapper";
+
 import styles from "./Home.module.scss";
 
 const Home = () => {
