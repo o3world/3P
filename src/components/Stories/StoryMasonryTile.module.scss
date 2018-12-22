@@ -24,6 +24,13 @@ $seriesPrimaryColor: #F8AE0F;
     background-color: rgba( black, 0.3 );
     justify-self: stretch;
   }
+
+  &:hover {
+
+    &::before {
+      background-color: rgba( $seriesPrimaryColor, 0.85 );
+    }
+  }
 }
 
 .title {

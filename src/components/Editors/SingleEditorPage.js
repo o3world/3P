@@ -1,22 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import EditorBio from './EditorBio';
-import QueryHoc from "../Common/Query";
-import * as EditorQueries from "./EditorsQueries";
 import EditorStoriesWrapper from "./EditorStoriesWrapper"
 
-class SingleEditorPage extends Component {
+const SingleEditorPage = (props) => {
 
-    render () {
-        const editorId = {id: this.props.match.params.id};
+        const editorId = props.match.params.id;
         return (
             <section>
-                <QueryHoc query={EditorQueries.SingleEditorBioQuery} variables={editorId} componentName={EditorBio}/>
-                {/* @TODO Add story masonry wrapper and tiles. */}
-                <QueryHoc query={EditorQueries.StoriesByEditor} variables={editorId} componentName={EditorStoriesWrapper}/>
+              <EditorBio editorId={editorId}/>
+              <EditorStoriesWrapper editorId={editorId}/>
             </section>
         )
-    }
-
-}
+};
 
 export default SingleEditorPage;

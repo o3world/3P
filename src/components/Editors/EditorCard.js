@@ -10,7 +10,7 @@ class EditorCard extends React.Component {
 
       let twitterIcon;
       if (editor.twitterUsername !== null) {
-        twitterIcon = <a href={'https://twitter.com/' + editor.twitterUsername} target={'_blank'}><FontAwesomeIcon className={styles.socialIcon} icon={["fab", "twitter"]} /></a>;
+        twitterIcon = <a href={'https://twitter.com/' + editor.twitterUsername} target={'_blank'}><FontAwesomeIcon className={styles.socialIcon} icon={["fab", "twitter"]}/></a>;
       }
 
       let instagramIcon;

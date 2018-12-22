@@ -1,14 +1,36 @@
 import React from "react";
+import { Query } from 'react-apollo';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SponsoredSeriesMasonryTile from "./SponsoredSeriesMasonryTile";
+
+import { AllSponsoredSeriesQuery } from './SponsoredSeriesQueries';
 
 import styles from './SponsoredSeriesAllMasonryWrapper.module.scss';
 
-const SponsoredSeriesAllMasonryWrapper = (props) => {
-    const series = props.data.taxonomyTermQuery.entities;
+const SponsoredSeriesAllMasonryWrapper = () => {
+
     return (
-        <div className={styles.wrapper}>
-          {series.map((series, index) => <SponsoredSeriesMasonryTile data={series} key={index} />)}
-        </div>
+        <Query
+            query={ AllSponsoredSeriesQuery }
+            variables={{}}
+        >
+          {({ loading, error, data }) => {
+            if (loading) return (
+                <div className={styles.spinner}>
+                  <p>Gathering related stories...</p>
+                  <FontAwesomeIcon icon="spinner" spin/>
+                </div>
+            );
+            if (error) return `Error! ${error.message}`;
+            const allSeries = data.taxonomyTermQuery.entities;
+
+            return (
+                <section className={styles.wrapper}>
+                  {allSeries.map((series, index) => <SponsoredSeriesMasonryTile data={series} key={index} />)}
+                </section>
+            );
+          }}
+        </Query>
     );
 };
 
