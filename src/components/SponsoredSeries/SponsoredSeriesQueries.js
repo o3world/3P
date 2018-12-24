@@ -138,12 +138,11 @@ query TaxonomyTerm($id:String!){
           }
         }
         heroImage: fieldSsHeroImage {
-          targetId
-          alt
-          title
-          width
-          height
-          url
+          derivative(style: SQUARE) {
+            width
+            height
+            url
+          }
         }
       }
 	}

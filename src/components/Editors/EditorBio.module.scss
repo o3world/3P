@@ -5,8 +5,8 @@ $tp_color--primary: #006BFF;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: min-content min-content 120px;
-  grid-template-areas: "headshot bio" "meta bio" "stories stories";
+  grid-template-rows: min-content min-content;
+  grid-template-areas: "headshot bio" "meta bio";
 
   a {
     color: $tp_color--primary;
@@ -78,16 +78,7 @@ $tp_color--primary: #006BFF;
   }
 }
 
-.stories {
-  grid-area: stories;
-  font-family: 'Unna', serif;
-  font-size: 20px;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  background-image: linear-gradient(rgba(black, 0.08), white);
-
-  p {
-    align-self: center;
-  }
+.spinner {
+  font-size: 42px;
+  color: #006bff;
 }

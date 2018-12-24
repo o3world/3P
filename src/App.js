@@ -17,7 +17,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faBars, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 import Routes from './components/Common/RoutesConfig';
@@ -32,7 +32,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-library.add( faTwitter, faInstagram, faSearch, faBars );
+library.add( faTwitter, faInstagram, faSearch, faBars, faSpinner );
 
 class App extends Component {
     constructor(props) {

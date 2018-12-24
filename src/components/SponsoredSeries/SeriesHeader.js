@@ -1,33 +1,32 @@
 import React from "react";
 
+import styles from './SeriesHeader.module.scss';
+
 const SeriesHeader = (props) => {
     const series = props.series;
 
     let logo;
     if (series.logo !== null) {
-      logo = <img src={logo} alt={series.company}/>;
+      logo = <img className={styles.companyLogo} src={series.logo.url} alt={series.company}/>;
     }
 
-    let hero;
-    if (series.mainImage !== null) {
-      hero = <img src={series.mainImage.derivative.url} alt={''}/>;
+    let heroStyle;
+    if (series.heroImage !== null) {
+      heroStyle = {backgroundImage: `url(${series.heroImage.derivative.url})`};
     }
+
     return (
-        <section>
-            <div>
-                <div>
-                    <span>SPONSORED BY {series.company}</span>
-                  {logo}
-                </div>
-                <div>
-                    <span>{series.company} SPECIAL SERIES</span>
-                    <h1>{series.name}</h1>
-                    <p dangerouslySetInnerHTML={{__html: series.description.processed}}/>
-                </div>
-            </div>
-            <div>
-              {hero}
-            </div>
+        <section className={styles.wrapper}>
+          <div className={styles.logoWrapper}>
+            <span className={styles.sponsoredByTag}>Sponsored by</span>
+            {logo}
+          </div>
+          <div className={styles.descriptionWrapper}>
+              <p className={styles.sponsoredTag}>{series.company} SPECIAL SERIES</p>
+              <h1 className={styles.title}>{series.name}</h1>
+              <p className={styles.description} dangerouslySetInnerHTML={{__html: series.description.processed}}/>
+          </div>
+          <div className={styles.heroImage} style={heroStyle}/>
         </section>
     );
 };

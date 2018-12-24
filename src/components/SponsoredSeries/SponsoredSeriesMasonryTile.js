@@ -9,7 +9,7 @@ const SponsoredSeriesMasonryTile = (props) => {
     const backgroundImage = (series.mainImage) ? series.mainImage.derivative.url : "";
     const url = "/sponsored-series/" + series.tid + "/"+seoLink;
     return (
-        <div className={styles.tile} style={{backgroundImage: `url(`+backgroundImage+`)`}}>
+        <div className={styles.tile} style={{backgroundImage: `url(${backgroundImage})`}}>
             <h4 className={styles.title}><a href={url}> {series.name}</a></h4>
             <img className={styles.logo} src={logo} alt={''}/>
         </div>

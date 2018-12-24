@@ -4,6 +4,8 @@ import { Query } from 'react-apollo';
 import StoryMasonryTile from "../Stories/StoryMasonryTile";
 import { StoriesBySeriesId } from "../Stories/StoryQueries";
 
+import styles from './SeriesStoriesMasonryWrapper.module.scss';
+
 const SeriesStoriesMasonryWrapper = (props) => (
   <Query
       query = {StoriesBySeriesId}
@@ -14,7 +16,7 @@ const SeriesStoriesMasonryWrapper = (props) => (
       if (error) return `Error! ${error.message}`;
 
       return (
-          <section>
+          <section className={styles.wrapper}>
             { data.nodeQuery.entities.map((story) =>
                 <StoryMasonryTile data={story} key={story.id}/>
             )}

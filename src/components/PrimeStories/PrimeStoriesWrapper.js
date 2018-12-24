@@ -82,6 +82,6 @@ const PrimeStoriesWrapper = () =>
         </div>
             );
         }}
-    </Query>
+    </Query>;
 
 export default PrimeStoriesWrapper;
