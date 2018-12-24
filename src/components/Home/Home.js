@@ -5,12 +5,16 @@ import HomeAssoc from "../Association/HomeAssoc";
 import HomeMultimedia from "./HomeMultimedia";
 import HomeBTS from "../BTS/HomeBTS";
 import PrimeStoriesWrapper from "../PrimeStories/PrimeStoriesWrapper";
+import BannerAd from "../Ads/BannerAd";
 import HomeTheFeed from "../Feed/HomeTheFeed";
 import styles from "./Home.module.scss";
 
 const Home = () => {
     return (
         <div className={styles.wrapper}>
+          <div>
+            <BannerAd/>
+          </div>
             <PrimeStoriesWrapper/>
             <HomeTheFeed/>
           <div className={styles.bts_podcastWrapper}>
