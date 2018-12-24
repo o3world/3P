@@ -17,6 +17,7 @@
     "node-sass": "^4.10.0",
     "react": "^16.4.2",
     "react-apollo": "^2.2.4",
+    "react-dfp": "^0.7.6",
     "react-dom": "^16.4.2",
     "react-html-parser": "^2.0.2",
     "react-moment": "^0.8.3",
