@@ -63,6 +63,8 @@ const StoryByIdQuery = gql`query story($id:String!) {
 const AllStoryQuery = gql`
 query story {
     nodeQuery(
+      offset: 6,
+      limit: 100,
       filter:{
         conditions: [
           {field:"type", value:"story"},

@@ -9,6 +9,11 @@ $seriesPrimaryColor: #F8AE0F;
   justify-items: start;
   text-align: left;
   font-family: 'Montserrat', sans-serif;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
 
   a {
     color: inherit;
@@ -23,13 +28,6 @@ $seriesPrimaryColor: #F8AE0F;
     grid-area: 1/1/-1/-1;
     background-color: rgba( black, 0.3 );
     justify-self: stretch;
-  }
-
-  &:hover {
-
-    &::before {
-      background-color: rgba( $seriesPrimaryColor, 0.85 );
-    }
   }
 }
 

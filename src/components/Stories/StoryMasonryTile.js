@@ -15,12 +15,17 @@ const StoryMasonryTile = (props) => {
     if (story.sponsoredBy !== null) {
       sponsored = <p className={styles.sponsored}>SPONSORED</p>;
     }
+
+    let category;
+    if (story.category !== null) {
+      category = <p className={styles.category}>{story.category.entity.name}</p>;
+    }
     return (
       <LazyLoad height={200}>
         <div className={styles.tile}
              style={{backgroundImage: `url(` + backgroundImage + `)`}}>
           <h2 className={styles.title}><a href={seoLink}>{story.title}</a></h2>
-          <p className={styles.category}>{story.category.entity.name}</p>
+          {category}
           {sponsored}
           <p className={styles.author}>Words by {story.author.name}</p>
           <time className={styles.date}><Moment
