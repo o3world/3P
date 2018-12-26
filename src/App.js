@@ -15,7 +15,6 @@ import { ApolloProvider } from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faBars, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
