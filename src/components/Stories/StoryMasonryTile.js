@@ -1,4 +1,6 @@
 import React from "react";
+import LazyLoad from 'react-lazyload';
+
 import Moment from 'react-moment';
 import styles from './StoryMasonryTile.module.scss';
 
@@ -14,15 +16,23 @@ const StoryMasonryTile = (props) => {
       sponsored = <p className={styles.sponsored}>SPONSORED</p>;
     }
 
+    let category;
+    if (story.category !== null) {
+      category = <p className={styles.category}>{story.category.entity.name}</p>;
+    }
     return (
-        <div className={styles.tile} style={{backgroundImage: `url(`+backgroundImage+`)`}}>
+      <LazyLoad height={200}>
+        <div className={styles.tile}
+             style={{backgroundImage: `url(` + backgroundImage + `)`}}>
           <h2 className={styles.title}><a href={seoLink}>{story.title}</a></h2>
-          <p className={styles.category}>{story.category.entity.name}</p>
+          {category}
           {sponsored}
           <p className={styles.author}>Words by {story.author.name}</p>
-          <time className={styles.date}><Moment format="MMM DD">{story.date}</Moment></time>
+          <time className={styles.date}><Moment
+              format="MMM DD">{story.date}</Moment></time>
         </div>
-    );
+      </LazyLoad>
+    )
 };
 
 export default StoryMasonryTile;

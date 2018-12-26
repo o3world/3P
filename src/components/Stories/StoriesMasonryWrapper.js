@@ -1,5 +1,6 @@
 import React from "react";
 import {Query} from "react-apollo";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import StoryMasonryTile from "./StoryMasonryTile";
 import { AllStoryQuery } from "./StoryQueries";
