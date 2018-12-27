@@ -1,3 +1,5 @@
+const API_KEY = "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";
+
 class NewsLetterService {
 
     submitEmail = (email) => {
@@ -6,7 +8,7 @@ class NewsLetterService {
             method: "POST",
             body: JSON.stringify([{ "email": email }]),
             headers: {
-                "authorization": "Bearer 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",
+                "authorization": "Bearer "+API_KEY,
                 "Content-Type": "application/json"
             },
         })
@@ -22,7 +24,7 @@ class NewsLetterService {
         fetch(url, {
             method: "POST",
             headers: {
-                "authorization": "Bearer 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",
+                "authorization": "Bearer "+API_KEY,
             }
         })
         .then(response => { })
