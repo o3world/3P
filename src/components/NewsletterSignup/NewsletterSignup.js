@@ -6,8 +6,9 @@ class NewsletterSignup extends React.Component {
     super(props);
     this.state = {
       value: '',
-      successMessage: false,
-      errorMessage: ""
+      successMessage: "",
+      validationMessage:"",
+      disabled: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,29 +21,35 @@ class NewsletterSignup extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value, errorMessage: "",successMessage:false });
+    this.setState({ value: event.target.value, successMessage: "",validationMessage:"" });
   }
 
-  async handleSubmit(event) {
-    /* @TODO: code goes here. */
+  handleSubmit(event) {
     event.preventDefault();
+
     let result = this.valiadteEmail(this.state.value);
-    if (result) {
-      let status = await NewsLetterService.submitEmail(this.state.value);
-      if(status === 201) {
+    
+    if(result) {
+      this.setState({
+        ...this.state,
+        disabled: true
+      }, async () => {
+        let message = await NewsLetterService.addEmailToSendGrid(this.state.value);
         this.setState({
           ...this.state,
-          successMessage: true
+          successMessage: message,
+          value: "",
+          disabled: false
         })
-      }
+      })
     } else {
       this.setState({
         ...this.state,
-        errorMessage: "Plese enter valid email"
+        validationMessage:"Plese enter valid email"
       })
     }
 
-
+    
   }
 
   render() {
@@ -50,9 +57,9 @@ class NewsletterSignup extends React.Component {
       <React.Fragment>
         <form onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.value} onChange={this.handleChange} />
-          <button type="submit">Subscribe!</button>
-          {this.state.successMessage ? <h3>Thank you for subscription!!!</h3> : null}
-          <h3>{this.state.errorMessage}</h3>
+          <button type="submit" disabled={this.state.disabled}>Subscribe!</button>
+          <h3>{this.state.successMessage}</h3>
+          <h3>{this.state.validationMessage}</h3>
         </form>
       </React.Fragment>
     )

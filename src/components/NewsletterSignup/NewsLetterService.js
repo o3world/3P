@@ -1,48 +1,47 @@
-const API_KEY = "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";
+import { SENDGRID_API_KEY,SENDGRID_API,SENDGRID_LIST_API } from '../Common/Constants';
 
 class NewsLetterService {
 
-    submitEmail = async (email) => {
-        const url = "https://api.sendgrid.com/v3/contactdb/recipients";
+    ErrorMessage = "Something went wrong plese try again";
+    SuccessMessage = "Thank You!!!";
+
+    addEmailToSendGrid = async (email) => {
+        const url = SENDGRID_API;
 
         try {
             const response = await fetch(url, {
                 method: "POST",
                 body: JSON.stringify([{ "email": email }]),
                 headers: {
-                    "authorization": "Bearer " + API_KEY,
+                    "authorization": "Bearer " + SENDGRID_API_KEY,
                     "Content-Type": "application/json"
                 }
             })
 
             let data = await response.json();
-            const newurl = "https://api.sendgrid.com/v3/contactdb/lists/6416658/recipients/" + data.persisted_recipients[0];
+            const newurl =  SENDGRID_LIST_API + data.persisted_recipients[0];
             try {
-                let status = await this.submitSecondRequest(newurl)
+                let status = await this.addEmailToList(newurl)
                 if (status === 201) {
-                    return status;
+                    return this.SuccessMessage;
                 } else {
-                    return null
+                    return this.ErrorMessage
                 }
-            } catch (error) {
-                console.log(error)
-            }
-        } catch (error) {
-            console.log('error1-------->', error)
-        }
+            } catch (error) { return this.ErrorMessage }
+        } catch (error) { return this.ErrorMessage }
     }
 
-    submitSecondRequest = async (url) => {
+    addEmailToList = async (url) => {
         try {
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
-                    "authorization": "Bearer " + API_KEY,
+                    "authorization": "Bearer " + SENDGRID_API_KEY,
                 }
             })
             return response.status;
         } catch (error) {
-            console.log('error2----->', error)
+            return this.ErrorMessage
         }
     }
 
