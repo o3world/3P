@@ -1,4 +1,4 @@
-import { SENDGRID_API_KEY,SENDGRID_API,SENDGRID_LIST_API } from '../Common/Constants';
+import { SENDGRID } from '../Common/Constants';
 
 class NewsLetterService {
 
@@ -6,20 +6,18 @@ class NewsLetterService {
     SuccessMessage = "Thank You!!!";
 
     addEmailToSendGrid = async (email) => {
-        const url = SENDGRID_API;
-
         try {
-            const response = await fetch(url, {
+            const response = await fetch(SENDGRID.API, {
                 method: "POST",
                 body: JSON.stringify([{ "email": email }]),
                 headers: {
-                    "authorization": "Bearer " + SENDGRID_API_KEY,
+                    "authorization": "Bearer " + SENDGRID.API_KEY,
                     "Content-Type": "application/json"
                 }
             })
 
             let data = await response.json();
-            const newurl =  SENDGRID_LIST_API + data.persisted_recipients[0];
+            const newurl =  SENDGRID.LIST_API + data.persisted_recipients[0];
             try {
                 let status = await this.addEmailToList(newurl)
                 if (status === 201) {
@@ -36,7 +34,7 @@ class NewsLetterService {
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
-                    "authorization": "Bearer " + SENDGRID_API_KEY,
+                    "authorization": "Bearer " + SENDGRID.API_KEY,
                 }
             })
             return response.status;
