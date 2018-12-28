@@ -2,7 +2,7 @@ import { SENDGRID } from '../Common/Constants';
 
 class NewsLetterService {
 
-    ErrorMessage = "Something went wrong plese try again";
+    ErrorMessage = "Something went wrong please try again";
     SuccessMessage = "Thank You!!!";
 
     addEmailToSendGrid = async (email) => {
@@ -16,10 +16,9 @@ class NewsLetterService {
                 }
             })
 
-            let data = await response.json();
-            const newurl =  SENDGRID.LIST_API + data.persisted_recipients[0];
+            let data = await response.json();  
             try {
-                let status = await this.addEmailToList(newurl)
+                let status = await this.addEmailToList(SENDGRID.LIST_API + data.persisted_recipients[0])
                 if (status === 201) {
                     return this.SuccessMessage;
                 } else {

@@ -45,7 +45,7 @@ class NewsletterSignup extends React.Component {
     } else {
       this.setState({
         ...this.state,
-        validationMessage:"Plese enter valid email"
+        validationMessage:"Please enter valid email"
       })
     }
 
