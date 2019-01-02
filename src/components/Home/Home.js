@@ -6,7 +6,7 @@ import HomeForum from "../Forum/HomeForum";
 import HomeAssoc from "../Association/HomeAssoc";
 import HomeMultimedia from "./HomeMultimedia";
 import HomeBTS from "../BTS/HomeBTS";
-import BannerAd from "../Ads/BannerAd";
+import DefaultBannerAd from "../Ads/DefaultBannerAd";
 import EditorCardsWrapper from "../Editors/EditorCardsWrapper";
 import styles from "./Home.module.scss";
 
