@@ -6,18 +6,16 @@ import HomeForum from "../Forum/HomeForum";
 import HomeAssoc from "../Association/HomeAssoc";
 import HomeMultimedia from "./HomeMultimedia";
 import HomeBTS from "../BTS/HomeBTS";
-import DefaultBannerAd from "../Ads/DefaultBannerAd";
+import Ad from "../Ads/Ad";
 import EditorCardsWrapper from "../Editors/EditorCardsWrapper";
 import styles from "./Home.module.scss";
 
 const Home = () => {
     return (
         <div className={styles.wrapper}>
-          <div>
-            <DefaultBannerAd/>
-          </div>
-            <PrimeStoriesWrapper/>
-            <HomeTheFeed/>
+          <PrimeStoriesWrapper/>
+          <HomeTheFeed/>
+          <Ad adUnit={'Test_Banner_Ad'}/>
           <div className={styles.bts_podcastWrapper}>
             <HomeBTS/>
             <HomeMultimedia/>
