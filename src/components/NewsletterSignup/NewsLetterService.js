@@ -1,3 +1,4 @@
+ /* @TODO: Manage API keys from constants in common file */
 const API_KEY = "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";
 
 class NewsLetterService {
