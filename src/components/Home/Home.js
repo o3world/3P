@@ -14,7 +14,7 @@ const Home = () => {
     return (
         <div className={styles.wrapper}>
           <div>
-            <BannerAd/>
+            <DefaultBannerAd/>
           </div>
             <PrimeStoriesWrapper/>
             <HomeTheFeed/>
