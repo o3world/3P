@@ -1,8 +1,8 @@
-import React from 'react';
+import React,{ Component } from 'react';
 import SearchWrapper from './SearchWrapper';
 import { SEARCH_API } from '../Common/constant';
 
-class SearchResult extends React.Component {
+class SearchResult extends Component {
 
     constructor(props) {
         super(props);
