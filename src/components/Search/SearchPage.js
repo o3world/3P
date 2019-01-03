@@ -4,7 +4,7 @@ import React from 'react';
 class SearchPage extends React.Component {
 
     constructor(props) {
-        super();
+        super(props);
 
         this.state={
             value : ""
