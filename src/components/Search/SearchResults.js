@@ -17,8 +17,8 @@ class SearchResult extends React.Component {
 
     componentDidMount = () => {
 
-        let searchkeyword = encodeURIComponent(this.props.match.params.searchterm.trim());
-        const url =  SEARCH_API + searchkeyword + "?_format=json"
+        let searchKeyword = encodeURIComponent(this.props.match.params.searchterm.trim());
+        const url =  SEARCH_API + searchKeyword + "?_format=json"
 
         fetch(url)
             .then(response => response.json())
