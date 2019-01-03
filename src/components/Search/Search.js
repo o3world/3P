@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 class Search extends React.Component {
 
@@ -31,7 +31,6 @@ class Search extends React.Component {
                 pathname: "/search/" + this.state.value
             })
         }
-        
     }
 
     handleKeyPress = (e) => {
