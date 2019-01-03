@@ -8,8 +8,12 @@ import ConvertSeoUrl from "../Common/createSeoUrl";
 
 const StoryMasonryTile = (props) => {
     const story = {...props.data};
-    const backgroundImage =  story.tallImage.url;
-    const seoLink = '/story/' + story.id + '/' + ConvertSeoUrl(story.title);
+    let backgroundImage = "";
+    let seoLink = '/story/' + story.id + '/' + ConvertSeoUrl(story.title);
+
+    if(story.tallImage) {
+      backgroundImage =  story.tallImage.url
+    }
 
     let sponsored;
     if (story.sponsoredBy !== null) {
@@ -17,7 +21,7 @@ const StoryMasonryTile = (props) => {
     }
 
     let category;
-    if (story.category !== null) {
+    if (story.category) {
       category = <p className={styles.category}>{story.category.entity.name}</p>;
     }
     return (
@@ -27,7 +31,6 @@ const StoryMasonryTile = (props) => {
           <h2 className={styles.title}><a href={seoLink}>{story.title}</a></h2>
           {category}
           {sponsored}
-          <p className={styles.author}>Words by {story.author.name}</p>
           <time className={styles.date}><Moment
               format="MMM DD">{story.date}</Moment></time>
         </div>

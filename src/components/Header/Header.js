@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
-import Search from '../Search/SearchPage';
+import Search from '../Search/Search';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
