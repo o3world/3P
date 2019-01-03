@@ -10,7 +10,6 @@ import Footer from "./components/Footer/Footer";
 import TheFeedPage from "./components/Feed/TheFeedPage";
 import EditorsPage from "./components/Editors/EditorsPage";
 import SingleEditorPage from "./components/Editors/SingleEditorPage";
-import SearchPage from './components/Search/SearchPage';
 import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';
@@ -62,7 +61,6 @@ class App extends Component {
                 <Route path={Routes.SINGLESPONSOREDSERIES} component={SingleSeriesPage}/>
                 <Route path={Routes.STORIES} component={StoriesPage}/>
                 <Route path={Routes.SINGLESTORY} component={SingleStoryPage}/>
-                <Route path="/search" component={SearchPage}></Route>
                 <Footer/>
               </ApolloProvider>
             </div>
