@@ -20,7 +20,8 @@ const SearchWrapper = (props) => {
                                 name:obj.field_primary_category
                             }
                         },
-                        id:obj.nid
+                        id:obj.nid,
+                        sponsoredBy:null
                     }
 
                     return <StoryMasonryTile data={story} key={obj.nid} />

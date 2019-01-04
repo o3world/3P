@@ -11,20 +11,20 @@ class SearchResult extends React.Component {
             message : null,
             loading: true
         }
-        this.searchkeyword = (this.props.location.state != undefined)? encodeURIComponent(this.props.location.state.value): encodeURIComponent(this.props.match.params.searchterm);
-        this.fetchInformation(this.searchkeyword);
+        this.searchKeyword = (this.props.location.state != undefined)? encodeURIComponent(this.props.location.state.value): encodeURIComponent(this.props.match.params.searchterm);
+        this.fetchInformation(this.searchKeyword);
     }
     
     componentWillReceiveProps(nextProps, nextContext) {
         if(true){
-            let searchkeyword = encodeURIComponent(nextProps.location.state.value);
-            this.fetchInformation(searchkeyword);
+            let searchKeyword = encodeURIComponent(nextProps.location.state.value);
+            this.fetchInformation(searchKeyword);
         }
         return true;
     }
 
-    fetchInformation = (searchkeyword) => {
-        const url =  SEARCH_API + searchkeyword + "?_format=json";
+    fetchInformation = (searchKeyword) => {
+        const url =  SEARCH_API.replace("{{searchkey}}", searchKeyword)
         fetch(url)
             .then(response => response.json())
             .then(data => {
