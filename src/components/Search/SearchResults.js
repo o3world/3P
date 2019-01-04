@@ -1,25 +1,30 @@
-import React,{ Component } from 'react';
+import React from 'react';
 import SearchWrapper from './SearchWrapper';
 import { SEARCH_API } from '../Common/constant';
 
-class SearchResult extends Component {
+class SearchResult extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             data: null,
             message : null,
             loading: true
         }
+        this.searchkeyword = (this.props.location.state != undefined)? encodeURIComponent(this.props.location.state.value): encodeURIComponent(this.props.match.params.searchterm);
+        this.fetchInformation(this.searchkeyword);
+    }
+    
+    componentWillReceiveProps(nextProps, nextContext) {
+        if(true){
+            let searchkeyword = encodeURIComponent(nextProps.location.state.value);
+            this.fetchInformation(searchkeyword);
+        }
+        return true;
     }
 
-
-    componentDidMount = () => {
-
-        let searchKeyword = encodeURIComponent(this.props.match.params.searchterm.trim());
-        const url =  SEARCH_API + searchKeyword + "?_format=json"
-
+    fetchInformation = (searchkeyword) => {
+        const url =  SEARCH_API + searchkeyword + "?_format=json";
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -27,13 +32,13 @@ class SearchResult extends Component {
                     ...this.state,
                     data: data.length > 0 ? data : null,
                     message : `Results for ${this.props.match.params.searchterm}`,
-                    loading : false 
-                })
+                    loading : false
+                });
             }).catch(error => {
-                this.setState({
-                    message : error
-                })
+            this.setState({
+                message : error
             })
+        });
     }
 
     render() {

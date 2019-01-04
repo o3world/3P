@@ -19,7 +19,8 @@ const SearchWrapper = (props) => {
                             entity:{
                                 name:obj.field_primary_category
                             }
-                        }
+                        },
+                        id:obj.nid
                     }
 
                     return <StoryMasonryTile data={story} key={obj.nid} />
