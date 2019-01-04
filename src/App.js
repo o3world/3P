@@ -41,6 +41,14 @@ class App extends Component {
             pageTitle: "Home"
         };
         this.setPageTitle = this.setPageTitle.bind(this);
+        this.connecToServer = this.connecToServer.bind(this);
+    }
+    connecToServer() {
+      fetch('/');
+    }
+
+    componentDidMount() {
+      this.connecToServer();
     }
 
     setPageTitle(title) {
