@@ -10,6 +10,7 @@ events:
             - nvm install v6.11.1
             - nvm use 6.11.1
             - npm install
+            - node start
             - npm run build
       - upload-artifact:
           script:
