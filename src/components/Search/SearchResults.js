@@ -11,7 +11,7 @@ class SearchResult extends React.Component {
             message : null,
             loading: true
         }
-        this.searchKeyword = (this.props.location.state != undefined)? encodeURIComponent(this.props.location.state.value): encodeURIComponent(this.props.match.params.searchterm);
+        this.searchKeyword = (this.props.location.state !== undefined)? encodeURIComponent(this.props.location.state.value): encodeURIComponent(this.props.match.params.searchterm);
         this.fetchInformation(this.searchKeyword);
     }
     
