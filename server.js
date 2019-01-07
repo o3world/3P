@@ -1,7 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const port = process.env.PORT || 5000;
+
+var server = require('http').createServer(app);
+var io = require('socket.io')(server, { path: '/_socket' });
+var port = process.env.PORT || 5000;
+
+io.set('transports', ['websocket']);
 
 //Static file declaration
 app.use(express.static(path.join(__dirname, 'build')));
