@@ -15,7 +15,7 @@ const Home = () => {
         <div className={styles.wrapper}>
           <PrimeStoriesWrapper/>
           <HomeTheFeed/>
-          <Ad adUnit={'Test_Banner_Ad'}/>
+          <Ad adUnit={'Default_Banner_Ad'}/>
           <div className={styles.bts_podcastWrapper}>
             <HomeBTS/>
             <HomeMultimedia/>

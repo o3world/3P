@@ -1,5 +1,5 @@
 import React from 'react';
-import { DFPSlotsProvider, AdSlot } from 'react-dfp';
+import { DFPSlotsProvider, AdSlot } from 'react-dfp'; //https://github.com/jaanauati/react-dfp/
 
 import styles from './Ad.module.scss';
 
