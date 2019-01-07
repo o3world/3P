@@ -1,24 +1,13 @@
-const express = require('express');
+const express = require("express");
+const bodyParser = require("body-parser");
+const path = require("path");
+
 const app = express();
-const path = require('path');
 
-var server = require('http').createServer(app);
-var io = require('socket.io')(server, { path: '/_socket' });
-var port = process.env.PORT || 5000;
+app.use(express.static(path.join(__dirname, "build")));
 
-io.set('transports', ['websocket']);
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
-//Static file declaration
-app.use(express.static(path.join(__dirname, 'build')));
-
-//production mode
-app.use(express.static(path.join(__dirname, 'build')));
-//
-app.get('*', (req, res) => {
-  res.sendfile(path.join(__dirname = 'build/index.html'));
-})
-
-//start server
-app.listen(port, (req, res) => {
-  console.log( `server listening on port: ${port}`);
-})
+app.listen(process.env.PORT || 5000);
