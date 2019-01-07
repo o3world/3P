@@ -23,8 +23,6 @@ import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import Routes from './components/Common/RoutesConfig';
 import SingleStoryPage from "./components/Stories/SingleStoryPage";
 
-var socket = io('socketiodev.vhalencar12.sites.ahdev.co', { path: '/_socket', transports: ['websocket'] });
-
 const httpLink = createHttpLink({
   uri: 'http://back.3blmedia.com/graphql'
 });
