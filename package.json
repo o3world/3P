@@ -17,12 +17,13 @@
     "node-sass": "^4.10.0",
     "react": "^16.4.2",
     "react-apollo": "^2.2.4",
+    "react-dfp": "^0.7.6",
     "react-dom": "^16.4.2",
     "react-html-parser": "^2.0.2",
     "react-lazyload": "^2.3.0",
     "react-moment": "^0.8.3",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.3"
+    "react-scripts": "^2.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
