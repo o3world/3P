@@ -34,36 +34,45 @@ const client = new ApolloClient({
 library.add( faTwitter, faInstagram, faSearch, faBars, faSpinner );
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            pageTitle: "Home"
-        };
-        this.setPageTitle = this.setPageTitle.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+        pageTitle: "Home"
+    };
+    this.setPageTitle = this.setPageTitle.bind(this);
+    this.connectToServer = this.connectToServer.bind(this);
+  }
 
-    setPageTitle(title) {
-        this.setState({pageTitle: title});
-    }
+  connectToServer() {
+    fetch('/');
+  }
+
+  componentDidMount() {
+    this.connectToServer();
+  }
+
+  setPageTitle(title) {
+    this.setState({pageTitle: title});
+  }
 
   render() {
     return (
-        <Router>
-            <div className="App">
-              <ApolloProvider client={client}>
-                <Header site_title={this.state.pageTitle}/>
-                <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
-                <Route path={Routes.THEFEED} render={(props) => <TheFeedPage {...props} />}/>
-                <Route path={Routes.EDITORS} component={EditorsPage}/>
-                <Route path={Routes.SINGLEEDITOR} component={SingleEditorPage}/>
-                <Route exact path={Routes.SPONSOREDSERIESALL} component={SponsoredSeriesAll}/>
-                <Route path={Routes.SINGLESPONSOREDSERIES} component={SingleSeriesPage}/>
-                <Route path={Routes.STORIES} component={StoriesPage}/>
-                <Route path={Routes.SINGLESTORY} component={SingleStoryPage}/>
-                <Footer/>
-              </ApolloProvider>
-            </div>
-        </Router>
+      <Router>
+        <div className="App">
+          <ApolloProvider client={client}>
+            <Header site_title={this.state.pageTitle}/>
+            <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
+            <Route path={Routes.THEFEED} render={(props) => <TheFeedPage {...props} />}/>
+            <Route path={Routes.EDITORS} component={EditorsPage}/>
+            <Route path={Routes.SINGLEEDITOR} component={SingleEditorPage}/>
+            <Route exact path={Routes.SPONSOREDSERIESALL} component={SponsoredSeriesAll}/>
+            <Route path={Routes.SINGLESPONSOREDSERIES} component={SingleSeriesPage}/>
+            <Route path={Routes.STORIES} component={StoriesPage}/>
+            <Route path={Routes.SINGLESTORY} component={SingleStoryPage}/>
+            <Footer/>
+          </ApolloProvider>
+        </div>
+      </Router>
     );
   }
 }
