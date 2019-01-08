@@ -21,7 +21,7 @@ const SearchWrapper = (props) => {
                         }
                     },
                     id: obj.nid,
-                    sponsoredBy: obj.field_3p_special_series === "" ? null : obj.field_3p_special_series
+                    sponsoredBy: obj.field_3p_special_series === "" ? null : obj.field_3p_special_series,
                     author: {
                       name: obj.uid
                     },
