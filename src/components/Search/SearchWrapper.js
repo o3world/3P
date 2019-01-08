@@ -10,18 +10,18 @@ const SearchWrapper = (props) => {
             props.data.map(obj => {
 
                 let story= {
-                    title:obj.title,
-                    date:obj.created,
-                    tallImage:{
-                        url:obj.field_featured_image_tall
+                    title: obj.title,
+                    date: obj.created,
+                    tallImage: {
+                        url: obj.field_featured_image_tall
                     },
-                    category:{
-                        entity:{
-                            name:obj.field_primary_category
+                    category: {
+                        entity: {
+                            name: obj.field_primary_category
                         }
                     },
                     id: obj.nid,
-                    sponsoredBy: null,
+                    sponsoredBy: obj.field_3p_special_series === "" ? null : obj.field_3p_special_series
                     author: {
                       name: obj.uid
                     },
