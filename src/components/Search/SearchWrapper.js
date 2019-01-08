@@ -21,7 +21,7 @@ const SearchWrapper = (props) => {
                             }
                         },
                         id:obj.nid,
-                        sponsoredBy:null
+                        sponsoredBy: obj.field_3p_special_series === "" ? null : obj.field_3p_special_series
                     }
 
                     return <StoryMasonryTile data={story} key={obj.nid} />
