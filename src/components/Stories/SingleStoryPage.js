@@ -4,6 +4,7 @@ import {Query} from "react-apollo";
 
 import styles from './SingleStoryPage.module.scss';
 import { StoryByIdQuery } from "./StoryQueries";
+import Ad from "../Ads/Ad";
 
 class SingleStoryPage extends Component {
   constructor(props) {

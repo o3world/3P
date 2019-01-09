@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FeedItem from './FeedItem';
+import Ad from "../Ads/Ad";
 
 import styles from './TheFeedPage.module.scss';
 
