@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import TheFeedPage from "./components/Feed/TheFeedPage";
 import EditorsPage from "./components/Editors/EditorsPage";
 import SingleEditorPage from "./components/Editors/SingleEditorPage";
+import NewsletterSignupForm from './components/NewsletterSignup/NewsletterSignupForm';
 import SeachResult from './components/Search/SearchResults';
 import SearchForm from './components/Search/SearchForm';
 
@@ -17,7 +18,6 @@ import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faBars, faSpinner } from '@fortawesome/free-solid-svg-icons';
@@ -61,24 +61,25 @@ class App extends Component {
 
   render() {
     return (
-        <Router>
-            <div className="App">
-              <ApolloProvider client={client}>
-                <Header site_title={this.state.pageTitle}/>
-                <SearchForm/>
-                <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
-                <Route path={Routes.THEFEED} render={(props) => <TheFeedPage {...props} />}/>
-                <Route path={Routes.EDITORS} component={EditorsPage}/>
-                <Route path={Routes.SINGLEEDITOR} component={SingleEditorPage}/>
-                <Route exact path={Routes.SPONSOREDSERIESALL} component={SponsoredSeriesAll}/>
-                <Route path={Routes.SINGLESPONSOREDSERIES} component={SingleSeriesPage}/>
-                <Route path={Routes.STORIES} component={StoriesPage}/>
-                <Route path={Routes.SINGLESTORY} component={SingleStoryPage}/>
-                <Route path={Routes.SEARCH} component={SeachResult}/>
-                <Footer/>
-              </ApolloProvider>
-            </div>
-        </Router>
+      <Router>
+        <div className="App">
+          <ApolloProvider client={client}>
+            <Header site_title={this.state.pageTitle}/>
+            <NewsletterSignupForm/>
+            <SearchForm/>
+            <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
+            <Route path={Routes.THEFEED} render={(props) => <TheFeedPage {...props} />}/>
+            <Route path={Routes.EDITORS} component={EditorsPage}/>
+            <Route path={Routes.SINGLEEDITOR} component={SingleEditorPage}/>
+            <Route exact path={Routes.SPONSOREDSERIESALL} component={SponsoredSeriesAll}/>
+            <Route path={Routes.SINGLESPONSOREDSERIES} component={SingleSeriesPage}/>
+            <Route path={Routes.STORIES} component={StoriesPage}/>
+            <Route path={Routes.SINGLESTORY} component={SingleStoryPage}/>
+            <Route path={Routes.SEARCH} component={SeachResult}/>
+            <Footer/>
+          </ApolloProvider>
+        </div>
+      </Router>
     );
   }
 }
