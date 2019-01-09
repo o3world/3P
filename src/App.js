@@ -11,6 +11,8 @@ import TheFeedPage from "./components/Feed/TheFeedPage";
 import EditorsPage from "./components/Editors/EditorsPage";
 import SingleEditorPage from "./components/Editors/SingleEditorPage";
 import NewsletterSignupForm from './components/NewsletterSignup/NewsletterSignupForm';
+import SeachResult from './components/Search/SearchResults';
+import SearchForm from './components/Search/SearchForm';
 
 import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from 'react-apollo';
@@ -64,6 +66,7 @@ class App extends Component {
           <ApolloProvider client={client}>
             <Header site_title={this.state.pageTitle}/>
             <NewsletterSignupForm/>
+            <SearchForm/>
             <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
             <Route path={Routes.THEFEED} render={(props) => <TheFeedPage {...props} />}/>
             <Route path={Routes.EDITORS} component={EditorsPage}/>
@@ -72,6 +75,7 @@ class App extends Component {
             <Route path={Routes.SINGLESPONSOREDSERIES} component={SingleSeriesPage}/>
             <Route path={Routes.STORIES} component={StoriesPage}/>
             <Route path={Routes.SINGLESTORY} component={SingleStoryPage}/>
+            <Route path={Routes.SEARCH} component={SeachResult}/>
             <Footer/>
           </ApolloProvider>
         </div>
