@@ -44,6 +44,7 @@ class SingleStoryPage extends Component {
                 <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
                 <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
               </div>
+              <Ad adUnit={'StoryDetailPage_Bottom'}/>
             </div>
         )
       }
