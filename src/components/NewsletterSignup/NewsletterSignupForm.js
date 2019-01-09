@@ -1,7 +1,7 @@
 import React from 'react';
 import { SENDGRID } from '../Common/Constants';
 
-class NewsletterSignup extends React.Component {
+class NewsletterSignupForm extends React.Component {
   constructor( props ) {
     super(props);
     this.state = {
@@ -102,4 +102,4 @@ class NewsletterSignup extends React.Component {
   }
 }
 
-export default NewsletterSignup;
+export default NewsletterSignupForm;

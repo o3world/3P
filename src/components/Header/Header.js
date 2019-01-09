@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import NewsletterSignup from '../NewsletterSignup/NewsletterSignup';
 import styles from './Header.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,7 +12,6 @@ const Header = () =>
       <Link to={'/'}><img className={styles.logo} src={logo__large} alt={'3bl logo'} /></Link>
       <FontAwesomeIcon className={styles.searchButton} icon={"search"} />
       <FontAwesomeIcon className={styles.hamburgerButton} icon={"bars"} />
-      <NewsletterSignup/>
     </header>;
 
 export default Header;
