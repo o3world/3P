@@ -12,9 +12,9 @@ class HomeTheFeed extends Component {
   }
 
   componentDidMount() {
-    fetch('https://3blmedia.com/api/v1/feed')
+    fetch('https://3blmedia.com/feeds/fmr/csrwire')
         .then(response => response.json())
-        .then(data => this.setState({ data: data.results }));
+        .then(data => this.setState({ data: data.data.results }));
   }
 
   render() {
