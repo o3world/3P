@@ -27,12 +27,22 @@ const EditorBio = (props) => {
 
       let twitterIcon;
       if (editor.twitterUsername !== null) {
-        twitterIcon = <a href={'https://twitter.com/' + editor.twitterUsername} target={'_blank'} className={styles.twitterIcon}><FontAwesomeIcon className={styles.socialIcon} icon={["fab", "twitter"]} /> @{editor.twitterUsername}</a>;
+        twitterIcon = <a href={'https://twitter.com/' + editor.twitterUsername} target={'_blank'} className={styles.twitterIcon}><FontAwesomeIcon className={styles.socialIcon} icon={["fab", "twitter"]} /></a>;
       }
 
       let instagramIcon;
       if (editor.instagramUsername !== null) {
-        instagramIcon = <a href={'https://instagram.com/' + editor.instagramUsername} target={'_blank'} className={styles.instagramIcon}><FontAwesomeIcon className={styles.socialIcon} icon={["fab", "instagram"]} /> {editor.instagramUsername}</a>;
+        instagramIcon = <a href={'https://instagram.com/' + editor.instagramUsername} target={'_blank'} className={styles.instagramIcon}><FontAwesomeIcon className={styles.socialIcon} icon={["fab", "instagram"]} /></a>;
+      }
+
+      let linkedinIcon;
+      if (editor.linkedinUsername !== null) {
+        linkedinIcon = <a href={'https://www.linkedin.com/in/' + editor.linkedinUsername} target={'_blank'} className={styles.linkedinIcon}><FontAwesomeIcon className={styles.socialIcon} icon={["fab", "linkedin"]} /></a>
+      }
+
+      let emailIcon;
+      if (editor.email !== null) {
+        emailIcon = <a href={'mailto:' + editor.email} className={styles.emailIcon}><FontAwesomeIcon className={styles.socialIcon} icon={'envelope'} /></a>
       }
 
       return (
@@ -46,6 +56,8 @@ const EditorBio = (props) => {
               <div className={styles.socialWrapper}>
                 {twitterIcon}
                 {instagramIcon}
+                {linkedinIcon}
+                {emailIcon}
               </div>
             </div>
             <div className={styles.bio}>

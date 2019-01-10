@@ -4,6 +4,7 @@ import {Query} from "react-apollo";
 
 import styles from './SingleStoryPage.module.scss';
 import { StoryByIdQuery } from "./StoryQueries";
+import Ad from "../Ads/Ad";
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class SingleStoryPage extends Component {
                 <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
                 <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
               </div>
+              <Ad adUnit={'StoryDetailPage_Bottom'}/>
             </div>
         )
       }

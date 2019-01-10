@@ -7,7 +7,7 @@ const Routes = {
     "CONTACT": "/contact",
     "STORIES": "/stories",
     "SINGLESTORY": "/story/:id",
-    "SEARCH": "/search"
+    "SEARCH": "/search/:searchterm"
 };
 
 export default Routes;

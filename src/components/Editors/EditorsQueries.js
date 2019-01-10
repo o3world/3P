@@ -14,8 +14,10 @@ const SingleEditorBioQuery = gql`
     roles {
         targetId
     }
+        email: fieldPublicEmailAddress
      twitterUsername: fieldTwitterUsername
       instagramUsername: fieldInstagramUsername
+        linkedinUsername: fieldLinkedinUsername
       jobTitle: fieldJobTitle
   }  
 }`;
@@ -96,8 +98,10 @@ query editors{
         headshot: userPicture {
           url
         }
+        email: fieldPublicEmailAddress
         twitterUsername: fieldTwitterUsername
         instagramUsername: fieldInstagramUsername
+        linkedinUsername: fieldLinkedinUsername
         jobTitle: fieldJobTitle
       }
     }

@@ -1,5 +1,6 @@
 import React from 'react';
 import EditorCardsWrapper from './EditorCardsWrapper';
+import Contributors from './Contributors';
 
 import styles from './EditorsPage.module.scss';
 
@@ -14,8 +15,11 @@ class EditorsPage extends React.Component {
           <img src={HeroImage} alt={'Editors Page Hero'} />
           <h1 className={styles.pageTitle}>Editors</h1>
         </div>
-        <p className={styles.editorsDescription}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem perpetuam quis potest praestare sapienti? Quo tandem modo? Et quidem, inquit, vehementer errat; Duo Reges: constructio interrete. Quamquam ab iis philosophiam et omnes ingenuas disciplinas habemus; Tu quidem reddes; Nec vero sum nescius esse utilitatem in historia, non modo voluptatem. Indicant pueri, in quibus ut in speculis natura cernitur. Expressa vero in iis aetatibus, quae iam confirmatae sunt. Ut placet, inquit, etsi enim illud erat aptius, aequum cuique concedere. His similes sunt omnes, qui virtuti student levantur vitiis, levantur erroribus, nisi forte censes Ti. Non quam nostram quidem, inquit Pomponius iocans;</p>
+        <div className={styles.editorsDescription}>
+          <p>For over a decade, TriplePundit has reported on the intersection of people, planet and profit, believing business can be a force for good. We make the business case for corporate responsibility and sustainability, and the private sector's leadership to secure social justice and fair economic opportunities for all. The bottom line: Triple Pundit reports on the business of doing better.</p>
+          <p>Triple Pundit provides conceptual context for a readership of CSR and sustainability professionals, C-suite executives, the corporate workforce, journalists, academics, activists, NGOs, and concerned citizens. A staff of expert writers contributes analysis, insights, and opinion on issues at the top of today&#39;s business agenda. Those issues include climate change, diversity and inclusion, socially responsible investment, employee engagement, corporate governance, and responsible supply chain management.</p></div>
         <EditorCardsWrapper/>
+        <Contributors/>
       </section>
     )
   }
