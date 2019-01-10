@@ -1,21 +1,38 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import HamburgerButton from './HamburgerButton';
+import HamburgerMenu from './HamburgerMenu';
+import styles from './HamburgerNav.module.scss';
 
 class HamburgerNav extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {"isExpanded": false};
+    this.state = {
+      visible: false
+    };
+
+    this.toggleMenu = this.toggleMenu.bind(this);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+  }
+
+  toggleMenu() {
+    this.setState({
+      visible: !this.state.visible
+    });
+  }
+
+  handleMouseDown(e) {
+    this.toggleMenu();
+
+    console.log("clicked");
+    e.stopPropagation();
   }
 
   render() {
     return (
-        <nav>
-          <Link to={'/'}>Home</Link>
-          <Link to={'/stories'}>Stories</Link>
-          <Link to={'/sponsored-series'}>Sponsored Series</Link>
-          <Link to={'/editors'}>Editors</Link>
-          <Link to={'/the-feed'}>The Feed</Link>
-        </nav>
+        <div className={styles.nav}>
+          <HamburgerButton handleMouseDown={this.handleMouseDown}/>
+          <HamburgerMenu handleMouseDown={this.handleMouseDown} menuVisibility={this.state.visible}/>
+        </div>
     )
   }
 
