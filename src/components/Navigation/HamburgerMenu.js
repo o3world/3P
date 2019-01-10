@@ -11,7 +11,7 @@ class HamburgerMenu extends Component {
     }
 
     return (
-        <div onMouseDown={this.props.handleMouseDown} className={styles.menu + ' ' + visibility}>
+        <div onClick={this.props.handleMouseDown} className={styles.menu + ' ' + visibility}>
           <nav className={styles.navList}>
             <Link to={'/'}>Home</Link>
             <Link to={'/stories'}>Stories</Link>

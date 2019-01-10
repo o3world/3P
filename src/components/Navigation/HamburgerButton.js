@@ -5,7 +5,7 @@ import styles from './HamburgerButton.module.scss';
 class HamburgerButton extends Component {
   render() {
     return (
-        <div id={'hamburgerButton'} className={styles.bars} onMouseDown={this.props.handleMouseDown}><FontAwesomeIcon icon={"bars"} /></div>
+        <div id={'hamburgerButton'} className={styles.bars} onClick={this.props.handleMouseDown}><FontAwesomeIcon icon={"bars"} /></div>
     )
   }
 }
