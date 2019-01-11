@@ -39,9 +39,9 @@ const client = new ApolloClient({
 
 const tagManagerArgs = {
     gtmId: 'GTM-PC3786R'
-}
+};
 
-TagManager.initialize(tagManagerArgs)
+TagManager.initialize(tagManagerArgs);
 
 library.add( faTwitter, faInstagram, faLinkedin, faSearch, faBars, faSpinner, faEnvelope );
 
