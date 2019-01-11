@@ -6,7 +6,7 @@ const Routes = {
     "THEFEED": "/the-feed",
     "CONTACT": "/contact",
     "STORIES": "/stories",
-    "SINGLESTORY": "/story/:id",
+    "SINGLESTORY": "/story/:year/:path/:id",
     "SEARCH": "/search/:searchterm"
 };
 

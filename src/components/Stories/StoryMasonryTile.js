@@ -4,11 +4,10 @@ import LazyLoad from 'react-lazyload';
 import Moment from 'react-moment';
 import styles from './StoryMasonryTile.module.scss';
 
-import ConvertSeoUrl from "../Common/createSeoUrl";
-
 const StoryMasonryTile = (props) => {
   const story = {...props.data};
-  let seoLink = '/story/' + story.id + '/' + ConvertSeoUrl(story.title);
+  var year = <Moment format="YYYY">{story.date}</Moment>;
+  let seoLink = '/story/' + year + story.entityUrl.path + '/' + story.id;
 
   let backgroundImage = "";
     if(story.tallImage) {
