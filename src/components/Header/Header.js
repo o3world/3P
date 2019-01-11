@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
+import HamburgerNav from '../Navigation/HamburgerNav';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import logo__large from '../../assets/images/3P_Logo_Homepage_Large.png';
 
@@ -11,7 +12,7 @@ const Header = () =>
 
       <Link to={'/'}><img className={styles.logo} src={logo__large} alt={'3bl logo'} /></Link>
       <FontAwesomeIcon className={styles.searchButton} icon={"search"} />
-      <FontAwesomeIcon className={styles.hamburgerButton} icon={"bars"} />
+      <HamburgerNav/>
     </header>;
 
 export default Header;
