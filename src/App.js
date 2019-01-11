@@ -38,16 +38,6 @@ const client = new ApolloClient({
 
 library.add( faTwitter, faInstagram, faLinkedin, faSearch, faBars, faSpinner, faEnvelope );
 
-var socket = io('ws://localhost:5000', {transports: ['websocket']});
-socket.on('connect', function () {
-  console.log('connected!');
-  socket.emit('greet', { message: 'Hello Mr.Server!' });
-});
-
-socket.on('respond', function (data) {
-  console.log(data);
-});
-
 class App extends Component {
   constructor(props) {
     super(props);
