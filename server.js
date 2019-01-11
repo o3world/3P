@@ -3,6 +3,9 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
 
+var server = require('http').createServer(app);
+var io = require('socket.io')(server, { path: '/_socket' });
+io.set('transports', ['websocket']);
 
 app.use(express.static(path.join(__dirname, "build")));
 
