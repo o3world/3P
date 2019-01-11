@@ -6,7 +6,8 @@ import styles from './StoryMasonryTile.module.scss';
 
 const StoryMasonryTile = (props) => {
   const story = {...props.data};
-  var year = <Moment format="YYYY">{story.date}</Moment>;
+  var year = Date(story.date);
+  year = year.getFullYear();
   let seoLink = '/story/' + year + story.entityUrl.path + '/' + story.id;
 
   let backgroundImage = "";
