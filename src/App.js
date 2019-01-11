@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import 'babel-polyfill';
+import TagManager from 'react-gtm-module';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import Header from "./components/Header/Header";
@@ -34,6 +36,12 @@ const client = new ApolloClient({
   link: httpLink,
   cache: new InMemoryCache()
 });
+
+const tagManagerArgs = {
+    gtmId: 'GTM-PC3786R'
+};
+
+TagManager.initialize(tagManagerArgs);
 
 library.add( faTwitter, faInstagram, faLinkedin, faSearch, faBars, faSpinner, faEnvelope );
 
