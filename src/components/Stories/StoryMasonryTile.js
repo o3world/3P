@@ -4,11 +4,9 @@ import LazyLoad from 'react-lazyload';
 import Moment from 'react-moment';
 import styles from './StoryMasonryTile.module.scss';
 
-import ConvertSeoUrl from "../Common/createSeoUrl";
-
 const StoryMasonryTile = (props) => {
   const story = {...props.data};
-  let seoLink = '/story/' + story.id + '/' + ConvertSeoUrl(story.title);
+  const link = '/story/' + new Date(story.date).getFullYear() + story.entityUrl.path + '/' + story.id + '/';
 
   let backgroundImage = "";
     if(story.tallImage) {
@@ -29,12 +27,11 @@ const StoryMasonryTile = (props) => {
     <LazyLoad height={200}>
       <div className={styles.tile}
            style={{backgroundImage: `url(` + backgroundImage + `)`}}>
-        <h2 className={styles.title}><a href={seoLink}>{story.title}</a></h2>
+        <h2 className={styles.title}><a href={link}>{story.title}</a></h2>
         {category}
         {sponsored}
         <p className={styles.author}>Words by {story.author.name}</p>
-        <time className={styles.date}><Moment
-            format="MMM DD">{story.date}</Moment></time>
+        <Moment className={styles.date} format="MMM DD">{story.date}</Moment>
       </div>
     </LazyLoad>
   )

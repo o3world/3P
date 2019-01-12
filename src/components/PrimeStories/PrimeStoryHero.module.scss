@@ -46,6 +46,11 @@ $tp_color--primary: #006BFF;
         line-height: 2.6rem;
         letter-spacing: 1px;
         margin: 14px 0;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
     }
 
     .author {

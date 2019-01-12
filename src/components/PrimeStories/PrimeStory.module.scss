@@ -78,6 +78,11 @@
     font-size: 1.7rem;
     font-family: 'Unna', serif;
     line-height: 1.7rem;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 .author {
