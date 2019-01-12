@@ -4,7 +4,7 @@ import PrimeStoriesWrapper from "../PrimeStories/PrimeStoriesWrapper";
 import HomeTheFeed from "../Feed/HomeTheFeed";
 import HomeForum from "../Forum/HomeForum";
 import HomeAssoc from "../Association/HomeAssoc";
-import HomeMultimedia from "./HomeMultimedia";
+import HomeVideo from "./HomeVideo";
 import HomeBTS from "../BTS/HomeBTS";
 import Ad from "../Ads/Ad";
 import EditorCardsWrapper from "../Editors/EditorCardsWrapper";
@@ -18,7 +18,7 @@ const Home = () => {
           <Ad adUnit={'Homepage_AfterTheFeed'}/>
           <div className={styles.bts_podcastWrapper}>
             <HomeBTS/>
-            <HomeMultimedia/>
+            <HomeVideo/>
           </div>
           <div className={styles.eventsWrapper}>
             <HomeAssoc/>
