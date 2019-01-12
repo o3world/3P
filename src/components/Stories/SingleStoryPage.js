@@ -39,7 +39,7 @@ class SingleStoryPage extends Component {
                 {headshot}
                 <span className={styles.authorName}>Words by {fullName}</span>
                 <span className={styles.category}>{story.category.entity.name}</span>
-                <time className={styles.date}><Moment format="MMM DD">{story.date}</Moment></time>
+                <Moment className={styles.date} format="MMM DD">{story.date}</Moment>
               </div>
               <div className={styles.bodyWrapper}>
                 <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />

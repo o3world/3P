@@ -9,7 +9,7 @@ const HomeFeedItem = (props) => {
   return (
       <div className="feed-item" style={{backgroundImage: `url(${props.image})`}}>
           <div className="feed-item__meta-container">
-            <time className="feed-item__published-date"><Moment format={'MMM DD'} fromNowDuring={timeFromNowDuring}>{props.date}</Moment></time>
+            <Moment className="feed-item__published-date" format={'MMM DD'} fromNowDuring={timeFromNowDuring}>{props.date}</Moment>
               <h3 className="feed-item__name">{props.title}</h3>
           </div>
       </div>

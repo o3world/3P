@@ -22,7 +22,7 @@ const FeedItem = (props) => {
         <div className={styles.description} dangerouslySetInnerHTML={ {__html: props.body.slice(0,200)} } />
         <span className={styles.company} dangerouslySetInnerHTML={ {__html: company}} />
         <span className={styles.category}>{props.category}</span>
-        <time className={styles.date}><Moment format="MMM DD">{props.date}</Moment></time>
+        <Moment className={styles.date} format="MMM DD">{props.date}</Moment>
       </div>
     </div>
   )
