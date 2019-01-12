@@ -6,9 +6,7 @@ import styles from './StoryMasonryTile.module.scss';
 
 const StoryMasonryTile = (props) => {
   const story = {...props.data};
-  var year = new Date(story.date);
-  year = year.getFullYear();
-  let seoLink = '/story/' + year + story.entityUrl.path + '/' + story.id;
+  const link = '/story/' + new Date(story.date).getFullYear() + story.entityUrl.path + '/' + story.id + '/';
 
   let backgroundImage = "";
     if(story.tallImage) {
@@ -29,12 +27,11 @@ const StoryMasonryTile = (props) => {
     <LazyLoad height={200}>
       <div className={styles.tile}
            style={{backgroundImage: `url(` + backgroundImage + `)`}}>
-        <h2 className={styles.title}><a href={seoLink}>{story.title}</a></h2>
+        <h2 className={styles.title}><a href={link}>{story.title}</a></h2>
         {category}
         {sponsored}
         <p className={styles.author}>Words by {story.author.name}</p>
-        <time className={styles.date}><Moment
-            format="MMM DD">{story.date}</Moment></time>
+        <Moment className={styles.date} format="MMM DD">{story.date}</Moment>
       </div>
     </LazyLoad>
   )

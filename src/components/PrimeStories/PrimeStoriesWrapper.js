@@ -23,6 +23,7 @@ query storyQuery {
   {
     entities {
 			... on NodeStory {
+			  id: nid
         title
         author: entityOwner {
           first: fieldFirstName
@@ -30,6 +31,9 @@ query storyQuery {
           headshot: userPicture { url }
         }
         date: created
+        entityUrl {
+          path
+        }
         category: fieldPrimaryCategory { entity { name } }
         body: fieldContent {
           processed
