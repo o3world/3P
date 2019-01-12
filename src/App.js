@@ -74,7 +74,6 @@ class App extends Component {
           <ApolloProvider client={client}>
             <Header site_title={this.state.pageTitle}/>
             <NewsletterSignupForm/>
-            <SearchForm/>
             <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
             <Route path={Routes.THEFEED} render={(props) => <TheFeedPage {...props} />}/>
             <Route path={Routes.EDITORS} component={EditorsPage}/>

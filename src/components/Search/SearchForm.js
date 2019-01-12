@@ -1,14 +1,21 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+import styles from './SearchForm.module.scss';
+
 class SearchForm extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             value: "",
-            validate: false
-        }
+            validate: false,
+          visible: props.visible
+        };
+
+        this.onChangeHandler = this.onChangeHandler.bind(this);
+        this.searchHandler = this.searchHandler.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     onChangeHandler = (e) => {
@@ -42,14 +49,25 @@ class SearchForm extends React.Component {
         }
     };
 
+
     render() {
-        return (
-            <div>
-                <input type="text" onChange={(e) => this.onChangeHandler(e)} onKeyPress={(e) => this.handleKeyPress(e)} value={this.state.value}></input>
-                <button onClick={this.searchHandler}>Search</button>
-                {this.state.validate ? <h3>Please enter value</h3> : null}
-            </div>
-        )
+
+      let formClass = styles.formWrapper;
+      if (this.state.visible) {
+        formClass = formClass + ' ' + styles.open;
+      }
+      else {
+        formClass = formClass + ' ' + styles.closed;
+      }
+
+      return (
+          <div className={formClass}>
+            {console.log(this.state.visible)}
+              <input type="text" onChange={(e) => this.onChangeHandler(e)} onKeyPress={(e) => this.handleKeyPress(e)} value={this.state.value}></input>
+              <button onClick={this.searchHandler}>Search</button>
+              {this.state.validate ? <h3>Please enter value</h3> : null}
+          </div>
+      )
     }
 }
 

@@ -66,10 +66,11 @@
 }
 
 .date {
-    grid-area: date;
-    justify-self: end;
-    font-size: 0.7rem;
-    text-transform: uppercase;
+  grid-area: date;
+  justify-self: end;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
 }
 
 .title {

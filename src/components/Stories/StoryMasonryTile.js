@@ -32,7 +32,7 @@ const StoryMasonryTile = (props) => {
     <LazyLoad height={200}>
       <div className={styles.tile}
            style={{backgroundImage: `url(` + backgroundImage + `)`}}>
-        <h2 className={styles.title}><a href={link}>{story.title}</a></h2>
+        <h2 className={styles.title}><a href={link} dangerouslySetInnerHTML={{__html: story.title}}/></h2>
         {category}
         {sponsored}
         <p className={styles.author}>Words by {author}</p>
