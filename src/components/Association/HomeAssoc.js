@@ -8,7 +8,7 @@ const HomeAssoc = () => {
     backgroundImage: `url(${assoc_background})`
   };
     return (
-        <a target='_blank' href='http://www.3blassociation.com/'>
+        <a target='_blank' rel="noopener noreferrer" href='http://www.3blassociation.com/'>
           <div className={styles.wrapper} style={homeAssocStyle}>
             <div className={styles.meta}>
               <div className={styles.tag}>3BL Association</div>
