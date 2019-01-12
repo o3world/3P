@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styles from './ShareMenu.module.scss';
-import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class ShareMenu extends Component {
@@ -11,12 +10,15 @@ class ShareMenu extends Component {
       visibility = styles.show;
     }
 
+    const currentURL = window.location.href;
+    console.log(currentURL);
+
     return (
         <div onClick={this.props.handleMouseDown} className={styles.socialMenu + ' ' + visibility}>
           <nav className={styles.navList}>
-            <Link to={'/'}><FontAwesomeIcon icon={['fab', 'facebook-f']} /></Link>
-            <Link to={'/stories'}><FontAwesomeIcon icon={['fab', 'twitter']} /></Link>
-            <Link to={'/the-feed'}><FontAwesomeIcon icon={['fab', 'linkedin']} /></Link>
+            <a href={'https://www.facebook.com/sharer/sharer.php?u=' + currentURL}><FontAwesomeIcon icon={['fab', 'facebook-f']} /></a>
+            <a href={'https://twitter.com/home?status=' + currentURL}><FontAwesomeIcon icon={['fab', 'twitter']} /></a>
+            <a href={'https://www.linkedin.com/shareArticle?mini=true&url=' + currentURL}><FontAwesomeIcon icon={['fab', 'linkedin']} /></a>
           </nav>
         </div>
     )
