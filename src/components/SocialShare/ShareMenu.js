@@ -12,11 +12,10 @@ class ShareMenu extends Component {
     }
 
     return (
-        <div onClick={this.props.handleMouseDown} className={styles.menu + ' ' + visibility}>
+        <div onClick={this.props.handleMouseDown} className={styles.socialMenu + ' ' + visibility}>
           <nav className={styles.navList}>
             <Link to={'/'}><FontAwesomeIcon icon={['fab', 'facebook-f']} /></Link>
             <Link to={'/stories'}><FontAwesomeIcon icon={['fab', 'twitter']} /></Link>
-            <Link to={'/sponsored-series'}><FontAwesomeIcon icon={['fab', 'google']} /></Link>
             <Link to={'/the-feed'}><FontAwesomeIcon icon={['fab', 'linkedin']} /></Link>
           </nav>
         </div>

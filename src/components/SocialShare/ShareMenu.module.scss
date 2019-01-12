@@ -1,24 +1,18 @@
-.menu {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  grid-template-areas: ". navlist";
-  width: 10vw;
-  height: 100vh;
-  background-color: rgba(black, 0.3);
-  position: fixed;
-  top: 0;
-  right: 0;
-  transition: transform .3s
+.socialMenu {
+  width: 150px;
+  transition: transform .5s
   cubic-bezier(0, .52, 0, 1);
   overflow: scroll;
   z-index: 1000;
-
+  float: right;
+  margin-right: 3vw;
+  margin-top: -2px;
   &.hide {
-    transform: translate3d(100vw, 0, 0);
+    transform: scale3d(0, 0, 0)
   }
 
   &.show {
-    transform: translate3d(0vw, 0, 0);
+    transform: scale3d(100vw, 100vh, 0);
     overflow: hidden;
   }
 }
@@ -26,15 +20,14 @@
 .navList {
   grid-area: navlist;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   background-color: black;
-  padding: 20px;
 
   a {
     margin: 13px;
     color: white;
     font-size: 16px;
-    text-align: left;
+    text-align: center;
     text-decoration: none;
     font-family: Montserrat;
     font-weight: bold;
