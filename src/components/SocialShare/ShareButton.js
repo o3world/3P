@@ -4,7 +4,7 @@ import styles from './ShareButton.module.scss';
 class ShareButton extends Component {
   render() {
     return (
-        <div id={'shareButton'} className={styles.bars} onClick={this.props.handleMouseDown}>Share</div>
+        <div id={'shareButton'} className={styles.buttonStyle} onClick={this.props.handleMouseDown}>Share</div>
     )
   }
 }
