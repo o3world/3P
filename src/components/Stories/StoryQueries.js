@@ -84,6 +84,8 @@ query story {
         }
         author: entityOwner {
           name
+          firstName:fieldFirstName
+          lastName: fieldLastName
         }
         entityUrl {
           path
@@ -116,7 +118,8 @@ query story {
       
     }
   }  
-}`;
+}
+`;
 
 const StoriesBySeriesId = gql`
 query story($id: String!) {
@@ -133,6 +136,9 @@ query story($id: String!) {
       ... on NodeStory {
         title
         id: nid
+        entityUrl {
+          path
+        }    
         sponsoredBy: field3pSpecialSeries {
           targetId
           entity {
@@ -152,6 +158,8 @@ query story($id: String!) {
         }
         author: entityOwner {
           name
+          firstName:fieldFirstName
+          lastName: fieldLastName
         }
         wideImage: fieldFeaturedImageWide {
           url

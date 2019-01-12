@@ -14,13 +14,18 @@ const StoryMasonryTile = (props) => {
     }
 
   let sponsored;
-  if (story.sponsoredBy !== null) {
+  if (story.sponsoredBy) {
     sponsored = <p className={styles.sponsored}>SPONSORED</p>;
   }
 
   let category;
   if (story.category) {
-    category = <p className={styles.category}>{story.category.entity.name}</p>;
+    category = <p className={styles.category} dangerouslySetInnerHTML={{__html: story.category.entity.name}} />;
+  }
+
+  let author = story.author.name;
+  if (story.author.firstName && story.author.lastName) {
+    author = story.author.firstName + ' ' + story.author.lastName;
   }
 
   return (
@@ -30,7 +35,7 @@ const StoryMasonryTile = (props) => {
         <h2 className={styles.title}><a href={link}>{story.title}</a></h2>
         {category}
         {sponsored}
-        <p className={styles.author}>Words by {story.author.name}</p>
+        <p className={styles.author}>Words by {author}</p>
         <Moment className={styles.date} format="MMM DD">{story.date}</Moment>
       </div>
     </LazyLoad>

@@ -14,13 +14,11 @@ class SearchForm extends React.Component {
     onChangeHandler = (e) => {
         if(this.state.value !== e.target.value) {
             this.setState({
-                ...this.state,
                 value: e.target.value,
                 validate: false
             })
         } else {
             this.setState({
-                ...this.state,
                 validate: true
             })
         }
@@ -29,7 +27,6 @@ class SearchForm extends React.Component {
     searchHandler = () => {
         if(this.state.value === "" && this.state.validate === false) {
             this.setState({
-                ...this.state,
                 validate: true
             })
         } else {
@@ -48,7 +45,7 @@ class SearchForm extends React.Component {
     render() {
         return (
             <div>
-                <input type="text" onChange={(e) => this.onChangeHandler(e)} onKeyPress={(e) => this.handleKeyPress(e)}></input>
+                <input type="text" onChange={(e) => this.onChangeHandler(e)} onKeyPress={(e) => this.handleKeyPress(e)} value={this.state.value}></input>
                 <button onClick={this.searchHandler}>Search</button>
                 {this.state.validate ? <h3>Please enter value</h3> : null}
             </div>

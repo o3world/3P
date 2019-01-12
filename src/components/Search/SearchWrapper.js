@@ -15,6 +15,9 @@ const SearchWrapper = (props) => {
                     tallImage: {
                         url: obj.field_featured_image_tall
                     },
+                    entityUrl: {
+                        path: '/this-is-the-story-path/' // @TODO Add the real path here
+                    },
                     category: {
                         entity: {
                             name: obj.field_primary_category
