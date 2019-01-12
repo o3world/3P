@@ -23,7 +23,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faBars, faSpinner, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter, faInstagram, faLinkedin, faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 import Routes from './components/Common/RoutesConfig';
 import SingleStoryPage from "./components/Stories/SingleStoryPage";
@@ -43,7 +43,7 @@ const tagManagerArgs = {
 
 TagManager.initialize(tagManagerArgs);
 
-library.add( faTwitter, faInstagram, faLinkedin, faSearch, faBars, faSpinner, faEnvelope );
+library.add( faTwitter, faInstagram, faLinkedin, faSearch, faBars, faSpinner, faEnvelope, faFacebookF, faGoogle );
 
 class App extends Component {
   constructor(props) {
