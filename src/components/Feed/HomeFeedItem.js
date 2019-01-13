@@ -10,7 +10,7 @@ const HomeFeedItem = (props) => {
       <div className="feed-item" style={{backgroundImage: `url(${props.image})`}}>
           <div className="feed-item__meta-container">
             <Moment className="feed-item__published-date" format={'MMM DD'} fromNowDuring={timeFromNowDuring}>{props.date}</Moment>
-              <h3 className="feed-item__name">{props.title}</h3>
+              <h3 className="feed-item__name"><a target='_blank' rel="noopener noreferrer" href={props.link}>{props.title}</a></h3>
           </div>
       </div>
   )
