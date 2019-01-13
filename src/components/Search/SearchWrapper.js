@@ -16,7 +16,7 @@ const SearchWrapper = (props) => {
                         url: obj.field_featured_image_tall
                     },
                     entityUrl: {
-                        path: '/this-is-the-story-path/' // @TODO Add the real path here
+                        path: obj.url
                     },
                     category: {
                         entity: {
@@ -26,7 +26,9 @@ const SearchWrapper = (props) => {
                     id: obj.nid,
                     sponsoredBy: obj.field_3p_special_series === "" ? null : obj.field_3p_special_series,
                     author: {
-                      name: obj.uid
+                      name: obj.uid,
+                      firstName: obj.field_first_name,
+                      lastName: obj.field_last_name
                     },
                 };
 
