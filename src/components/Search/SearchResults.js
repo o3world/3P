@@ -2,6 +2,8 @@ import React from 'react';
 import SearchWrapper from './SearchWrapper';
 import { SEARCH_API } from '../Common/constant';
 
+import styles from './SearchResults.module.scss';
+
 class SearchResult extends React.Component {
 
     constructor(props) {
@@ -28,7 +30,6 @@ class SearchResult extends React.Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({
-                    ...this.state,
                     data: data.length > 0 ? data : null,
                     message : `Results for ${this.props.match.params.searchterm}`,
                     loading : false
@@ -42,8 +43,7 @@ class SearchResult extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>{this.state.message}</h1>
+            <div className={styles.wrapper}>
                 {!this.state.loading ? this.state.data === null ? <h1>No Results Found</h1> : null : null}
                 {this.state.loading ? <h1>Loading...</h1> :<SearchWrapper data={this.state.data}/> }
             </div>

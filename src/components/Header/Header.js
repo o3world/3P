@@ -22,15 +22,16 @@ class Header extends Component {
     this.setState({
       isSearchVisible: !this.state.isSearchVisible
     });
+    console.log('SearchForm visible: ' + this.state.isSearchVisible);
   }
 
   render() {
     return (
       <header className={styles.wrapper}>
         <Link to={'/'}><img className={styles.logo} src={logo__large} alt={'3bl logo'} /></Link>
-        <div className={styles.searchButton}><SearchButton handleClick={this.toggleSearchForm}/></div>
+        <div className={styles.searchButton}><SearchButton handleClick={this.toggleSearchForm} visible={this.state.isSearchVisible}/></div>
         <HamburgerNav/>
-        <SearchForm visible={this.state.isSearchVisible}/>
+        <SearchForm visible={this.state.isSearchVisible} formClass={styles.searchForm}/>
       </header>
     )
   }
