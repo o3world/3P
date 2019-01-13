@@ -8,14 +8,12 @@ const HomeForum = () => {
     backgroundImage: `url(${forum_background})`
   };
     return (
-        <a target='_blank' rel="noopener noreferrer" href='http://www.3blforum.com/'>
-          <div className={styles.wrapper} style={homeForumStyle}>
-            <div className={styles.meta}>
-              <div className={styles.tag}>3BL Forum</div>
-              <h3 className={styles.title}>Join the Event that Matters</h3>
-            </div>
-          </div>
-        </a>
+      <a target='_blank' rel="noopener noreferrer" href='http://www.3blforum.com/' className={styles.wrapper} style={homeForumStyle}>
+        <div className={styles.meta}>
+          <div className={styles.tag}>3BL Forum</div>
+          <h3 className={styles.title}>Join the Event that Matters</h3>
+        </div>
+      </a>
     )
 };
 

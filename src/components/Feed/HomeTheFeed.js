@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import HomeFeedItem from './HomeFeedItem';
 import './HomeTheFeed.css';
-import {Link} from "react-router-dom";
 
 class HomeTheFeed extends Component {
   constructor(props) {
