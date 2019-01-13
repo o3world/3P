@@ -18,7 +18,7 @@ const FeedItem = (props) => {
     <div className={thumbnailClass}>
       {feedThumbnail}
       <div className={styles.meta}>
-        <h2 className={styles.title}><a href={props.link}>{props.title}</a></h2>
+        <h2 className={styles.title}><a target='_blank' rel="noopener noreferrer" href={props.link}>{props.title}</a></h2>
         <div className={styles.description} dangerouslySetInnerHTML={ {__html: props.body.slice(0,200)} } />
         <span className={styles.company} dangerouslySetInnerHTML={ {__html: company}} />
         <span className={styles.category}>{props.category}</span>
