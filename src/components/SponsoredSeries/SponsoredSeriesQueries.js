@@ -8,7 +8,7 @@ const AllSponsoredSeriesQuery = gql`
       ]},
       sort: [
         {field: "field_featured_series", direction: DESC},
-        {field: "changed", direction: DESC} 
+        {field: "changed", direction: DESC}
     ]
   ) {
     entities {
@@ -34,19 +34,25 @@ const AllSponsoredSeriesQuery = gql`
           uri
         }
         mainImage: fieldSsFeaturedImage {
-          derivative(style: RATIO_3_4) {
+          derivative(style: RATIO_4_3) {
+            width
+            height
+            url
+          }
+        }
+        cardImage: fieldSsFeaturedImage {
+          derivative(style: RATIO_2_3) {
             width
             height
             url
           }
         }
         heroImage: fieldSsHeroImage {
-          targetId
-          alt
-          title
-          width
-          height
-          url
+          derivative(style: RATIO_8_3) {
+            width
+            height
+            url
+          }
         }
       }
     }
@@ -61,7 +67,7 @@ const FeaturedSponsoredSeriesQuery = gql`
       ]},
       sort: [
         {field: "field_featured_series", direction: DESC},
-        {field: "changed", direction: DESC} 
+        {field: "changed", direction: DESC}
     ]
   ) {
     entities {
@@ -107,7 +113,7 @@ const FeaturedSponsoredSeriesQuery = gql`
 }`;
 
 const SingleSeriesQuery = gql`
-query TaxonomyTerm($id:String!){ 
+query TaxonomyTerm($id:String!){
     series: taxonomyTermById(id: $id) {
     	id: tid
     	name
