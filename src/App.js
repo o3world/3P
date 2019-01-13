@@ -14,7 +14,6 @@ import EditorsPage from "./components/Editors/EditorsPage";
 import SingleEditorPage from "./components/Editors/SingleEditorPage";
 import NewsletterSignupForm from './components/NewsletterSignup/NewsletterSignupForm';
 import SeachResult from './components/Search/SearchResults';
-import SearchForm from './components/Search/SearchForm';
 
 import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from 'react-apollo';
