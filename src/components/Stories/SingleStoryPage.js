@@ -6,7 +6,7 @@ import styles from './SingleStoryPage.module.scss';
 import { StoryByIdQuery } from "./StoryQueries";
 import Ad from "../Ads/Ad";
 
-import ShareNav from '../SocialShare/ShareNav';
+import StoryShare from './SocialShare/StoryShare';
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -44,8 +44,10 @@ class SingleStoryPage extends Component {
                 <Moment className={styles.date} format="MMM DD">{story.date}</Moment>
               </div>
               <div className={styles.bodyWrapper}>
-                <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
-                <ShareNav/>
+                <div className={styles.imageWrapper}>
+                  <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
+                <StoryShare/>
+                </div>
                 <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
               </div>
               <Ad adUnit={'StoryDetailPage_Bottom'}/>

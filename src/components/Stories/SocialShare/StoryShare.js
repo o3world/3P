@@ -1,9 +1,9 @@
 import React from 'react';
 import ShareButton from './ShareButton';
-import ShareMenu from './ShareMenu';
-import styles from './ShareNav.module.scss';
+import ShareIconList from './ShareIconList';
+import styles from './StoryShare.module.scss';
 
-class ShareNav extends React.Component {
+class StoryShare extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,9 +29,9 @@ class ShareNav extends React.Component {
 
   render() {
     return (
-        <div className={styles.nav}>
+        <div className={styles.container}>
           <ShareButton handleMouseDown={this.handleMouseDown}/>
-          <ShareMenu handleMouseDown={this.handleMouseDown} menuVisibility={this.state.visible}/>
+          <ShareIconList handleMouseDown={this.handleMouseDown} menuVisibility={this.state.visible}/>
         </div>
     )
   }
@@ -39,4 +39,4 @@ class ShareNav extends React.Component {
 
 }
 
-export default ShareNav;
+export default StoryShare;
