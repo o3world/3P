@@ -17,7 +17,7 @@ class ShareIconList extends Component {
         <div onClick={this.props.handleMouseDown} className={styles.socialIcons + ' ' + visibility}>
           <a href={'https://www.facebook.com/sharer/sharer.php?u=' + currentURL}><FontAwesomeIcon icon={['fab', 'facebook-f']} /></a>
           <a href={'https://twitter.com/home?status=' + currentURL}><FontAwesomeIcon icon={['fab', 'twitter']} /></a>
-          <a href={'https://www.linkedin.com/shareArticle?mini=true&url=' + currentURL}><FontAwesomeIcon icon={['fab', 'linkedin']} /></a>
+          <a href={'https://www.linkedin.com/shareArticle?mini=true&url=' + currentURL + '&title='}><FontAwesomeIcon icon={['fab', 'linkedin']} /></a>
         </div>
     )
   }
