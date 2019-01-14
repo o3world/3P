@@ -7,6 +7,7 @@ import { StoryByIdQuery } from "./StoryQueries";
 import Ad from "../Ads/Ad";
 
 import StoryShare from './SocialShare/StoryShare';
+import MetaTags from 'react-meta-tags';
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -28,6 +29,8 @@ class SingleStoryPage extends Component {
 
         const story = data.nodeQuery.entities[0];
 
+        document.title = 'TriplePundit: ' + story.title;
+
         let category;
         if (story.category) {
           category = <span className={styles.category}>{story.category.entity.name}</span>;
@@ -39,8 +42,16 @@ class SingleStoryPage extends Component {
         }
         const fullName = story.author.first + ' ' + story.author.last;
 
+        const currentURL = window.location.href;
+
         return (
             <div className={styles.wrapper}>
+              <MetaTags>
+                <title>{story.title}</title>
+                <meta property="og:title" content={story.title} />
+                <meta property="og:image" content={story.wideImage.url} />
+                <meta property="og:url" content={currentURL} />
+              </MetaTags>
               <div className={styles.meta}>
                 <h1 className={styles.title}>{story.title}</h1>
                 {headshot}

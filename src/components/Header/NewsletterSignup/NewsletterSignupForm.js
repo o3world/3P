@@ -1,13 +1,15 @@
 import React from 'react';
-import { SENDGRID } from '../Common/Constants';
+import { SENDGRID } from '../../Common/Constants';
+
+import styles from './NewsletterSignupForm.module.scss';
 
 class NewsletterSignupForm extends React.Component {
   constructor( props ) {
     super(props);
     this.state = {
       value: '',
-      successMessage: "",
-      validationMessage:"",
+      successMessage: false,
+      validationMessage: '',
       disabled: false
     };
 
@@ -64,7 +66,11 @@ class NewsletterSignupForm extends React.Component {
   };
 
   handleChange(event) {
-    this.setState({ value: event.target.value, successMessage: "",validationMessage:"" });
+    this.setState({
+      value: event.target.value,
+      successMessage: false,
+      validationMessage:""
+    });
   }
 
   handleSubmit(event) {
@@ -76,9 +82,9 @@ class NewsletterSignupForm extends React.Component {
       this.setState({
         disabled: true
       }, async () => {
-        let message = await this.addEmailToSendGrid(this.state.value);
+        await this.addEmailToSendGrid(this.state.value);
         this.setState({
-          successMessage: message,
+          successMessage: true,
           value: "",
           disabled: false
         })
@@ -91,14 +97,36 @@ class NewsletterSignupForm extends React.Component {
   }
 
   render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" value={this.state.value} onChange={this.handleChange} />
-        <button type="submit" disabled={this.state.disabled}>Subscribe!</button>
-        <h3>{this.state.successMessage}</h3>
-        <h3>{this.state.validationMessage}</h3>
-      </form>
-    )
+
+    if (!this.state.successMessage) {
+      let formClasses = this.props.signupClass + ' ' + styles.wrapper;
+      if (this.props.visible) {
+        formClasses = formClasses + ' ' + styles.open;
+      }
+      return (
+          <div className={formClasses}>
+            <form onSubmit={this.handleSubmit} className={styles.form}>
+              <input className={styles.emailBox} type="text"
+                     value={this.state.value} onChange={this.handleChange} placeholder={'Email address'}/>
+              <button className={styles.button} type="submit"
+                      disabled={this.state.disabled}>Go</button>
+              <h3>{this.state.validationMessage}</h3>
+            </form>
+            <div className={styles.privacyPolicy}>By signing up you agree to our <a href="https://3blmedia.com/sites/www.3blmedia.com/files/pdf/3BL_Media_privacy_policy.pdf" title="3BL Privacy Policy">privacy policy</a>. You can opt out anytime.</div>
+          </div>
+      )
+    }
+    else {
+      let formClasses = this.props.signupClass + ' ' + styles.thanksMessage;
+      if (this.props.visible) {
+        formClasses = formClasses + ' ' + styles.open;
+      }
+      return (
+        <div className={formClasses}>
+          <h3>Thanks for signing up!</h3>
+        </div>
+      )
+    }
   }
 }
 
