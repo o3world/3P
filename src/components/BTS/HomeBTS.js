@@ -1,5 +1,5 @@
 import React from 'react';
-import "./HomeBTS.css";
+import styles from "./HomeBTS.module.scss";
 
 import bts_background from '../../assets/images/bts_background.png';
 
@@ -8,16 +8,16 @@ const HomeBTS = () => {
     backgroundImage: `url(${bts_background})`
   };
     return (
-        <div className={'home-bts__wrapper'} style={homeBTSStyle}>
-          <div className={'bts_content-wrapper'}>
-            <div className={'bts_date-wrapper'}>
+        <div className={styles.wrapper} style={homeBTSStyle}>
+          <div className={styles.contentWrapper}>
+            <div className={styles.dateWrapper}>
             <h4>Weekly Newsletter</h4>
-              <time className={'bts_publication-date'}>Oct 18</time>
+              <time className={styles.date}>Dec 19</time>
             </div>
-            <h3 className={'bts_title'}>Morality Play: Taking Stands in the Saudi Crisis</h3>
-            <p className={'bts_author'}>Words by John Howell</p>
+            <h3 className={styles.title}>Brands Drop Ads from TV Show That Disses Immigrants</h3>
+            <p className={styles.author}>Words by John Howell</p>
           </div>
-          <button className={'bts_subscribe-button'}>Subscribe</button>
+          <a href={'http://www.3blforum.com/brands-taking-stands-newsletter/newsletter-sign-up'} className={styles.button} target={'_blank'}>Subscribe</a>
         </div>
     )
 };

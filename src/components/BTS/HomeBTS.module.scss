@@ -1,22 +1,18 @@
-.home-bts__wrapper {
+.wrapper {
   display: grid;
   grid-template-rows: 200px 1fr 50px;
   background-size: cover;
 }
 
-.bts_background {
-    width: 100%;
-  grid-area: 1/1/-1/-1;
-}
-
-.bts_content-wrapper {
+.contentWrapper {
   grid-area: 2/1/3/2;
   color: #006BFF;
   text-align: left;
   margin: 0 30px;
+  filter: none;
 }
 
-.bts_title {
+.title {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 3.0rem;
@@ -24,29 +20,36 @@
   line-height: 3.0rem;
 }
 
-.bts_publication-date {
+.date {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 0.9rem;
 }
 
-.bts_author {
+.author {
   text-align: right;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 1.0rem;
 }
 
-.bts_subscribe-button {
+.button {
   grid-area: 3/1/4/2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #006BFF;
   color: white;
   text-transform: uppercase;
   margin: 0 30px;
   border: none;
+  text-decoration: none;
+  font-family: Montserrat, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
 }
 
-.bts_date-wrapper {
+.dateWrapper {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -54,10 +57,10 @@
   margin-bottom: 15px;
   border-top: 3px solid #006bff;
   padding: 15px 0;
-}
 
-.bts_date-wrapper h4 {
-  text-transform: uppercase;
-  margin: 0;
-  font-size: 0.9rem;
+  h4 {
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 0.9rem;
+  }
 }
