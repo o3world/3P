@@ -12,7 +12,7 @@ import Footer from "./components/Footer/Footer";
 import TheFeedPage from "./components/Feed/TheFeedPage";
 import EditorsPage from "./components/Editors/EditorsPage";
 import SingleEditorPage from "./components/Editors/SingleEditorPage";
-import NewsletterSignupForm from './components/NewsletterSignup/NewsletterSignupForm';
+import NewsletterSignupForm from './components/Header/NewsletterSignup/NewsletterSignupForm';
 import SeachResult from './components/Search/SearchResults';
 
 import { ApolloClient } from "apollo-boost";
@@ -72,7 +72,6 @@ class App extends Component {
         <div className="App">
           <ApolloProvider client={client}>
             <Header site_title={this.state.pageTitle}/>
-            <NewsletterSignupForm/>
             <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
             <Route path={Routes.THEFEED} render={(props) => <TheFeedPage {...props} />}/>
             <Route path={Routes.EDITORS} component={EditorsPage}/>

@@ -54,14 +54,11 @@ class SearchForm extends React.Component {
       if (this.props.visible) {
         formClass = formClass + ' ' + styles.open;
       }
-      else {
-        formClass = formClass + ' ' + styles.closed;
-      }
 
       return (
           <div className={formClass}>
               <input type="text" onChange={(e) => this.onChangeHandler(e)} onKeyPress={(e) => this.handleKeyPress(e)} value={this.state.value} className={styles.searchBox}></input>
-              <button onClick={this.searchHandler} className={styles.button}>GO!</button>
+              <button onClick={this.searchHandler} className={styles.button}>Go</button>
               {this.state.validate ? <h3>Please enter value</h3> : null}
           </div>
       )
