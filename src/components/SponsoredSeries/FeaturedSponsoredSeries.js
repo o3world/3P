@@ -27,7 +27,7 @@ const FeaturedSponsoredSeries = (props) => {
 
             return (
                 <div className={styles.seriesWrapper}>
-                  <img className={styles.heroImage} src={series.mainImage.derivative.url} alt={''}/>
+                  <img className={styles.heroImage} src={series.heroImage.derivative.url} alt={''}/>
                   <div className={styles.metaWrapper}>
                     <div className={styles.logoWrapper}>
                       <p className={styles.logoTitle}>Featured Sponsor</p>

@@ -29,8 +29,13 @@ class SingleStoryPage extends Component {
 
         const story = data.nodeQuery.entities[0];
 
+        let category;
+        if (story.category) {
+          category = <span className={styles.category}>{story.category.entity.name}</span>;
+        }
+
         let headshot;
-        if (story.author.headshot !== null) {
+        if (story.author.headshot) {
           headshot = <img className={styles.headshot} src={story.author.headshot.url} alt={story.author.name + ' headshot'} />;
         }
         const fullName = story.author.first + ' ' + story.author.last;
@@ -49,7 +54,7 @@ class SingleStoryPage extends Component {
                 <h1 className={styles.title}>{story.title}</h1>
                 {headshot}
                 <span className={styles.authorName}>Words by {fullName}</span>
-                <span className={styles.category}>{story.category.entity.name}</span>
+                {category}
                 <Moment className={styles.date} format="MMM DD">{story.date}</Moment>
               </div>
               <div className={styles.bodyWrapper}>

@@ -3,7 +3,8 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: min-content 1fr min-content min-content;
-  grid-template-areas: "logo . search hamburger";
+  grid-template-areas: "logo . search hamburger"
+    "search-form search-form search-form search-form";
   padding: 40px 130px 24px;
 }
 
@@ -16,4 +17,8 @@
   grid-area: search;
   margin: 0 20px;
   align-self: center;
+}
+
+.searchForm {
+  grid-area: search-form;
 }

@@ -8,7 +8,7 @@ const AllSponsoredSeriesQuery = gql`
       ]},
       sort: [
         {field: "field_featured_series", direction: DESC},
-        {field: "changed", direction: DESC} 
+        {field: "changed", direction: DESC}
     ]
   ) {
     entities {
@@ -33,25 +33,18 @@ const AllSponsoredSeriesQuery = gql`
         link: fieldLogoLink {
           uri
         }
-        mainImage: fieldSsFeaturedImage {
-          derivative(style: RATIO_3_4) {
+        tileImage: fieldSsFeaturedImage {
+          derivative(style: RATIO_2_3) {
             width
             height
             url
           }
         }
-        heroImage: fieldSsHeroImage {
-          targetId
-          alt
-          title
-          width
-          height
-          url
-        }
       }
     }
   }
-}`;
+}
+`;
 
 const FeaturedSponsoredSeriesQuery = gql`
  query sponsoredSeries {
@@ -61,7 +54,7 @@ const FeaturedSponsoredSeriesQuery = gql`
       ]},
       sort: [
         {field: "field_featured_series", direction: DESC},
-        {field: "changed", direction: DESC} 
+        {field: "changed", direction: DESC}
     ]
   ) {
     entities {
@@ -86,28 +79,21 @@ const FeaturedSponsoredSeriesQuery = gql`
         link: fieldLogoLink {
           uri
         }
-        mainImage: fieldSsFeaturedImage {
-          derivative(style: RATIO_3_4) {
+        heroImage: fieldSsHeroImage {
+          derivative(style: RATIO_8_3) {
             width
             height
             url
           }
         }
-        heroImage: fieldSsHeroImage {
-          targetId
-          alt
-          title
-          width
-          height
-          url
-        }
       }
     }
   }
-}`;
+}
+`;
 
 const SingleSeriesQuery = gql`
-query TaxonomyTerm($id:String!){ 
+query TaxonomyTerm($id:String!){
     series: taxonomyTermById(id: $id) {
     	id: tid
     	name
@@ -131,14 +117,7 @@ query TaxonomyTerm($id:String!){
           uri
         }
         mainImage: fieldSsFeaturedImage {
-          derivative(style: RATIO_3_4) {
-            width
-            height
-            url
-          }
-        }
-        heroImage: fieldSsHeroImage {
-          derivative(style: SQUARE) {
+          derivative(style: RATIO_4_3) {
             width
             height
             url
