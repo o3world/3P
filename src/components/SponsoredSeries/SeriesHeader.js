@@ -11,8 +11,8 @@ const SeriesHeader = (props) => {
     }
 
     let heroStyle;
-    if (series.heroImage !== null) {
-      heroStyle = {backgroundImage: `url(${series.heroImage.derivative.url})`};
+    if (series.mainImage) {
+      heroStyle = {backgroundImage: `url(${series.mainImage.derivative.url})`};
     }
 
     return (

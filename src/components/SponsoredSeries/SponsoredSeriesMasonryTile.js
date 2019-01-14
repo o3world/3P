@@ -6,7 +6,7 @@ const SponsoredSeriesMasonryTile = (props) => {
     const series = {...props.data};
     const seoLink = ConvertSeoUrl(series.name);
     const logo = (series.logo !== null) ? series.logo.url : "";
-    const backgroundImage = (series.mainImage) ? series.mainImage.derivative.url : "";
+    const backgroundImage = (series.tileImage) ? series.tileImage.derivative.url : "";
     const url = "/sponsored-series/" + series.tid + "/"+seoLink;
     return (
         <div className={styles.tile} style={{backgroundImage: `url(${backgroundImage})`}}>
