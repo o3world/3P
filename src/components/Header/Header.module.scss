@@ -2,15 +2,21 @@
   max-width: 1366px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: min-content 1fr min-content min-content;
-  grid-template-areas: "logo . search hamburger"
-    "search-form search-form search-form search-form";
+  grid-template-columns: min-content 1fr min-content min-content min-content;
+  grid-template-areas: "logo . subscribe search hamburger"
+    "search-form search-form search-form search-form search-form"
+    "subscribe-form subscribe-form subscribe-form subscribe-form subscribe-form";
   padding: 40px 130px 24px;
 }
 
 .logo {
   width: 210px;
   grid-area: logo;
+}
+
+.subscribeToggle {
+  grid-area: subscribe;
+  align-self: center;
 }
 
 .searchButton {
@@ -21,4 +27,8 @@
 
 .searchForm {
   grid-area: search-form;
+}
+
+.subscribeForm {
+  grid-area: subscribe-form;
 }

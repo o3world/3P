@@ -9,7 +9,7 @@
   &.open {
     height: 100px;
 
-    .searchBox {
+    .emailBox {
       display: block;
     }
 
@@ -19,7 +19,7 @@
   }
 }
 
-.searchBox {
+.emailBox {
   display: none;
   width: 300px;
   height: 40px;
@@ -39,4 +39,25 @@
   border-radius: 7px;
   font-weight: bold;
   font-family: Montserrat, sans-serif;
+}
+
+.thanksMessage {
+  transition: height 1s cubic-bezier(0, .52, 0, 1);
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  height: 0;
+
+  &.open {
+    height: 100px;
+
+    h3 {
+      display: block;
+    }
+  }
+
+  h3 {
+    display: none;
+  }
 }

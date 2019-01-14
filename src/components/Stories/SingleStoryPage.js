@@ -28,6 +28,8 @@ class SingleStoryPage extends Component {
 
         const story = data.nodeQuery.entities[0];
 
+        document.title = 'TriplePundit: ' + story.title;
+
         let category;
         if (story.category) {
           category = <span className={styles.category}>{story.category.entity.name}</span>;
