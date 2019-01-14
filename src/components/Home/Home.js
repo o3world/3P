@@ -17,11 +17,11 @@ const Home = () => {
         <div className={styles.wrapper}>
           <PrimeStoriesWrapper/>
           <div className={styles.arrow}>
-            <Link to={'/stories'}><FontAwesomeIcon icon={"arrow-right"} /></Link>
+            <Link to={'/stories'}>Stories <FontAwesomeIcon icon={"arrow-right"} /></Link>
           </div>
           <HomeTheFeed/>
           <div className={styles.arrow}>
-            <Link to={'/the-feed'}><FontAwesomeIcon icon={"arrow-right"} /></Link>
+            <Link to={'/the-feed'}>Feed <FontAwesomeIcon icon={"arrow-right"} /></Link>
           </div>
           <Ad adUnit={'Homepage_AfterTheFeed'}/>
           <div className={styles.bts_podcastWrapper}>
