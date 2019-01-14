@@ -9,8 +9,7 @@ class SearchForm extends React.Component {
         super(props);
         this.state = {
             value: "",
-            validate: false,
-          visible: props.visible
+            validate: false
         };
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -49,11 +48,10 @@ class SearchForm extends React.Component {
         }
     };
 
-
     render() {
 
-      let formClass = styles.formWrapper;
-      if (this.state.visible) {
+      let formClass = styles.formWrapper + ' ' + this.props.formClass;
+      if (this.props.visible) {
         formClass = formClass + ' ' + styles.open;
       }
       else {
@@ -62,9 +60,8 @@ class SearchForm extends React.Component {
 
       return (
           <div className={formClass}>
-            {console.log(this.state.visible)}
-              <input type="text" onChange={(e) => this.onChangeHandler(e)} onKeyPress={(e) => this.handleKeyPress(e)} value={this.state.value}></input>
-              <button onClick={this.searchHandler}>Search</button>
+              <input type="text" onChange={(e) => this.onChangeHandler(e)} onKeyPress={(e) => this.handleKeyPress(e)} value={this.state.value} className={styles.searchBox}></input>
+              <button onClick={this.searchHandler} className={styles.button}>GO!</button>
               {this.state.validate ? <h3>Please enter value</h3> : null}
           </div>
       )

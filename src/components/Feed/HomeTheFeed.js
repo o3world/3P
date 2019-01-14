@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HomeFeedItem from './HomeFeedItem';
-import './HomeTheFeed.css';
+import styles from './HomeTheFeed.module.scss';
 
 class HomeTheFeed extends Component {
   constructor(props) {
@@ -20,12 +20,12 @@ class HomeTheFeed extends Component {
   render() {
 
     return (
-        <div className="the-feed__container">
-          <div className={'the-feed__title-wrapper'}>
-            <h3 className={'the-feed__title'}>The Feed</h3>
-            <p className={'the-feed__title--subtitle'}>Latest News from Leaders in Corporate Social Responsibility</p>
+        <div className={styles.container}>
+          <div className={styles.titleWrapper}>
+            <h3 className={styles.title}>The Feed</h3>
+            <p className={styles.subtitle}>Latest News from Leaders in Corporate Social Responsibility</p>
           </div>
-          <div className="the-feed">
+          <div className={styles.feed}>
             {this.state.data.map(feeditem =>
                 <HomeFeedItem {...feeditem} key={feeditem.id}/>
             )}
