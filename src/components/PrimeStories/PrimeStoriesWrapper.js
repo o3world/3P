@@ -18,8 +18,8 @@ query storyQuery {
         {field: "field_prime_position", value: "0", operator: GREATER_THAN}
       ]
     },
-    sort: {field: "field_prime_position", direction: ASC} 
-  ) 
+    sort: {field: "field_prime_position", direction: ASC}
+  )
   {
     entities {
 			... on NodeStory {
@@ -83,7 +83,7 @@ const PrimeStoriesWrapper = () =>
             <PrimeStory {...stories[2]} key={2} index={'2'}/>
             <PrimeStory {...stories[3]} key={3} index={'3'}/>
             <PrimeStory {...stories[4]} key={4} index={'4'}/>
-            <PrimeStory {...stories[5]} key={5} index={'5'}/>
+            <PrimeStory {...stories[5]} key={5} index={'5'}/>          
         </div>
             );
         }}
