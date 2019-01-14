@@ -99,18 +99,21 @@ class NewsletterSignupForm extends React.Component {
   render() {
 
     if (!this.state.successMessage) {
-      let formClasses = this.props.signupClass + ' ' + styles.formWrapper;
+      let formClasses = this.props.signupClass + ' ' + styles.wrapper;
       if (this.props.visible) {
         formClasses = formClasses + ' ' + styles.open;
       }
       return (
-          <form onSubmit={this.handleSubmit} className={formClasses}>
-            <input className={styles.emailBox} type="text"
-                   value={this.state.value} onChange={this.handleChange}/>
-            <button className={styles.button} type="submit"
-                    disabled={this.state.disabled}>Go</button>
-            <h3>{this.state.validationMessage}</h3>
-          </form>
+          <div className={formClasses}>
+            <form onSubmit={this.handleSubmit} className={styles.form}>
+              <input className={styles.emailBox} type="text"
+                     value={this.state.value} onChange={this.handleChange} placeholder={'Email address'}/>
+              <button className={styles.button} type="submit"
+                      disabled={this.state.disabled}>Go</button>
+              <h3>{this.state.validationMessage}</h3>
+            </form>
+            <div className={styles.privacyPolicy}>By signing up you agree to our <a href="https://3blmedia.com/sites/www.3blmedia.com/files/pdf/3BL_Media_privacy_policy.pdf" title="3BL Privacy Policy">privacy policy</a>. You can opt out anytime.</div>
+          </div>
       )
     }
     else {

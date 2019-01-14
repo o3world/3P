@@ -57,7 +57,7 @@ class SearchForm extends React.Component {
 
       return (
           <div className={formClass}>
-              <input type="text" onChange={(e) => this.onChangeHandler(e)} onKeyPress={(e) => this.handleKeyPress(e)} value={this.state.value} className={styles.searchBox}></input>
+              <input type="text" onChange={(e) => this.onChangeHandler(e)} onKeyPress={(e) => this.handleKeyPress(e)} value={this.state.value} className={styles.searchBox} placeholder={'Search'}></input>
               <button onClick={this.searchHandler} className={styles.button}>Go</button>
               {this.state.validate ? <h3>Please enter value</h3> : null}
           </div>

@@ -1,9 +1,5 @@
-.formWrapper {
+.wrapper {
   transition: height 1s cubic-bezier(0, .52, 0, 1);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   height: 0;
 
   &.open {
@@ -16,7 +12,18 @@
     .button {
       display: block;
     }
+
+    .privacyPolicy {
+      display: block;
+    }
   }
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .emailBox {
@@ -59,5 +66,16 @@
 
   h3 {
     display: none;
+  }
+}
+
+.privacyPolicy {
+  display: none;
+  font-family: Montserrat, sans-serif;
+  font-style: italic;
+  margin-top: 7px;
+
+  a {
+    color: #006bff;
   }
 }
