@@ -1,10 +1,48 @@
-footer {
-    padding: 50px;
-        nav ul {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
+$tp_color--primary: #006bff;
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "content contact logos" "legal legal legal";
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 0 130px 20px;
+    text-align: left;
+    font-family: Montserrat, sans-serif;
+}
+
+@mixin navlist {
+    font-size: 16px;
+    line-height: 22px;
+
+    a {
+        display: block;
+        text-decoration: none;
+        color: $tp_color--primary;
+    }
+}
+
+.content {
+    @include navlist;
+    grid-area: content;
+}
+
+.contact{
+    @include navlist;
+    grid-area: contact;
+}
+
+.logos {
+    grid-area: logos;
+    max-width: 100%;
+
+}
+
+.legal {
+    grid-area: legal;
+
+    a {
+        color: $tp_color--primary;
+        text-decoration: none;
     }
 }
