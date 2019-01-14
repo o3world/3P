@@ -12,7 +12,6 @@ import Footer from "./components/Footer/Footer";
 import TheFeedPage from "./components/Feed/TheFeedPage";
 import EditorsPage from "./components/Editors/EditorsPage";
 import SingleEditorPage from "./components/Editors/SingleEditorPage";
-import NewsletterSignupForm from './components/Header/NewsletterSignup/NewsletterSignupForm';
 import SeachResult from './components/Search/SearchResults';
 
 import { ApolloClient } from "apollo-boost";
