@@ -34,7 +34,10 @@ $tp_color--primary: #006bff;
 
 .logos {
     grid-area: logos;
-    max-width: 100%;
+
+    img {
+        max-width: 100%;
+    }
 
 }
 
