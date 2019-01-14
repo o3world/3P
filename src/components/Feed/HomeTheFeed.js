@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import HomeFeedItem from './HomeFeedItem';
 import styles from './HomeTheFeed.module.scss';
 
+
 class HomeTheFeed extends Component {
   constructor(props) {
     super(props);
