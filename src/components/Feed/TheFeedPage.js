@@ -3,6 +3,7 @@ import FeedItem from './FeedItem';
 import Ad from "../Ads/Ad";
 
 import styles from './TheFeedPage.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class TheFeedPage extends Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class TheFeedPage extends Component {
 
         this.state = {
             data: [],
+            loading: true
         }
     }
 
@@ -17,9 +19,18 @@ class TheFeedPage extends Component {
       fetch('https://3blmedia.com/feeds/fmr/csrwire')
           .then(response => response.json())
           .then(data => this.setState({ data: data.data.results }));
+          setTimeout(() => this.setState({ loading: false }), 1500);
     };
 
-    render() {
+
+    render(){
+        const { loading } = this.state;
+        if (loading) return (
+              <div className={styles.spinner}>
+                <p>Loading the feed</p>
+                <FontAwesomeIcon icon="spinner" spin/>
+              </div>
+            );
         return (
             <div className={styles.pageWrapper}>
               <Ad adUnit={'TheFeedPage_Top'}/>
