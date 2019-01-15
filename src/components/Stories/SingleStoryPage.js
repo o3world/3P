@@ -29,8 +29,6 @@ class SingleStoryPage extends Component {
 
         const story = data.nodeQuery.entities[0];
 
-        document.title = 'TriplePundit: ' + story.title;
-
         let category;
         if (story.category) {
           category = <span className={styles.category}>{story.category.entity.name}</span>;
@@ -47,7 +45,7 @@ class SingleStoryPage extends Component {
         return (
             <div className={styles.wrapper}>
               <MetaTags>
-                <title>{story.title}</title>
+                <title>TriplePundit - {story.title}</title>
                 <meta property="og:title" content={story.title} />
                 <meta property="og:image" content={story.wideImage.url} />
                 <meta property="og:url" content={currentURL} />
