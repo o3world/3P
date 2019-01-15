@@ -6,7 +6,7 @@ class LoadingSpinner extends Component {
   render() {
     return (
       <div className={styles.spinner}>
-        <p>Loading the feed</p>
+        <p>We're compiling all data!</p>
         <FontAwesomeIcon icon="spinner" spin/>
       </div>
     )
