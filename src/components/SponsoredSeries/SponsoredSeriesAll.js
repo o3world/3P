@@ -17,8 +17,7 @@ const SponsoredSeriesAll = () => {
           </div>
           <div className={styles.contact}>
             <p>Interested in advancing conversations on key sustainability
-              topics? Contact <a href={'mailto:jfoley@3blmedia.com'}>Jennifer
-                Foley</a> for sponsoring a special series.</p>
+              topics? <a target={'_blank'} rel={'noopener noreferrer'} href="http://contact.triplepundit.com/">Contact us</a> for sponsoring a series.</p>
           </div>
         </div>
         <SponsoredSeriesAllMasonryWrapper/>
