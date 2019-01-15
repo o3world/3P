@@ -1,2 +1,3 @@
 User-Agent: *
-Disallow: 
+Disallow:
+Sitemap: http://www.triplepundit.com/sitemap.xml
