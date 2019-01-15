@@ -18,8 +18,8 @@ query storyQuery {
         {field: "field_prime_position", value: "0", operator: GREATER_THAN}
       ]
     },
-    sort: {field: "field_prime_position", direction: ASC} 
-  ) 
+    sort: {field: "field_prime_position", direction: ASC}
+  )
   {
     entities {
 			... on NodeStory {

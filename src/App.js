@@ -20,7 +20,7 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faBars, faSpinner, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faBars, faSpinner, faEnvelope, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faInstagram, faLinkedin, faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 import Routes from './components/Common/RoutesConfig';
@@ -41,7 +41,7 @@ const tagManagerArgs = {
 
 TagManager.initialize(tagManagerArgs);
 
-library.add( faTwitter, faInstagram, faLinkedin, faSearch, faBars, faSpinner, faEnvelope, faFacebookF, faGoogle );
+library.add( faTwitter, faInstagram, faLinkedin, faSearch, faBars, faSpinner, faEnvelope, faFacebookF, faGoogle, faArrowRight );
 
 class App extends Component {
   constructor(props) {
