@@ -1,6 +1,5 @@
 import React from "react";
 import { Query } from 'react-apollo';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ConvertSeoUrl from "../Common/createSeoUrl";
 
 import { FeaturedSponsoredSeriesQuery } from "./SponsoredSeriesQueries";

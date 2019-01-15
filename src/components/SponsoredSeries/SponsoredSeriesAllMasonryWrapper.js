@@ -1,6 +1,5 @@
 import React from "react";
 import { Query } from 'react-apollo';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SponsoredSeriesMasonryTile from "./SponsoredSeriesMasonryTile";
 
 import { AllSponsoredSeriesQuery } from './SponsoredSeriesQueries';

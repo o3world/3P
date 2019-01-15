@@ -3,7 +3,6 @@ import FeedItem from './FeedItem';
 import Ad from "../Ads/Ad";
 
 import styles from './TheFeedPage.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import LoadingSpinner from "../Common/LoadingSpinner";
 
 class TheFeedPage extends Component {
