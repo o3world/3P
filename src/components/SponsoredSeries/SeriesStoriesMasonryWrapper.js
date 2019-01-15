@@ -5,6 +5,7 @@ import StoryMasonryTile from "../Stories/StoryMasonryTile";
 import { StoriesBySeriesId } from "../Stories/StoryQueries";
 
 import styles from './SeriesStoriesMasonryWrapper.module.scss';
+import LoadingSpinner from "../Common/LoadingSpinner";
 
 const SeriesStoriesMasonryWrapper = (props) => (
   <Query
@@ -12,7 +13,7 @@ const SeriesStoriesMasonryWrapper = (props) => (
       variables = {{"id": props.seriesId}}
   >
     {({ loading, error, data }) => {
-      if (loading) return "Loading...";
+      if (loading) return <LoadingSpinner/>;
       if (error) return `Error! ${error.message}`;
 
       return (

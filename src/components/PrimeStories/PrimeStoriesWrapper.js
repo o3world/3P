@@ -7,6 +7,7 @@ import { Query } from "react-apollo";
 import gql from 'graphql-tag';
 
 import prime_logo from '../../assets/images/prime_circle.svg';
+import LoadingSpinner from "../Common/LoadingSpinner";
 
 const Stories = gql`
 query storyQuery {
@@ -66,7 +67,7 @@ const PrimeStoriesWrapper = () =>
         variables={{}}
     >
         {({ loading, error, data }) => {
-            if (loading) return "Loading...";
+            if (loading) return <LoadingSpinner/>;
             if (error) return `Error! ${error.message}`;
             const stories = data.nodeQuery.entities;
 

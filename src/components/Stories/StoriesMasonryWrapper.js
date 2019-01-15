@@ -6,6 +6,7 @@ import StoryMasonryTile from "./StoryMasonryTile";
 import { AllStoryQuery } from "./StoryQueries";
 
 import styles from '../Stories/StoriesMasonryWrapper.module.scss';
+import LoadingSpinner from "../Common/LoadingSpinner";
 
 const StoriesMasonryWrapper = () =>
   <Query
@@ -14,10 +15,7 @@ const StoriesMasonryWrapper = () =>
   >
     {({ loading, error, data }) => {
       if (loading) return (
-          <div className={styles.spinner}>
-            <p>Gathering Stories...</p>
-            <FontAwesomeIcon icon="spinner" spin/>
-          </div>
+          <LoadingSpinner/>
     );
       if (error) return `Error! ${error.message}`;
       const stories = data.nodeQuery.entities;

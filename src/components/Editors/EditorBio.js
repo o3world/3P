@@ -5,6 +5,7 @@ import { SingleEditorBioQuery } from './EditorsQueries';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from "./EditorBio.module.scss";
+import LoadingSpinner from "../Common/LoadingSpinner";
 
 const EditorBio = (props) => {
 
@@ -15,10 +16,7 @@ const EditorBio = (props) => {
   >
     {({ loading, error, data }) => {
       if (loading) return (
-          <div className={styles.spinner}>
-            <p>Loading the editor bio...</p>
-            <FontAwesomeIcon icon="spinner" spin/>
-          </div>
+          <LoadingSpinner/>
       );
       if (error) return `Error! ${error.message}`;
       const editor = data.userById;

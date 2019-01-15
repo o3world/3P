@@ -5,6 +5,7 @@ import ConvertSeoUrl from "../Common/createSeoUrl";
 
 import { FeaturedSponsoredSeriesQuery } from "./SponsoredSeriesQueries";
 import styles from './FeaturedSponsoredSeries.module.scss';
+import LoadingSpinner from "../Common/LoadingSpinner";
 
 const FeaturedSponsoredSeries = (props) => {
 
@@ -15,10 +16,7 @@ const FeaturedSponsoredSeries = (props) => {
         >
           {({ loading, error, data }) => {
             if (loading) return (
-                <div className={styles.spinner}>
-                  <p>Grabbing the featured series...</p>
-                  <FontAwesomeIcon icon="spinner" spin/>
-                </div>
+                <LoadingSpinner/>
             );
             if (error) return `Error! ${error.message}`;
             const series = data.taxonomyTermQuery.entities[0];

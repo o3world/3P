@@ -3,6 +3,7 @@ import styles from './EditorCardsWrapper.module.scss';
 import EditorCard from './EditorCard';
 import { Query } from 'react-apollo';
 import { EditorsQuery } from "../Editors/EditorsQueries";
+import LoadingSpinner from "../Common/LoadingSpinner";
 
 const EditorCardsWrapper = () =>
     <Query
@@ -10,7 +11,7 @@ const EditorCardsWrapper = () =>
         variables={{}}
     >
       {({ loading, error, data }) => {
-        if (loading) return "Loading...";
+        if (loading) return <LoadingSpinner/>;
         if (error) return `Error! ${error.message}`;
         const editors = data.userQuery.entities;
 
