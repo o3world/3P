@@ -4,6 +4,7 @@ import Ad from "../Ads/Ad";
 
 import styles from './TheFeedPage.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import LoadingSpinner from "../Common/LoadingSpinner";
 
 class TheFeedPage extends Component {
     constructor(props) {
@@ -25,10 +26,7 @@ class TheFeedPage extends Component {
     render(){
         const { loading } = this.state;
         if (loading) return (
-              <div className={styles.spinner}>
-                <p>Loading the feed</p>
-                <FontAwesomeIcon icon="spinner" spin/>
-              </div>
+              <LoadingSpinner/>
             );
         return (
             <div className={styles.pageWrapper}>
