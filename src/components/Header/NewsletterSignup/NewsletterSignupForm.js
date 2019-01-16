@@ -13,7 +13,6 @@ class NewsletterSignupForm extends React.Component {
       disabled: false
     };
 
-    this.addEmailToList = this.addEmailToList.bind(this);
     this.addEmailToSendGrid = this.addEmailToSendGrid.bind(this);
     this.validateEmail = this.validateEmail.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -30,39 +29,20 @@ class NewsletterSignupForm extends React.Component {
 
   addEmailToSendGrid = async (email) => {
     try {
-      const response = await fetch(SENDGRID.API, {
-        method: "POST",
-        body: JSON.stringify([{ "email": email }]),
-        headers: {
-          "authorization": "Bearer " + SENDGRID.API_KEY,
-          "Content-Type": "application/json"
-        }
-      });
-
-      let data = await response.json();
-      try {
-        let status = await this.addEmailToList(SENDGRID.LIST_API + data.persisted_recipients[0]);
-        if (status === 201) {
-          return this.SuccessMessage;
-        } else {
-          return this.ErrorMessage
-        }
-      } catch (error) { return this.ErrorMessage }
-    } catch (error) { return this.ErrorMessage }
-  };
-
-  addEmailToList = async (url) => {
-    try {
+      const url =  `${SENDGRID.SUBSCRIBE_API}${email}`
       const response = await fetch(url, {
         method: "POST",
         headers: {
-          "authorization": "Bearer " + SENDGRID.API_KEY,
+          "Content-Type": "application/json"
         }
       });
-      return response.status;
-    } catch (error) {
-      return this.ErrorMessage
-    }
+      let status = await response.json();
+      if (status === 201) {
+        return this.SuccessMessage;
+      } else {
+        return this.ErrorMessage
+      }
+    } catch (error) { return this.ErrorMessage }
   };
 
   handleChange(event) {
