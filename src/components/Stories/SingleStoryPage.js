@@ -8,6 +8,7 @@ import Ad from "../Ads/Ad";
 
 import StoryShare from './SocialShare/StoryShare';
 import MetaTags from 'react-meta-tags';
+import LoadingSpinner from "../Common/LoadingSpinner";
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class SingleStoryPage extends Component {
         variables={{ "id" : this.state.storyId }}
     >
       {({loading, error, data}) => {
-        if (loading) return "Loading...";
+        if (loading) return <LoadingSpinner/>;
         if (error) return `Error! ${error.message}`;
 
         const story = data.nodeQuery.entities[0];

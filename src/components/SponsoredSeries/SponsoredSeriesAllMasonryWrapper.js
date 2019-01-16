@@ -1,11 +1,11 @@
 import React from "react";
 import { Query } from 'react-apollo';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SponsoredSeriesMasonryTile from "./SponsoredSeriesMasonryTile";
 
 import { AllSponsoredSeriesQuery } from './SponsoredSeriesQueries';
 
 import styles from './SponsoredSeriesAllMasonryWrapper.module.scss';
+import LoadingSpinner from "../Common/LoadingSpinner";
 
 const SponsoredSeriesAllMasonryWrapper = () => {
 
@@ -16,10 +16,7 @@ const SponsoredSeriesAllMasonryWrapper = () => {
         >
           {({ loading, error, data }) => {
             if (loading) return (
-                <div className={styles.spinner}>
-                  <p>Gathering related stories...</p>
-                  <FontAwesomeIcon icon="spinner" spin/>
-                </div>
+                <LoadingSpinner/>
             );
             if (error) return `Error! ${error.message}`;
             const allSeries = data.taxonomyTermQuery.entities;

@@ -3,6 +3,7 @@ import FeedItem from './FeedItem';
 import Ad from "../Ads/Ad";
 
 import styles from './TheFeedPage.module.scss';
+import LoadingSpinner from "../Common/LoadingSpinner";
 
 class TheFeedPage extends Component {
     constructor(props) {
@@ -10,16 +11,22 @@ class TheFeedPage extends Component {
 
         this.state = {
             data: [],
+            loading: true
         }
     }
 
     componentDidMount = () => {
       fetch('https://3blmedia.com/feeds/fmr/csrwire')
           .then(response => response.json())
-          .then(data => this.setState({ data: data.data.results }));
+          .then(data => this.setState({ data: data.data.results, loading: false }));
     };
 
-    render() {
+
+    render(){
+        const { loading } = this.state;
+        if (loading) return (
+              <LoadingSpinner/>
+            );
         return (
             <div className={styles.pageWrapper}>
               <Ad adUnit={'TheFeedPage_Top'}/>
