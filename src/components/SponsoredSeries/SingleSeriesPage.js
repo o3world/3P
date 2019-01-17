@@ -6,6 +6,7 @@ import { SingleSeriesQuery } from "../SponsoredSeries/SponsoredSeriesQueries";
 import SeriesStoriesMasonryWrapper from "./SeriesStoriesMasonryWrapper";
 
 import styles from './SingleSeriesPage.module.scss';
+import LoadingSpinner from "../Common/LoadingSpinner";
 
 const SingleSeriesPage = (props) => (
     <Query
@@ -13,7 +14,7 @@ const SingleSeriesPage = (props) => (
         variables={{"id": props.match.params.id}}
     >
       {({ loading, error, data }) => {
-        if (loading) return "Loading...";
+        if (loading) return <LoadingSpinner/>;
         if (error) return `Error! ${error.message}`;
 
         return (

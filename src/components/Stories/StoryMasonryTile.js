@@ -14,7 +14,7 @@ const StoryMasonryTile = (props) => {
     }
 
   let sponsored;
-  if (story.sponsoredBy) {
+  if (story.sponsoredBy && props.context !== 'singleSeries') {
     sponsored = <p className={styles.sponsored}>SPONSORED</p>;
   }
 
