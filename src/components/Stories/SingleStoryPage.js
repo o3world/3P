@@ -65,7 +65,7 @@ class SingleStoryPage extends Component {
                 {headshot}
                 <span className={styles.authorName}>Words by {fullName}</span>
                 {category}
-                <Moment className={styles.date} format="MMM DD">{story.date}</Moment>
+                <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
               </div>
               <div className={styles.bodyWrapper}>
                 <div className={styles.imageWrapper}>
