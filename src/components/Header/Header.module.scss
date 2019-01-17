@@ -1,3 +1,5 @@
+$medium_breakpoint: 720px;
+
 .wrapper {
   max-width: 1366px;
   margin: 0 auto;
@@ -7,11 +9,19 @@
     "search-form search-form search-form search-form search-form"
     "subscribe-form subscribe-form subscribe-form subscribe-form subscribe-form";
   padding: 40px 130px 24px;
+
+  @media only screen and (max-width: $medium_breakpoint) {
+    padding: 40px 5px 14px;
+  }
 }
 
 .logo {
   width: 210px;
   grid-area: logo;
+
+  @media only screen and (max-width: $medium_breakpoint) {
+    width: 150px;
+  }
 }
 
 .subscribeToggle {
@@ -23,6 +33,10 @@
   grid-area: search;
   margin: 0 20px;
   align-self: center;
+
+  @media only screen and (max-width: $medium_breakpoint) {
+    margin: 0 5px;
+  }
 }
 
 .searchForm {

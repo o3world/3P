@@ -67,7 +67,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router onUpdate={() => window.scrollTo(0, 0)}>
+      <Router onUpdate={() => window.scrollTo(0, 0)} history={createBrowserHistory()}>
         <div className="App">
           <ApolloProvider client={client}>
             <Header site_title={this.state.pageTitle}/>

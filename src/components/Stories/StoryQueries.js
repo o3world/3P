@@ -1,6 +1,7 @@
 import gql from 'graphql-tag';
 
-const StoryByIdQuery = gql`query story($id:String!) { 
+const StoryByIdQuery = gql`
+query story($id:String!) { 
   nodeQuery(
     filter: {
       conditions: [        
@@ -20,7 +21,11 @@ const StoryByIdQuery = gql`query story($id:String!) {
         sponsoredSeries: field3pSpecialSeries {
             entity {
               ...on TaxonomyTermSpecialS{
-                fieldSsCompanyName
+                sponsoredBy: fieldSsCompanyName
+                seriesTitle: name
+                entityUrl {
+                  path
+                }
               }
             }
         }
@@ -58,7 +63,8 @@ const StoryByIdQuery = gql`query story($id:String!) {
       
     }
   }  
-}`;
+}
+`;
 
 const AllStoryQuery = gql`
 query story {
