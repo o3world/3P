@@ -15,9 +15,10 @@ const FeedItem = (props) => {
   }
 
   let teaser = (props.teaser) ? props.teaser : props.body;
-  if (teaser.length > 200) {
-    teaser = teaser.substr(0,450);
-    teaser = teaser.substr(0,teaser.lastIndexOf(' ')) + ' &hellip;';
+  const teaserLength = 450;
+  if (teaser.length > teaserLength) {
+    teaser = teaser.substr(0, teaserLength);
+    teaser = teaser.substr(0, teaser.lastIndexOf(' ')) + ' &hellip;';
   }
 
   return (
