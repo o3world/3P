@@ -17,6 +17,35 @@ $tp_color--primary: #006BFF;
     padding-bottom: calc(100% * var(--aspect-ratio));
     grid-area: 1/1/-1/-1;
   }
+
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+
+    &::before {
+      grid-area: 1/1/2/2;
+    }
+
+    .meta {
+      grid-area: 2/1/3/3;
+      margin-bottom: 0;
+    }
+
+    .name {
+      font-size: 1.8rem;
+      line-height: 1.9rem;
+      margin: 7px 0;
+    }
+
+    .author {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media only screen and (max-width: 670px) {
+    .meta {
+      padding: 14px;
+    }
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -39,31 +68,32 @@ $tp_color--primary: #006BFF;
     grid-template-columns: 1fr;
     grid-template-areas: "time" "title" "subtitle" "author";
 
-    .name {
-        font-family: 'Unna', serif;
-        font-weight: bold;
-        font-size: 2.8rem;
-        line-height: 2.6rem;
-        letter-spacing: 1px;
-        margin: 14px 0;
+}
 
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-    }
+.name {
+  font-family: 'Unna', serif;
+  font-weight: bold;
+  font-size: 2.8rem;
+  line-height: 2.6rem;
+  letter-spacing: 1px;
+  margin: 14px 0;
 
-    .author {
-         grid-area: author;
-         text-align: right;
-         font-family: 'Montserrat', sans-serif;
-         font-size: 1.2rem;
-     }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
 
-    .date {
-          grid-area: time;
-          color: white;
-          font-family: 'Montserrat', sans-serif;
-          font-size: 0.8rem;
-    }
+.author {
+  grid-area: author;
+  text-align: right;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+}
+
+.date {
+  grid-area: time;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
 }

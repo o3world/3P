@@ -38,6 +38,15 @@ class SingleStoryPage extends Component {
         if (story.author.headshot) {
           headshot = <img className={styles.headshot} src={story.author.headshot.url} alt={story.author.name + ' headshot'} />;
         }
+
+        if (story.sponsoredSeries) {
+          category =
+              <div>
+                <h4 className={styles.sponsoredBy}>{story.sponsoredSeries.entity.sponsoredBy} Sponsored Series</h4>
+                <h5 className={styles.seriesTitle}><a href={story.sponsoredSeries.entity.entityUrl.path}>{story.sponsoredSeries.entity.seriesTitle}</a></h5>
+              </div>;
+        }
+
         const fullName = story.author.first + ' ' + story.author.last;
 
         const currentURL = window.location.href;

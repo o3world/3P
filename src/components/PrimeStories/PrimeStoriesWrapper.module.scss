@@ -19,8 +19,18 @@
   margin-left: calc(20% - 110px);
   margin-bottom: -46px;
   z-index: 2;
+
   img {
     width: 110px;
+  }
+
+  @media only screen and (max-width: 750px) {
+    flex-direction: column;
+    margin: 0 auto;
+
+    img {
+      display: none;
+    }
   }
 }
 
