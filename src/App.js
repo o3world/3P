@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import 'babel-polyfill';
 import TagManager from 'react-gtm-module';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import './App.css';
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import StoriesPage from './components/Stories/StoriesPage';
+import SingleStoryPage from "./components/Stories/SingleStoryPage";
 import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll';
 import SingleSeriesPage from "./components/SponsoredSeries/SingleSeriesPage";
 import Footer from "./components/Footer/Footer";
@@ -24,7 +24,7 @@ import { faSearch, faBars, faSpinner, faEnvelope, faArrowRight } from '@fortawes
 import { faTwitter, faInstagram, faLinkedin, faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 import Routes from './components/Common/RoutesConfig';
-import SingleStoryPage from "./components/Stories/SingleStoryPage";
+import './App.css';
 
 const httpLink = createHttpLink({
   uri: 'http://back.3blmedia.com/graphql'

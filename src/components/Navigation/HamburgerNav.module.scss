@@ -1,5 +1,11 @@
+$medium_breakpoint: 720px;
+
 .nav {
   grid-area: hamburger;
   margin: 0 0 0 20px;
   align-self: center;
+
+  @media only screen and (max-width: $medium_breakpoint) {
+    margin-left: 5px;
+  }
 }

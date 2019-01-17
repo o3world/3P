@@ -26,7 +26,8 @@ class TheFeedPage extends Component {
         const { loading } = this.state;
         if (loading) return (
               <LoadingSpinner/>
-            );
+        );
+
         return (
             <div className={styles.pageWrapper}>
               <Ad adUnit={'TheFeedPage_Top'}/>

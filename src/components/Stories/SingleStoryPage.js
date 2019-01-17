@@ -32,13 +32,21 @@ class SingleStoryPage extends Component {
 
         let category;
         if (story.category) {
-          category = <span className={styles.category}>{story.category.entity.name}</span>;
+          category = <div className={styles.category}>{story.category.entity.name}</div>;
+        }
+        if (story.sponsoredSeries) {
+          category =
+              <div className={styles.category}>
+                <h4 className={styles.sponsoredBy}>{story.sponsoredSeries.entity.sponsoredBy} Sponsored Series</h4>
+                <h5 className={styles.seriesTitle}><a href={story.sponsoredSeries.entity.entityUrl.path}>{story.sponsoredSeries.entity.seriesTitle}</a></h5>
+              </div>;
         }
 
         let headshot;
         if (story.author.headshot) {
           headshot = <img className={styles.headshot} src={story.author.headshot.url} alt={story.author.name + ' headshot'} />;
         }
+
         const fullName = story.author.first + ' ' + story.author.last;
 
         const currentURL = window.location.href;
@@ -56,7 +64,7 @@ class SingleStoryPage extends Component {
                 {headshot}
                 <span className={styles.authorName}>Words by {fullName}</span>
                 {category}
-                <Moment className={styles.date} format="MMM DD">{story.date}</Moment>
+                <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
               </div>
               <div className={styles.bodyWrapper}>
                 <div className={styles.imageWrapper}>

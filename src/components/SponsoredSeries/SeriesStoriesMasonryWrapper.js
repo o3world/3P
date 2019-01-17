@@ -19,7 +19,7 @@ const SeriesStoriesMasonryWrapper = (props) => (
       return (
           <section className={styles.wrapper}>
             { data.nodeQuery.entities.map((story) =>
-                <StoryMasonryTile data={story} key={story.id}/>
+                <StoryMasonryTile data={story} key={story.id} context={'singleSeries'}/>
             )}
           </section>
       )

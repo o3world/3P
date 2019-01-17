@@ -33,3 +33,18 @@
     justify-content: center;
     padding: 40px;
 }
+
+@media only screen and (max-width: 750px) {
+  .titleWrapper {
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .subtitle {
+    margin: 10px 5px;
+  }
+
+  .editorCardsWrapper {
+    margin: 0;
+  }
+}
