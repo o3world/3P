@@ -14,12 +14,18 @@ const FeedItem = (props) => {
     company = props.company[0];
   }
 
+  let teaser = (props.teaser) ? props.teaser : props.body;
+  if (teaser.length > 200) {
+    teaser = teaser.substr(0,450);
+    teaser = teaser.substr(0,teaser.lastIndexOf(' ')) + ' &hellip;';
+  }
+
   return (
     <div className={thumbnailClass}>
       {feedThumbnail}
       <div className={styles.meta}>
         <h2 className={styles.title}><a target='_blank' rel="noopener noreferrer" href={props.link}>{props.title}</a></h2>
-        <div className={styles.description} dangerouslySetInnerHTML={ {__html: props.body.slice(0,200)} } />
+        <div className={styles.description} dangerouslySetInnerHTML={{__html: teaser}}/>
         <span className={styles.company} dangerouslySetInnerHTML={ {__html: company}} />
         <span className={styles.category}>{props.category}</span>
         <Moment className={styles.date} format="MMM DD">{props.date}</Moment>
