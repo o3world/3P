@@ -54,6 +54,7 @@ $small_breakpoint: 650px;
 
 .category {
   grid-area: category;
+  font-family: Montserrat, sans-serif;
   justify-self: start;
   color: $tp_color--primary;
   text-transform: uppercase;
@@ -61,16 +62,18 @@ $small_breakpoint: 650px;
 }
 
 .sponsoredBy {
+  grid-area: category;
   text-transform: uppercase;
   color: $seriesPrimaryColor;
-  font-family: Montserrat, sans-serif;
   text-align: left;
   margin: 0 0 4px 0;
 }
 
 .seriesTitle {
+  grid-area: category;
   text-transform: uppercase;
   font-family: Montserrat, sans-serif;
+  color: black;
   text-align: left;
   margin: 0;
 
