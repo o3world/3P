@@ -3,6 +3,7 @@ import SearchWrapper from './SearchWrapper';
 import { SEARCH_API } from '../Common/constant';
 
 import styles from './SearchResults.module.scss';
+import LoadingSpinner from "../Common/LoadingSpinner";
 
 class SearchResult extends React.Component {
 
@@ -25,7 +26,8 @@ class SearchResult extends React.Component {
     }
 
     fetchInformation = (searchKeyword) => {
-        const url =  SEARCH_API.replace("{{searchkey}}", searchKeyword)
+        const url =  SEARCH_API.replace("{{searchkey}}", searchKeyword);
+        this.setState({loading: true});
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -45,7 +47,7 @@ class SearchResult extends React.Component {
         return (
             <div className={styles.wrapper}>
                 {!this.state.loading ? this.state.data === null ? <h1>No Results Found</h1> : null : null}
-                {this.state.loading ? <h1>Loading...</h1> :<SearchWrapper data={this.state.data}/> }
+                {this.state.loading ? <LoadingSpinner/> :<SearchWrapper data={this.state.data}/> }
             </div>
         )
     }
