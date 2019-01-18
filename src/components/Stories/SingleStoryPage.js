@@ -47,6 +47,17 @@ class SingleStoryPage extends Component {
           headshot = <img className={styles.headshot} src={story.author.headshot.url} alt={story.author.name + ' headshot'} />;
         }
 
+        let wideImage;
+        let wideImageURL;
+        if (story.wideImage) {
+          wideImage =
+              <div className={styles.imageWrapper}>
+                <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
+                <StoryShare/>
+              </div>;
+          wideImageURL = story.wideImage.url;
+        }
+
         const fullName = story.author.first + ' ' + story.author.last;
 
         const currentURL = window.location.href;
@@ -56,7 +67,7 @@ class SingleStoryPage extends Component {
               <MetaTags>
                 <title>TriplePundit - {story.title}</title>
                 <meta property="og:title" content={story.title} />
-                <meta property="og:image" content={story.wideImage.url} />
+                <meta property="og:image" content={wideImageURL} />
                 <meta property="og:url" content={currentURL} />
               </MetaTags>
               <div className={styles.meta}>
@@ -67,10 +78,7 @@ class SingleStoryPage extends Component {
                 <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
               </div>
               <div className={styles.bodyWrapper}>
-                <div className={styles.imageWrapper}>
-                  <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
-                <StoryShare/>
-                </div>
+                {wideImage}
                 <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
               </div>
               <Ad adUnit={'StoryDetailPage_Bottom'}/>
