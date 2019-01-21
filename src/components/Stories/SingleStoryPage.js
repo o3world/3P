@@ -60,7 +60,7 @@ class SingleStoryPage extends Component {
 
         const fullName = story.author.first + ' ' + story.author.last;
 
-        const currentURL = window.location.href;
+        const currentURL = '';
 
         return (
             <div className={styles.wrapper}>
