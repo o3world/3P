@@ -2,6 +2,7 @@ import React from 'react';
 import FeaturedSponsoredSeries from "./FeaturedSponsoredSeries";
 import SponsoredSeriesAllMasonryWrapper from "./SponsoredSeriesAllMasonryWrapper";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 import styles from './SponsoredSeriesAll.module.scss';
 
@@ -23,6 +24,7 @@ const SponsoredSeriesAll = () => {
           </div>
         </div>
         <SponsoredSeriesAllMasonryWrapper/>
+          <Footer />
       </div>
   );
 };

@@ -10,6 +10,7 @@ import StoryShare from './SocialShare/StoryShare';
 import MetaTags from 'react-meta-tags';
 import LoadingSpinner from "../Common/LoadingSpinner";
 import Header from '../Header/Header';
+import Footer from "../Footer/Footer";
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -84,6 +85,7 @@ class SingleStoryPage extends Component {
                 <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
               </div>
               <Ad adUnit={'StoryDetailPage_Bottom'}/>
+              <Footer />
             </div>
         )
       }

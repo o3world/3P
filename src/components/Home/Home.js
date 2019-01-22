@@ -12,6 +12,7 @@ import styles from "./Home.module.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Link} from "react-router-dom";
 import Header from '../Header/Header';
+import Footer from "../Footer/Footer";
 
 const Home = () => {
     return (
@@ -35,6 +36,7 @@ const Home = () => {
             <HomeForum/>
           </div>
           <EditorCardsWrapper/>
+            <Footer />
         </div>
     )
 };

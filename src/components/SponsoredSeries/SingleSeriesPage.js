@@ -4,6 +4,8 @@ import {Query} from "react-apollo";
 import SeriesHeader from "./SeriesHeader";
 import { SingleSeriesQuery } from "../SponsoredSeries/SponsoredSeriesQueries";
 import SeriesStoriesMasonryWrapper from "./SeriesStoriesMasonryWrapper";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 import styles from './SingleSeriesPage.module.scss';
 import LoadingSpinner from "../Common/LoadingSpinner";
@@ -19,8 +21,10 @@ const SingleSeriesPage = (props) => (
 
         return (
             <section className={styles.wrapper}>
+                <Header />
                 <SeriesHeader {...data}/>
                 <SeriesStoriesMasonryWrapper seriesId={props.match.params.id}/>
+                <Footer />
             </section>
         )
       }}
