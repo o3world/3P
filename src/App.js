@@ -38,8 +38,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Header site_title={this.state.pageTitle}/>
-                <Switch>
+
                     <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
                     <Route path={Routes.THEFEED} render={(props) => <TheFeedPage {...props} />}/>
                     <Route path={Routes.EDITORS} component={EditorsPage}/>
@@ -49,8 +48,6 @@ class App extends Component {
                     <Route path={Routes.STORIES} component={StoriesPage}/>
                     <Route path={Routes.SINGLESTORY} component={SingleStoryPage}/>
                     <Route path={Routes.SEARCH} component={SeachResult}/>
-                </Switch>
-                <Footer/>
             </div>
 
 
