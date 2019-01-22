@@ -1,7 +1,6 @@
 import React from 'react';
 import SearchWrapper from './SearchWrapper';
 import { SEARCH_API } from '../Common/constant';
-import fetch from 'node-fetch';
 
 import styles from './SearchResults.module.scss';
 import LoadingSpinner from "../Common/LoadingSpinner";

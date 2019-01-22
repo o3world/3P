@@ -24,7 +24,7 @@ app.get('/ping', function (req, res) {
 
 
 
-app.use((req, res) => {
+app.get('/*', function (req, res) {
 
     const httpLink = createHttpLink({
         uri: 'http://back.3blmedia.com/graphql',
@@ -58,7 +58,8 @@ app.use((req, res) => {
             //console.log(root);
             //console.log('-----------------------------------------');
             const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>');
-            console.log(document);
+            //console.log(document);
+            console.log('Server Side Rendered');
             res.status(200);
             res.send(document);
             res.end();
