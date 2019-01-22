@@ -36,7 +36,6 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-
                     <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
                     <Route path={Routes.THEFEED} render={(props) => <TheFeedPage {...props} />}/>
                     <Route path={Routes.EDITORS} component={EditorsPage}/>

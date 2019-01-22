@@ -1,5 +1,6 @@
 import React from "react";
 import LazyLoad from 'react-lazyload';
+import {Link} from "react-router-dom";
 
 import Moment from 'react-moment';
 import styles from './StoryMasonryTile.module.scss';
@@ -32,7 +33,7 @@ const StoryMasonryTile = (props) => {
     <LazyLoad height={200}>
       <div className={styles.tile}
            style={{backgroundImage: `url(` + backgroundImage + `)`}}>
-        <h2 className={styles.title}><a href={link} dangerouslySetInnerHTML={{__html: story.title}}/></h2>
+        <h2 className={styles.title}><Link to={link}><span dangerouslySetInnerHTML={{__html: story.title}}/></Link></h2>
         {category}
         {sponsored}
         <p className={styles.author}>Words by {author}</p>
