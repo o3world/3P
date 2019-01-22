@@ -7,7 +7,7 @@ import Header from '../Header/Header';
 const StoriesPage = () =>
 
     <div>
-        <Header />
+        <Header site_title={'Stories'} />
         <PrimeStoriesWrapper/>
       <Ad adUnit={'StoriesPage_AboveMosaic'}/>
         <StoriesMasonryWrapper/>

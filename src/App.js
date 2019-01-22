@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import 'babel-polyfill';
-import { Switch, Route } from 'react-router-dom';
-import Header from "./components/Header/Header";
+import { Route } from 'react-router-dom';
 import Home from "./components/Home/Home";
 import StoriesPage from './components/Stories/StoriesPage';
 import SingleStoryPage from "./components/Stories/SingleStoryPage";
 import SponsoredSeriesAll from './components/SponsoredSeries/SponsoredSeriesAll';
 import SingleSeriesPage from "./components/SponsoredSeries/SingleSeriesPage";
-import Footer from "./components/Footer/Footer";
 import TheFeedPage from "./components/Feed/TheFeedPage";
 import EditorsPage from "./components/Editors/EditorsPage";
 import SingleEditorPage from "./components/Editors/SingleEditorPage";

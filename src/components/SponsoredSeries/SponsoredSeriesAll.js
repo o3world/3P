@@ -1,6 +1,7 @@
 import React from 'react';
 import FeaturedSponsoredSeries from "./FeaturedSponsoredSeries";
 import SponsoredSeriesAllMasonryWrapper from "./SponsoredSeriesAllMasonryWrapper";
+import Header from "../Header/Header";
 
 import styles from './SponsoredSeriesAll.module.scss';
 
@@ -8,6 +9,7 @@ const SponsoredSeriesAll = () => {
 
   return (
       <div className={styles.pageWrapper}>
+          <Header />
         <FeaturedSponsoredSeries/>
         <div className={styles.header}>
           <div className={styles.titleWrapper}>
