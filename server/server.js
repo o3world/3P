@@ -40,6 +40,11 @@ app.get('/*', function (req, res) {
     var reqpath = req.path;
     console.log(reqpath);
 
+    if (reqpath.indexOf('Object]') > 0) {
+        res.end();
+        return;
+    }
+
     // First check if the path is one of the old patterns.
     // if so, try to get a redirect from the appropriate redirect file.
     if (
@@ -66,6 +71,7 @@ app.get('/*', function (req, res) {
         console.log('redirecting to ' + newurl);
         res.redirect(301,newurl);
         res.end();
+        return;
     }
 
     // otherwise, render.
