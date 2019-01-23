@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './EditorCard.module.scss';
+import {Link} from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -32,7 +33,7 @@ class EditorCard extends React.Component {
           <div className={styles.wrapper}>
               <img className={styles.headshot} src={editor.headshot.url} alt={fullName + ' headshot'} />
               <div className={styles.meta}>
-                <h3 className={styles.name}><a href={'/editor/' + editor.id + '/' + editor.firstName + '-' + editor.lastName} title={fullName}>{fullName}</a></h3>
+                  <h3 className={styles.name}><Link to={'/editor/' + editor.id + '/' + editor.firstName + '-' + editor.lastName} title={fullName}><span>{fullName}</span></Link></h3>
                   <p className={styles.title}>{editor.jobTitle}</p>
                   <div className={styles.socialWrapper}>
                     {emailIcon}
