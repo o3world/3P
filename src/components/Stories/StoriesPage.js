@@ -3,6 +3,7 @@ import PrimeStoriesWrapper from '../PrimeStories/PrimeStoriesWrapper';
 import StoriesMasonryWrapper from "./StoriesMasonryWrapper";
 import Ad from "../Ads/Ad";
 import Header from '../Header/Header';
+import Footer from "../Footer/Footer";
 
 const StoriesPage = () =>
 
@@ -11,6 +12,7 @@ const StoriesPage = () =>
         <PrimeStoriesWrapper/>
       <Ad adUnit={'StoriesPage_AboveMosaic'}/>
         <StoriesMasonryWrapper/>
+        <Footer />
     </div>;
 
 export default StoriesPage;
