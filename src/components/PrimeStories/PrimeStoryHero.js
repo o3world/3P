@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './PrimeStoryHero.module.scss';
 import Moment from "react-moment";
+import {Link} from "react-router-dom";
 
 const PrimeStoryHero = (props) => {
   const heroImageStyle = {
@@ -13,7 +14,7 @@ const PrimeStoryHero = (props) => {
   return (
       <div className={styles.wrapper} style={heroImageStyle}>
           <div className={styles.meta}>
-            <h3 className={styles.name}><a href={link}>{props.title}</a></h3>
+              <h3 className={styles.name}><Link to={link}><span>{props.title}</span></Link></h3>
             <p className={styles.author}>Words by {props.author.first} {props.author.last}</p>
             <Moment className={styles.date} format="MMM DD">{published_date}</Moment>
           </div>
