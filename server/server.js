@@ -98,7 +98,7 @@ app.get('/*', function (req, res) {
 
         renderToStringWithData(appRendered).then((root) => {
             const initialState = client.extract();
-            const meta = metaTagsInstance.renderToString();
+            const meta = metaTagsInstance.getTags();
 
             fs.readFile('./build/index.html', 'utf8', function (err, data) {
                 if (err) throw err;
