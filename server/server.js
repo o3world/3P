@@ -166,7 +166,7 @@ app.get('/story/*', function (req, res) {
           <MetaTagsContext extract = {metaTagsInstance.extract}>
             <ApolloProvider client={client}>
                 <StaticRouter location={req.url} context={context}>
-                    <App/>
+                    <App serverRequest={req}/>
                 </StaticRouter>
             </ApolloProvider>
           </MetaTagsContext>
