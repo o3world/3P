@@ -181,7 +181,7 @@ app.get('/story/*', function (req, res) {
 
             fs.readFile('./build/index.html', 'utf8', function (err, data) {
                 if (err) throw err;
-                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('<head></head>', `<head>${metaString}</head>`);
+                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('<div id="headmeta"></div>', `${metaString}`);
                 console.log(document);
                 res.status(200);
                 res.send(document);
