@@ -99,10 +99,13 @@ app.get('/*', function (req, res) {
         renderToStringWithData(appRendered).then((root) => {
             const initialState = client.extract();
             const meta = metaTagsInstance.getTags();
+            const metaString = metaTagsInstance.renderToString();
+
+            console.log(metaString);
 
             fs.readFile('./build/index.html', 'utf8', function (err, data) {
                 if (err) throw err;
-                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('<head></head>', `<head> ${meta} </head>`);
+                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('<head></head>', `<head> ${metaString} </head>`);
                 console.log('Server Side Rendered');
                 res.status(200);
                 res.send(document);
