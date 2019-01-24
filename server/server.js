@@ -172,7 +172,6 @@ app.get('/story/*', function (req, res) {
           </MetaTagsContext>
         );
 
-
         renderToStringWithData(appRendered).then((root) => {
             const initialState = client.extract();
             const meta = metaTagsInstance.getTags();
@@ -182,8 +181,8 @@ app.get('/story/*', function (req, res) {
 
             fs.readFile('./build/index.html', 'utf8', function (err, data) {
                 if (err) throw err;
-                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('<head></head>', `<head> ${metaString} </head>`);
-                console.log('Server Side Rendered');
+                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('<head></head>', `<head>${metaString}</head>`);
+                console.log(document);
                 res.status(200);
                 res.send(document);
                 res.end();
