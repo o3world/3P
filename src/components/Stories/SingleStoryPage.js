@@ -11,7 +11,7 @@ import LoadingSpinner from "../Common/LoadingSpinner";
 import Header from '../Header/Header';
 import Footer from "../Footer/Footer";
 
-import { Helmet } from 'react-helmet';
+import MetaTags from 'react-meta-tags';
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -67,12 +67,12 @@ class SingleStoryPage extends Component {
 
         return (
             <div className={styles.wrapper}>
-            <Helmet>
+            <MetaTags>
               <title>{story.title}</title>
-              <meta name="og:title" content={story.title} />
+              <meta property="og:title" content={story.title} />
               <meta property="og:image" content={wideImageURL} />
               <meta property="og:url" content={currentURL} />
-            </Helmet>
+            </MetaTags>
               <Header />
               <div className={styles.meta}>
                 <h1 className={styles.title}>{story.title}</h1>

@@ -16,7 +16,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { renderToStringWithData } from "react-apollo";
 import fetch from 'node-fetch';
 
-import { Helmet } from 'react-helmet';
+import MetaTagsServer from 'react-meta-tags/server';
+import {MetaTagsContext} from 'react-meta-tags';
 
 const app = Express();
 
@@ -83,22 +84,25 @@ app.get('/*', function (req, res) {
 
 
         const context = {};
+        const metaTagsInstance = MetaTagsServer();
         const appRendered = (
+          <MetaTagsContext extract = {metaTagsInstance.extract}>
             <ApolloProvider client={client}>
                 <StaticRouter location={req.url} context={context}>
                     <App/>
                 </StaticRouter>
             </ApolloProvider>
+          </MetaTagsContext>
         );
 
 
         renderToStringWithData(appRendered).then((root) => {
             const initialState = client.extract();
-            const helmet = Helmet.renderStatic();
+            const meta = metaTagsInstance.renderToString();
 
             fs.readFile('./build/index.html', 'utf8', function (err, data) {
                 if (err) throw err;
-                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('<head></head>', `<head> ${helmet.title.toString()} ${helmet.meta.toString()} </head>`);
+                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('<head></head>', `<head> ${meta} </head>`);
                 console.log('Server Side Rendered');
                 res.status(200);
                 res.send(document);
