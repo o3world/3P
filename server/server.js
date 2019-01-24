@@ -98,7 +98,7 @@ app.get('/*', function (req, res) {
 
             fs.readFile('./build/index.html', 'utf8', function (err, data) {
                 if (err) throw err;
-                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('<head></head>', `<head> + ${helmet.title.toString()} + ${helmet.meta.toString()} </head>`);
+                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('<head></head>', `<head> ${helmet.title.toString()} ${helmet.meta.toString()} </head>`);
                 console.log('Server Side Rendered');
                 res.status(200);
                 res.send(document);
