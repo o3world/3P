@@ -64,6 +64,7 @@ class SingleStoryPage extends Component {
         const fullName = story.author.first + ' ' + story.author.last;
 
         const currentURL = 'http://triplepundit.com' + this.props.location.pathname;
+        /* @TODO: Replace hard-coded domain */
 
         return (
             <div className={styles.wrapper}>

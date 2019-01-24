@@ -43,7 +43,7 @@ const client = new ApolloClient({
 // first, redirects that begin with the Year.
 app.get('/20*', function (req, res) {
 
-    var reqpath = req.path;
+    let reqpath = req.path;
     console.log(reqpath);
 
     if (reqpath.indexOf('Object]') > 0) {
@@ -63,13 +63,13 @@ app.get('/20*', function (req, res) {
         reqpath.startsWith("/2012/") ||
         reqpath.startsWith("/2011/")
     ) {
-        var newurl = getRedirect(req.path, reqpath.substr(1, 4), fs);
+        let newurl = getRedirect(req.path, reqpath.substr(1, 4), fs);
     }
     else if (
         reqpath.startsWith("/special/") ||
         reqpath.startsWith("/series/")
     ) {
-        var newurl = getRedirect(req.path, 'special', fs);
+        let newurl = getRedirect(req.path, 'special', fs);
     }
 
     // if we have a redirect, go there.
@@ -126,7 +126,6 @@ app.get('/series/*', function (req, res) {
 
     if (reqpath.indexOf('Object]') > 0) {
         res.end();
-        return;
     }
 
 
@@ -166,20 +165,18 @@ app.get('/story/*', function (req, res) {
           <MetaTagsContext extract = {metaTagsInstance.extract}>
             <ApolloProvider client={client}>
                 <StaticRouter location={req.url} context={context}>
-                    <App serverRequest={req}/>
+                    <App/>
                 </StaticRouter>
             </ApolloProvider>
           </MetaTagsContext>
         );
 
         renderToStringWithData(appRendered).then((root) => {
-            const initialState = client.extract();
-            const meta = metaTagsInstance.getTags();
             const metaString = metaTagsInstance.renderToString();
 
             fs.readFile('./build/index.html', 'utf8', function (err, data) {
                 if (err) throw err;
-                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('<div id="headmeta"></div>', `${metaString}`);
+                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('[HEADMETA]', `${metaString}`);
                 res.status(200);
                 res.send(document);
                 res.end();
