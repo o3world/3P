@@ -177,12 +177,9 @@ app.get('/story/*', function (req, res) {
             const meta = metaTagsInstance.getTags();
             const metaString = metaTagsInstance.renderToString();
 
-            console.log(metaString);
-
             fs.readFile('./build/index.html', 'utf8', function (err, data) {
                 if (err) throw err;
                 const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('<div id="headmeta"></div>', `${metaString}`);
-                console.log(document);
                 res.status(200);
                 res.send(document);
                 res.end();
