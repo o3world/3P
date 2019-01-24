@@ -39,7 +39,9 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-app.get('/*', function (req, res) {
+// have the server handle only certain paths - the rest, React can handle on the front end.
+// first, redirects that begin with the Year.
+app.get('/20*', function (req, res) {
 
     var reqpath = req.path;
     console.log(reqpath);
@@ -73,15 +75,90 @@ app.get('/*', function (req, res) {
     // if we have a redirect, go there.
     if (newurl != null) {
         console.log('redirecting to ' + newurl);
-        res.redirect(301,newurl);
+        res.redirect(301, newurl);
+        res.end();
+        return;
+    }
+    else {
+        res.redirect(301, "/");
         res.end();
         return;
     }
 
-    // otherwise, render.
+});
+
+// Then, redirects for what are now sponsored series.
+// They begin with 'special' or 'series'
+app.get('/special/*', function (req, res) {
+
+    var reqpath = req.path;
+    console.log(reqpath);
+
+    if (reqpath.indexOf('Object]') > 0) {
+        res.end();
+        return;
+    }
+
+
+    var newurl = getRedirect(req.path, 'special', fs);
+
+
+    // if we have a redirect, go there.
+    if (newurl != null) {
+        console.log('redirecting to ' + newurl);
+        res.redirect(301, newurl);
+        res.end();
+        return;
+    }
     else {
+        res.redirect(301, "/");
+        res.end();
+        return;
+    }
+
+});
 
 
+app.get('/series/*', function (req, res) {
+
+    var reqpath = req.path;
+    console.log(reqpath);
+
+    if (reqpath.indexOf('Object]') > 0) {
+        res.end();
+        return;
+    }
+
+
+    var newurl = getRedirect(req.path, 'special', fs);
+
+
+    // if we have a redirect, go there.
+    if (newurl != null) {
+        console.log('redirecting to ' + newurl);
+        res.redirect(301, newurl);
+        res.end();
+        return;
+    }
+    else {
+        res.redirect(301, "/");
+        res.end();
+        return;
+    }
+
+});
+
+
+// and finally, individual stories pages.
+app.get('/story/*', function (req, res) {
+
+    var reqpath = req.path;
+    console.log(reqpath);
+
+    if (reqpath.indexOf('Object]') > 0) {
+        res.end();
+        return;
+    }
 
         const context = {};
         const metaTagsInstance = MetaTagsServer();
@@ -114,20 +191,14 @@ app.get('/*', function (req, res) {
 
 
         });
-    }
 
 });
 
-
-app.use(function(req, res, next){
-    console.log("INTERCEPT-REQUEST");
-    const orig_send = res.send;
-    res.send = function(arg) {
-        console.log("INTERCEPT-RESPONSE", JSON.stringify(arguments));
-        orig_send.call(res, arg);
-    };
-    next();
+// as a default, send anything else through without SSR
+app.get('/*', function (req, res) {
+    res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
 });
+
 
 
 app.listen(process.env.PORT || 5000);
