@@ -70,7 +70,6 @@ class SingleStoryPage extends Component {
             <Helmet>
               <title>{story.title}</title>
               <meta name="og:title" content={story.title} />
-              <meta name="og:title" content={story.title} />
               <meta property="og:image" content={wideImageURL} />
               <meta property="og:url" content={currentURL} />
             </Helmet>
