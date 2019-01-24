@@ -10,7 +10,7 @@ class ShareIconList extends Component {
       visibility = styles.show;
     }
 
-    const currentURL = window.location.href;
+    const currentURL = '';
 
     return (
         <div onClick={this.props.handleMouseDown} className={styles.socialIcons + ' ' + visibility}>

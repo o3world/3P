@@ -11,10 +11,13 @@ import EditorCardsWrapper from "../Editors/EditorCardsWrapper";
 import styles from "./Home.module.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Link} from "react-router-dom";
+import Header from '../Header/Header';
+import Footer from "../Footer/Footer";
 
 const Home = () => {
     return (
         <div className={styles.wrapper}>
+            <Header/>
           <PrimeStoriesWrapper/>
           <div className={styles.arrow}>
             <Link to={'/stories'}>Stories <FontAwesomeIcon icon={"arrow-right"} /></Link>
@@ -33,6 +36,7 @@ const Home = () => {
             <HomeForum/>
           </div>
           <EditorCardsWrapper/>
+            <Footer />
         </div>
     )
 };

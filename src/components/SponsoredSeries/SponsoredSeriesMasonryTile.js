@@ -1,5 +1,6 @@
 import React from "react";
 import ConvertSeoUrl from "../Common/createSeoUrl";
+import {Link} from "react-router-dom";
 import styles from './SponsoredSeriesMasonryTile.module.scss';
 
 const SponsoredSeriesMasonryTile = (props) => {
@@ -10,7 +11,7 @@ const SponsoredSeriesMasonryTile = (props) => {
     const url = "/sponsored-series/" + series.tid + "/"+seoLink;
     return (
         <div className={styles.tile} style={{backgroundImage: `url(${backgroundImage})`}}>
-            <h4 className={styles.title}><a href={url}> {series.name}</a></h4>
+            <h4 className={styles.title}><Link to={url}><span>{series.name}</span></Link></h4>
             <img className={styles.logo} src={logo} alt={''}/>
         </div>
 

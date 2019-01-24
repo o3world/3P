@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './PrimeStory.module.scss';
+import {Link} from "react-router-dom";
 
 import Moment from 'react-moment';
 
@@ -15,7 +16,7 @@ const PrimeStory = (props) => {
         return (
             <div className={storyClass} style={storyStyle}>
                 <div className={styles.content}>
-                  <h3 className={styles.title}><a href={link}>{props.title}</a></h3>
+                    <h3 className={styles.title}><Link to={link}><span>{props.title}</span></Link></h3>
                   <p className={styles.author}>Words by {props.author.first} {props.author.last}</p>
                   <p className={styles.category}>{props.category.entity.name}</p>
                   <Moment className={styles.date} format="MMM DD">{published_date}</Moment>

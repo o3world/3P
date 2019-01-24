@@ -4,6 +4,8 @@ import Ad from "../Ads/Ad";
 
 import styles from './TheFeedPage.module.scss';
 import LoadingSpinner from "../Common/LoadingSpinner";
+import Header from '../Header/Header';
+import Footer from "../Footer/Footer";
 
 class TheFeedPage extends Component {
     constructor(props) {
@@ -30,6 +32,7 @@ class TheFeedPage extends Component {
 
         return (
             <div className={styles.pageWrapper}>
+                <Header />
               <Ad adUnit={'TheFeedPage_Top'}/>
                 <div className={styles.titleWrapper}>
                     <h3 className={styles.pageTitle}>The Feed</h3>
@@ -39,6 +42,7 @@ class TheFeedPage extends Component {
               { this.state.data.map(feeditem =>
                   <FeedItem {...feeditem} key={feeditem.id} />
               )}
+            <Footer />
             </div>
         )
     }

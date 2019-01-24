@@ -9,6 +9,8 @@ import Ad from "../Ads/Ad";
 import StoryShare from './SocialShare/StoryShare';
 import MetaTags from 'react-meta-tags';
 import LoadingSpinner from "../Common/LoadingSpinner";
+import Header from '../Header/Header';
+import Footer from "../Footer/Footer";
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -60,7 +62,7 @@ class SingleStoryPage extends Component {
 
         const fullName = story.author.first + ' ' + story.author.last;
 
-        const currentURL = window.location.href;
+        const currentURL = '';
 
         return (
             <div className={styles.wrapper}>
@@ -70,6 +72,7 @@ class SingleStoryPage extends Component {
                 <meta property="og:image" content={wideImageURL} />
                 <meta property="og:url" content={currentURL} />
               </MetaTags>
+              <Header />
               <div className={styles.meta}>
                 <h1 className={styles.title}>{story.title}</h1>
                 {headshot}
@@ -82,6 +85,7 @@ class SingleStoryPage extends Component {
                 <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
               </div>
               <Ad adUnit={'StoryDetailPage_Bottom'}/>
+              <Footer />
             </div>
         )
       }
