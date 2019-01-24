@@ -5,6 +5,7 @@ const AllSponsoredSeriesQuery = gql`
   taxonomyTermQuery(filter: {
       conditions: [
         {field: "vid", value: "special_s"},
+        {field: "field_enabled", value: "1"}
       ]},
       sort: [
         {field: "field_featured_series", direction: DESC},
@@ -51,6 +52,7 @@ const FeaturedSponsoredSeriesQuery = gql`
   taxonomyTermQuery(filter: {
       conditions: [
         {field: "vid", value: "special_s"},
+        {field: "field_enabled", value: "1"}
       ]},
       sort: [
         {field: "field_featured_series", direction: DESC},
