@@ -7,10 +7,11 @@ import { StoryByIdQuery } from "./StoryQueries";
 import Ad from "../Ads/Ad";
 
 import StoryShare from './SocialShare/StoryShare';
-import MetaTags from 'react-meta-tags';
 import LoadingSpinner from "../Common/LoadingSpinner";
 import Header from '../Header/Header';
 import Footer from "../Footer/Footer";
+
+import { Helmet } from 'react-helmet';
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -62,16 +63,17 @@ class SingleStoryPage extends Component {
 
         const fullName = story.author.first + ' ' + story.author.last;
 
-        const currentURL = '';
+        const currentURL = this.props.location.pathname;
 
         return (
             <div className={styles.wrapper}>
-              <MetaTags>
-                <title>TriplePundit - {story.title}</title>
-                <meta property="og:title" content={story.title} />
-                <meta property="og:image" content={wideImageURL} />
-                <meta property="og:url" content={currentURL} />
-              </MetaTags>
+            <Helmet>
+              <title>{story.title}</title>
+              <meta name="og:title" content={story.title} />
+              <meta name="og:title" content={story.title} />
+              <meta property="og:image" content={story.wideImage.url} />
+              <meta property="og:url" content={currentURL} />
+            </Helmet>
               <Header />
               <div className={styles.meta}>
                 <h1 className={styles.title}>{story.title}</h1>

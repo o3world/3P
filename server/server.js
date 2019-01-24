@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import fs from 'fs'
 import { getRedirect } from "./Redirect";
+import { renderToString } from 'react-dom/server';
 
 import App from '../src/App';
 import { ApolloClient } from "apollo-client";
@@ -14,6 +15,8 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { renderToStringWithData } from "react-apollo";
 import fetch from 'node-fetch';
+
+import { Helmet } from 'react-helmet';
 
 const app = Express();
 
@@ -91,10 +94,11 @@ app.get('/*', function (req, res) {
 
         renderToStringWithData(appRendered).then((root) => {
             const initialState = client.extract();
+            const helmet = Helmet.renderStatic();
 
             fs.readFile('./build/index.html', 'utf8', function (err, data) {
                 if (err) throw err;
-                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>');
+                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('<head></head>', `<head> + ${helmet.title.toString()} + ${helmet.meta.toString()} </head>`);
                 console.log('Server Side Rendered');
                 res.status(200);
                 res.send(document);
