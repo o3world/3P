@@ -4,6 +4,8 @@ import { SEARCH_API } from '../Common/constant';
 
 import styles from './SearchResults.module.scss';
 import LoadingSpinner from "../Common/LoadingSpinner";
+import Header from '../Header/Header';
+import Footer from "../Footer/Footer";
 
 class SearchResult extends React.Component {
 
@@ -46,8 +48,10 @@ class SearchResult extends React.Component {
     render() {
         return (
             <div className={styles.wrapper}>
+                <Header />
                 {!this.state.loading ? this.state.data === null ? <h1>No Results Found</h1> : null : null}
                 {this.state.loading ? <LoadingSpinner/> :<SearchWrapper data={this.state.data}/> }
+                <Footer />
             </div>
         )
     }
