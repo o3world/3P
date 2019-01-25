@@ -19,12 +19,14 @@ const SingleEditorBioQuery = gql`
       instagramUsername: fieldInstagramUsername
         linkedinUsername: fieldLinkedinUsername
       jobTitle: fieldJobTitle
-  }  
+  }
 }`;
 
 const StoriesByEditor = gql`
     query stories($id:String!) {
-        nodeQuery(filter: {
+        nodeQuery(
+    limit: 100,
+    filter: {
     conjunction: AND
     conditions: [{
       field: "type"
@@ -35,7 +37,7 @@ const StoriesByEditor = gql`
         value: [$id]
       }]
   }) {
-    entities {      
+    entities {
       ... on NodeStory {
         title
         id: nid
@@ -51,13 +53,13 @@ const StoriesByEditor = gql`
         }
         entityUrl {
           path
-        }        
+        }
         date: entityCreated
         category: fieldPrimaryCategory {
           entity {
             name
           }
-        }         
+        }
         squareImage: fieldFeaturedImageSquare {
           url
           width
@@ -75,9 +77,9 @@ const StoriesByEditor = gql`
         }
         body: fieldContent {
           text: processed
-        }        
+        }
       }
-    }  
+    }
   }
     }
 `;
