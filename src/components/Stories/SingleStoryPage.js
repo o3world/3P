@@ -54,6 +54,8 @@ class SingleStoryPage extends Component {
 
         let wideImage;
         let wideImageURL;
+        let imageHeight;
+        let imageWidth;
         if (story.wideImage) {
           wideImage =
               <div className={styles.imageWrapper}>
@@ -61,6 +63,8 @@ class SingleStoryPage extends Component {
                 <StoryShare url={currentURL}/>
               </div>;
           wideImageURL = story.wideImage.url;
+          imageHeight = story.wideImage.height;
+          imageWidth = story.wideImage.width;
         }
 
         const fullName = story.author.first + ' ' + story.author.last;
@@ -71,6 +75,8 @@ class SingleStoryPage extends Component {
               <title>Triple Pundit: {story.title}</title>
               <meta property="og:title" content={'TriplePundit: ' + story.title} />
               <meta property="og:image" content={wideImageURL} />
+              <meta property="og:image:height" content={imageHeight} />
+              <meta property="og:image:width" content={imageWidth} />
               <meta property="og:url" content={currentURL} />
             </Helmet>
             <Header />
