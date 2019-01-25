@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
-import {Query} from "react-apollo";
+import { Query } from "react-apollo";
+import { Helmet } from "react-helmet";
 
 import styles from './SingleStoryPage.module.scss';
 import { StoryByIdQuery } from "./StoryQueries";
@@ -10,8 +11,6 @@ import StoryShare from './SocialShare/StoryShare';
 import LoadingSpinner from "../Common/LoadingSpinner";
 import Header from '../Header/Header';
 import Footer from "../Footer/Footer";
-
-import MetaTags from 'react-meta-tags';
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -68,27 +67,27 @@ class SingleStoryPage extends Component {
 
         return (
             <div className={styles.wrapper}>
-            <MetaTags>
-              <title>{story.title}</title>
-              <meta property="og:title" content={story.title} />
+            <Helmet>
+              <title>Triple Pundit: {story.title}</title>
+              <meta property="og:title" content={'TriplePundit: ' + story.title} />
               <meta property="og:image" content={wideImageURL} />
               <meta property="og:url" content={currentURL} />
-            </MetaTags>
-              <Header />
-              <div className={styles.meta}>
-                <h1 className={styles.title}>{story.title}</h1>
-                {headshot}
-                <span className={styles.authorName}>Words by {fullName}</span>
-                {category}
-                <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
-              </div>
-              <div className={styles.bodyWrapper}>
-                {wideImage}
-                <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
-              </div>
-              <Ad adUnit={'StoryDetailPage_Bottom'}/>
-              <Footer />
+            </Helmet>
+            <Header />
+            <div className={styles.meta}>
+              <h1 className={styles.title}>{story.title}</h1>
+              {headshot}
+              <span className={styles.authorName}>Words by {fullName}</span>
+              {category}
+              <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
             </div>
+            <div className={styles.bodyWrapper}>
+              {wideImage}
+              <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
+            </div>
+            <Ad adUnit={'StoryDetailPage_Bottom'}/>
+            <Footer />
+          </div>
         )
       }
       }

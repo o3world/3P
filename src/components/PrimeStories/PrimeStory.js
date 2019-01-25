@@ -13,13 +13,18 @@ const PrimeStory = (props) => {
         const link = '/story/' + published_date.getFullYear() + props.entityUrl.path + '/' + props.id + '/';
         const storyClass = (props.index === '1') ? styles.primeStorySecond : styles.primeStory;
 
+        let category;
+        if (props.category) {
+            category = <p className={styles.category}>{props.category.entity.name}</p>;
+        }
+
         return (
             <div className={storyClass} style={storyStyle}>
                 <div className={styles.content}>
                     <h3 className={styles.title}><Link to={link}><span>{props.title}</span></Link></h3>
-                  <p className={styles.author}>Words by {props.author.first} {props.author.last}</p>
-                  <p className={styles.category}>{props.category.entity.name}</p>
-                  <Moment className={styles.date} format="MMM DD">{published_date}</Moment>
+                    <p className={styles.author}>Words by {props.author.first} {props.author.last}</p>
+                    {category}
+                    <Moment className={styles.date} format="MMM DD">{published_date}</Moment>
                 </div>
             </div>
         );

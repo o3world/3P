@@ -20,15 +20,13 @@ const client = new ApolloClient({
     cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
 });
 
-
-
 ReactDOM.hydrate(
-        <ApolloProvider client={client}>
-            <BrowserRouter>
-                <App>
-                </App>
-            </BrowserRouter>
-        </ApolloProvider>,
+    <ApolloProvider client={client}>
+        <BrowserRouter>
+            <App>
+            </App>
+        </BrowserRouter>
+    </ApolloProvider>,
     document.getElementById('root')
 );
 

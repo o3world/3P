@@ -1,11 +1,11 @@
 import path from 'path';
 import Express from 'express';
 import React from 'react';
-import ReactDOM from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import fs from 'fs'
 import { getRedirect } from "./Redirect";
 import { renderToString } from 'react-dom/server';
+import { Helmet } from "react-helmet";
 
 import App from '../src/App';
 import { ApolloClient } from "apollo-client";
@@ -16,18 +16,10 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { renderToStringWithData } from "react-apollo";
 import fetch from 'node-fetch';
 
-import MetaTagsServer from 'react-meta-tags/server';
-import {MetaTagsContext} from 'react-meta-tags';
-
 const app = Express();
 
 app.use(Express.static(path.join(__dirname, '../build')));
 
-app.get('/ping', function (req, res) {
- return res.send('pong');
-});
-
-//console.log(reqpath);
 const httpLink = createHttpLink({
     uri: 'http://back.3blmedia.com/graphql',
     fetch: fetch
@@ -44,7 +36,6 @@ const client = new ApolloClient({
 app.get('/20*', function (req, res) {
 
     let reqpath = req.path;
-    console.log(reqpath);
 
     if (reqpath.indexOf('Object]') > 0) {
         res.end();
@@ -77,12 +68,10 @@ app.get('/20*', function (req, res) {
         console.log('redirecting to ' + newurl);
         res.redirect(301, newurl);
         res.end();
-        return;
     }
     else {
         res.redirect(301, "/");
         res.end();
-        return;
     }
 
 });
@@ -91,8 +80,7 @@ app.get('/20*', function (req, res) {
 // They begin with 'special' or 'series'
 app.get('/special/*', function (req, res) {
 
-    var reqpath = req.path;
-    console.log(reqpath);
+    let reqpath = req.path;
 
     if (reqpath.indexOf('Object]') > 0) {
         res.end();
@@ -100,7 +88,7 @@ app.get('/special/*', function (req, res) {
     }
 
 
-    var newurl = getRedirect(req.path, 'special', fs);
+    let newurl = getRedirect(req.path, 'special', fs);
 
 
     // if we have a redirect, go there.
@@ -108,12 +96,10 @@ app.get('/special/*', function (req, res) {
         console.log('redirecting to ' + newurl);
         res.redirect(301, newurl);
         res.end();
-        return;
     }
     else {
         res.redirect(301, "/");
         res.end();
-        return;
     }
 
 });
@@ -121,69 +107,62 @@ app.get('/special/*', function (req, res) {
 
 app.get('/series/*', function (req, res) {
 
-    var reqpath = req.path;
-    console.log(reqpath);
+    let reqpath = req.path;
 
     if (reqpath.indexOf('Object]') > 0) {
         res.end();
     }
 
 
-    var newurl = getRedirect(req.path, 'special', fs);
+    let newurl = getRedirect(req.path, 'special', fs);
 
 
     // if we have a redirect, go there.
     if (newurl != null) {
-        console.log('redirecting to ' + newurl);
+        console.log('redirecting from ' + reqpath + ' to ' + newurl);
         res.redirect(301, newurl);
         res.end();
-        return;
     }
     else {
         res.redirect(301, "/");
         res.end();
-        return;
     }
 
 });
 
-
 // and finally, individual stories pages.
 app.get('/story/*', function (req, res) {
 
-    var reqpath = req.path;
-    console.log(reqpath);
+    let reqpath = req.path;
 
     if (reqpath.indexOf('Object]') > 0) {
         res.end();
         return;
     }
 
-        const context = {};
-        const metaTagsInstance = MetaTagsServer();
-        const appRendered = (
-          <MetaTagsContext extract = {metaTagsInstance.extract}>
-            <ApolloProvider client={client}>
-                <StaticRouter location={req.url} context={context}>
-                    <App/>
-                </StaticRouter>
-            </ApolloProvider>
-          </MetaTagsContext>
-        );
+    const context = {};
+    const appRendered = (
+        <ApolloProvider client={client}>
+            <StaticRouter location={req.url} context={context}>
+                <App/>
+            </StaticRouter>
+        </ApolloProvider>
+    );
 
-        renderToStringWithData(appRendered).then((root) => {
-            const metaString = metaTagsInstance.renderToString();
-
-            fs.readFile('./build/index.html', 'utf8', function (err, data) {
-                if (err) throw err;
-                const document = data.replace('<div id="root"></div>', '<div id="root">' + root + '</div>').replace('[HEADMETA]', `${metaString}`);
-                res.status(200);
-                res.send(document);
-                res.end();
-            });
-
-
+    renderToStringWithData(appRendered).then((root) => {
+        fs.readFile('./build/index.html', 'utf8', function (err, data) {
+            if (err) throw err;
+            const helmet = Helmet.renderStatic();
+            const document = data
+                .replace('<div id="root"></div>', `<div id="root">${root}</div>`)
+                .replace(/<title>(.*?)<\/title>/, helmet.title.toString())
+                .replace('<helmetmeta/>', helmet.meta.toString());
+            console.log('SSR: ' + reqpath);
+            res.status(200);
+            res.send(document);
+            res.end();
         });
+    });
 
 });
 
@@ -191,7 +170,5 @@ app.get('/story/*', function (req, res) {
 app.get('/*', function (req, res) {
     res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
 });
-
-
 
 app.listen(process.env.PORT || 5000);
