@@ -36,6 +36,7 @@ const client = new ApolloClient({
 app.get('/20*', function (req, res) {
 
     let reqpath = req.path;
+    let newurl = null;
 
     if (reqpath.indexOf('Object]') > 0) {
         res.end();
@@ -54,13 +55,13 @@ app.get('/20*', function (req, res) {
         reqpath.startsWith("/2012/") ||
         reqpath.startsWith("/2011/")
     ) {
-        let newurl = getRedirect(req.path, reqpath.substr(1, 4), fs);
+        newurl = getRedirect(req.path, reqpath.substr(1, 4), fs);
     }
     else if (
         reqpath.startsWith("/special/") ||
         reqpath.startsWith("/series/")
     ) {
-        let newurl = getRedirect(req.path, 'special', fs);
+        newurl = getRedirect(req.path, 'special', fs);
     }
 
     // if we have a redirect, go there.
@@ -81,6 +82,7 @@ app.get('/20*', function (req, res) {
 app.get('/special/*', function (req, res) {
 
     let reqpath = req.path;
+    let newurl = null;
 
     if (reqpath.indexOf('Object]') > 0) {
         res.end();
@@ -88,7 +90,7 @@ app.get('/special/*', function (req, res) {
     }
 
 
-    let newurl = getRedirect(req.path, 'special', fs);
+    newurl = getRedirect(req.path, 'special', fs);
 
 
     // if we have a redirect, go there.
@@ -108,13 +110,14 @@ app.get('/special/*', function (req, res) {
 app.get('/series/*', function (req, res) {
 
     let reqpath = req.path;
+    let newurl = null;
 
     if (reqpath.indexOf('Object]') > 0) {
         res.end();
     }
 
 
-    let newurl = getRedirect(req.path, 'special', fs);
+    newurl = getRedirect(req.path, 'special', fs);
 
 
     // if we have a redirect, go there.
@@ -134,6 +137,7 @@ app.get('/series/*', function (req, res) {
 app.get('/story/*', function (req, res) {
 
     let reqpath = req.path;
+    let newurl = null;
 
     if (reqpath.indexOf('Object]') > 0) {
         res.end();
