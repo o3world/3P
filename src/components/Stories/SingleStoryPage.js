@@ -49,21 +49,21 @@ class SingleStoryPage extends Component {
           headshot = <img className={styles.headshot} src={story.author.headshot.url} alt={story.author.name + ' headshot'} />;
         }
 
+        const currentURL = 'https://triplepundit.com' + this.props.location.pathname;
+        /* @TODO: Replace hard-coded domain */
+
         let wideImage;
         let wideImageURL;
         if (story.wideImage) {
           wideImage =
               <div className={styles.imageWrapper}>
                 <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
-                <StoryShare/>
+                <StoryShare url={currentURL}/>
               </div>;
           wideImageURL = story.wideImage.url;
         }
 
         const fullName = story.author.first + ' ' + story.author.last;
-
-        const currentURL = 'http://triplepundit.com' + this.props.location.pathname;
-        /* @TODO: Replace hard-coded domain */
 
         return (
             <div className={styles.wrapper}>
