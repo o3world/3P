@@ -52,6 +52,8 @@ const StoriesByEditor = gql`
         }
         author: entityOwner {
           name
+          firstName: fieldFirstName
+          lastName:fieldLastName
         }
         entityUrl {
           path
