@@ -30,7 +30,7 @@ class StoryShare extends React.Component {
     return (
         <div className={styles.container}>
           <ShareButton handleMouseDown={this.handleMouseDown}/>
-          <ShareIconList handleMouseDown={this.handleMouseDown} menuVisibility={this.state.visible}/>
+          <ShareIconList handleMouseDown={this.handleMouseDown} menuVisibility={this.state.visible} url={this.props.url}/>
         </div>
     )
   }
