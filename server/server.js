@@ -46,6 +46,7 @@ app.get('/20*', function (req, res) {
     // First check if the path is one of the old patterns.
     // if so, try to get a redirect from the appropriate redirect file.
     if (
+        reqpath.startsWith("/2019/") ||
         reqpath.startsWith("/2018/") ||
         reqpath.startsWith("/2017/") ||
         reqpath.startsWith("/2016/") ||
@@ -114,6 +115,7 @@ app.get('/series/*', function (req, res) {
 
     if (reqpath.indexOf('Object]') > 0) {
         res.end();
+        return;
     }
 
 
