@@ -21,7 +21,7 @@ const app = Express();
 app.use(Express.static(path.join(__dirname, '../build')));
 
 const httpLink = createHttpLink({
-    uri: 'http://back.3blmedia.com/graphql',
+    uri: 'https://back.3blmedia.com/graphql',
     fetch: fetch
 });
 
