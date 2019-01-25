@@ -18,6 +18,8 @@ import { faTwitter, faInstagram, faLinkedin, faFacebookF, faGoogle } from '@fort
 import Routes from './components/Common/RoutesConfig';
 import './App.css';
 
+import TagManager from 'react-gtm-module'
+
 library.add( faTwitter, faInstagram, faLinkedin, faSearch, faBars, faSpinner, faEnvelope, faFacebookF, faGoogle, faArrowRight );
 
 class App extends Component {
@@ -32,6 +34,12 @@ class App extends Component {
     setPageTitle(title) {
         this.setState({pageTitle: title});
     }
+
+    const tagManagerArgs = {
+    gtmId: 'GTM-000000'
+    }
+
+    TagManager.initialize(tagManagerArgs);
 
     render() {
         return (
