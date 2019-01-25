@@ -2,7 +2,9 @@ import gql from 'graphql-tag';
 
 const AllSponsoredSeriesQuery = gql`
  query sponsoredSeries {
-  taxonomyTermQuery(filter: {
+  taxonomyTermQuery(
+    limit: 100,
+    filter: {
       conditions: [
         {field: "vid", value: "special_s"},
         {field: "field_enabled", value: "1"}
