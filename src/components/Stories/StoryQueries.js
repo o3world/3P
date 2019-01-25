@@ -1,14 +1,14 @@
 import gql from 'graphql-tag';
 
 const StoryByIdQuery = gql`
-query story($id:String!) { 
+query story($id:String!) {
   nodeQuery(
     filter: {
-      conditions: [        
-        {field: "nid", value: [$id], operator: EQUAL},        
+      conditions: [
+        {field: "nid", value: [$id], operator: EQUAL},
       ]},
-  ) 
-  {    
+  )
+  {
     entities {
       ... on NodeStory {
         title
@@ -39,8 +39,8 @@ query story($id:String!) {
         }
         entityUrl {
           path
-        }        
-        date: entityCreated        
+        }
+        date: entityCreated
         squareImage: fieldFeaturedImageSquare {
           url
           width
@@ -58,11 +58,11 @@ query story($id:String!) {
         }
         body: fieldContent {
           text: processed
-        }        
+        }
       }
-      
+
     }
-  }  
+  }
 }
 `;
 
@@ -77,7 +77,7 @@ query story {
       },
       sort: [{ field: "created" direction: DESC }]
     )
-  {    
+  {
     entities {
       ... on NodeStory {
         title
@@ -95,13 +95,13 @@ query story {
         }
         entityUrl {
           path
-        }        
-        date: entityCreated   
+        }
+        date: entityCreated
         category: fieldPrimaryCategory {
           entity {
             name
           }
-        }     
+        }
         squareImage: fieldFeaturedImageSquare {
           url
           width
@@ -119,17 +119,18 @@ query story {
         }
         body: fieldContent {
           text: processed
-        }        
+        }
       }
-      
+
     }
-  }  
+  }
 }
 `;
 
 const StoriesBySeriesId = gql`
 query story($id: String!) {
     nodeQuery(
+      limit: 100,
       filter:{
         conditions: [
           {field:"type", value:"story"},
@@ -137,26 +138,26 @@ query story($id: String!) {
         ]
       }
     )
-  {    
+  {
     entities {
       ... on NodeStory {
         title
         id: nid
         entityUrl {
           path
-        }    
+        }
         sponsoredBy: field3pSpecialSeries {
           targetId
           entity {
             name
           }
-        }     
-        date: entityCreated 
+        }
+        date: entityCreated
         category: fieldPrimaryCategory {
           entity {
             name
           }
-        } 
+        }
         squareImage: fieldFeaturedImageSquare {
           url
           width
@@ -176,11 +177,11 @@ query story($id: String!) {
           url
           width
           height
-        }    
+        }
       }
-      
+
     }
-  }  
+  }
 }
 `;
 export {AllStoryQuery, StoryByIdQuery, StoriesBySeriesId};
