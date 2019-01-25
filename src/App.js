@@ -36,7 +36,7 @@ class App extends Component {
     }
 
     const tagManagerArgs = {
-    gtmId: 'GTM-000000'
+    gtmId: 'GTM-PC3786R'
     }
 
     TagManager.initialize(tagManagerArgs);
