@@ -23,8 +23,7 @@ const client = new ApolloClient({
 ReactDOM.hydrate(
     <ApolloProvider client={client}>
         <BrowserRouter>
-            <App>
-            </App>
+            <App/>
         </BrowserRouter>
     </ApolloProvider>,
     document.getElementById('root')

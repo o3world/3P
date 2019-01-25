@@ -156,7 +156,7 @@ app.get('/story/*', function (req, res) {
             const document = data
                 .replace('<div id="root"></div>', `<div id="root">${root}</div>`)
                 .replace(/<title>(.*?)<\/title>/, helmet.title.toString())
-                .replace('<helmetmeta/>', helmet.meta.toString());
+                .replace('<helmetmeta></helmetmeta>', `<helmetmeta>${helmet.meta.toString()}</helmetmeta>`);
             console.log('SSR: ' + reqpath);
             res.status(200);
             res.send(document);
