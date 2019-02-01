@@ -96,7 +96,6 @@ app.get('/special/*', function (req, res) {
 
     // if we have a redirect, go there.
     if (newurl != null) {
-        console.log('redirecting to ' + newurl);
         res.redirect(301, newurl);
         res.end();
     }
@@ -124,7 +123,6 @@ app.get('/series/*', function (req, res) {
 
     // if we have a redirect, go there.
     if (newurl != null) {
-        console.log('redirecting from ' + reqpath + ' to ' + newurl);
         res.redirect(301, newurl);
         res.end();
     }
@@ -134,6 +132,114 @@ app.get('/series/*', function (req, res) {
     }
 
 });
+
+
+// redirect old /writers and /about pages to /editors
+app.get('/writers*', function (req, res) {
+
+    let reqpath = req.path;
+    let newurl = null;
+
+    if (reqpath.indexOf('Object]') > 0) {
+        res.end();
+        return;
+    }
+
+
+    newurl = getRedirect(req.path, 'unique', fs);
+
+
+    // if we have a redirect, go there.
+    if (newurl != null) {
+        res.redirect(301, newurl);
+        res.end();
+    }
+    else {
+        res.redirect(301, "/");
+        res.end();
+    }
+
+});
+
+
+app.get('/about*', function (req, res) {
+
+    let reqpath = req.path;
+    let newurl = null;
+
+    if (reqpath.indexOf('Object]') > 0) {
+        res.end();
+        return;
+    }
+
+
+    newurl = getRedirect(req.path, 'unique', fs);
+
+
+    // if we have a redirect, go there.
+    if (newurl != null) {
+        res.redirect(302, newurl);
+        res.end();
+    }
+    else {
+        res.redirect(302, "/");
+        res.end();
+    }
+
+});
+
+
+// redirect old /topic/leon-kaye
+app.get('/topic*', function (req, res) {
+
+    let reqpath = req.path;
+    let newurl = null;
+
+    if (reqpath.indexOf('Object]') > 0) {
+        res.end();
+        return;
+    }
+
+    newurl = getRedirect(req.path, 'unique', fs);
+
+    // if we have a redirect, go there.
+    if (newurl != null) {
+        res.redirect(301, newurl);
+        res.end();
+    }
+    else {
+        res.redirect(301, "/");
+        res.end();
+    }
+
+});
+
+
+// redirect old /author/leon-kaye
+app.get('/author*', function (req, res) {
+
+    let reqpath = req.path;
+    let newurl = null;
+
+    if (reqpath.indexOf('Object]') > 0) {
+        res.end();
+        return;
+    }
+
+    newurl = getRedirect(req.path, 'unique', fs);
+
+    // if we have a redirect, go there.
+    if (newurl != null) {
+        res.redirect(301, newurl);
+        res.end();
+    }
+    else {
+        res.redirect(301, "/");
+        res.end();
+    }
+
+});
+
 
 // and finally, individual stories pages.
 app.get('/story/*', function (req, res) {
@@ -171,6 +277,7 @@ app.get('/story/*', function (req, res) {
     });
 
 });
+
 
 // as a default, send anything else through without SSR
 app.get('/*', function (req, res) {
