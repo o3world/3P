@@ -1,0 +1,10 @@
+{
+  "/writers": "/editors",
+  "/writers/": "/editors",
+  "/about": "/editors",
+  "/about/": "/editors",
+  "/topic/leon-kaye/": "/editor/141/Leon-Kaye",
+  "/topic/leon-kaye": "/editor/141/Leon-Kaye",
+  "/author/leon-kaye/": "/editor/141/Leon-Kaye",
+  "/author/leon-kaye": "/editor/141/Leon-Kaye"
+}
