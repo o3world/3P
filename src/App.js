@@ -17,6 +17,7 @@ import { faTwitter, faInstagram, faLinkedin, faFacebookF, faGoogle } from '@fort
 
 import Routes from './components/Common/RoutesConfig';
 import './App.css';
+import PropTypes from 'prop-types';
 
 library.add( faTwitter, faInstagram, faLinkedin, faSearch, faBars, faSpinner, faEnvelope, faFacebookF, faGoogle, faArrowRight );
 
@@ -33,8 +34,30 @@ class App extends Component {
         this.setState({pageTitle: title});
     }
 
+    static contextTypes = {
+    router: PropTypes.object
+  };
+
+  componentDidMount() {
+    this.handleLocationChange(this.context.router.history.location);
+    this.unlisten =
+this.context.router.history.listen(this.handleLocationChange);
+  }
+
+  componentWillUnmount() {
+    this.unlisten();
+  }
+
+  handleLocationChange(location) {
+    console.log(`'${location.pathname}'`);
+  }
+
+
+
     render() {
+
         return (
+
             <div className="App">
                     <Route exact path={'/'} render={(props) => <Home {...props} newTitle={this.setPageTitle} />}/>
                     <Route path={Routes.THEFEED} render={(props) => <TheFeedPage {...props} />}/>
