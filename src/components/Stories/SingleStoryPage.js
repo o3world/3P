@@ -84,6 +84,8 @@ class SingleStoryPage extends Component {
               <meta property="og:image:height" content={imageHeight} />
               <meta property="og:image:width" content={imageWidth} />
               <meta property="og:url" content={currentURL} />
+              <meta name="twitter:card" content="summary" />
+              <meta name="twitter:site" content="@triplepundit" />
             </Helmet>
             <Header />
             <div className={styles.meta}>
