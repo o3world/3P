@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer"
 const SingleAuthorPage = (props) => {
 
         const authorId = props.match.params.id;
-        console.log(authorId);
+
         return (
             <section>
                 <Header />
