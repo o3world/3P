@@ -48,6 +48,9 @@ $tp_color--primary: #006BFF;
   background-color: rgba($tp_color--primary, 0.2);
   padding: 20px;
   align-self: center;
+  height: 100%;
+  align-items: center;
+  display: flex;
 }
 
 .spinner {
