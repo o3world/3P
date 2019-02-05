@@ -9,7 +9,7 @@ import SingleStoryPage from "../Stories/SingleStoryPage"
 import SearchResult from "../Search/SearchResults"
 import SingleAuthorPage from "../Authors/SingleAuthorPage"
 
-const Routes = [
+const routes = [
   {
     path: '/',
     exact: true,
@@ -21,7 +21,7 @@ const Routes = [
     component: SponsoredSeriesAll,
   },
   {
-    path: '/sponsored-series/:id',
+    path: '/sponsored-series/:id/',
     exact: false,
     component: SingleSeriesPage,
   },
@@ -31,7 +31,7 @@ const Routes = [
     component: EditorsPage,
   },
   {
-    path: '/editor/:id',
+    path: '/editor/:id/',
     exact: false,
     component: SingleEditorPage,
   },
@@ -62,4 +62,4 @@ const Routes = [
   }
 ];
 
-export default Routes;
+export default routes;

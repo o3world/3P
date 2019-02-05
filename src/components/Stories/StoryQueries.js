@@ -92,8 +92,8 @@ query story {
         }
         author: entityOwner {
           name
-          firstName:fieldFirstName
-          lastName: fieldLastName
+          first:fieldFirstName
+          last: fieldLastName
         }
         entityUrl {
           path

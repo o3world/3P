@@ -47,14 +47,14 @@ const AuthorBio = (props) => (
 
       return (
           <section className={styles.wrapper}>
-            <h1 className={styles.name}>{authorName}</h1>
-            {headshot}
-            <div className={styles.socialWrapper}>
+            <h1 className={styles.name}>{authorName} <span className={styles.socialWrapper}>
               {twitterIcon}
               {instagramIcon}
               {linkedinIcon}
               {emailIcon}
-            </div>
+            </span></h1>
+
+            {headshot}
             <div className={styles.bio} dangerouslySetInnerHTML={{__html: author.bio.processed}}/>
           </section>
       );
