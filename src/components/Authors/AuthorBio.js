@@ -53,7 +53,6 @@ const AuthorBio = (props) => (
               {linkedinIcon}
               {emailIcon}
             </span></h1>
-
             {headshot}
             <div className={styles.bio} dangerouslySetInnerHTML={{__html: author.bio.processed}}/>
           </section>
