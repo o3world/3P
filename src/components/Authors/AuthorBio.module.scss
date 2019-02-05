@@ -1,0 +1,61 @@
+$tp_color--primary: #006BFF;
+
+.wrapper {
+  display: grid;
+  grid-template-columns: min-content 1fr min-content 50%;
+  grid-template-areas: "headshot name social bio";
+  text-align: left;
+  max-width: 1366px;
+  margin: 0 auto;
+
+  @media only screen and (max-width: 650px) {
+    grid-template-columns: min-content 1fr min-content;
+    grid-template-areas: "headshot name social" "bio bio bio";
+  }
+}
+
+.headshot {
+  grid-area: headshot;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  align-self: center;
+  filter: grayscale(100%);
+  margin: 7px 40px;
+}
+
+.name {
+  grid-area: name;
+  font-family: 'Unna', serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  align-self: center;
+}
+
+.socialWrapper {
+  grid-area: social;
+  padding: 12px 32px 0 0;
+
+  a {
+    color: $tp_color--primary;
+    font-size: 16px;
+    margin: 0 7px;
+  }
+}
+
+.bio {
+  grid-area: bio;
+  background-color: rgba($tp_color--primary, 0.2);
+  padding: 20px;
+  align-self: center;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  font-family: Montserrat,sans-serif;
+  font-size: 12px;
+}
+
+.spinner {
+  font-size: 42px;
+  color: #006bff;
+}
