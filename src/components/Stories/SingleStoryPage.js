@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
-import Moment from 'react-moment';
-import { Query } from "react-apollo";
-import { Helmet } from "react-helmet";
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import Moment from 'react-moment'
+import { Query } from "react-apollo"
+import { Helmet } from "react-helmet"
 
-import styles from './SingleStoryPage.module.scss';
-import { StoryByIdQuery } from "./StoryQueries";
-import Ad from "../Ads/Ad";
+import styles from './SingleStoryPage.module.scss'
+import { StoryByIdQuery } from "./StoryQueries"
+import Ad from "../Ads/Ad"
 
-import StoryShare from './SocialShare/StoryShare';
-import LoadingSpinner from "../Common/LoadingSpinner";
-import Header from '../Header/Header';
-import Footer from "../Footer/Footer";
+import StoryShare from './SocialShare/StoryShare'
+import LoadingSpinner from "../Common/LoadingSpinner"
+import Header from '../Header/Header'
+import Footer from "../Footer/Footer"
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -67,7 +68,12 @@ class SingleStoryPage extends Component {
           imageWidth = story.wideImage.width;
         }
 
-        const fullName = story.author.first + ' ' + story.author.last;
+        const authorName = (story.author.first && story.author.last) ? `${story.author.first} ${story.author.last}` : story.author.name;
+
+        let authorLink = `/author/${authorName.replace(/\s+/g, '-').toLowerCase()}/${story.author.authorID}`;
+        if (story.author.isEditor) {
+          authorLink = `/editor/${story.author.authorID}/${authorName.replace(/\s+/g, '-').toLowerCase()}`;
+        }
 
         return (
             <div className={styles.wrapper}>
@@ -78,12 +84,14 @@ class SingleStoryPage extends Component {
               <meta property="og:image:height" content={imageHeight} />
               <meta property="og:image:width" content={imageWidth} />
               <meta property="og:url" content={currentURL} />
+              <meta name="twitter:card" content="summary" />
+              <meta name="twitter:site" content="@triplepundit" />
             </Helmet>
             <Header />
             <div className={styles.meta}>
               <h1 className={styles.title}>{story.title}</h1>
               {headshot}
-              <span className={styles.authorName}>Words by {fullName}</span>
+              <span className={styles.authorName}><Link to={authorLink}>Words by {authorName}</Link></span>
               {category}
               <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
             </div>

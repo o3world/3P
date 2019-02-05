@@ -1,0 +1,60 @@
+$tp_color--primary: #006BFF;
+
+.wrapper {
+  display: grid;
+  grid-template-columns: min-content max-content 1fr;
+  grid-template-areas: "headshot name bio";
+  text-align: left;
+  max-width: 1366px;
+  margin: 0 auto;
+  background-color: rgba($tp_color--primary, 0.2);
+
+  @media only screen and (max-width: 650px) {
+    grid-template-columns: min-content 1fr;
+    grid-template-areas: "headshot name" "bio bio";
+  }
+}
+
+.headshot {
+  grid-area: headshot;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  align-self: center;
+  filter: grayscale(100%);
+  margin: 7px 40px;
+}
+
+.name {
+  grid-area: name;
+  font-family: 'Unna', serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  align-self: center;
+}
+
+.socialWrapper {
+  margin: 0 20px 0 8px;
+
+  a {
+    color: $tp_color--primary;
+    font-size: 16px;
+    margin: 0 4px;
+  }
+}
+
+.bio {
+  grid-area: bio;
+  padding: 20px 40px 20px;
+  align-self: center;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  font-family: Montserrat,sans-serif;
+  font-size: 12px;
+}
+
+.spinner {
+  font-size: 42px;
+  color: #006bff;
+}

@@ -19,14 +19,14 @@ const PrimeStory = (props) => {
         }
 
         return (
-            <div className={storyClass} style={storyStyle}>
-                <div className={styles.content}>
-                    <h3 className={styles.title}><Link to={link}><span>{props.title}</span></Link></h3>
-                    <p className={styles.author}>Words by {props.author.first} {props.author.last}</p>
-                    {category}
-                    <Moment className={styles.date} format="MMM DD">{published_date}</Moment>
-                </div>
+          <Link to={link} className={storyClass} style={storyStyle}>
+            <div className={styles.content}>
+              <h3 className={styles.title}><span>{props.title}</span></h3>
+              <p className={styles.author}>Words by {props.author.first} {props.author.last}</p>
+              {category}
+              <Moment className={styles.date} format="MMM DD">{published_date}</Moment>
             </div>
+          </Link>
         );
 };
 

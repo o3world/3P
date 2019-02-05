@@ -24,21 +24,20 @@ const StoryMasonryTile = (props) => {
     category = <p className={styles.category} dangerouslySetInnerHTML={{__html: story.category.entity.name}} />;
   }
 
-  let author = story.author.name;
-  if (story.author.firstName && story.author.lastName) {
-    author = story.author.firstName + ' ' + story.author.lastName;
-  }
+  const author = story.author.first && story.author.last ? `${story.author.first} ${story.author.last}` : story.author.name;
 
   return (
     <LazyLoad height={200}>
-      <div className={styles.tile}
-           style={{backgroundImage: `url(` + backgroundImage + `)`}}>
-        <h2 className={styles.title}><Link to={link}><span dangerouslySetInnerHTML={{__html: story.title}}/></Link></h2>
-        {category}
-        {sponsored}
-        <p className={styles.author}>Words by {author}</p>
-        <Moment className={styles.date} format="MMM DD">{story.date}</Moment>
-      </div>
+      <Link to={link} className={styles.tileAnchor}>
+        <div className={styles.tile}
+             style={{backgroundImage: `url(` + backgroundImage + `)`}}>
+          <h2 className={styles.title}><span dangerouslySetInnerHTML={{__html: story.title}}/></h2>
+          {category}
+          {sponsored}
+          <p className={styles.author}>Words by {author}</p>
+          <Moment className={styles.date} format="MMM DD">{story.date}</Moment>
+        </div>
+      </Link>
     </LazyLoad>
   )
 };

@@ -1,5 +1,9 @@
 $seriesPrimaryColor: #F8AE0F;
 
+.tileAnchor {
+  text-decoration: none;
+}
+
 .tile {
   display: grid;
   grid-template-rows: min-content min-content min-content 1fr min-content;
@@ -14,11 +18,6 @@ $seriesPrimaryColor: #F8AE0F;
   word-break: break-all;
   /* Instead use this non-standard one: */
   word-break: break-word;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
 
   &::before {
     height: 0;
