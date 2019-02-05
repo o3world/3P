@@ -30,9 +30,11 @@ query story($id:String!) {
             }
         }
        author: entityOwner {
+          authorID: uid
           name
           first: fieldFirstName
           last: fieldLastName
+          isEditor: field3pEditor
           headshot: userPicture {
             url
           }

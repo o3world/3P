@@ -25,8 +25,8 @@ const StoryMasonryTile = (props) => {
   }
 
   let author = story.author.name;
-  if (story.author.firstName && story.author.lastName) {
-    author = story.author.firstName + ' ' + story.author.lastName;
+  if (story.author.first && story.author.last) {
+    author = story.author.first + ' ' + story.author.last;
   }
 
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Query} from 'react-apollo';
 
-import { SingleEditorBioQuery } from './EditorsQueries';
+import { SingleAuthorBioQuery } from './EditorsQueries';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from "./EditorBio.module.scss";
@@ -11,7 +11,7 @@ const EditorBio = (props) => {
 
   return(
       <Query
-      query={SingleEditorBioQuery}
+      query={SingleAuthorBioQuery}
       variables={{"id": props.editorId}}
   >
     {({ loading, error, data }) => {
@@ -21,7 +21,7 @@ const EditorBio = (props) => {
       if (error) return `Error! ${error.message}`;
       const editor = data.userById;
 
-      const fullName = editor.firstName + " " + editor.lastName;
+      const author = editor.first && editor.last ? `${editor.first} ${editor.last}` : editor.name;
 
       let twitterIcon;
       if (editor.twitterUsername !== null) {
@@ -45,10 +45,10 @@ const EditorBio = (props) => {
 
       return (
           <section className={styles.wrapper}>
-            <img className={styles.headshot} src={editor.headshot.url} alt={fullName + ' headshot'}/>
+            <img className={styles.headshot} src={editor.headshot.url} alt={author + ' headshot'}/>
             <div className={styles.meta}>
               <div className={styles.nameTitleWrapper}>
-                <h1 className={styles.name}>{fullName}</h1>
+                <h1 className={styles.name}>{author}</h1>
                 <p className={styles.jobTitle}>{editor.jobTitle}</p>
               </div>
               <div className={styles.socialWrapper}>
