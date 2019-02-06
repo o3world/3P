@@ -24,7 +24,7 @@ const StoryMasonryTile = (props) => {
     category = <p className={styles.category} dangerouslySetInnerHTML={{__html: story.category.entity.name}} />;
   }
 
-  const author = story.author.firstName && story.author.lastName ? `${story.author.firstName} ${story.author.lastName}` : story.author.name;
+  const author = story.author.first && story.author.last ? `${story.author.first} ${story.author.last}` : story.author.name;
 
   return (
     <LazyLoad height={200}>

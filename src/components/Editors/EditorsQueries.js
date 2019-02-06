@@ -1,10 +1,11 @@
 import gql from 'graphql-tag';
 
-const SingleEditorBioQuery = gql`
+const SingleAuthorBioQuery = gql`
   query editors($id:String!) {
   userById(id:$id){
- 	  firstName: fieldFirstName
-    lastName: fieldLastName
+ 	  first: fieldFirstName
+    last: fieldLastName
+    name
     headshot: userPicture {
         url
     }
@@ -22,7 +23,7 @@ const SingleEditorBioQuery = gql`
   }
 }`;
 
-const StoriesByEditor = gql`
+const StoriesByAuthor = gql`
     query stories($id:String!) {
         nodeQuery(
     limit: 100,
@@ -52,8 +53,14 @@ const StoriesByEditor = gql`
         }
         author: entityOwner {
           name
-          firstName: fieldFirstName
-          lastName:fieldLastName
+          first: fieldFirstName
+          last: fieldLastName
+          isEditor: field3pEditor
+          bio: fieldUserBio {
+            value
+            format
+            processed
+          }
         }
         entityUrl {
           path
@@ -115,4 +122,4 @@ query editors{
 }
 `;
 
-export { SingleEditorBioQuery, StoriesByEditor, EditorsQuery };
+export { SingleAuthorBioQuery, StoriesByAuthor, EditorsQuery };
