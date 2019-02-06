@@ -75,7 +75,7 @@ app.get('/20*', (req, res) => {
 });
 
 const doRedirect = (redirect_file) => {
-  return function(req, res, next) {
+  return function(req, res) {
 
     if (req.path.indexOf('Object]') > 0) {
       res.end()

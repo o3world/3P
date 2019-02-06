@@ -16,6 +16,7 @@ query story($id:String!) {
         category: fieldPrimaryCategory {
           entity {
             name
+            categoryID: entityId
           }
         }
         sponsoredSeries: field3pSpecialSeries {
