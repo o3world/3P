@@ -74,103 +74,38 @@ app.get('/20*', (req, res) => {
 
 });
 
+const doRedirect = (redirect_file) => {
+  return function(req, res, next) {
+
+    if (req.path.indexOf('Object]') > 0) {
+      res.end()
+    }
+
+    const newurl = getRedirect(req.path, redirect_file, fs);
+
+    // if we have a redirect, go there.
+    if (newurl != null) {
+      res.redirect(301, newurl)
+    }
+    else {
+      res.redirect(301, "/")
+    }
+  }
+};
+
 // Then, redirects for what are now sponsored series.
 // They begin with 'special' or 'series'
-app.get('/special/*', (req, res) => {
+app.get('/special/*', doRedirect('special'));
+app.get('/series/*', doRedirect('special'));
 
-    if (reqpath.indexOf('Object]') > 0) {
-        res.end();
-    }
-    
-    let newurl = getRedirect(req.path, 'special', fs);
-    
-    // if we have a redirect, go there.
-    if (newurl != null) {
-        res.redirect(301, newurl);
-    }
-    else {
-        res.redirect(301, "/");
-    }
+// redirect old /writers pages to /editors
+app.get('/writers*', doRedirect('unique'));
 
-});
-
-
-app.get('/series/*', (req, res) => {
-
-    if (reqpath.indexOf('Object]') > 0) {
-        res.end();
-    }
-    
-    let newurl = getRedirect(req.path, 'special', fs);
-    
-    // if we have a redirect, go there.
-    if (newurl != null) {
-        res.redirect(301, newurl);
-    }
-    else {
-        res.redirect(301, "/");
-    }
-
-});
-
-
-// redirect old /writers and /about pages to /editors
-app.get('/writers*', (req, res) => {
-
-    if (req.path.indexOf('Object]') > 0) {
-        res.end();
-    }
-    
-    let newurl = getRedirect(req.path, 'unique', fs);
-    
-    // if we have a redirect, go there.
-    if (newurl != null) {
-        res.redirect(301, newurl);.
-    }
-    else {
-        res.redirect(301, "/");.
-    }
-
-});
-
-
-app.get('/about*', (req, res) => {
-
-    if (req.path.indexOf('Object]') > 0) {
-        res.end();
-    }
-    
-    let newurl = getRedirect(req.path, 'unique', fs);
-    
-    // if we have a redirect, go there.
-    if (newurl != null) {
-        res.redirect(302, newurl);
-    }
-    else {
-        res.redirect(302, "/");
-    }
-
-});
-
+// redirect old About page
+app.get('/about*', doRedirect('unique'));
 
 // redirect old /topic/leon-kaye
-app.get('/topic*', (req, res) => {
-
-    if (reqpath.indexOf('Object]') > 0) {
-        res.end();
-    }
-
-    let newurl = getRedirect(req.path, 'unique', fs);
-
-    // if we have a redirect, go there.
-    if (newurl != null) {
-        res.redirect(301, newurl);
-    }
-    else {
-        res.redirect(301, "/");
-    }
-
-});
+app.get('/topic*', doRedirect('unique'));
 
 // Redirect editors
 app.get('/author/leon-kaye*', (req, res) => {
@@ -209,7 +144,7 @@ app.get('/story/*', (req, res) => {
                 .replace('<div id="root"></div>', `<div id="root">${root}</div>`)
                 .replace(/<title>(.*?)<\/title>/, helmet.title.toString())
                 .replace('<meta name="helmet">', helmet.meta.toString());
-            console.log('SSR: ' + reqpath);
+            console.log('SSR: ' + req.path);
             res.status(200).send(document);
         });
     });
