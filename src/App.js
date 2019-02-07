@@ -12,17 +12,6 @@ import './App.css';
 library.add( faTwitter, faInstagram, faLinkedin, faSearch, faBars, faSpinner, faEnvelope, faFacebookF, faGoogle, faArrowRight );
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            pageTitle: "Home"
-        };
-        this.setPageTitle = this.setPageTitle.bind(this);
-    }
-
-    setPageTitle(title) {
-        this.setState({pageTitle: title});
-    }
 
     render() {
         return (
