@@ -10,9 +10,9 @@ const StoryMasonryTile = (props) => {
   const link = '/story/' + new Date(story.date).getFullYear() + story.entityUrl.path + '/' + story.id + '/';
 
   let backgroundImage = "";
-    if(story.tallImage) {
-      backgroundImage =  story.tallImage.url
-    }
+  if(story.tallImage) {
+    backgroundImage =  story.tallImage.url
+  }
 
   let sponsored;
   if (story.sponsoredBy && props.context !== 'singleSeries') {
@@ -26,6 +26,8 @@ const StoryMasonryTile = (props) => {
 
   const author = story.author.first && story.author.last ? `${story.author.first} ${story.author.last}` : story.author.name;
 
+  const dateFormat = new Date().getFullYear() === new Date(story.date).getFullYear() ? 'MMM DD' : 'MMM DD, YYYY';
+
   return (
     <LazyLoad height={200}>
       <Link to={link} className={styles.tileAnchor}>
@@ -35,7 +37,7 @@ const StoryMasonryTile = (props) => {
           {category}
           {sponsored}
           <p className={styles.author}>Words by {author}</p>
-          <Moment className={styles.date} format="MMM DD">{story.date}</Moment>
+          <Moment className={styles.date} format={dateFormat}>{story.date}</Moment>
         </div>
       </Link>
     </LazyLoad>
