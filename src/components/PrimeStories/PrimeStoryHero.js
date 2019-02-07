@@ -4,10 +4,15 @@ import Moment from "react-moment";
 import {Link} from "react-router-dom";
 
 const PrimeStoryHero = (props) => {
-  const heroImageStyle = {
-      "--tall-bg-image": `url(${props.tallImage.url})`,
-      "--wide-bg-image": `url(${props.wideImage.url})`
-  };
+  
+  const heroImageStyle = {};
+  if (props.tallImage) {
+    heroImageStyle['--tall-bg-image'] = `url(${props.tallImage.url})`;
+  }
+  if (props.wideImage) {
+    heroImageStyle['--wide-bg-image'] = `url(${props.wideImage.url})`;
+  }
+  
   const published_date = new Date(props.date * 1000);
   const link = '/story/' + published_date.getFullYear() + props.entityUrl.path + '/' + props.id + '/';
 
