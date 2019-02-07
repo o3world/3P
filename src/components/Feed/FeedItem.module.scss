@@ -77,3 +77,37 @@
   font-family: 'Montserrat', sans-serif;
   grid-area: description;
 }
+
+@media only screen and (max-width: 600px) {
+  .hasThumb {
+    grid-template-columns: 1fr;
+    grid-template-areas: "thumbnail" "meta";
+
+    .title {
+      font-size: 24px;
+    }
+
+    .meta {
+      padding: 20px 10px;
+    }
+  }
+
+  .noThumb {
+
+    .title {
+      font-size: 24px;
+    }
+
+    .meta {
+      padding: 20px 10px;
+    }
+  }
+
+  .thumbnail {
+    width: 100%;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+}
