@@ -4,6 +4,7 @@ $medium_breakpoint: 720px;
   font-size: 30px;
   padding: 7px;
   border-radius: 7px;
+  cursor: pointer;
 
   &.visible {
     background-color: gray;
