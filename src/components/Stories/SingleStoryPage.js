@@ -78,7 +78,7 @@ class SingleStoryPage extends Component {
         return (
             <div className={styles.wrapper}>
             <Helmet>
-              <title>Triple Pundit: {story.title}</title>
+              <title>TriplePundit: {story.title}</title>
               <meta property="og:title" content={'TriplePundit: ' + story.title} />
               <meta property="og:image" content={wideImageURL} />
               <meta property="og:image:height" content={imageHeight} />
