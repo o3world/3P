@@ -8,6 +8,7 @@ import StoriesPage from "../Stories/StoriesPage"
 import SingleStoryPage from "../Stories/SingleStoryPage"
 import SearchResult from "../Search/SearchResults"
 import SingleAuthorPage from "../Authors/SingleAuthorPage"
+import SingleCategoryPage from "../Category/SingleCategoryPage";
 
 const routes = [
   {
@@ -59,7 +60,12 @@ const routes = [
     path: '/author/:username/:id/',
     exact: false,
     component: SingleAuthorPage,
-  }
+  },
+  {
+    path: '/category/:cat/:id/',
+    exact: false,
+    component: SingleCategoryPage,
+  },
 ];
 
 export default routes;

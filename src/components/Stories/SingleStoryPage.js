@@ -35,13 +35,14 @@ class SingleStoryPage extends Component {
 
         let category;
         if (story.category) {
-          category = <div className={styles.category}>{story.category.entity.name}</div>;
+          const catCleanName = story.category.entity.name.replace(/&/g, ' ').replace(/\s+/g, '-').toLowerCase();
+          category = <div className={styles.category}><Link to={`/category/${catCleanName}/${story.category.entity.categoryID}`}>{story.category.entity.name}</Link></div>;
         }
         if (story.sponsoredSeries) {
           category =
               <div className={styles.category}>
                 <h4 className={styles.sponsoredBy}>{story.sponsoredSeries.entity.sponsoredBy} Sponsored Series</h4>
-                <h5 className={styles.seriesTitle}><a href={story.sponsoredSeries.entity.entityUrl.path}>{story.sponsoredSeries.entity.seriesTitle}</a></h5>
+                <h5 className={styles.seriesTitle}><Link to={story.sponsoredSeries.entity.entityUrl.path}>{story.sponsoredSeries.entity.seriesTitle}</Link></h5>
               </div>;
         }
 
@@ -78,7 +79,7 @@ class SingleStoryPage extends Component {
         return (
             <div className={styles.wrapper}>
             <Helmet>
-              <title>Triple Pundit: {story.title}</title>
+              <title>TriplePundit: {story.title}</title>
               <meta property="og:title" content={'TriplePundit: ' + story.title} />
               <meta property="og:image" content={wideImageURL} />
               <meta property="og:image:height" content={imageHeight} />
