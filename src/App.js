@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'babel-polyfill';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faBars, faSpinner, faEnvelope, faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -27,7 +27,9 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+              <Switch>
               {routes.map((route, index) => ( <Route key={index} {...route} /> ))}
+              </Switch>
             </div>
 
 
