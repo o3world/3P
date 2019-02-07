@@ -16,6 +16,7 @@ query story($id:String!) {
         category: fieldPrimaryCategory {
           entity {
             name
+            categoryID: entityId
           }
         }
         sponsoredSeries: field3pSpecialSeries {
@@ -68,6 +69,81 @@ query story($id:String!) {
 }
 `;
 
+const StoriesByCategory = gql`
+query stories($id:String!) {
+        nodeQuery(
+    limit: 100,
+    filter: {
+    conjunction: AND
+    conditions: [{
+      field: "type"
+      value: "Story"
+      operator: EQUAL
+    }, {
+        field: "field_primary_category"
+        value: [$id]
+      }]
+  },
+  sort: [{ field: "created" direction: DESC }]
+) {
+    entities {
+      ... on NodeStory {
+        title
+        id: nid
+        sponsoredBy: field3pSpecialSeries {
+            entity {
+              ...on TaxonomyTermSpecialS{
+                company: fieldSsCompanyName
+              }
+            }
+        }
+        author: entityOwner {
+          name
+          first: fieldFirstName
+          last:fieldLastName
+          isEditor:field3pEditor
+          authorID:uid
+          bio:fieldUserBio {
+            value
+            format
+            processed
+          }
+        }
+        entityUrl {
+          path
+        }
+        date: entityCreated
+        category: fieldPrimaryCategory {
+          entity {
+            name
+            categoryID: entityId
+            
+          }
+        }
+        squareImage: fieldFeaturedImageSquare {
+          url
+          width
+          height
+        }
+        wideImage: fieldFeaturedImageWide {
+          url
+          width
+          height
+        }
+        tallImage: fieldFeaturedImageTall {
+          url
+          width
+          height
+        }
+        body: fieldContent {
+          text: processed
+        }
+      }
+    }
+  }
+}
+`;
+
 const AllStoryQuery = gql`
 query story {
     nodeQuery(
@@ -92,7 +168,7 @@ query story {
         }
         author: entityOwner {
           name
-          first:fieldFirstName
+          first: fieldFirstName
           last: fieldLastName
         }
         entityUrl {
@@ -167,8 +243,8 @@ query story($id: String!) {
         }
         author: entityOwner {
           name
-          firstName:fieldFirstName
-          lastName: fieldLastName
+          first: fieldFirstName
+          last: fieldLastName
         }
         wideImage: fieldFeaturedImageWide {
           url
@@ -186,4 +262,15 @@ query story($id: String!) {
   }
 }
 `;
-export {AllStoryQuery, StoryByIdQuery, StoriesBySeriesId};
+
+const SingleCategoryTax = gql`
+query TaxonomyTerm($id:String!){
+    categories: taxonomyTermById(id: $id) {
+    	id: tid
+    	name
+  		categoryID: entityId
+	}
+}
+`;
+
+export {AllStoryQuery, StoryByIdQuery, StoriesBySeriesId, StoriesByCategory, SingleCategoryTax};
