@@ -76,6 +76,10 @@ class NewsletterSignupForm extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    this.refs.headerSignupInput.focus();
+  }
+
   render() {
 
     if (!this.state.successMessage) {
@@ -86,7 +90,7 @@ class NewsletterSignupForm extends React.Component {
       return (
           <div className={formClasses}>
             <form onSubmit={this.handleSubmit} className={styles.form}>
-              <input className={styles.emailBox} type="text"
+              <input ref={'headerSignupInput'} className={styles.emailBox} type="text"
                      value={this.state.value} onChange={this.handleChange} placeholder={'Email address'}/>
               <button className={styles.button} type="submit"
                       disabled={this.state.disabled}>Go</button>
