@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import FeedItem from './FeedItem';
-import Ad from "../Ads/Ad";
+import React, { Component } from 'react'
+import FeedItem from './FeedItem'
+import Ad from "../Ads/Ad"
 
-import styles from './TheFeedPage.module.scss';
-import LoadingSpinner from "../Common/LoadingSpinner";
-import Header from '../Header/Header';
-import Footer from "../Footer/Footer";
+import styles from './TheFeedPage.module.scss'
+import LoadingSpinner from "../Common/LoadingSpinner"
+
+import PageTemplate from '../Common/PageTemplate'
 
 class TheFeedPage extends Component {
     constructor(props) {
@@ -31,19 +31,17 @@ class TheFeedPage extends Component {
         );
 
         return (
-            <div className={styles.pageWrapper}>
-                <Header />
+            <PageTemplate>
               <Ad adUnit={'TheFeedPage_Top'}/>
-                <div className={styles.titleWrapper}>
-                    <h3 className={styles.pageTitle}>The Feed</h3>
-                    <span className={styles.pageSubtitle}>Latest News from Leaders in Corporate Social Responsibility</span>
-                </div>
+              <div className={styles.titleWrapper}>
+                  <h3 className={styles.pageTitle}>The Feed</h3>
+                  <span className={styles.pageSubtitle}>Latest News from Leaders in Corporate Social Responsibility</span>
+              </div>
 
               { this.state.data.map(feeditem =>
                   <FeedItem {...feeditem} key={feeditem.id} />
               )}
-            <Footer />
-            </div>
+            </PageTemplate>
         )
     }
 

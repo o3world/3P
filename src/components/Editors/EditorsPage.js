@@ -1,19 +1,17 @@
-import React from 'react';
-import EditorCardsWrapper from './EditorCardsWrapper';
-import Contributors from './Contributors';
-import Header from '../Header/Header';
-import Footer from "../Footer/Footer";
+import React from 'react'
+import EditorCardsWrapper from './EditorCardsWrapper'
+import Contributors from './Contributors'
+import PageTemplate from '../Common/PageTemplate'
 
-import styles from './EditorsPage.module.scss';
+import styles from './EditorsPage.module.scss'
 
-import HeroImage from '../../assets/images/3pEditorsPageImage.jpg';
+import HeroImage from '../../assets/images/3pEditorsPageImage.jpg'
 
 class EditorsPage extends React.Component {
 
   render() {
     return (
-      <section className={styles.wrapper}>
-          <Header />
+      <PageTemplate>
         <div className={styles.hero}>
           <img src={HeroImage} alt={'Editors Page Hero'} />
           <h1 className={styles.pageTitle}>Editors</h1>
@@ -23,8 +21,7 @@ class EditorsPage extends React.Component {
           <p>Triple Pundit provides conceptual context for a readership of CSR and sustainability professionals, C-suite executives, the corporate workforce, journalists, academics, activists, NGOs, and concerned citizens. A staff of expert writers contributes analysis, insights, and opinion on issues at the top of today&#39;s business agenda. Those issues include climate change, diversity and inclusion, socially responsible investment, employee engagement, corporate governance, and responsible supply chain management.</p></div>
         <EditorCardsWrapper/>
         <Contributors/>
-      <Footer />
-      </section>
+      </PageTemplate>
     )
   }
 }
