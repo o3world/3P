@@ -22,7 +22,7 @@ const client = new ApolloClient({
 
 const routeChangeHandler = (previousRoute, nextRoute) => {
   PARSLEY = {
-	  onload: function() {
+	  onLoad: function() {
 		  PARSELY.beacon.trackPageViews({
 			url: nextRoute,
 			urlref: previousRoute,
