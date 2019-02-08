@@ -31,35 +31,6 @@
     <meta name="helmet">
   </head>
   <body>
-    <script>
-        PARSELY = {
-            // after PARSELY tracking code loads asynchronously
-            onload: function() {
-                    var url = this.href,
-                        urlref = location.href;
-
-                    PARSELY.beacon.trackPageView({
-                        url: url,
-                        urlref: urlref,
-                        js: 1
-                });
-            }
-        };
-    </script>
-    <div id="parsely-root" style="display: none">
-      <span id="parsely-cfg" data-parsely-site="triplepundit.com"></span>
-    </div>
-    <script>
-        (function(s, p, d) {
-          var h=d.location.protocol, i=p+"-"+s,
-              e=d.getElementById(i), r=d.getElementById(p+"-root"),
-              u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net"
-              :"static."+p+".com";
-          if (e) return;
-          e = d.createElement(s); e.id = i; e.async = true;
-          e.src = h+"//"+u+"/p.js"; r.appendChild(e);
-        })("script", "parsely", document);
-    </script>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PC3786R"
       height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
@@ -77,5 +48,19 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <div id="parsely-root" style="display: none">
+      <span id="parsely-cfg" data-parsely-site="triplepundit.com"></span>
+    </div>
+    <script>
+        (function(s, p, d) {
+          var h=d.location.protocol, i=p+"-"+s,
+              e=d.getElementById(i), r=d.getElementById(p+"-root"),
+              u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net"
+              :"static."+p+".com";
+          if (e) return;
+          e = d.createElement(s); e.id = i; e.async = true;
+          e.src = h+"//"+u+"/p.js"; r.appendChild(e);
+        })("script", "parsely", document);
+    </script>
   </body>
 </html>
