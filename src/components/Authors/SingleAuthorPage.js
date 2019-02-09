@@ -1,21 +1,18 @@
 import React from 'react'
 import AuthorBio from './AuthorBio'
 import AuthorStoriesWrapper from './AuthorStoriesWrapper'
-import Header from '../Header/Header'
-import Footer from "../Footer/Footer"
+import PageTemplate from '../Common/PageTemplate'
 
 const SingleAuthorPage = (props) => {
 
-        const authorId = props.match.params.id;
+  const authorId = props.match.params.id;
 
-        return (
-            <section>
-                <Header />
-              <AuthorBio authorId={authorId}/>
-              <AuthorStoriesWrapper authorId={authorId}/>
-                <Footer />
-            </section>
-        )
+  return (
+      <PageTemplate>
+        <AuthorBio authorId={authorId}/>
+        <AuthorStoriesWrapper authorId={authorId}/>
+      </PageTemplate>
+  )
 };
 
 export default SingleAuthorPage;

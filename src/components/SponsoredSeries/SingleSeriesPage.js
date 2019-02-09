@@ -1,14 +1,11 @@
-import React from 'react';
-import {Query} from "react-apollo";
+import React from 'react'
+import {Query} from "react-apollo"
 
-import SeriesHeader from "./SeriesHeader";
-import { SingleSeriesQuery } from "../SponsoredSeries/SponsoredSeriesQueries";
-import SeriesStoriesMasonryWrapper from "./SeriesStoriesMasonryWrapper";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-
-import styles from './SingleSeriesPage.module.scss';
-import LoadingSpinner from "../Common/LoadingSpinner";
+import SeriesHeader from "./SeriesHeader"
+import { SingleSeriesQuery } from "../SponsoredSeries/SponsoredSeriesQueries"
+import SeriesStoriesMasonryWrapper from "./SeriesStoriesMasonryWrapper"
+import LoadingSpinner from "../Common/LoadingSpinner"
+import PageTemplate from "../Common/PageTemplate"
 
 const SingleSeriesPage = (props) => (
     <Query
@@ -20,12 +17,10 @@ const SingleSeriesPage = (props) => (
         if (error) return `Error! ${error.message}`;
 
         return (
-            <section className={styles.wrapper}>
-                <Header />
+            <PageTemplate>
                 <SeriesHeader {...data}/>
                 <SeriesStoriesMasonryWrapper seriesId={props.match.params.id}/>
-                <Footer />
-            </section>
+            </PageTemplate>
         )
       }}
     </Query>

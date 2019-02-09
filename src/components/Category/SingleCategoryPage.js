@@ -1,12 +1,11 @@
 import React from 'react'
 import CategoryStoriesWrapper from './CategoryStoriesWrapper'
-import Header from '../Header/Header'
-import Footer from "../Footer/Footer"
 import {SingleCategoryTax} from "../Stories/StoryQueries"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {Query} from "react-apollo"
 
 import styles from './SingleCategoryPage.module.scss'
+import PageTemplate from "../Common/PageTemplate"
 
 const SingleCategoryPage = (props) => {
 
@@ -28,12 +27,10 @@ const SingleCategoryPage = (props) => {
           const category = data.categories;
 
           return (
-              <section>
-                <Header />
+              <PageTemplate>
                 <h1 className={styles.titleBar}>{category.name}</h1>
                 <CategoryStoriesWrapper categoryId={categoryId}/>
-                <Footer />
-              </section>
+              </PageTemplate>
           );
         }}
       </Query>
