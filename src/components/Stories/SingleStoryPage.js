@@ -10,8 +10,7 @@ import Ad from "../Ads/Ad"
 
 import StoryShare from './SocialShare/StoryShare'
 import LoadingSpinner from "../Common/LoadingSpinner"
-import Header from '../Header/Header'
-import Footer from "../Footer/Footer"
+import PageTemplate from "../Common/PageTemplate";
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -77,32 +76,30 @@ class SingleStoryPage extends Component {
         }
 
         return (
-            <div className={styles.wrapper}>
-            <Helmet>
-              <title>TriplePundit: {story.title}</title>
-              <meta property="og:title" content={'TriplePundit: ' + story.title} />
-              <meta property="og:image" content={wideImageURL} />
-              <meta property="og:image:height" content={imageHeight} />
-              <meta property="og:image:width" content={imageWidth} />
-              <meta property="og:url" content={currentURL} />
-              <meta name="twitter:card" content="summary" />
-              <meta name="twitter:site" content="@triplepundit" />
-            </Helmet>
-            <Header />
-            <div className={styles.meta}>
-              <h1 className={styles.title}>{story.title}</h1>
-              {headshot}
-              <span className={styles.authorName}><Link to={authorLink}>Words by {authorName}</Link></span>
-              {category}
-              <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
-            </div>
-            <div className={styles.bodyWrapper}>
-              {wideImage}
-              <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
-            </div>
-            <Ad adUnit={'StoryDetailPage_Bottom'}/>
-            <Footer />
-          </div>
+            <PageTemplate>
+              <Helmet>
+                <title>TriplePundit: {story.title}</title>
+                <meta property="og:title" content={'TriplePundit: ' + story.title} />
+                <meta property="og:image" content={wideImageURL} />
+                <meta property="og:image:height" content={imageHeight} />
+                <meta property="og:image:width" content={imageWidth} />
+                <meta property="og:url" content={currentURL} />
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:site" content="@triplepundit" />
+              </Helmet>
+              <div className={styles.meta}>
+                <h1 className={styles.title}>{story.title}</h1>
+                {headshot}
+                <span className={styles.authorName}><Link to={authorLink}>Words by {authorName}</Link></span>
+                {category}
+                <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
+              </div>
+              <div className={styles.bodyWrapper}>
+                {wideImage}
+                <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
+              </div>
+              <Ad adUnit={'StoryDetailPage_Bottom'}/>
+            </PageTemplate>
         )
       }
       }
