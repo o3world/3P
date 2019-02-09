@@ -14,7 +14,7 @@ const HomeBTS = () => {
             <h4>Weekly Newsletter</h4>
               <time className={styles.date}>Feb 6</time>
             </div>
-            <h3 className={styles.title}>The CEO as The Chief Executive—A Reality Check</h3>
+            <h3 className={styles.title}>Purpose-Led Brands Take the Lead in Business</h3>
             <p className={styles.author}>Words by John Howell</p>
           </div>
           <a href={'http://www.3blforum.com/brands-taking-stands-newsletter/newsletter-sign-up'} className={styles.button} target={'_blank'}>Subscribe</a>
