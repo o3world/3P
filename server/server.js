@@ -18,6 +18,19 @@ import fetch from 'node-fetch';
 
 const app = Express();
 
+app.all('*', function(req, res, next){
+    console.log('req start: ',req.secure, req.hostname, req.url,
+        app.get('port'));
+    console.log("https://" + req.headers.host + req.url);
+    if (req.secure || req.hostname=='localhost') {
+        return next();
+    }
+
+
+    res.redirect("https://" + req.headers.host + req.url);
+});
+
+
 app.use(Express.static(path.join(__dirname, '../build')));
 
 const httpLink = createHttpLink({
