@@ -8,6 +8,8 @@ import StoriesPage from "../Stories/StoriesPage"
 import SingleStoryPage from "../Stories/SingleStoryPage"
 import SearchResult from "../Search/SearchResults"
 import SingleAuthorPage from "../Authors/SingleAuthorPage"
+import SingleCategoryPage from "../Category/SingleCategoryPage"
+import the404 from '../404/404'
 
 const routes = [
   {
@@ -22,44 +24,43 @@ const routes = [
   },
   {
     path: '/sponsored-series/:id/',
-    exact: false,
     component: SingleSeriesPage,
   },
   {
     path: '/editors',
-    exact: false,
     component: EditorsPage,
   },
   {
     path: '/editor/:id/',
-    exact: false,
     component: SingleEditorPage,
   },
   {
     path: '/the-feed',
-    exact: false,
     component: TheFeedPage,
   },
   {
     path: '/stories',
-    exact: false,
     component: StoriesPage,
   },
   {
     path: '/story/:year/:title/:id/',
-    exact: false,
     component: SingleStoryPage,
   },
   {
     path: '/search/:searchterm',
-    exact: false,
     component: SearchResult,
   },
   {
     path: '/author/:username/:id/',
-    exact: false,
     component: SingleAuthorPage,
-  }
+  },
+  {
+    path: '/category/:cat/:id/',
+    component: SingleCategoryPage,
+  },
+  {
+    component: the404,
+  },
 ];
 
 export default routes;
