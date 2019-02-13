@@ -16,14 +16,11 @@ class App extends Component {
     render() {
 
         return (
-
             <div className="App">
               <Switch>
               {routes.map((route, index) => ( <Route key={index} {...route} /> ))}
               </Switch>
             </div>
-
-
         );
     }
 }
