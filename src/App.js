@@ -8,7 +8,6 @@ import { faTwitter, faInstagram, faLinkedin, faFacebookF, faGoogle } from '@fort
 
 import routes from './components/Common/RoutesConfig';
 import './App.css';
-import PropTypes from 'prop-types';
 
 library.add( faTwitter, faInstagram, faLinkedin, faSearch, faBars, faSpinner, faEnvelope, faFacebookF, faGoogle, faArrowRight );
 
