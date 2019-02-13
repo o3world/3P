@@ -8,7 +8,7 @@ const PrimeStoryHero = (props) => {
       "--tall-bg-image": `url(${props.tallImage.url})`,
       "--wide-bg-image": `url(${props.wideImage.url})`
   };
-  const published_date = new Date(props.date * 1000);
+  const published_date = new Date(props.date.value * 1000);
   const link = '/story/' + published_date.getFullYear() + props.entityUrl.path + '/' + props.id + '/';
 
   return (

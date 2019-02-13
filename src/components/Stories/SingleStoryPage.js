@@ -74,7 +74,6 @@ class SingleStoryPage extends Component {
         if (story.author.isEditor) {
           authorLink = `/editor/${story.author.authorID}/${authorName.replace(/\s+/g, '-').toLowerCase()}`;
         }
-
         return (
             <PageTemplate>
               <Helmet>

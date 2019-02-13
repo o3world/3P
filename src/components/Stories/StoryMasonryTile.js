@@ -7,7 +7,8 @@ import styles from './StoryMasonryTile.module.scss';
 
 const StoryMasonryTile = (props) => {
   const story = {...props.data};
-  const link = '/story/' + new Date(story.date).getFullYear() + story.entityUrl.path + '/' + story.id + '/';
+  // following line with *1000 comes from https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
+  const link = '/story/' + new Date(story.date.value*1000).getFullYear() + story.entityUrl.path + '/' + story.id + '/';
 
   let backgroundImage = "";
   if(story.tallImage) {
@@ -26,7 +27,7 @@ const StoryMasonryTile = (props) => {
 
   const author = story.author.first && story.author.last ? `${story.author.first} ${story.author.last}` : story.author.name;
 
-  const dateFormat = new Date().getFullYear() === new Date(story.date).getFullYear() ? 'MMM DD' : 'MMM DD, YYYY';
+  const dateFormat = new Date().getFullYear() === new Date(story.date.value*1000).getFullYear() ? 'MMM DD' : 'MMM DD, YYYY';
 
   return (
     <LazyLoad height={200}>

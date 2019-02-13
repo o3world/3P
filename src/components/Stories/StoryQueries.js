@@ -43,7 +43,9 @@ query story($id:String!) {
         entityUrl {
           path
         }
-        date: entityCreated
+        date: publishedAt {
+          value
+        }
         squareImage: fieldFeaturedImageSquare {
           url
           width
@@ -112,7 +114,9 @@ query stories($id:String!) {
         entityUrl {
           path
         }
-        date: entityCreated
+        date: publishedAt {
+          value
+        }
         category: fieldPrimaryCategory {
           entity {
             name
@@ -174,7 +178,9 @@ query story {
         entityUrl {
           path
         }
-        date: entityCreated
+        date: publishedAt {
+          value
+        }
         category: fieldPrimaryCategory {
           entity {
             name
@@ -230,7 +236,9 @@ query story($id: String!) {
             name
           }
         }
-        date: entityCreated
+        date: publishedAt {
+          value
+        }
         category: fieldPrimaryCategory {
           entity {
             name
