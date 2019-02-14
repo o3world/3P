@@ -90,7 +90,7 @@ class SingleStoryPage extends Component {
                 <meta property="parsely-image-url" content={wideImageURL} />
                 <meta property="parsely-link" content={currentURL} />
                 <meta property="parsely-section" content={story.category.entity.name} />
-                <meta property="parsely-type" content="Story" />
+                <meta property="parsely-type" content="post" />
                 <meta property="parsely-author" content={authorName} />
                 <meta property="parsely-pub-date" content={story.date} />
               </Helmet>
