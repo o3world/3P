@@ -86,6 +86,13 @@ class SingleStoryPage extends Component {
                 <meta property="og:url" content={currentURL} />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@triplepundit" />
+                <meta property="parsely-title" content={'TriplePundit: ' + story.title} />
+                <meta property="parsely-image-url" content={wideImageURL} />
+                <meta property="parsely-link" content={currentURL} />
+                <meta property="parsely-section" content={story.category.entity.name} />
+                <meta property="parsely-type" content="Story" />
+                <meta property="parsely-author" content={authorName} />
+                <meta property="parsely-pub-date" content={story.date} />
               </Helmet>
               <div className={styles.meta}>
                 <h1 className={styles.title}>{story.title}</h1>
