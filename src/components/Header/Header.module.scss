@@ -24,6 +24,15 @@ $medium_breakpoint: 720px;
   }
 }
 
+.logoThin {
+  width: 500px;
+  grid-area: logo;
+
+  @media only screen and (max-width: $medium_breakpoint) {
+    width: 150px;
+  }
+}
+
 .subscribeToggle {
   grid-area: subscribe;
   align-self: center;

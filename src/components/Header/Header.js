@@ -37,14 +37,16 @@ class Header extends Component {
     }
 
     render() {
-      
+
       var logo = logo__small;
+      var logoStyle = styles.logoThin;
       if (this.props.location.pathname === '/') {
         logo = logo__large;
+        logoStyle = styles.logo;
       }
         return (
             <header className={styles.wrapper}>
-                <Link to={'/'}><img className={styles.logo} src={logo} alt={'3bl logo'} /></Link>
+                <Link to={'/'}><img className={logoStyle} src={logo} alt={'3bl logo'} /></Link>
                 <HeaderSubscribeToggle className={styles.subscribeToggle} handleClick={this.toggleNewsletterForm} visible={this.state.isNewsletterSignupVisible}/>
                 <SearchButton className={styles.searchButton} handleClick={this.toggleSearchForm} visible={this.state.isSearchVisible}/>
                 <HamburgerNav/>
