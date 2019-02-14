@@ -22,9 +22,9 @@ const app = Express();
 
 app.use(Express.static(path.join(__dirname, '../build')));
 
-// Build sitemap. expressSitemapXml pulls a list of urls from the backend via fetch.
+// Build sitemap. expressSitemapXml pulls a list of urls from the backend.
 async function getUrls() {
-    return await fetch('https://back.3blmedia.com/sitemap/triplepundit?token=m0UDc8T8H5KjkNlzRsMW')
+    return await fetch('https://back.3blmedia.com/sites/default/files/sitemap.json')
         .then(res => res.json())
 }
 app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'))
