@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
 import { Query } from "react-apollo"
@@ -8,8 +8,8 @@ import styles from './SingleStoryPage.module.scss'
 import { StoryByIdQuery } from "./StoryQueries"
 import Ad from "../Ads/Ad"
 
-import StoryShare from './SocialShare/StoryShare'
-import LoadingSpinner from "../Common/LoadingSpinner"
+import StoryShare from './SocialShare/StoryShare';
+import LoadingSpinner from "../Common/LoadingSpinner";
 import PageTemplate from "../Common/PageTemplate";
 
 class SingleStoryPage extends Component {
@@ -43,6 +43,7 @@ class SingleStoryPage extends Component {
                 <h4 className={styles.sponsoredBy}>{story.sponsoredSeries.entity.sponsoredBy} Sponsored Series</h4>
                 <h5 className={styles.seriesTitle}><Link to={story.sponsoredSeries.entity.entityUrl.path}>{story.sponsoredSeries.entity.seriesTitle}</Link></h5>
               </div>;
+
         }
 
         let headshot;
@@ -76,30 +77,35 @@ class SingleStoryPage extends Component {
         }
 
         return (
-            <PageTemplate>
-              <Helmet>
-                <title>TriplePundit: {story.title}</title>
-                <meta property="og:title" content={'TriplePundit: ' + story.title} />
-                <meta property="og:image" content={wideImageURL} />
-                <meta property="og:image:height" content={imageHeight} />
-                <meta property="og:image:width" content={imageWidth} />
-                <meta property="og:url" content={currentURL} />
-                <meta name="twitter:card" content="summary" />
-                <meta name="twitter:site" content="@triplepundit" />
-              </Helmet>
-              <div className={styles.meta}>
-                <h1 className={styles.title}>{story.title}</h1>
-                {headshot}
-                <span className={styles.authorName}><Link to={authorLink}>Words by {authorName}</Link></span>
-                {category}
-                <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
-              </div>
-              <div className={styles.bodyWrapper}>
-                {wideImage}
-                <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
-              </div>
-              <Ad adUnit={'StoryDetailPage_Bottom'}/>
-            </PageTemplate>
+          <Fragment>
+              <Ad adUnit={'StoryDetailPage_Top'}/>
+              <Fragment>
+                <PageTemplate>
+                  <Helmet>
+                    <title>TriplePundit: {story.title}</title>
+                    <meta property="og:title" content={'TriplePundit: ' + story.title} />
+                    <meta property="og:image" content={wideImageURL} />
+                    <meta property="og:image:height" content={imageHeight} />
+                    <meta property="og:image:width" content={imageWidth} />
+                    <meta property="og:url" content={currentURL} />
+                    <meta name="twitter:card" content="summary" />
+                    <meta name="twitter:site" content="@triplepundit" />
+                  </Helmet>
+                  <div className={styles.meta}>
+                    <h1 className={styles.title}>{story.title}</h1>
+                    {headshot}
+                    <span className={styles.authorName}><Link to={authorLink}>Words by {authorName}</Link></span>
+                    {category}
+                    <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
+                  </div>
+                  <div className={styles.bodyWrapper}>
+                    {wideImage}
+                    <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
+                  </div>
+                  <Ad adUnit={'StoryDetailPage_Bottom'}/>
+                </PageTemplate>
+              </Fragment>
+            </Fragment>
         )
       }
       }
