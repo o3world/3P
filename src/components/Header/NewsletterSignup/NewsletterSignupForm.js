@@ -77,7 +77,9 @@ class NewsletterSignupForm extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    this.refs.headerSignupInput.focus();
+    if (!this.state.successMessage) {
+      this.refs.headerSignupInput.focus();
+    }
   }
 
   render() {
