@@ -77,6 +77,9 @@ class SingleStoryPage extends Component {
         }
 
         return (
+          <Fragment>
+              <Ad adUnit={'StoryDetailPage_Top'}/>
+              <Fragment>
             <PageTemplate>
               <Helmet>
                 <title>TriplePundit: {story.title}</title>
@@ -108,6 +111,8 @@ class SingleStoryPage extends Component {
               </div>
               <Ad adUnit={'StoryDetailPage_Bottom'}/>
             </PageTemplate>
+            </Fragment>
+            </Fragment>
         )
       }
       }
