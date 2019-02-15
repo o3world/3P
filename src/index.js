@@ -20,9 +20,21 @@ const client = new ApolloClient({
     cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
 });
 
+const routeChangeHandler = (previousRoute, nextRoute) => {
+  var PARSELY = {
+	  onLoad: function() {
+		  PARSELY.beacon.trackPageView({
+			url: nextRoute,
+			urlref: previousRoute,
+			js: 1
+		  })
+	  }
+  }
+};
+
 ReactDOM.hydrate(
     <ApolloProvider client={client}>
-        <BrowserRouter>
+        <BrowserRouter onChange={routeChangeHandler}>
             <App/>
         </BrowserRouter>
     </ApolloProvider>,
