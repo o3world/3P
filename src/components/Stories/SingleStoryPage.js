@@ -83,7 +83,7 @@ class SingleStoryPage extends Component {
             <PageTemplate>
               <Helmet>
                 <title>TriplePundit: {story.title}</title>
-                <meta property="og:title" content={'TriplePundit: ' + story.title} />
+                <meta property="og:title" content={story.title} />
                 <meta property="og:image" content={wideImageURL} />
                 <meta property="og:image:height" content={imageHeight} />
                 <meta property="og:image:width" content={imageWidth} />
