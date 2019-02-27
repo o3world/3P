@@ -117,7 +117,7 @@ query stories($id:String!) {
           entity {
             name
             categoryID: entityId
-            
+
           }
         }
         squareImage: fieldFeaturedImageSquare {
@@ -214,7 +214,8 @@ query story($id: String!) {
           {field:"type", value:"story"},
           {field:"field_3p_special_series", value: [$id]}
         ]
-      }
+      },
+      sort: [{ field: "created" direction: ASC }]
     )
   {
     entities {

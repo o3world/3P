@@ -23,7 +23,7 @@ const Footer = () =>
       <a href={'https://contact.triplepundit.com/'} target={'_blank'} rel={'noopener noreferrer'}>Contact Us</a>
       <a href={'https://www.facebook.com/3blmediatriplepundit'}><FontAwesomeIcon icon={['fab', 'facebook-f']} /></a>
       <a href={'http://twitter.com/triplepundit'}><FontAwesomeIcon icon={['fab', 'twitter']} /></a>
-      <a href={'http://www.linkedin.com/groups/Triple-Pundit-People-Planet-Profit-1842706'}><FontAwesomeIcon icon={['fab', 'linkedin']} /></a>
+      <a href={'http://www.linkedin.com/groups/1842706'}><FontAwesomeIcon icon={['fab', 'linkedin']} /></a>
     </div>
     <div className={styles.logos}>
       <img src={tp_logo} alt={'3BL logo'}/>
