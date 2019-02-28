@@ -20,6 +20,7 @@
     "graphql-tag": "^2.10.1",
     "ignore-styles": "^5.0.1",
     "moment": "^2.22.2",
+    "node-fetch": "^2.3.0",
     "node-sass": "^4.10.0",
     "react": "^16.4.2",
     "react-apollo": "^2.2.4",
