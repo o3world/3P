@@ -4,7 +4,7 @@ import { DFPSlotsProvider, AdSlot } from 'react-dfp'; //https://github.com/jaana
 import styles from './Ad.module.scss';
 
 const Ad = (props) =>
-  <DFPSlotsProvider dfpNetworkId='21765524922' autoLoad={ true } collapseEmptyDivs={ true } sizeMapping={ [ {viewport: [728, 120], sizes:[[728, 90]]}, {viewport: [0,0], sizes:[[320, 50]] }] }>
+  <DFPSlotsProvider dfpNetworkId='21765524922' singleRequest={false} autoLoad={ true } collapseEmptyDivs={ true } sizeMapping={ [ {viewport: [728, 120], sizes:[[728, 90]]}, {viewport: [0,0], sizes:[[320, 50]] }] }>
     <div className={styles.ad}>
       <AdSlot sizes={[[728,90], [320,50]]} adUnit={props.adUnit}/>
     </div>
