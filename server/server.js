@@ -125,6 +125,7 @@ app.get('/story/*', (req, res) => {
 
     if (req.path.indexOf('Object]') > 0) {
         res.end();
+        return;
     }
 
     const context = {};

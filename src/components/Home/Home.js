@@ -12,9 +12,17 @@ import styles from "./Home.module.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {Link} from "react-router-dom"
 import PageTemplate from '../Common/PageTemplate'
+import { Helmet } from "react-helmet"
+
+const currentURL = 'https://triplepundit.com';
 
 const Home = () =>
     <PageTemplate>
+      <Helmet>
+        <meta name="parsely-title" content={'Home'} />
+        <meta name="parsely-link" content={currentURL} />
+        <meta name="parsely-type" content="frontpage" />
+      </Helmet>
       <PrimeStoriesWrapper/>
       <div className={styles.arrow}>
         <Link to={'/stories'}>Stories <FontAwesomeIcon icon={"arrow-right"} /></Link>
