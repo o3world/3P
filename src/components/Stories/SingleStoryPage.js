@@ -11,6 +11,7 @@ import Ad from "../Ads/Ad"
 import StoryShare from './SocialShare/StoryShare';
 import LoadingSpinner from "../Common/LoadingSpinner";
 import PageTemplate from "../Common/PageTemplate";
+import SingleStoryBio from './SingleStoryBio'
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -76,10 +77,15 @@ class SingleStoryPage extends Component {
           authorLink = `/editor/${story.author.authorID}/${authorName.replace(/\s+/g, '-').toLowerCase()}`;
         }
 
+        const authorBio = {
+            headshot: headshot,
+            name: authorName,
+            link: authorLink,
+        };
+
         return (
           <Fragment>
               <Ad adUnit={'StoryDetailPage_Top'}/>
-              <Fragment>
             <PageTemplate>
               <Helmet>
                 <title>TriplePundit: {story.title}</title>
@@ -109,9 +115,9 @@ class SingleStoryPage extends Component {
                 {wideImage}
                 <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
               </div>
+                <SingleStoryBio {...authorBio} />
               <Ad adUnit={'StoryDetailPage_Bottom'}/>
             </PageTemplate>
-            </Fragment>
             </Fragment>
         )
       }
