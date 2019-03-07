@@ -15,7 +15,7 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { renderToStringWithData } from "react-apollo";
 import fetch from 'node-fetch';
-const expressSitemapXml = require('express-sitemap-xml');
+import expressSitemapXml from 'express-sitemap-xml'
 
 
 const app = Express();
@@ -27,7 +27,7 @@ async function getUrls() {
     return await fetch('https://back.3blmedia.com/sites/default/files/sitemap.json')
         .then(res => res.json())
 }
-app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'))
+app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'));
 
 
 const httpLink = createHttpLink({
