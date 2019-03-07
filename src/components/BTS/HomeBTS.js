@@ -12,9 +12,9 @@ const HomeBTS = () => {
           <div className={styles.contentWrapper}>
             <div className={styles.dateWrapper}>
             <h4>Weekly Newsletter</h4>
-              <time className={styles.date}>Feb 13</time>
+              <time className={styles.date}>Mar 6</time>
             </div>
-            <h3 className={styles.title}>Purpose + Corporate Activism = A Winning Formula.</h3>
+            <h3 className={styles.title}>Companies Feel the Pressure to Take Stands</h3>
             <p className={styles.author}>Words by John Howell</p>
           </div>
           <a href={'http://www.3blforum.com/brands-taking-stands-newsletter/newsletter-sign-up'} className={styles.button} target={'_blank'}>Subscribe</a>
