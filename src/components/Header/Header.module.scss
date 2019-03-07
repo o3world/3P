@@ -1,4 +1,6 @@
+$small_breakpoint: 420px;
 $medium_breakpoint: 720px;
+$large_breakpoint: 980px;
 
 .wrapper {
   max-width: 1366px;
@@ -21,6 +23,22 @@ $medium_breakpoint: 720px;
 
   @media only screen and (max-width: $medium_breakpoint) {
     width: 150px;
+  }
+}
+
+.logoThin {
+  width: 500px;
+  grid-area: logo;
+  margin-top: 8px;
+
+  @media only screen and (max-width: $large_breakpoint) {
+    width: 350px;
+  }
+  @media only screen and (max-width: $medium_breakpoint) {
+    width: 300px;
+  }
+  @media only screen and (max-width: $small_breakpoint) {
+    width: 200px;
   }
 }
 

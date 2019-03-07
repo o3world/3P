@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import Moment from 'react-moment';
-import { Query } from "react-apollo";
-import { Helmet } from "react-helmet";
+import React, { Component, Fragment } from 'react'
+import { Link } from 'react-router-dom'
+import Moment from 'react-moment'
+import { Query } from "react-apollo"
+import { Helmet } from "react-helmet"
 
-import styles from './SingleStoryPage.module.scss';
-import { StoryByIdQuery } from "./StoryQueries";
-import Ad from "../Ads/Ad";
+import styles from './SingleStoryPage.module.scss'
+import { StoryByIdQuery } from "./StoryQueries"
+import Ad from "../Ads/Ad"
 
 import StoryShare from './SocialShare/StoryShare';
 import LoadingSpinner from "../Common/LoadingSpinner";
-import Header from '../Header/Header';
-import Footer from "../Footer/Footer";
+import PageTemplate from "../Common/PageTemplate";
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -34,14 +34,16 @@ class SingleStoryPage extends Component {
 
         let category;
         if (story.category) {
-          category = <div className={styles.category}>{story.category.entity.name}</div>;
+          const catCleanName = story.category.entity.name.replace(/&/g, ' ').replace(/\s+/g, '-').toLowerCase();
+          category = <div className={styles.category}><Link to={`/category/${catCleanName}/${story.category.entity.categoryID}`}>{story.category.entity.name}</Link></div>;
         }
         if (story.sponsoredSeries) {
           category =
               <div className={styles.category}>
                 <h4 className={styles.sponsoredBy}>{story.sponsoredSeries.entity.sponsoredBy} Sponsored Series</h4>
-                <h5 className={styles.seriesTitle}><a href={story.sponsoredSeries.entity.entityUrl.path}>{story.sponsoredSeries.entity.seriesTitle}</a></h5>
+                <h5 className={styles.seriesTitle}><Link to={story.sponsoredSeries.entity.entityUrl.path}>{story.sponsoredSeries.entity.seriesTitle}</Link></h5>
               </div>;
+
         }
 
         let headshot;
@@ -67,33 +69,50 @@ class SingleStoryPage extends Component {
           imageWidth = story.wideImage.width;
         }
 
-        const fullName = story.author.first + ' ' + story.author.last;
+        const authorName = (story.author.first && story.author.last) ? `${story.author.first} ${story.author.last}` : story.author.name;
+
+        let authorLink = `/author/${authorName.replace(/\s+/g, '-').toLowerCase()}/${story.author.authorID}`;
+        if (story.author.isEditor) {
+          authorLink = `/editor/${story.author.authorID}/${authorName.replace(/\s+/g, '-').toLowerCase()}`;
+        }
 
         return (
-            <div className={styles.wrapper}>
-            <Helmet>
-              <title>Triple Pundit: {story.title}</title>
-              <meta property="og:title" content={'TriplePundit: ' + story.title} />
-              <meta property="og:image" content={wideImageURL} />
-              <meta property="og:image:height" content={imageHeight} />
-              <meta property="og:image:width" content={imageWidth} />
-              <meta property="og:url" content={currentURL} />
-            </Helmet>
-            <Header />
-            <div className={styles.meta}>
-              <h1 className={styles.title}>{story.title}</h1>
-              {headshot}
-              <span className={styles.authorName}>Words by {fullName}</span>
-              {category}
-              <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
-            </div>
-            <div className={styles.bodyWrapper}>
-              {wideImage}
-              <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
-            </div>
-            <Ad adUnit={'StoryDetailPage_Bottom'}/>
-            <Footer />
-          </div>
+          <Fragment>
+              <Ad adUnit={'StoryDetailPage_Top'}/>
+              <Fragment>
+            <PageTemplate>
+              <Helmet>
+                <title>TriplePundit: {story.title}</title>
+                <meta property="og:title" content={story.title} />
+                <meta property="og:image" content={wideImageURL} />
+                <meta property="og:image:height" content={imageHeight} />
+                <meta property="og:image:width" content={imageWidth} />
+                <meta property="og:url" content={currentURL} />
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:site" content="@triplepundit" />
+                <meta name="parsely-title" content={'TriplePundit: ' + story.title} />
+                <meta name="parsely-image-url" content={wideImageURL} />
+                <meta name="parsely-link" content={currentURL} />
+                <meta name="parsely-section" content={story.category.entity.name} />
+                <meta name="parsely-type" content="post" />
+                <meta name="parsely-author" content={authorName} />
+                <meta name="parsely-pub-date" content={story.date} />
+              </Helmet>
+              <div className={styles.meta}>
+                <h1 className={styles.title}>{story.title}</h1>
+                {headshot}
+                <span className={styles.authorName}><Link to={authorLink}>Words by {authorName}</Link></span>
+                {category}
+                <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
+              </div>
+              <div className={styles.bodyWrapper}>
+                {wideImage}
+                <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
+              </div>
+              <Ad adUnit={'StoryDetailPage_Bottom'}/>
+            </PageTemplate>
+            </Fragment>
+            </Fragment>
         )
       }
       }

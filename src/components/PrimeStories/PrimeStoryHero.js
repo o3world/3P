@@ -12,13 +12,13 @@ const PrimeStoryHero = (props) => {
   const link = '/story/' + published_date.getFullYear() + props.entityUrl.path + '/' + props.id + '/';
 
   return (
-      <div className={styles.wrapper} style={heroImageStyle}>
-          <div className={styles.meta}>
-              <h3 className={styles.name}><Link to={link}><span>{props.title}</span></Link></h3>
-            <p className={styles.author}>Words by {props.author.first} {props.author.last}</p>
-            <Moment className={styles.date} format="MMM DD">{published_date}</Moment>
-          </div>
+    <Link to={link} className={styles.wrapper} style={heroImageStyle}>
+      <div className={styles.meta}>
+        <h3 className={styles.name}><span>{props.title}</span></h3>
+        <p className={styles.author}>Words by {props.author.first} {props.author.last}</p>
+        <Moment className={styles.date} format="MMM DD">{published_date}</Moment>
       </div>
+    </Link>
   );
 };
 

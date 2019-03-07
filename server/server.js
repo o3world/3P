@@ -15,10 +15,20 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { renderToStringWithData } from "react-apollo";
 import fetch from 'node-fetch';
+const expressSitemapXml = require('express-sitemap-xml');
+
 
 const app = Express();
 
 app.use(Express.static(path.join(__dirname, '../build')));
+
+// Build sitemap. expressSitemapXml pulls a list of urls from the backend.
+async function getUrls() {
+    return await fetch('https://back.3blmedia.com/sites/default/files/sitemap.json')
+        .then(res => res.json())
+}
+app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'))
+
 
 const httpLink = createHttpLink({
     uri: 'https://back.3blmedia.com/graphql',
@@ -33,34 +43,32 @@ const client = new ApolloClient({
 
 // have the server handle only certain paths - the rest, React can handle on the front end.
 // first, redirects that begin with the Year.
-app.get('/20*', function (req, res) {
+app.get('/20*', (req, res) => {
 
-    let reqpath = req.path;
-    let newurl = null;
+    let newurl;
 
-    if (reqpath.indexOf('Object]') > 0) {
+    if (req.path.indexOf('Object]') > 0) {
         res.end();
-        return;
     }
 
     // First check if the path is one of the old patterns.
     // if so, try to get a redirect from the appropriate redirect file.
     if (
-        reqpath.startsWith("/2019/") ||
-        reqpath.startsWith("/2018/") ||
-        reqpath.startsWith("/2017/") ||
-        reqpath.startsWith("/2016/") ||
-        reqpath.startsWith("/2015/") ||
-        reqpath.startsWith("/2014/") ||
-        reqpath.startsWith("/2013/") ||
-        reqpath.startsWith("/2012/") ||
-        reqpath.startsWith("/2011/")
+        req.path.startsWith("/2019/") ||
+        req.path.startsWith("/2018/") ||
+        req.path.startsWith("/2017/") ||
+        req.path.startsWith("/2016/") ||
+        req.path.startsWith("/2015/") ||
+        req.path.startsWith("/2014/") ||
+        req.path.startsWith("/2013/") ||
+        req.path.startsWith("/2012/") ||
+        req.path.startsWith("/2011/")
     ) {
-        newurl = getRedirect(req.path, reqpath.substr(1, 4), fs);
+        newurl = getRedirect(req.path, req.path.substr(1, 4), fs);
     }
     else if (
-        reqpath.startsWith("/special/") ||
-        reqpath.startsWith("/series/")
+        req.path.startsWith("/special/") ||
+        req.path.startsWith("/series/")
     ) {
         newurl = getRedirect(req.path, 'special', fs);
     }
@@ -69,81 +77,64 @@ app.get('/20*', function (req, res) {
     if (newurl != null) {
         console.log('redirecting to ' + newurl);
         res.redirect(301, newurl);
-        res.end();
     }
     else {
         res.redirect(301, "/");
-        res.end();
     }
 
 });
+
+const doRedirect = (redirect_file) => {
+  return function(req, res) {
+
+    if (req.path.indexOf('Object]') > 0) {
+      res.end()
+    }
+
+    const newurl = getRedirect(req.path, redirect_file, fs);
+
+    // if we have a redirect, go there.
+    if (newurl != null) {
+      res.redirect(301, newurl)
+    }
+    else {
+      res.redirect(301, "/")
+    }
+  }
+};
 
 // Then, redirects for what are now sponsored series.
 // They begin with 'special' or 'series'
-app.get('/special/*', function (req, res) {
+app.get('/special/*', doRedirect('special'));
+app.get('/series/*', doRedirect('special'));
 
-    let reqpath = req.path;
-    let newurl = null;
+// redirect old /writers pages to /editors
+app.get('/writers*', doRedirect('unique'));
 
-    if (reqpath.indexOf('Object]') > 0) {
-        res.end();
-        return;
-    }
+// redirect old About page
+app.get('/about*', doRedirect('unique'));
 
+// redirect old /topic/leon-kaye
+app.get('/topic*', doRedirect('unique'));
 
-    newurl = getRedirect(req.path, 'special', fs);
-
-
-    // if we have a redirect, go there.
-    if (newurl != null) {
-        console.log('redirecting to ' + newurl);
-        res.redirect(301, newurl);
-        res.end();
-    }
-    else {
-        res.redirect(301, "/");
-        res.end();
-    }
-
+// Redirect editors
+app.get('/author/leon-kaye*', (req, res) => {
+  res.redirect(301, '/editor/141/Leon-Kaye');
 });
 
+app.get('/author/john-howell*', (req, res) => {
+  res.redirect(301, '/editor/36/John-Howell');
+});
 
-app.get('/series/*', function (req, res) {
-
-    let reqpath = req.path;
-    let newurl = null;
-
-    if (reqpath.indexOf('Object]') > 0) {
-        res.end();
-        return;
-    }
-
-
-    newurl = getRedirect(req.path, 'special', fs);
-
-
-    // if we have a redirect, go there.
-    if (newurl != null) {
-        console.log('redirecting from ' + reqpath + ' to ' + newurl);
-        res.redirect(301, newurl);
-        res.end();
-    }
-    else {
-        res.redirect(301, "/");
-        res.end();
-    }
-
+app.get('/author/mary-mazzoni*', (req, res) => {
+  res.redirect(301, '/editor/206/Mary-Mazzoni');
 });
 
 // and finally, individual stories pages.
-app.get('/story/*', function (req, res) {
+app.get('/story/*', (req, res) => {
 
-    let reqpath = req.path;
-    let newurl = null;
-
-    if (reqpath.indexOf('Object]') > 0) {
+    if (req.path.indexOf('Object]') > 0) {
         res.end();
-        return;
     }
 
     const context = {};
@@ -163,14 +154,13 @@ app.get('/story/*', function (req, res) {
                 .replace('<div id="root"></div>', `<div id="root">${root}</div>`)
                 .replace(/<title>(.*?)<\/title>/, helmet.title.toString())
                 .replace('<meta name="helmet">', helmet.meta.toString());
-            console.log('SSR: ' + reqpath);
-            res.status(200);
-            res.send(document);
-            res.end();
+            console.log('SSR: ' + req.path);
+            res.status(200).send(document);
         });
     });
 
 });
+
 
 // as a default, send anything else through without SSR
 app.get('/*', function (req, res) {

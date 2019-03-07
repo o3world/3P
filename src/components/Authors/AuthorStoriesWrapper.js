@@ -1,18 +1,18 @@
-import React from "react";
-import {Query} from "react-apollo";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from "react"
+import {Query} from "react-apollo"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import StoryMasonryTile from "../Stories/StoryMasonryTile";
-import { StoriesByAuthor } from "./EditorsQueries";
+import StoryMasonryTile from "../Stories/StoryMasonryTile"
+import { StoriesByAuthor } from "../Editors/EditorsQueries"
 
-import styles from '../Stories/StoriesMasonryWrapper.module.scss';
+import styles from '../Stories/StoriesMasonryWrapper.module.scss'
 
-const EditorStoriesWrapper = (props) => {
+const AuthorStoriesWrapper = (props) => {
 
     return (
         <Query
             query={StoriesByAuthor}
-            variables={{"id": props.editorId}}
+            variables={{"id": props.authorId}}
         >
           {({ loading, error, data }) => {
             if (loading) return (
@@ -34,4 +34,4 @@ const EditorStoriesWrapper = (props) => {
     )
 };
 
-export default EditorStoriesWrapper;
+export default AuthorStoriesWrapper;
