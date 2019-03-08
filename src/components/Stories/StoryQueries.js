@@ -39,6 +39,13 @@ query story($id:String!) {
           headshot: userPicture {
             url
           }
+          bio: fieldUserBio {
+            processed
+          }
+          instagram: fieldInstagramUsername
+          twitter: fieldTwitterUsername
+          email: fieldPublicEmailAddress
+          linkedin: fieldLinkedinUsername
         }
         entityUrl {
           path

@@ -1,0 +1,60 @@
+// SingleStoryBio.module.scss - Styles for the single story bio component
+
+$tp_color--primary: #006BFF;
+
+.wrapper {
+  display: grid;
+  grid-template-columns: min-content max-content min-content 1fr;
+  grid-template-areas: "headshot name social-icons bio";
+  background-color: rgba($tp_color--primary, 0.2);
+  padding: 25px;
+}
+
+.headshot {
+  grid-area: headshot;
+  margin: 0 15px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  align-self: center;
+  filter: grayscale(100%);
+}
+
+.name {
+  grid-area: name;
+  align-self: center;
+  text-decoration: none;
+  color: inherit;
+  font-family: 'Unna', serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.social_links {
+  grid-area: social-icons;
+  align-items: center;
+  display: flex;
+  margin: 0 15px;
+
+  a {
+    color: $tp_color--primary;
+    margin-right: 8px;
+    font-size: 16px;
+  }
+}
+
+.bio {
+  grid-area: bio;
+  padding: 20px 40px 20px;
+  align-self: center;
+  text-align: left;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  font-family: Montserrat,sans-serif;
+  font-size: 12px;
+
+  a {
+    color: inherit;
+  }
+}

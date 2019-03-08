@@ -78,9 +78,14 @@ class SingleStoryPage extends Component {
         }
 
         const authorBio = {
-            headshot: headshot,
-            name: authorName,
-            link: authorLink,
+          headshot: story.author.headshot,
+          name: authorName,
+          link: authorLink,
+          copy: story.author.bio.processed,
+          linkedin: story.author.linkedin,
+          email: story.author.email,
+          twitter: story.author.twitter,
+          instagram: story.author.instagram,
         };
 
         return (
@@ -114,8 +119,8 @@ class SingleStoryPage extends Component {
               <div className={styles.bodyWrapper}>
                 {wideImage}
                 <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
-              </div>
                 <SingleStoryBio {...authorBio} />
+              </div>
               <Ad adUnit={'StoryDetailPage_Bottom'}/>
             </PageTemplate>
             </Fragment>
