@@ -15,10 +15,20 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { renderToStringWithData } from "react-apollo";
 import fetch from 'node-fetch';
+import expressSitemapXml from 'express-sitemap-xml'
+
 
 const app = Express();
 
 app.use(Express.static(path.join(__dirname, '../build')));
+
+// Build sitemap. expressSitemapXml pulls a list of urls from the backend.
+async function getUrls() {
+    return await fetch('https://back.3blmedia.com/sites/default/files/sitemap.json')
+        .then(res => res.json())
+}
+app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'));
+
 
 const httpLink = createHttpLink({
     uri: 'https://back.3blmedia.com/graphql',
