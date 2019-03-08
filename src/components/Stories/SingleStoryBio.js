@@ -37,7 +37,10 @@ const SingleStoryBio = (props) => {
       <div className={styles.social_links}>
         {emailIcon} {twitterIcon} {instagramIcon} {linkedinIcon}
       </div>
-      <div className={styles.bio} dangerouslySetInnerHTML={{__html: props.copy}}/>
+      <div className={styles.bio}>
+        <div dangerouslySetInnerHTML={{__html: props.copy}}/>
+        <p className={styles.readmore}><a href={props.link} title={props.name + ' author page'}>Read more stories by {props.name}</a></p>
+      </div>
     </div>
   )
 };
