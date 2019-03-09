@@ -131,18 +131,26 @@ $small_breakpoint: 650px;
     text-align: left;
     padding: 25px 14%;
 
-    img {
-      display: none; // Hides all body images.
-      max-width: 40%;
-      height: auto;
-      float: left;
-      margin: 7px 10px 7px 0;
+    img { // Default alignment is centered
+      display: block;
+      float: none;
+      width: 100%;
+      max-width: 600px;
+      margin: 15px auto;
 
-      .aligncenter {
-        display: block;
-        float: none;
-        max-width: 600px;
-        margin: 15px auto;
+      @media only screen and (min-width: 1000px) {
+
+        &[class*=align-left] {
+          max-width: 60%;
+          float: left;
+          margin: 7px 10px 7px 0;
+        }
+
+        &[class*=align-right] {
+          max-width: 60%;
+          float: right;
+          margin: 7px 0 7px 10px;
+        }
       }
     }
 
