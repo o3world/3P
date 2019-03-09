@@ -75,7 +75,6 @@ class SingleStoryPage extends Component {
         if (story.author.isEditor) {
           authorLink = `/editor/${story.author.authorID}/${authorName.replace(/\s+/g, '-').toLowerCase()}`;
         }
-
         return (
           <Fragment>
               <Ad adUnit={'StoryDetailPage_Top'}/>
