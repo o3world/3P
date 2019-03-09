@@ -82,7 +82,7 @@ class SingleStoryPage extends Component {
               <Fragment>
             <PageTemplate>
               <Helmet>
-                <title>TriplePundit: {story.title}</title>
+                <title>{story.title}</title>
                 <meta property="og:title" content={story.title} />
                 <meta property="og:image" content={wideImageURL} />
                 <meta property="og:image:height" content={imageHeight} />
@@ -90,7 +90,7 @@ class SingleStoryPage extends Component {
                 <meta property="og:url" content={currentURL} />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@triplepundit" />
-                <meta name="parsely-title" content={'TriplePundit: ' + story.title} />
+                <meta name="parsely-title" content={story.title} />
                 <meta name="parsely-image-url" content={wideImageURL} />
                 <meta name="parsely-link" content={currentURL} />
                 <meta name="parsely-section" content={story.category.entity.name} />
