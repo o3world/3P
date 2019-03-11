@@ -130,6 +130,10 @@ app.get('/author/mary-mazzoni*', (req, res) => {
   res.redirect(301, '/editor/206/Mary-Mazzoni');
 });
 
+app.get('/author/*/101', (req, res) => {
+  res.redirect(301, '/author/megan-amrich/556');
+});
+
 // and finally, individual stories pages.
 app.get('/story/*', (req, res) => {
 
