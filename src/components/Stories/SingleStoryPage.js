@@ -75,7 +75,6 @@ class SingleStoryPage extends Component {
         if (story.author.isEditor) {
           authorLink = `/editor/${story.author.authorID}/${authorName.replace(/\s+/g, '-').toLowerCase()}`;
         }
-
         return (
           <Fragment>
               <Ad adUnit={'StoryDetailPage_Top'}/>
@@ -96,14 +95,14 @@ class SingleStoryPage extends Component {
                 <meta name="parsely-section" content={story.category.entity.name} />
                 <meta name="parsely-type" content="post" />
                 <meta name="parsely-author" content={authorName} />
-                <meta name="parsely-pub-date" content={story.date} />
+                <meta name="parsely-pub-date" content={new Date(story.date.value * 1000).toISOString()} />
               </Helmet>
               <div className={styles.meta}>
                 <h1 className={styles.title}>{story.title}</h1>
                 {headshot}
                 <span className={styles.authorName}><Link to={authorLink}>Words by {authorName}</Link></span>
                 {category}
-                <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
+                <Moment className={styles.date} format="MMM DD, YYYY">{story.date.value * 1000}</Moment>
               </div>
               <div className={styles.bodyWrapper}>
                 {wideImage}
