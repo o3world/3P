@@ -76,6 +76,11 @@ class SingleStoryPage extends Component {
           authorLink = `/editor/${story.author.authorID}/${authorName.replace(/\s+/g, '-').toLowerCase()}`;
         }
 
+        let seo_title = story.title;
+        if (story.seo_title) {
+          seo_title = story.seo_title;
+        }
+
         return (
           <Fragment>
               <Ad adUnit={'StoryDetailPage_Top'}/>
@@ -83,7 +88,8 @@ class SingleStoryPage extends Component {
             <PageTemplate>
               <Helmet>
                 <title>TriplePundit: {story.title}</title>
-                <meta property="og:title" content={story.title} />
+                <meta property="og:title" content={seo_title} />
+                <meta property={'og:description'} content={story.seo_description} />
                 <meta property="og:image" content={wideImageURL} />
                 <meta property="og:image:height" content={imageHeight} />
                 <meta property="og:image:width" content={imageWidth} />
