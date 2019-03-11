@@ -12,6 +12,8 @@ query story($id:String!) {
     entities {
       ... on NodeStory {
         title
+        seo_title: fieldSeoTitle
+        seo_description: fieldDescription
         id: nid
         category: fieldPrimaryCategory {
           entity {
