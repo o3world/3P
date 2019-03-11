@@ -11,6 +11,7 @@ import Ad from "../Ads/Ad"
 import StoryShare from './SocialShare/StoryShare';
 import LoadingSpinner from "../Common/LoadingSpinner";
 import PageTemplate from "../Common/PageTemplate";
+import SingleStoryBio from './SingleStoryBio'
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -76,6 +77,17 @@ class SingleStoryPage extends Component {
           authorLink = `/editor/${story.author.authorID}/${authorName.replace(/\s+/g, '-').toLowerCase()}`;
         }
 
+        const authorBio = {
+          headshot: story.author.headshot,
+          name: authorName,
+          link: authorLink,
+          copy: story.author.bio.processed,
+          linkedin: story.author.linkedin,
+          email: story.author.email,
+          twitter: story.author.twitter,
+          instagram: story.author.instagram,
+        };
+          
         let seo_title = story.title;
         if (story.seo_title) {
           seo_title = story.seo_title;
@@ -84,7 +96,6 @@ class SingleStoryPage extends Component {
         return (
           <Fragment>
               <Ad adUnit={'StoryDetailPage_Top'}/>
-              <Fragment>
             <PageTemplate>
               <Helmet>
                 <title>{story.title}</title>
@@ -114,10 +125,10 @@ class SingleStoryPage extends Component {
               <div className={styles.bodyWrapper}>
                 {wideImage}
                 <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
+                <SingleStoryBio {...authorBio} />
               </div>
               <Ad adUnit={'StoryDetailPage_Bottom'}/>
             </PageTemplate>
-            </Fragment>
             </Fragment>
         )
       }
