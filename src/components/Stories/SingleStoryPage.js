@@ -11,6 +11,7 @@ import Ad from "../Ads/Ad"
 import StoryShare from './SocialShare/StoryShare';
 import LoadingSpinner from "../Common/LoadingSpinner";
 import PageTemplate from "../Common/PageTemplate";
+import SingleStoryBio from './SingleStoryBio'
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -76,42 +77,58 @@ class SingleStoryPage extends Component {
           authorLink = `/editor/${story.author.authorID}/${authorName.replace(/\s+/g, '-').toLowerCase()}`;
         }
 
+        const authorBio = {
+          headshot: story.author.headshot,
+          name: authorName,
+          link: authorLink,
+          copy: story.author.bio.processed,
+          linkedin: story.author.linkedin,
+          email: story.author.email,
+          twitter: story.author.twitter,
+          instagram: story.author.instagram,
+        };
+          
+        let seo_title = story.title;
+        if (story.seo_title) {
+          seo_title = story.seo_title;
+        }
+
         return (
           <Fragment>
               <Ad adUnit={'StoryDetailPage_Top'}/>
-              <Fragment>
             <PageTemplate>
               <Helmet>
-                <title>TriplePundit: {story.title}</title>
-                <meta property="og:title" content={story.title} />
+                <title>{story.title}</title>
+                <meta property="og:title" content={seo_title} />
+                <meta property={'og:description'} content={story.seo_description} />
                 <meta property="og:image" content={wideImageURL} />
                 <meta property="og:image:height" content={imageHeight} />
                 <meta property="og:image:width" content={imageWidth} />
                 <meta property="og:url" content={currentURL} />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@triplepundit" />
-                <meta name="parsely-title" content={'TriplePundit: ' + story.title} />
+                <meta name="parsely-title" content={story.title} />
                 <meta name="parsely-image-url" content={wideImageURL} />
                 <meta name="parsely-link" content={currentURL} />
                 <meta name="parsely-section" content={story.category.entity.name} />
                 <meta name="parsely-type" content="post" />
                 <meta name="parsely-author" content={authorName} />
-                <meta name="parsely-pub-date" content={story.date} />
+                <meta name="parsely-pub-date" content={new Date(story.date.value * 1000).toISOString()} />
               </Helmet>
               <div className={styles.meta}>
                 <h1 className={styles.title}>{story.title}</h1>
                 {headshot}
                 <span className={styles.authorName}><Link to={authorLink}>Words by {authorName}</Link></span>
                 {category}
-                <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
+                <Moment className={styles.date} format="MMM DD, YYYY">{story.date.value * 1000}</Moment>
               </div>
               <div className={styles.bodyWrapper}>
                 {wideImage}
                 <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
+                <SingleStoryBio {...authorBio} />
               </div>
               <Ad adUnit={'StoryDetailPage_Bottom'}/>
             </PageTemplate>
-            </Fragment>
             </Fragment>
         )
       }

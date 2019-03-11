@@ -9,8 +9,7 @@ const PrimeStory = (props) => {
             "--tall-bg-image": `url(${props.tallImage.url})`,
             "--wide-bg-image": `url(${props.wideImage.url})`
         };
-        const published_date = new Date(props.date * 1000);
-        const link = '/story/' + published_date.getFullYear() + props.entityUrl.path + '/' + props.id + '/';
+        const link = '/story/' + new Date(props.date.value * 1000).getFullYear() + props.entityUrl.path + '/' + props.id + '/';
         const storyClass = (props.index === '1') ? styles.primeStorySecond : styles.primeStory;
 
         let category;
@@ -24,7 +23,7 @@ const PrimeStory = (props) => {
               <h3 className={styles.title}><span>{props.title}</span></h3>
               <p className={styles.author}>Words by {props.author.first} {props.author.last}</p>
               {category}
-              <Moment className={styles.date} format="MMM DD">{published_date}</Moment>
+              <Moment className={styles.date} format="MMM DD">{props.date.value * 1000}</Moment>
             </div>
           </Link>
         );

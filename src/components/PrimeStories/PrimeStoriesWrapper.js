@@ -31,7 +31,10 @@ query storyQuery {
           last: fieldLastName
           headshot: userPicture { url }
         }
-        date: created
+        date: publishedAt {
+          value
+          publishedAtOrNow
+        }
         entityUrl {
           path
         }
