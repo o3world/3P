@@ -87,7 +87,7 @@ class SingleStoryPage extends Component {
               <Fragment>
             <PageTemplate>
               <Helmet>
-                <title>TriplePundit: {story.title}</title>
+                <title>{story.title}</title>
                 <meta property="og:title" content={seo_title} />
                 <meta property={'og:description'} content={story.seo_description} />
                 <meta property="og:image" content={wideImageURL} />
@@ -96,20 +96,20 @@ class SingleStoryPage extends Component {
                 <meta property="og:url" content={currentURL} />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@triplepundit" />
-                <meta name="parsely-title" content={'TriplePundit: ' + story.title} />
+                <meta name="parsely-title" content={story.title} />
                 <meta name="parsely-image-url" content={wideImageURL} />
                 <meta name="parsely-link" content={currentURL} />
                 <meta name="parsely-section" content={story.category.entity.name} />
                 <meta name="parsely-type" content="post" />
                 <meta name="parsely-author" content={authorName} />
-                <meta name="parsely-pub-date" content={story.date} />
+                <meta name="parsely-pub-date" content={new Date(story.date.value * 1000).toISOString()} />
               </Helmet>
               <div className={styles.meta}>
                 <h1 className={styles.title}>{story.title}</h1>
                 {headshot}
                 <span className={styles.authorName}><Link to={authorLink}>Words by {authorName}</Link></span>
                 {category}
-                <Moment className={styles.date} format="MMM DD, YYYY">{story.date}</Moment>
+                <Moment className={styles.date} format="MMM DD, YYYY">{story.date.value * 1000}</Moment>
               </div>
               <div className={styles.bodyWrapper}>
                 {wideImage}
