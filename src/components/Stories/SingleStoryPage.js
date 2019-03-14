@@ -93,6 +93,15 @@ class SingleStoryPage extends Component {
           seo_title = story.seo_title;
         }
 
+        let seo_description = story.seo_description;
+        console.log(seo_description ? 'Not null' : 'Null');
+        if (!seo_description) {
+          let bodyNoHtml = story.body.text.replace(/<(.|\n)*?>/g, '');
+          let descriptionMaxLength = 200;
+          seo_description = bodyNoHtml.substr(0, bodyNoHtml.lastIndexOf(' ', descriptionMaxLength));
+
+        }
+
         return (
           <Fragment>
               <Ad adUnit={'StoryDetailPage_Top'}/>
@@ -100,7 +109,7 @@ class SingleStoryPage extends Component {
               <Helmet>
                 <title>{story.title}</title>
                 <meta property="og:title" content={seo_title} />
-                <meta property={'og:description'} content={story.seo_description} />
+                <meta property={'og:description'} content={seo_description} />
                 <meta property="og:image" content={wideImageURL} />
                 <meta property="og:image:height" content={imageHeight} />
                 <meta property="og:image:width" content={imageWidth} />
