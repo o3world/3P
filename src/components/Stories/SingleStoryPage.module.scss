@@ -140,13 +140,13 @@ $small_breakpoint: 650px;
 
       @media only screen and (min-width: 1000px) {
 
-        &[class*=align-left] {
+        &[data-align*=left] {
           max-width: 60%;
           float: left;
           margin: 7px 10px 7px 0;
         }
 
-        &[class*=align-right] {
+        &[data-align*=right] {
           max-width: 60%;
           float: right;
           margin: 7px 0 7px 10px;
