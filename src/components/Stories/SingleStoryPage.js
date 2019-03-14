@@ -124,7 +124,7 @@ class SingleStoryPage extends Component {
               </div>
               <div className={styles.bodyWrapper}>
                 {wideImage}
-                <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.text}}/>
+                <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.value}}/>
                 <SingleStoryBio {...authorBio} />
               </div>
               <Ad adUnit={'StoryDetailPage_Bottom'}/>

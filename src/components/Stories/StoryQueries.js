@@ -73,6 +73,7 @@ query story($id:String!) {
         }
         body: fieldContent {
           text: processed
+          value
         }
       }
 
