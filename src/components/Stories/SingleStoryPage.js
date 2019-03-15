@@ -81,7 +81,7 @@ class SingleStoryPage extends Component {
           headshot: story.author.headshot,
           name: authorName,
           link: authorLink,
-          copy: story.author.bio.processed,
+          copy: story.author.bio ? story.author.bio.processed : '',
           linkedin: story.author.linkedin,
           email: story.author.email,
           twitter: story.author.twitter,
