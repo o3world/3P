@@ -34,8 +34,9 @@ class SingleStoryPage extends Component {
         const story = data.nodeQuery.entities[0];
 
         let category;
+        let catCleanName;
         if (story.category) {
-          const catCleanName = story.category.entity.name.replace(/&/g, ' ').replace(/\s+/g, '-').toLowerCase();
+          catCleanName = story.category.entity.name.replace(/&/g, ' ').replace(/\s+/g, '-').toLowerCase();
           category = <div className={styles.category}><Link to={`/category/${catCleanName}/${story.category.entity.categoryID}`}>{story.category.entity.name}</Link></div>;
         }
         if (story.sponsoredSeries) {
@@ -44,7 +45,6 @@ class SingleStoryPage extends Component {
                 <h4 className={styles.sponsoredBy}>{story.sponsoredSeries.entity.sponsoredBy} Sponsored Series</h4>
                 <h5 className={styles.seriesTitle}><Link to={story.sponsoredSeries.entity.entityUrl.path}>{story.sponsoredSeries.entity.seriesTitle}</Link></h5>
               </div>;
-
         }
 
         let headshot;
@@ -119,7 +119,7 @@ class SingleStoryPage extends Component {
                 <meta name="parsely-title" content={story.title} />
                 <meta name="parsely-image-url" content={wideImageURL} />
                 <meta name="parsely-link" content={currentURL} />
-                <meta name="parsely-section" content={story.category.entity.name} />
+                <meta name="parsely-section" content={catCleanName} />
                 <meta name="parsely-type" content="post" />
                 <meta name="parsely-author" content={authorName} />
                 <meta name="parsely-pub-date" content={new Date(story.date.value * 1000).toISOString()} />
