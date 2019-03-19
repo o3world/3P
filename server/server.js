@@ -103,6 +103,26 @@ const doRedirect = (redirect_file) => {
   }
 };
 
+const fetchXMLFile = (remoteXML) => {
+    return function(req, res) {
+        if (req.path.indexOf('Object]') > 0) {
+            res.end();
+            return;
+        }
+
+        fetch(remoteXML)
+            .then(gnSitemap => gnSitemap.text())
+            .then((gnSitemap)=> {
+                fs.readFile('./build/remote.xml', 'utf8', function (err, data) {
+                    if (err) throw err;
+                    const document = data
+                        .replace('<xml></xml>', `${gnSitemap}`);
+                    res.status(200).send(document);
+                });
+            });
+    }
+}
+
 // Then, redirects for what are now sponsored series.
 // They begin with 'special' or 'series'
 app.get('/special/*', doRedirect('special'));
@@ -166,26 +186,7 @@ app.get('/story/*', (req, res) => {
 
 });
 
-app.get('/sitemap-gn.xml', (req, res) => {
-
-    if (req.path.indexOf('Object]') > 0) {
-        res.end();
-        return;
-    }
-
-    fetch('https://back.3blmedia.com/sites/default/files/sitemap-google-news.xml')
-        .then(gnSitemap => gnSitemap.text())
-        .then((gnSitemap)=> {
-            fs.readFile('./build/sitemap-google-news.xml', 'utf8', function (err, data) {
-                if (err) throw err;
-                const document = data
-                    .replace('<xml></xml>', `${gnSitemap}`);
-                res.status(200).send(document);
-            });
-        });
-
-});
-
+app.get('/sitemap-gn.xml', fetchXMLFile('https://back.3blmedia.com/sites/default/files/sitemap-google-news.xml'));
 
 // as a default, send anything else through without SSR
 app.get('/*', function (req, res) {
