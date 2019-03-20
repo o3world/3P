@@ -34,8 +34,9 @@ class SingleStoryPage extends Component {
         const story = data.nodeQuery.entities[0];
 
         let category;
+        let catCleanName;
         if (story.category) {
-          const catCleanName = story.category.entity.name.replace(/&/g, ' ').replace(/\s+/g, '-').toLowerCase();
+          catCleanName = story.category.entity.name.replace(/&/g, ' ').replace(/\s+/g, '-').toLowerCase();
           category = <div className={styles.category}><Link to={`/category/${catCleanName}/${story.category.entity.categoryID}`}>{story.category.entity.name}</Link></div>;
         }
         if (story.sponsoredSeries) {
@@ -44,7 +45,6 @@ class SingleStoryPage extends Component {
                 <h4 className={styles.sponsoredBy}>{story.sponsoredSeries.entity.sponsoredBy} Sponsored Series</h4>
                 <h5 className={styles.seriesTitle}><Link to={story.sponsoredSeries.entity.entityUrl.path}>{story.sponsoredSeries.entity.seriesTitle}</Link></h5>
               </div>;
-
         }
 
         let headshot;
@@ -55,6 +55,11 @@ class SingleStoryPage extends Component {
         const currentURL = 'https://triplepundit.com' + this.props.location.pathname;
         /* @TODO: Replace hard-coded domain */
 
+        let seo_title = story.title;
+        if (story.seo_title) {
+          seo_title = story.seo_title;
+        }
+
         let wideImage;
         let wideImageURL;
         let imageHeight;
@@ -63,7 +68,7 @@ class SingleStoryPage extends Component {
           wideImage =
               <div className={styles.imageWrapper}>
                 <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
-                <StoryShare url={currentURL}/>
+                <StoryShare url={currentURL} title={seo_title}/>
               </div>;
           wideImageURL = story.wideImage.url;
           imageHeight = story.wideImage.height;
@@ -87,11 +92,6 @@ class SingleStoryPage extends Component {
           twitter: story.author.twitter,
           instagram: story.author.instagram,
         };
-          
-        let seo_title = story.title;
-        if (story.seo_title) {
-          seo_title = story.seo_title;
-        }
 
         let seo_description = story.seo_description;
         console.log(seo_description ? 'Not null' : 'Null');
@@ -119,7 +119,7 @@ class SingleStoryPage extends Component {
                 <meta name="parsely-title" content={story.title} />
                 <meta name="parsely-image-url" content={wideImageURL} />
                 <meta name="parsely-link" content={currentURL} />
-                <meta name="parsely-section" content={story.category.entity.name} />
+                <meta name="parsely-section" content={catCleanName} />
                 <meta name="parsely-type" content="post" />
                 <meta name="parsely-author" content={authorName} />
                 <meta name="parsely-pub-date" content={new Date(story.date.value * 1000).toISOString()} />
