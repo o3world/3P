@@ -26,7 +26,7 @@ const StoryMasonryTile = (props) => {
 
   const author = story.author.first && story.author.last ? `${story.author.first} ${story.author.last}` : story.author.name;
 
-  const dateFormat = new Date().getFullYear() === new Date(story.date).getFullYear() ? 'MMM DD' : 'MMM DD, YYYY';
+  const dateFormat = new Date().getFullYear() === new Date(story.date.value * 1000).getFullYear() ? 'MMM DD' : 'MMM DD, YYYY';
 
   return (
     <LazyLoad height={200}>
@@ -37,7 +37,7 @@ const StoryMasonryTile = (props) => {
           {category}
           {sponsored}
           <p className={styles.author}>Words by {author}</p>
-          <Moment className={styles.date} format={dateFormat}>{story.date}</Moment>
+          <Moment className={styles.date} format={dateFormat}>{story.date.value * 1000}</Moment>
         </div>
       </Link>
     </LazyLoad>
