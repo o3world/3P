@@ -55,6 +55,11 @@ class SingleStoryPage extends Component {
         const currentURL = 'https://triplepundit.com' + this.props.location.pathname;
         /* @TODO: Replace hard-coded domain */
 
+        let seo_title = story.title;
+        if (story.seo_title) {
+          seo_title = story.seo_title;
+        }
+
         let wideImage;
         let wideImageURL;
         let imageHeight;
@@ -63,7 +68,7 @@ class SingleStoryPage extends Component {
           wideImage =
               <div className={styles.imageWrapper}>
                 <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
-                <StoryShare url={currentURL}/>
+                <StoryShare url={currentURL} title={seo_title}/>
               </div>;
           wideImageURL = story.wideImage.url;
           imageHeight = story.wideImage.height;
@@ -87,11 +92,6 @@ class SingleStoryPage extends Component {
           twitter: story.author.twitter,
           instagram: story.author.instagram,
         };
-          
-        let seo_title = story.title;
-        if (story.seo_title) {
-          seo_title = story.seo_title;
-        }
 
         let seo_description = story.seo_description;
         console.log(seo_description ? 'Not null' : 'Null');
