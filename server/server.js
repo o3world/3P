@@ -103,6 +103,26 @@ const doRedirect = (redirect_file) => {
   }
 };
 
+const fetchXMLFile = (remoteXML) => {
+    return function(req, res) {
+        if (req.path.indexOf('Object]') > 0) {
+            res.end();
+            return;
+        }
+
+        fetch(remoteXML)
+            .then(xmlData => xmlData.text())
+            .then((xmlData)=> {
+                fs.readFile('./build/remote.xml', 'utf8', function (err, data) {
+                    if (err) throw err;
+                    const document = data
+                        .replace('<xml></xml>', `${xmlData}`);
+                    res.status(200).send(document);
+                });
+            });
+    }
+}
+
 // Then, redirects for what are now sponsored series.
 // They begin with 'special' or 'series'
 app.get('/special/*', doRedirect('special'));
@@ -166,6 +186,9 @@ app.get('/story/*', (req, res) => {
 
 });
 
+app.get('/sitemap-gn.xml', fetchXMLFile('https://back.3blmedia.com/sites/default/files/sitemap-google-news.xml'));
+
+app.get('/rss', fetchXMLFile('https://back.3blmedia.com/sites/default/files/rss-stories-triplepundit.xml'));
 
 // as a default, send anything else through without SSR
 app.get('/*', function (req, res) {
