@@ -85,22 +85,22 @@ app.get('/20*', (req, res) => {
 });
 
 const doRedirect = (redirect_file) => {
-    return function(req, res) {
+  return function(req, res) {
 
-        if (req.path.indexOf('Object]') > 0) {
-            res.end()
-        }
-
-        const newurl = getRedirect(req.path, redirect_file, fs);
-
-        // if we have a redirect, go there.
-        if (newurl != null) {
-            res.redirect(301, newurl)
-        }
-        else {
-            res.redirect(301, "/")
-        }
+    if (req.path.indexOf('Object]') > 0) {
+      res.end()
     }
+
+    const newurl = getRedirect(req.path, redirect_file, fs);
+
+    // if we have a redirect, go there.
+    if (newurl != null) {
+      res.redirect(301, newurl)
+    }
+    else {
+      res.redirect(301, "/")
+    }
+  }
 };
 
 const fetchXMLFile = (remoteXML) => {
@@ -139,19 +139,19 @@ app.get('/topic*', doRedirect('unique'));
 
 // Redirect editors
 app.get('/author/leon-kaye*', (req, res) => {
-    res.redirect(301, '/editor/141/Leon-Kaye');
+  res.redirect(301, '/editor/141/Leon-Kaye');
 });
 
 app.get('/author/john-howell*', (req, res) => {
-    res.redirect(301, '/editor/36/John-Howell');
+  res.redirect(301, '/editor/36/John-Howell');
 });
 
 app.get('/author/mary-mazzoni*', (req, res) => {
-    res.redirect(301, '/editor/206/Mary-Mazzoni');
+  res.redirect(301, '/editor/206/Mary-Mazzoni');
 });
 
 app.get('/author/*/101', (req, res) => {
-    res.redirect(301, '/author/megan-amrich/556');
+  res.redirect(301, '/author/megan-amrich/556');
 });
 
 // and finally, individual stories pages.
