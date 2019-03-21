@@ -111,12 +111,12 @@ const fetchXMLFile = (remoteXML) => {
         }
 
         fetch(remoteXML)
-            .then(gnSitemap => gnSitemap.text())
-            .then((gnSitemap)=> {
+            .then(xmlData => xmlData.text())
+            .then((xmlData)=> {
                 fs.readFile('./build/remote.xml', 'utf8', function (err, data) {
                     if (err) throw err;
                     const document = data
-                        .replace('<xml></xml>', `${gnSitemap}`);
+                        .replace('<xml></xml>', `${xmlData}`);
                     res.status(200).send(document);
                 });
             });
