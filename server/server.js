@@ -29,6 +29,25 @@ async function getUrls() {
 }
 app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'));
 
+// handle redirecting from non-www version to www.
+app.all('*', function(req, res, next){
+    let www = true;
+    if (req.hostname=='localhost' || req.hostname=='node3blmediadev.prod.acquia-sites.com') {  // skip secure or local connections.
+        return next();
+    }
+
+    // redirect to www version
+    if (!req.hostname.startsWith('www.')) {
+        www = false;
+    }
+
+    if (!www) {
+        res.redirect("https://www." + req.headers.host + req.url);
+    }
+    else {
+        return next();
+    }
+});
 
 const httpLink = createHttpLink({
     uri: 'https://back.3blmedia.com/graphql',
