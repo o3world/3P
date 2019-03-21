@@ -85,23 +85,43 @@ app.get('/20*', (req, res) => {
 });
 
 const doRedirect = (redirect_file) => {
-  return function(req, res) {
+    return function(req, res) {
 
-    if (req.path.indexOf('Object]') > 0) {
-      res.end()
-    }
+        if (req.path.indexOf('Object]') > 0) {
+            res.end()
+        }
 
-    const newurl = getRedirect(req.path, redirect_file, fs);
+        const newurl = getRedirect(req.path, redirect_file, fs);
 
-    // if we have a redirect, go there.
-    if (newurl != null) {
-      res.redirect(301, newurl)
+        // if we have a redirect, go there.
+        if (newurl != null) {
+            res.redirect(301, newurl)
+        }
+        else {
+            res.redirect(301, "/")
+        }
     }
-    else {
-      res.redirect(301, "/")
-    }
-  }
 };
+
+const fetchXMLFile = (remoteXML) => {
+    return function(req, res) {
+        if (req.path.indexOf('Object]') > 0) {
+            res.end();
+            return;
+        }
+
+        fetch(remoteXML)
+            .then(xmlData => xmlData.text())
+            .then((xmlData)=> {
+                fs.readFile('./build/remote.xml', 'utf8', function (err, data) {
+                    if (err) throw err;
+                    const document = data
+                        .replace('<xml></xml>', `${xmlData}`);
+                    res.status(200).send(document);
+                });
+            });
+    }
+}
 
 // Then, redirects for what are now sponsored series.
 // They begin with 'special' or 'series'
@@ -119,19 +139,19 @@ app.get('/topic*', doRedirect('unique'));
 
 // Redirect editors
 app.get('/author/leon-kaye*', (req, res) => {
-  res.redirect(301, '/editor/141/Leon-Kaye');
+    res.redirect(301, '/editor/141/Leon-Kaye');
 });
 
 app.get('/author/john-howell*', (req, res) => {
-  res.redirect(301, '/editor/36/John-Howell');
+    res.redirect(301, '/editor/36/John-Howell');
 });
 
 app.get('/author/mary-mazzoni*', (req, res) => {
-  res.redirect(301, '/editor/206/Mary-Mazzoni');
+    res.redirect(301, '/editor/206/Mary-Mazzoni');
 });
 
 app.get('/author/*/101', (req, res) => {
-  res.redirect(301, '/author/megan-amrich/556');
+    res.redirect(301, '/author/megan-amrich/556');
 });
 
 // and finally, individual stories pages.
@@ -166,6 +186,7 @@ app.get('/story/*', (req, res) => {
 
 });
 
+app.get('/rss-stories.xml', fetchXMLFile('https://back.3blmedia.com/sites/default/files/rss-stories-triplepundit.xml'));
 
 // as a default, send anything else through without SSR
 app.get('/*', function (req, res) {
