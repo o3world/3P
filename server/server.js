@@ -25,7 +25,8 @@ const app = Express();
 app.all('*', function(req, res, next){
     let www = true;
     console.log('secure? ' + req.secure);
-    console.log('protocol: ' + req.protcol);
+    console.log('protocol: ' + req.protocol);
+    console.log(req.get('X-Forwarded-Proto'));
     if (req.hostname=='localhost' || req.hostname=='node3blmediadev.prod.acquia-sites.com') {  // skip secure or local connections.
         //return next();
     }
