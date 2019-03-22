@@ -23,20 +23,13 @@ const app = Express();
 // handle redirecting from non-www version to www.
 // this must be done before app.use(Express...
 app.all('*', function(req, res, next){
-    let www = true;
-    if (req.hostname=='localhost' || req.hostname=='node3blmediadev.prod.acquia-sites.com') {  // skip secure or local connections.
-        //return next();
+    // skip dev or local connections.
+    if (req.hostname=='localhost' || req.hostname=='node3blmediadev.prod.acquia-sites.com') {
+        return next();
     }
     // redirect to www version
     if (!req.hostname.startsWith('www.')) {
-        www = false;
-    }
-
-    if (!www) {
         res.redirect("https://www." + req.headers.host + req.url);
-    }
-    else {
-        return next();
     }
 });
 
