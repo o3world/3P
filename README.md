@@ -1,43 +1,34 @@
-# Triple Pundit
+# TriplePundit 
+## https://www.triplepundit.com/
 
-./images/logo.sample.png
->Additional information or tag line
+![TriplePundit logo](src/assets/images/3P_Logo_Homepage_Large.png)
 
-Brief overview of functionality including major components, which may including external APIs, SaaS vendors, and of course the tech stack.
+[TriplePundit.com](https://www.triplepundit.com/) is the primary editorial website of [3BL Media](https://www.3blmedia.com/). 
 
 [Front-end Design Documentation](DESIGN.md)
 
 ### Production Environment
 [https://www.triplepundit.com/](https://www.triplepundit.com/)  
-`live2:/var/www/vhosts/path/on/server/httpdocs`
+`https://cloud.acquia.com/app/develop`
 
 ### Staging Environment
-[https://triplepundit-dev.3blmedia.com/](https://triplepundit-dev.3blmedia.com/)  
-`staging:/var/www/vhosts/triplepundit-dev.3blmedia.com/`
-
-## Installing / Getting started
-
-A quick introduction of the minimal setup you need to get a hello world up &
-running.
-
-```shell
-commands here
-```
-
-Here you should say what actually happens when you execute the code above.
+[http://node3blmediadev.prod.acquia-sites.com/](http://node3blmediadev.prod.acquia-sites.com/)  
+`https://cloud.acquia.com/app/develop`
 
 ## Developing
 
-### Built With
-React
+### Tech stack
+* NodeJS + Express
+* React
+* Apollo for data store
+* GraphQL for data queries
+* Modular CSS + Sass
+* Helmet for metadata
+* Data primarily comes from 3BL consolidated backend via GraphQL API ([back.3blmedia.com](https://back.3blmedia.com/))
 
 ### Prerequisites
-What is needed to set up the dev environment. For instance, global dependencies or any other tools. include download links.
-* [Git](http://git.com/)
+* Git
 * Node.js (with NPM)
-* Ember CLI
-* Etc.
-
 
 ### Setting up Dev
 
@@ -45,9 +36,7 @@ Here's a brief intro about what a developer must do in order to start developing
 the project further:
 
 ```shell
-git clone https://github.com/your/your-project.git
-cd your-project/
-packagemanager install
+git clone https://github.com/3blmedia/3P
 ```
 
 And state what happens step-by-step. If there is any virtual environment, local server or database feeder needed, explain here.
