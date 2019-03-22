@@ -20,22 +20,13 @@ import expressSitemapXml from 'express-sitemap-xml'
 
 const app = Express();
 
-app.use(Express.static(path.join(__dirname, '../build')));
-
-// Build sitemap. expressSitemapXml pulls a list of urls from the backend.
-async function getUrls() {
-    return await fetch('https://back.3blmedia.com/sites/default/files/sitemap.json')
-        .then(res => res.json())
-}
-app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'));
-
 // handle redirecting from non-www version to www.
+// this must be done before app.use(Express...
 app.all('*', function(req, res, next){
     let www = true;
     if (req.hostname=='localhost' || req.hostname=='node3blmediadev.prod.acquia-sites.com') {  // skip secure or local connections.
         return next();
     }
-
     // redirect to www version
     if (!req.hostname.startsWith('www.')) {
         www = false;
@@ -48,6 +39,17 @@ app.all('*', function(req, res, next){
         return next();
     }
 });
+
+app.use(Express.static(path.join(__dirname, '../build')));
+
+// Build sitemap. expressSitemapXml pulls a list of urls from the backend.
+async function getUrls() {
+    return await fetch('https://back.3blmedia.com/sites/default/files/sitemap.json')
+        .then(res => res.json())
+}
+app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'));
+
+
 
 const httpLink = createHttpLink({
     uri: 'https://back.3blmedia.com/graphql',
