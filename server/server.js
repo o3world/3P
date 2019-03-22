@@ -24,8 +24,10 @@ const app = Express();
 // this must be done before app.use(Express...
 app.all('*', function(req, res, next){
     let www = true;
+    console.log('secure? ' + req.secure);
+    console.log('protocol: ' + req.protcol);
     if (req.hostname=='localhost' || req.hostname=='node3blmediadev.prod.acquia-sites.com') {  // skip secure or local connections.
-        return next();
+        //return next();
     }
     // redirect to www version
     if (!req.hostname.startsWith('www.')) {
