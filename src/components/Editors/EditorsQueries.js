@@ -125,4 +125,31 @@ query editors{
 }
 `;
 
-export { SingleAuthorBioQuery, StoriesByAuthor, EditorsQuery };
+const ContributorsQuery = gql`
+query editors{
+  userQuery(filter: {
+    conditions: [
+      { field: "field_3p_contributor", value: "1" },
+    ]
+  }) {
+    entities {
+  ...on User {
+        id: uid
+        name
+        firstName: fieldFirstName
+        lastName:fieldLastName
+        headshot: userPicture {
+          url
+        }
+        email: fieldPublicEmailAddress
+        twitterUsername: fieldTwitterUsername
+        instagramUsername: fieldInstagramUsername
+        linkedinUsername: fieldLinkedinUsername
+        jobTitle: fieldJobTitle
+      }
+    }
+  }
+}
+`;
+
+export { SingleAuthorBioQuery, StoriesByAuthor, EditorsQuery, ContributorsQuery };
