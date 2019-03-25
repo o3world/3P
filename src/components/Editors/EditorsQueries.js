@@ -133,7 +133,9 @@ query editors{
     conditions: [
       { field: "field_3p_contributor", value: "1" },
     ]
-  }) {
+  },
+    sort: [{ field: "field_last_name" direction: ASC}]
+  ) {
     entities {
   ...on User {
         id: uid
