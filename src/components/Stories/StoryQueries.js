@@ -97,7 +97,7 @@ query stories($id:String!) {
         value: [$id]
       }]
   },
-  sort: [{ field: "created" direction: DESC }]
+  sort: [{ field: "published_at" direction: DESC }]
 ) {
     entities {
       ... on NodeStory {
@@ -169,7 +169,7 @@ query story {
           {field:"type", value:"story"},
         ]
       },
-      sort: [{ field: "created" direction: DESC }]
+      sort: [{ field: "published_at" direction: DESC }]
     )
   {
     entities {
@@ -234,7 +234,7 @@ query story($id: String!) {
           {field:"field_3p_special_series", value: [$id]}
         ]
       },
-      sort: [{ field: "created" direction: ASC }]
+      sort: [{ field: "published_at" direction: DESC }]
     )
   {
     entities {
