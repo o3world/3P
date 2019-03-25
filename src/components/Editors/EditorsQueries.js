@@ -127,7 +127,9 @@ query editors{
 
 const ContributorsQuery = gql`
 query editors{
-  userQuery(filter: {
+  userQuery(
+    limit: 100,
+    filter: {
     conditions: [
       { field: "field_3p_contributor", value: "1" },
     ]
