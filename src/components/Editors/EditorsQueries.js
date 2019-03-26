@@ -38,7 +38,7 @@ const StoriesByAuthor = gql`
         value: [$id]
       }]
   },
-  sort: [{ field: "created" direction: DESC }]
+  sort: [{ field: "published_at" direction: DESC }]
 ) {
     entities {
       ... on NodeStory {
