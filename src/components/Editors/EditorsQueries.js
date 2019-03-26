@@ -65,7 +65,10 @@ const StoriesByAuthor = gql`
         entityUrl {
           path
         }
-        date: entityCreated
+        date: publishedAt {
+          value
+          publishedAtOrNow
+        }
         category: fieldPrimaryCategory {
           entity {
             name
