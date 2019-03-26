@@ -20,6 +20,19 @@ import expressSitemapXml from 'express-sitemap-xml'
 
 const app = Express();
 
+// handle redirecting from non-www version to www.
+// this must be done before app.use(Express...
+// app.all('*', function(req, res, next){
+//     // skip dev or local connections.
+//     if (req.hostname=='localhost' || req.hostname=='node3blmediadev.prod.acquia-sites.com') {
+//         return next();
+//     }
+//     // redirect to www version
+//     if (!req.hostname.startsWith('www.')) {
+//         res.redirect("https://www." + req.headers.host + req.url);
+//     }
+// });
+
 app.use(Express.static(path.join(__dirname, '../build')));
 
 // Build sitemap. expressSitemapXml pulls a list of urls from the backend.
@@ -28,7 +41,6 @@ async function getUrls() {
         .then(res => res.json())
 }
 app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'));
-
 
 const httpLink = createHttpLink({
     uri: 'https://back.3blmedia.com/graphql',
