@@ -31,6 +31,9 @@ app.all('*', function(req, res, next){
     if (!req.hostname.startsWith('www.')) {
         res.redirect("https://www." + req.headers.host + req.url);
     }
+    else { // must return next so processing continues if not redirect.
+        return next();
+    }
 });
 
 app.use(Express.static(path.join(__dirname, '../build')));
