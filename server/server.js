@@ -28,27 +28,17 @@ app.all('*', function(req, res, next){
     console.log('req.headers.host: ' + req.headers.host);
     console.log('req.url: ' + req.url);
 
-//     // skip dev or local connections.
+     // skip dev or local connections.
      if (req.hostname=='localhost' || req.hostname=='node3blmediadev.prod.acquia-sites.com') {
-        // return next();
+        return next();
      }
-
-     let www = true;
-//     // redirect to www version
-     if (req.hostname.startsWith('www.')) {
-         console.log('req.hostname starts with www');
-         www = true;
-         //res.redirect("https://www." + req.headers.host + req.url);
+     // redirect to www version
+     if (!req.hostname.startsWith('www.')) {
+         res.redirect("https://www." + req.headers.host + req.url);
      }
      else {
-         www = false;
-         console.log('req.hostname does not start with www. redirect');
+         return next();
      }
-
-     if (!www) {
-         console.log('do redirect here.');
-     }
-     console.log('===========================');
 });
 
 app.use(Express.static(path.join(__dirname, '../build')));
