@@ -2,7 +2,7 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
   <head>
     <script>
-        if (window.location.href.match('http:')) { window.location.href = window.location.href.replace('http', 'https'); }
+        if (window.location.href.match('http:') && !window.location.hostname === 'localhost') { window.location.href = window.location.href.replace('http', 'https'); }
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
