@@ -6,7 +6,6 @@ import styles from './PrimeStoriesWrapper.module.scss';
 import { Query } from "react-apollo";
 import gql from 'graphql-tag';
 
-import prime_logo from '../../assets/images/prime_circle.svg';
 import LoadingSpinner from "../Common/LoadingSpinner";
 
 const Stories = gql`
@@ -79,7 +78,6 @@ const PrimeStoriesWrapper = () =>
             <PrimeStoryHero {...stories[0]} key={0} index={'0'}/>
 
           <div className={styles.heading}>
-            <img src={prime_logo} alt={'prime_logo'} />
             <h3 className={styles.title}>Prime Stories</h3>
             <h4 className={styles.subtitle}>Editor Curated</h4>
           </div>
