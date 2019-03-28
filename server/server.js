@@ -4,7 +4,6 @@ import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import fs from 'fs'
 import { getRedirect } from "./Redirect";
-import { renderToString } from 'react-dom/server';
 import { Helmet } from "react-helmet";
 
 import App from '../src/App';
@@ -24,7 +23,7 @@ const app = Express();
 // this must be done before app.use(Express...
 app.all('*', function(req, res, next){
     // skip dev or local connections.
-    if (req.hostname=='localhost' || req.hostname=='node3blmediadev.prod.acquia-sites.com') {
+    if (req.hostname === 'localhost' || req.hostname === 'node3blmediadev.prod.acquia-sites.com') {
         return next();
     }
     // redirect to www version
