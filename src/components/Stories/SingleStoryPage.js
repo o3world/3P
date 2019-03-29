@@ -12,6 +12,7 @@ import StoryShare from './SocialShare/StoryShare';
 import LoadingSpinner from "../Common/LoadingSpinner";
 import PageTemplate from "../Common/PageTemplate";
 import SingleStoryBio from './SingleStoryBio'
+import RelatedStoriesByCategory from './RelatedStoriesByCategory';
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -93,13 +94,17 @@ class SingleStoryPage extends Component {
           instagram: story.author.instagram,
         };
 
+        const relatedStories = {
+          categoryID: story.category ? story.category.entity.categoryID : '',
+          categoryName: story.category ? story.category.entity.name : '',
+        };
+
         let seo_description = story.seo_description;
         console.log(seo_description ? 'Not null' : 'Null');
         if (!seo_description) {
           let bodyNoHtml = story.body.text.replace(/<(.|\n)*?>/g, '');
           let descriptionMaxLength = 200;
           seo_description = bodyNoHtml.substr(0, bodyNoHtml.lastIndexOf(' ', descriptionMaxLength));
-
         }
 
         return (
@@ -136,6 +141,7 @@ class SingleStoryPage extends Component {
                 <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.value}}/>
                 <SingleStoryBio {...authorBio} />
               </div>
+              <RelatedStoriesByCategory {...relatedStories}/>
               <Ad adUnit={'StoryDetailPage_Bottom'}/>
             </PageTemplate>
             </Fragment>
