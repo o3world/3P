@@ -27,7 +27,7 @@ const routeChangeHandler = (previousRoute, nextRoute) => {
 			url: nextRoute,
 			urlref: previousRoute,
 			js: 1
-		  })
+    })
 	  }
   }
 };
