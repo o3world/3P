@@ -52,7 +52,7 @@ class SingleStoryPage extends Component {
           headshot = <img className={styles.headshot} src={story.author.headshot.url} alt={story.author.name + ' headshot'} />;
         }
 
-        const currentURL = 'https://triplepundit.com' + this.props.location.pathname;
+        const currentURL = 'https://www.triplepundit.com' + this.props.location.pathname;
         /* @TODO: Replace hard-coded domain */
 
         let seo_title = story.title;
@@ -94,7 +94,6 @@ class SingleStoryPage extends Component {
         };
 
         let seo_description = story.seo_description;
-        console.log(seo_description ? 'Not null' : 'Null');
         if (!seo_description) {
           let bodyNoHtml = story.body.text.replace(/<(.|\n)*?>/g, '');
           let descriptionMaxLength = 200;

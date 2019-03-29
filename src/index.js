@@ -30,6 +30,8 @@ const routeChangeHandler = (previousRoute, nextRoute) => {
     })
 	  }
   }
+  window.history.replaceState({}, '', nextRoute)
+  console.log(window.history)
 };
 
 ReactDOM.hydrate(
