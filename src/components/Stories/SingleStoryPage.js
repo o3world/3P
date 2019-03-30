@@ -68,7 +68,6 @@ class SingleStoryPage extends Component {
           wideImage =
               <div className={styles.imageWrapper}>
                 <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
-                <StoryShare url={currentURL} title={seo_title}/>
               </div>;
           wideImageURL = story.wideImage.url;
           imageHeight = story.wideImage.height;
@@ -129,6 +128,7 @@ class SingleStoryPage extends Component {
                 {headshot}
                 <span className={styles.authorName}><Link to={authorLink}>Words by {authorName}</Link></span>
                 {category}
+                <StoryShare url={currentURL} title={seo_title}/>
                 <Moment className={styles.date} format="MMM DD, YYYY">{story.date.value * 1000}</Moment>
               </div>
               <div className={styles.bodyWrapper}>
