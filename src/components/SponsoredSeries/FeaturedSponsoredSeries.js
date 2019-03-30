@@ -19,11 +19,11 @@ const FeaturedSponsoredSeries = (props) => {
             );
             if (error) return `Error! ${error.message}`;
             const series = data.taxonomyTermQuery.entities[0];
-
+            
             const url = "/sponsored-series/" + series.tid + "/" + ConvertSeoUrl(series.name);
 
             return (
-                <div className={styles.seriesWrapper}>
+                <a href={url} className={styles.seriesWrapper}>
                   <img className={styles.heroImage} src={series.heroImage.derivative.url} alt={''}/>
                   <div className={styles.metaWrapper}>
                     <div className={styles.logoWrapper}>
@@ -32,11 +32,10 @@ const FeaturedSponsoredSeries = (props) => {
                     </div>
                     <div className={styles.meta}>
                       <span className={styles.company}>{series.company} Sponsored Series</span>
-                      <h3 className={styles.title}><a href={url}>{series.name}</a></h3>
-                      <a href={url} className={styles.exploreButton}>Explore Series</a>
+                      <h3 className={styles.title}>{series.name}</h3>
                     </div>
                   </div>
-                </div>
+                </a>
             );
           }}
         </Query>
