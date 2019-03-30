@@ -15,6 +15,8 @@
 [http://node3blmediadev.prod.acquia-sites.com/](http://node3blmediadev.prod.acquia-sites.com/)  
 `https://cloud.acquia.com/app/develop`
 
+### SSL Certificate info
+
 ## Developing
 
 ### Tech stack
@@ -29,6 +31,8 @@
 ### Prerequisites
 * Git
 * Node.js (with NPM)
+
+### 
 
 ### Setting up Dev
 
