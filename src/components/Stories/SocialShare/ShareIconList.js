@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './ShareIconList.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
