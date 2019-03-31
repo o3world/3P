@@ -29,7 +29,7 @@ const Footer = () =>
       <img src={tp_logo} alt={'3BL logo'}/>
     </div>
     <div className={styles.legal}>
-      <p><a href={'https://3blmedia.com/sites/www.3blmedia.com/files/pdf/3BL_Media_privacy_policy.pdf'}>Privacy Policy</a></p>
+      <p><a href={'https://www.3blmedia.com/sites/www.3blmedia.com/files/pdf/3BL_Media_privacy_policy.pdf'}>Privacy Policy</a></p>
       <p>&copy; {year} 3BL Media & TriplePundit. All rights reserved.</p>
     </div>
   </footer>;

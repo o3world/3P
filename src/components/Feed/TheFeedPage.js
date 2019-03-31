@@ -18,7 +18,7 @@ class TheFeedPage extends Component {
     }
 
     componentDidMount = () => {
-      fetch('https://3blmedia.com/feeds/fmr/csrwire')
+      fetch('https://www.3blmedia.com/feeds/fmr/csrwire')
           .then(response => response.json())
           .then(data => this.setState({ data: data.data.results, loading: false }));
     };
