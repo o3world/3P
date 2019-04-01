@@ -18,6 +18,8 @@
 
 .contribCopy {
   font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .contribList {
@@ -30,8 +32,9 @@
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
+    font-size: 13px;
     list-style-type: none;
-    margin: 7px;
+    padding: 3px;
 
     a {
       color: inherit;

@@ -83,9 +83,9 @@ query story($id:String!) {
 `;
 
 const StoriesByCategory = gql`
-query stories($id:String!) {
+query stories($id:String!, $limit: Int = 100) {
         nodeQuery(
-    limit: 100,
+    limit: $limit,
     filter: {
     conjunction: AND
     conditions: [{

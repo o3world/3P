@@ -14,12 +14,12 @@ const Footer = () =>
       <Link to={'/stories'}>Stories</Link>
       <Link to={'/sponsored-series'}>Sponsored Series</Link>
       <Link to={'/the-feed'}>The Feed</Link>
-      <a target={'_blank'} rel={'noopener noreferrer'} href={'http://www.3blforum.com/brands-taking-stands-newsletter'}>Stands</a>
+      <a target={'_blank'} rel={'noopener noreferrer'} href={'http://www.3blforum.com/brands-taking-stands-newsletter'}>Brands Taking Stands</a>
       <a target={'_blank'} rel={'noopener noreferrer'} href={'http://www.3blassociation.com/insights/magazines'}>CR Magazine</a>
       <a target={'_blank'} rel={'noopener noreferrer'} href={'http://www.3blforum.com/'}>3BL Forum</a>
     </div>
     <div className={styles.contact}>
-      <Link to={'/editors'}>Meet our Editors</Link>
+      <Link to={'/editors'}>Meet Our Editors</Link>
       <a href={'https://contact.triplepundit.com/'} target={'_blank'} rel={'noopener noreferrer'}>Contact Us</a>
       <a href={'https://www.facebook.com/3blmediatriplepundit'}><FontAwesomeIcon icon={['fab', 'facebook-f']} /></a>
       <a href={'http://twitter.com/triplepundit'}><FontAwesomeIcon icon={['fab', 'twitter']} /></a>

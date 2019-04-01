@@ -12,6 +12,7 @@ import StoryShare from './SocialShare/StoryShare';
 import LoadingSpinner from "../Common/LoadingSpinner";
 import PageTemplate from "../Common/PageTemplate";
 import SingleStoryBio from './SingleStoryBio'
+import RelatedStoriesByCategory from './RelatedStoriesByCategory';
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -52,7 +53,7 @@ class SingleStoryPage extends Component {
           headshot = <img className={styles.headshot} src={story.author.headshot.url} alt={story.author.name + ' headshot'} />;
         }
 
-        const currentURL = 'https://triplepundit.com' + this.props.location.pathname;
+        const currentURL = 'https://www.triplepundit.com' + this.props.location.pathname;
         /* @TODO: Replace hard-coded domain */
 
         let seo_title = story.title;
@@ -68,7 +69,6 @@ class SingleStoryPage extends Component {
           wideImage =
               <div className={styles.imageWrapper}>
                 <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
-                <StoryShare url={currentURL} title={seo_title}/>
               </div>;
           wideImageURL = story.wideImage.url;
           imageHeight = story.wideImage.height;
@@ -93,13 +93,16 @@ class SingleStoryPage extends Component {
           instagram: story.author.instagram,
         };
 
+        const relatedStories = {
+          categoryID: story.category ? story.category.entity.categoryID : '',
+          categoryName: story.category ? story.category.entity.name : '',
+        };
+
         let seo_description = story.seo_description;
-        console.log(seo_description ? 'Not null' : 'Null');
         if (!seo_description) {
           let bodyNoHtml = story.body.text.replace(/<(.|\n)*?>/g, '');
           let descriptionMaxLength = 200;
           seo_description = bodyNoHtml.substr(0, bodyNoHtml.lastIndexOf(' ', descriptionMaxLength));
-
         }
 
         return (
@@ -129,6 +132,7 @@ class SingleStoryPage extends Component {
                 {headshot}
                 <span className={styles.authorName}><Link to={authorLink}>Words by {authorName}</Link></span>
                 {category}
+                <StoryShare url={currentURL} title={seo_title}/>
                 <Moment className={styles.date} format="MMM DD, YYYY">{story.date.value * 1000}</Moment>
               </div>
               <div className={styles.bodyWrapper}>
@@ -136,6 +140,7 @@ class SingleStoryPage extends Component {
                 <div className={styles.body} dangerouslySetInnerHTML={{__html: story.body.value}}/>
                 <SingleStoryBio {...authorBio} />
               </div>
+              <RelatedStoriesByCategory {...relatedStories}/>
               <Ad adUnit={'StoryDetailPage_Bottom'}/>
             </PageTemplate>
             </Fragment>

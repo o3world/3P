@@ -26,7 +26,7 @@ const CategoryStoriesWrapper = (props) => {
 
             return (
                 <section className={styles.wrapper}>
-                  {stories.map((story, index) => <StoryMasonryTile data={story} key={index}/>)}
+                  {stories.map((story, index) => <StoryMasonryTile data={story} key={index} hideCategory={true}/>)}
                 </section>
             );
           }}

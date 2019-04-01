@@ -1,0 +1,27 @@
+.wrapper {
+    padding-top: 25px;
+    margin: 0 150px;
+}
+
+.tilesWrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    max-width: 1366px;
+    margin: 0 auto;
+  }
+  
+.spinner {
+font-size: 42px;
+color: #006bff;
+}
+  
+.sectionHeading {
+    text-align: left;
+    font-family: Montserrat,sans-serif;
+    font-size: 18px;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}

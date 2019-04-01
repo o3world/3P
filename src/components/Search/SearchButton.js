@@ -7,7 +7,6 @@ const SearchButton = (props) => {
   let buttonClass = props.className + ' ' + styles.button;
   if (props.visible) {
     buttonClass = buttonClass + ' ' + styles.visible;
-    console.log(buttonClass);
   }
 
   return (
