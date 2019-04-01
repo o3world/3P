@@ -20,7 +20,7 @@ const StoryMasonryTile = (props) => {
   }
 
   let category;
-  if (story.category) {
+  if (story.category && !props.hideCategory) {
     category = <p className={styles.category} dangerouslySetInnerHTML={{__html: story.category.entity.name}} />;
   }
 
