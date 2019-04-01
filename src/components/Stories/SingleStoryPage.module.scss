@@ -23,9 +23,9 @@ $small_breakpoint: 650px;
   grid-template-columns: min-content 20px 1fr 1fr;
   grid-template-rows: 30px 1fr 30px;
   grid-gap: 7px;
-  grid-template-areas: "headshot . category ."
-    "headshot . title title"
-    "headshot . author date";
+  grid-template-areas: "headshot . category . ."
+    "headshot . title title title"
+    "headshot . author social date";
   justify-items: left;
   padding: 14px 15%;
   text-align: left;

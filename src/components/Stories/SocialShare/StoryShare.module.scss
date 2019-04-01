@@ -1,7 +1,4 @@
 .container {
-  position: absolute;
+  grid-area: social;
   display: grid;
-  width: 120px;
-  bottom: 2px;
-  right: 99px;
 }
