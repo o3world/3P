@@ -1,10 +1,11 @@
-import React from "react";
-import { Query } from 'react-apollo';
-import ConvertSeoUrl from "../Common/createSeoUrl";
+import React from "react"
+import { Link } from 'react-router-dom'
+import { Query } from 'react-apollo'
+import ConvertSeoUrl from "../Common/createSeoUrl"
 
-import { FeaturedSponsoredSeriesQuery } from "./SponsoredSeriesQueries";
-import styles from './FeaturedSponsoredSeries.module.scss';
-import LoadingSpinner from "../Common/LoadingSpinner";
+import { FeaturedSponsoredSeriesQuery } from "./SponsoredSeriesQueries"
+import styles from './FeaturedSponsoredSeries.module.scss'
+import LoadingSpinner from "../Common/LoadingSpinner"
 
 const FeaturedSponsoredSeries = (props) => {
 
@@ -23,7 +24,7 @@ const FeaturedSponsoredSeries = (props) => {
             const url = "/sponsored-series/" + series.tid + "/" + ConvertSeoUrl(series.name);
 
             return (
-                <a href={url} className={styles.seriesWrapper}>
+                <Link to={url} className={styles.seriesWrapper}>
                   <img className={styles.heroImage} src={series.heroImage.derivative.url} alt={''}/>
                   <div className={styles.metaWrapper}>
                     <div className={styles.logoWrapper}>
@@ -35,7 +36,7 @@ const FeaturedSponsoredSeries = (props) => {
                       <h3 className={styles.title}>{series.name}</h3>
                     </div>
                   </div>
-                </a>
+                </Link>
             );
           }}
         </Query>
