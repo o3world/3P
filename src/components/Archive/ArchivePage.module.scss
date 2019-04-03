@@ -1,0 +1,25 @@
+// ArchivePage.module.scss - Sass file for styling Archive page component
+
+@mixin list() {
+
+    li {
+        display: inline-block;
+        padding: 20px;
+        color: blue;
+        cursor: pointer;
+
+        &.selected {
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.year_list {
+    @include list();
+}
+
+.month_list {
+    @include list();
+}

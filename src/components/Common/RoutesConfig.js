@@ -10,6 +10,7 @@ import SearchResult from "../Search/SearchResults"
 import SingleAuthorPage from "../Authors/SingleAuthorPage"
 import SingleCategoryPage from "../Category/SingleCategoryPage"
 import the404 from '../404/404'
+import ArchivePage from "../Archive/ArchivePage";
 
 const routes = [
   {
@@ -57,6 +58,15 @@ const routes = [
   {
     path: '/category/:cat/:id/',
     component: SingleCategoryPage,
+  },
+  {
+    path: '/archive/',
+    exact: true,
+    component: ArchivePage,
+  },
+  {
+    path: '/archive/:year/:month/',
+    component: ArchivePage,
   },
   {
     component: the404,
