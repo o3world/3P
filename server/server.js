@@ -202,7 +202,7 @@ app.get('/story/*', (req, res) => {
 
 app.get('/sitemap-gn.xml', fetchXMLFile('https://back.3blmedia.com/sites/default/files/sitemap-google-news.xml'));
 
-app.get('/rss', fetchXMLFile('https://back.3blmedia.com/sites/default/files/rss-stories-triplepundit.xml'));
+app.get('/rss', fetchXMLFile('https://back.3blmedia.com/sites/default/files/rss-stories-triplepundit.xml?cache=' + new Date()));
 
 // as a default, send anything else through without SSR
 app.get('/*', function (req, res) {
