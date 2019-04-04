@@ -21,6 +21,10 @@ class SingleStoryPage extends Component {
     this.state = { storyId: props.match.params.id };
   }
 
+  componentWillReceiveProps(props) {
+    this.setState({ storyId: props.match.params.id})
+  }
+
   render() {
 
     return (
