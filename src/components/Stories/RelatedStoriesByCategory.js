@@ -13,7 +13,7 @@ console.log(props);
     return (
         <Query
             query={StoriesByCategory}
-            variables={{"id": props.categoryID, "limit": 10}}
+            variables={{"id": props.categoryID, "limit": 12}}
         >
           {({ loading, error, data }) => {
             if (loading) return (
