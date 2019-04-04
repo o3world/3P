@@ -44,7 +44,6 @@ const routes = [
   },
   {
     path: '/story/:year/:title/:id/',
-    exact: true,
     component: SingleStoryPage,
   },
   {
