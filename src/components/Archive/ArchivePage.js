@@ -59,10 +59,10 @@ class ArchivePage extends React.Component {
             <PageTemplate>
                 <div className={styles.selections}>
                     <ul className={styles.year_list}>
-                        {years.map(year => <li onClick={(e) => this.selectYear(e, year)} className={year == this.state.year ? styles.selected : ''} key={year}>{year}</li>)}
+                        {years.map(year => <li onClick={(e) => this.selectYear(e, year)} className={year === Number(this.state.year) ? styles.selected : ''} key={year}>{year}</li>)}
                     </ul>
                     <ul className={styles.month_list}>
-                        {months.map((month, index) => <li data-month={index + 1} onClick={(e) => this.selectMonth(e)} className={index + 1 == this.state.month ? styles.selected : ''} key={index}>{month}</li>)}
+                        {months.map((month, index) => <li data-month={index + 1} onClick={(e) => this.selectMonth(e)} className={index + 1 === Number(this.state.month) ? styles.selected : ''} key={index}>{month}</li>)}
                     </ul>
                 </div>
                 <ArchiveList start={this.state.startTimestamp} end={this.state.endTimestamp}/>
