@@ -83,7 +83,7 @@ query story($id:String!) {
 `;
 
 const StoriesByCategory = gql`
-query stories($id:String!, $limit: Int = 100) {
+query stories($categoryId: String!, $storyId: [String], $limit: Int = 100) {
         nodeQuery(
     limit: $limit,
     filter: {
@@ -94,8 +94,11 @@ query stories($id:String!, $limit: Int = 100) {
       operator: EQUAL
     }, {
         field: "field_primary_category"
-        value: [$id]
-      }]
+        value: [$categoryId]
+      },
+    {
+      field: "nid", value: $storyId, operator: NOT_EQUAL
+    }]
   },
   sort: [{ field: "published_at" direction: DESC }]
 ) {
@@ -303,7 +306,7 @@ query story($startDate: [String], $endDate:[String]) {
     filter:{
       conditions: [
         {field:"type", value:"story"},
-        {field:"published_at", value:$startDate, operator:GREATER_THAN},
+        {field:"published_at", value:$startDate, operator:GREATER_THAN_OR_EQUAL},
         {field:"published_at", value:$endDate, operator:SMALLER_THAN}
       ]
     },

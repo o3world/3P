@@ -98,7 +98,8 @@ class SingleStoryPage extends Component {
         };
 
         const relatedStories = {
-          categoryID: story.category ? story.category.entity.categoryID : '',
+          storyId: story.id,
+          categoryId: story.category ? story.category.entity.categoryID : '',
           categoryName: story.category ? story.category.entity.name : '',
         };
 
