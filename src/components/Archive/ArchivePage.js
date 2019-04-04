@@ -58,6 +58,7 @@ class ArchivePage extends React.Component {
         return (
             <PageTemplate>
                 <div className={styles.selections}>
+                    <h1 className={styles.heading}>Archive for {months[this.state.month - 1]}, {this.state.year}</h1>
                     <ul className={styles.year_list}>
                         {years.map(year => <li onClick={(e) => this.selectYear(e, year)} className={year === Number(this.state.year) ? styles.selected : ''} key={year}>{year}</li>)}
                     </ul>

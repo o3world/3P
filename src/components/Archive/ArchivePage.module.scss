@@ -2,6 +2,12 @@
 
 .selections {
     text-align: left;
+    font-family: Montserrat,sans-serif;
+}
+
+.heading {
+    text-align: center;
+    text-transform: uppercase;
 }
 
 @mixin list() {
