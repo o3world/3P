@@ -20,6 +20,7 @@ const Footer = () =>
     </div>
     <div className={styles.contact}>
       <Link to={'/editors'}>Meet Our Editors</Link>
+      <Link to={'/archive'}>Archive</Link>
       <a href={'https://contact.triplepundit.com/'} target={'_blank'} rel={'noopener noreferrer'}>Contact Us</a>
       <a href={'https://www.facebook.com/3blmediatriplepundit'}><FontAwesomeIcon icon={['fab', 'facebook-f']} /></a>
       <a href={'http://twitter.com/triplepundit'}><FontAwesomeIcon icon={['fab', 'twitter']} /></a>
