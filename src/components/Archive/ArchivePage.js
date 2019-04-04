@@ -3,30 +3,47 @@ import PageTemplate from '../Common/PageTemplate';
 
 import styles from './ArchivePage.module.scss';
 
+import ArchiveList from './ArchiveList';
+
 class ArchivePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             year: props.match.params.year ? props.match.params.year : new Date().getFullYear(),
-            month: props.match.params.month ? props.match.params.month : new Date().getMonth(),
+            month: props.match.params.month ? props.match.params.month : new Date().getMonth() + 1,
         }
 
         this.selectYear = this.selectYear.bind(this);
         this.selectMonth = this.selectMonth.bind(this);
+        this.setTimestamps = this.setTimestamps.bind(this);
     }
 
     selectYear(e, year) {
         this.setState({
             year: year,
+        }, () => {
+            this.setTimestamps();
         });
-        this.props.history.push(`/archive/${year}/${this.state.month}/`);
     }
 
-    selectMonth(e, month) {
+    selectMonth(e) {
         this.setState({
-            month: month,
+            month: e.target.dataset.month,
+        }, () => {
+            this.setTimestamps();
         });
-        this.props.history.push(`/archive/${this.state.year}/${month + 1}/`);
+    }
+
+    setTimestamps() {
+        this.setState({
+            startTimestamp: new Date(this.state.year, this.state.month - 1, 1, 0, 0, 0, 0).valueOf() / 1000,
+            endTimestamp: new Date(this.state.year, this.state.month, 0, 23, 59, 59, 0).valueOf() / 1000,
+        });
+        this.props.history.push(`/archive/${this.state.year}/${this.state.month}/`);
+    }
+
+    componentDidMount() {
+        this.setTimestamps();
     }
 
     render() {
@@ -40,13 +57,15 @@ class ArchivePage extends React.Component {
 
         return (
             <PageTemplate>
-                <h2>Brent was born in {months[this.state.month]} of {this.state.year}.</h2>
-                <ul className={styles.year_list}>
-                    {years.map(year => <li onClick={(e) => this.selectYear(e, year)} className={year == this.state.year ? styles.selected : ''}>{year}</li>)}
-                </ul>
-                <ul className={styles.month_list}>
-                    {months.map((month, index) => <li onClick={(e) => this.selectMonth(e, index)} className={index == this.state.month ? styles.selected : ''}>{month}</li>)}
-                </ul>
+                <div className={styles.selections}>
+                    <ul className={styles.year_list}>
+                        {years.map(year => <li onClick={(e) => this.selectYear(e, year)} className={year == this.state.year ? styles.selected : ''} key={year}>{year}</li>)}
+                    </ul>
+                    <ul className={styles.month_list}>
+                        {months.map((month, index) => <li data-month={index + 1} onClick={(e) => this.selectMonth(e)} className={index + 1 == this.state.month ? styles.selected : ''} key={index}>{month}</li>)}
+                    </ul>
+                </div>
+                <ArchiveList start={this.state.startTimestamp} end={this.state.endTimestamp}/>
             </PageTemplate>
         )
     }
