@@ -17,8 +17,9 @@ class HamburgerMenu extends Component {
             <Link to={'/stories'}>Stories</Link>
             <Link to={'/sponsored-series'}>Sponsored Series</Link>
             <Link to={'/the-feed'}>The Feed</Link>
-            <a target={'_blank'} rel={'noopener noreferrer'} href={'http://www.3blforum.com/brands-taking-stands-newsletter'}>Stands</a>
-            <Link to={'/editors'}>Editors</Link>
+            <a target={'_blank'} rel={'noopener noreferrer'} href={'http://www.3blforum.com/brands-taking-stands-newsletter'}>Brands Taking Stands</a>
+            <Link to={'/archive'}>Archive</Link>
+            <Link to={'/editors'}>Meet Our Editors</Link>
             <a href={'https://contact.triplepundit.com/'} target={'_blank'} rel={'noopener noreferrer'}>Contact Us</a>
           </nav>
         </div>

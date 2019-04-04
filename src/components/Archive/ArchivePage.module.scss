@@ -1,0 +1,56 @@
+// ArchivePage.module.scss - Sass file for styling Archive page component
+
+.selections {
+    text-align: left;
+    font-family: Montserrat,sans-serif;
+}
+
+.pagetitle {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.monthheading {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+@mixin list() {
+
+    li {
+        display: inline-block;
+        font-size: 14px;
+        padding: 5px 12px;
+        color: black;
+        cursor: pointer;
+
+        &.selected {
+            font-weight: bold;
+            font-size: 17px;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.year_list {
+    @include list();
+}
+
+.month_list {
+    @include list();
+}
+
+.storyList {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.storyTitle {
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 12px;
+    
+    a {
+        color: inherit;
+    }
+}

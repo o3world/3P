@@ -296,4 +296,34 @@ query TaxonomyTerm($id:String!){
 }
 `;
 
-export {AllStoryQuery, StoryByIdQuery, StoriesBySeriesId, StoriesByCategory, SingleCategoryTax};
+const StoriesByDates = gql`
+query story($startDate: [String], $endDate:[String]) {
+  nodeQuery(
+    limit: 100,
+    filter:{
+      conditions: [
+        {field:"type", value:"story"},
+        {field:"published_at", value:$startDate, operator:GREATER_THAN},
+        {field:"published_at", value:$endDate, operator:SMALLER_THAN}
+      ]
+    },
+    sort: [{ field: "published_at" direction: ASC }]
+  )
+  {
+    entities {
+      ... on NodeStory {
+        title
+        id: nid
+        entityUrl {
+          path
+        }
+        date: publishedAt {
+          value
+        }
+      }
+    }
+  }
+}
+`;
+
+export {AllStoryQuery, StoryByIdQuery, StoriesBySeriesId, StoriesByCategory, SingleCategoryTax, StoriesByDates};
