@@ -13,7 +13,7 @@ console.log(props);
     return (
         <Query
             query={StoriesByCategory}
-            variables={{"id": props.categoryID, "limit": 12}}
+            variables={{"storyId": props.storyId, "categoryId": props.categoryId, "limit": 12}}
         >
           {({ loading, error, data }) => {
             if (loading) return (
@@ -26,7 +26,7 @@ console.log(props);
             const stories = data.nodeQuery.entities;
 
             let catCleanName = props.categoryName.replace(/&/g, ' ').replace(/\s+/g, '-').toLowerCase();
-            let category = <h3 className={styles.sectionHeading}><Link to={`/category/${catCleanName}/${props.categoryID}`}>More stories from {props.categoryName}</Link></h3>;
+            let category = <h3 className={styles.sectionHeading}><Link to={`/category/${catCleanName}/${props.categoryId}`}>More stories from {props.categoryName}</Link></h3>;
 
             return (
               <section className={styles.wrapper}>

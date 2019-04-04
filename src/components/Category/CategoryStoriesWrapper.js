@@ -12,7 +12,7 @@ const CategoryStoriesWrapper = (props) => {
     return (
         <Query
             query={StoriesByCategory}
-            variables={{"id": props.categoryId}}
+            variables={{"categoryId": props.categoryId}}
         >
           {({ loading, error, data }) => {
             if (loading) return (
