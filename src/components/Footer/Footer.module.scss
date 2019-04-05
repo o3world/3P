@@ -9,6 +9,15 @@ $tp_color--primary: #006bff;
     padding: 20px 130px;
     text-align: left;
     font-family: Montserrat, sans-serif;
+
+    @media only screen and (max-width: 800px) {
+        padding: 20px;
+    }
+
+    @media only screen and (max-width: 500px) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "content logos" "contact logos" "legal legal";
+    }
 }
 
 @mixin navlist {
