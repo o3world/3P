@@ -1,5 +1,4 @@
 import React from 'react';
-import { SENDGRID } from '../../Common/constants';
 
 import styles from './NewsletterSignupForm.module.scss';
 
@@ -29,7 +28,7 @@ class NewsletterSignupForm extends React.Component {
 
   addEmailToSendGrid = async (email) => {
     try {
-      const url =  `${SENDGRID.SUBSCRIBE_API}${email}`
+      const url =  `https://back.3blmedia.com/subscribe3pUser/${email}`
       const response = await fetch(url, {
         method: "POST",
         headers: {

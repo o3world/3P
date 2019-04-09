@@ -1,6 +1,5 @@
 import React from 'react'
 import SearchWrapper from './SearchWrapper'
-import { SEARCH_API } from '../Common/constants'
 
 import LoadingSpinner from "../Common/LoadingSpinner"
 import PageTemplate from '../Common/PageTemplate'
@@ -26,7 +25,7 @@ class SearchResult extends React.Component {
     }
 
     fetchInformation = (searchKeyword) => {
-        const url =  SEARCH_API.replace("{{searchkey}}", searchKeyword);
+        const url =  "https://back.3blmedia.com/search/solr/{{searchkey}}?_format=json".replace("{{searchkey}}", searchKeyword);
         this.setState({loading: true});
         fetch(url)
             .then(response => response.json())
