@@ -1,5 +1,5 @@
 import React from 'react';
-import { SENDGRID } from '../../Common/Constants';
+import { SENDGRID } from '../../Common/constants';
 
 import styles from './NewsletterSignupForm.module.scss';
 
