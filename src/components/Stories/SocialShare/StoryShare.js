@@ -4,7 +4,7 @@ import styles from './StoryShare.module.scss';
 
 const StoryShare = (props) =>
   <div className={styles.container}>
-    <ShareIconList url={props.url}/>
+    <ShareIconList {...props}/>
   </div>;
 
 export default StoryShare;

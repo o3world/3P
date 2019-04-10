@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import 'babel-polyfill';
 import { Route, Switch } from 'react-router-dom';
-
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faBars, faSpinner, faEnvelope, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faInstagram, faLinkedin, faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons';
-
 import routes from './components/Common/RoutesConfig';
+import './components/Common/fontawesome'
 import './App.css';
-
-library.add( faTwitter, faInstagram, faLinkedin, faSearch, faBars, faSpinner, faEnvelope, faFacebookF, faGoogle, faArrowRight );
 
 class App extends Component {
 

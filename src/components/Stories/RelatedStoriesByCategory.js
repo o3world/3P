@@ -9,7 +9,7 @@ import { StoriesByCategory } from "./StoryQueries"
 import styles from './RelatedStoriesByCategory.module.scss'
 
 const RelatedStoriesByCategory = (props) => {
-console.log(props);
+  
     return (
         <Query
             query={StoriesByCategory}
