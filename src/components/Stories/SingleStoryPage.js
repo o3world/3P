@@ -111,7 +111,7 @@ class SingleStoryPage extends Component {
         }
 
         const shareData = {
-          title: seo_title,
+          title: story.title,
           description: seo_description,
           url: currentURL,
         }
