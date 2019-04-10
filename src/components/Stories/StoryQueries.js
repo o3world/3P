@@ -83,7 +83,7 @@ query story($id:String!) {
 `;
 
 const StoriesByCategory = gql`
-query stories($categoryId: String!, $storyId: [String], $limit: Int = 100) {
+query stories($categoryId: String!, $storyId: [String] = "", $limit: Int = 100) {
         nodeQuery(
     limit: $limit,
     filter: {
@@ -97,7 +97,9 @@ query stories($categoryId: String!, $storyId: [String], $limit: Int = 100) {
         value: [$categoryId]
       },
     {
-      field: "nid", value: $storyId, operator: NOT_EQUAL
+      field: "nid",
+      value: $storyId,
+      operator: NOT_EQUAL
     }]
   },
   sort: [{ field: "published_at" direction: DESC }]
