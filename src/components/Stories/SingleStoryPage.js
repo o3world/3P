@@ -110,6 +110,12 @@ class SingleStoryPage extends Component {
           seo_description = bodyNoHtml.substr(0, bodyNoHtml.lastIndexOf(' ', descriptionMaxLength));
         }
 
+        const shareData = {
+          title: seo_title,
+          description: seo_description,
+          url: currentURL,
+        }
+
         return (
           <Fragment>
               <Ad adUnit={'StoryDetailPage_Top'}/>
@@ -137,7 +143,7 @@ class SingleStoryPage extends Component {
                 {headshot}
                 <span className={styles.authorName}><Link to={authorLink}>Words by {authorName}</Link></span>
                 {category}
-                <StoryShare url={currentURL} title={seo_title}/>
+                <StoryShare {...shareData}/>
                 <Moment className={styles.date} format="MMM DD, YYYY">{story.date.value * 1000}</Moment>
               </div>
               <div className={styles.bodyWrapper}>
