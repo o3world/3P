@@ -28,7 +28,7 @@ app.all('*', function(req, res, next){
     }
     // redirect to www version
     if (!req.hostname.startsWith('www.')) {
-        res.redirect("https://www." + req.headers.host + req.url);
+        res.redirect(301, "https://www." + req.headers.host + req.url);
     }
     else { // must return next so processing continues if not redirect.
         return next();
