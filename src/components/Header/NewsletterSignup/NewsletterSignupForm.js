@@ -22,7 +22,7 @@ class NewsletterSignupForm extends React.Component {
   SuccessMessage = "Thank You!!!";
 
   validateEmail = (email) => {
-    const re = /^([a-z0-9_\-.]+)@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
+    const re = /^([a-zA-Z0-9_\-.]+)@[a-zA-Z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
     return re.test(email)
   };
 
