@@ -37,7 +37,7 @@ const AllSponsoredSeriesQuery = gql`
           uri
         }
         tileImage: fieldSsFeaturedImage {
-          derivative(style: RATIO_2_3) {
+          derivative(style: RATIO23) {
             width
             height
             url
@@ -84,7 +84,7 @@ const FeaturedSponsoredSeriesQuery = gql`
           uri
         }
         heroImage: fieldSsHeroImage {
-          derivative(style: RATIO_8_3) {
+          derivative(style: RATIO83) {
             width
             height
             url
@@ -121,7 +121,7 @@ query TaxonomyTerm($id:String!){
           uri
         }
         mainImage: fieldSsFeaturedImage {
-          derivative(style: RATIO_4_3) {
+          derivative(style: RATIO43) {
             width
             height
             url
