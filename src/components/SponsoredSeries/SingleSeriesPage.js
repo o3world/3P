@@ -1,5 +1,6 @@
 import React from 'react'
 import {Query} from "react-apollo"
+import { Helmet } from 'react-helmet'
 
 import SeriesHeader from "./SeriesHeader"
 import { SingleSeriesQuery } from "../SponsoredSeries/SponsoredSeriesQueries"
@@ -18,8 +19,11 @@ const SingleSeriesPage = (props) => (
 
         return (
             <PageTemplate>
-                <SeriesHeader {...data}/>
-                <SeriesStoriesMasonryWrapper seriesId={props.match.params.id}/>
+              <Helmet>
+                <title>{data.series.name}</title>
+              </Helmet>
+              <SeriesHeader {...data}/>
+              <SeriesStoriesMasonryWrapper seriesId={props.match.params.id}/>
             </PageTemplate>
         )
       }}
