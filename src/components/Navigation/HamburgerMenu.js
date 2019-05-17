@@ -3,6 +3,26 @@ import styles from './HamburgerMenu.module.scss';
 import {Link} from "react-router-dom";
 
 class HamburgerMenu extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isCategoriesExpanded: true,
+    };
+
+    this.toggleCategoryMenu = this.toggleCategoryMenu.bind(this);
+    this.handleCategoryClick = this.handleCategoryClick.bind(this);
+  }
+
+  toggleCategoryMenu() {
+    this.setState({
+      isCategoriesExpanded: !this.state.isCategoriesExpanded
+    });
+  }
+
+  handleCategoryClick(e) {
+    this.toggleCategoryMenu();
+    e.stopPropagation();
+  }
   render() {
     let visibility = styles.hide;
 
