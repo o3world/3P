@@ -46,7 +46,7 @@
   -ms-transition: max-height $transition_speed;
   -o-transition: max-height $transition_speed;
   -webkit-transition: max-height $transition_speed;
-  transition: max-height $transition_speed linear;
+  transition: max-height $transition_speed;
   overflow: hidden;
   
   li {
@@ -70,4 +70,20 @@ $transition_speed: 0.5s;
 .HamburgerCategoriesClosed {
   @include subnavigation();
   max-height: 0;
+}
+
+@mixin subMenuToggle() {
+  color: white;
+  font-size: 16px;
+  transition: transform $transition_speed;
+}
+
+.subMenuToggleOpen {
+  @include subMenuToggle();
+  transform: rotate(90deg);
+}
+
+.subMenuToggleClosed {
+  @include subMenuToggle();
+  transform: rotate(0deg);
 }

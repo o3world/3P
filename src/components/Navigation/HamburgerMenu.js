@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './HamburgerMenu.module.scss';
 import {Link} from "react-router-dom";
 import HamburgerCategories from './HamburgerMenuCategories'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 class HamburgerMenu extends Component {
   constructor(props) {
@@ -33,11 +34,13 @@ class HamburgerMenu extends Component {
       visibility = styles.show;
     }
 
+    let categoryToggleStyle = this.state.isCategoriesExpanded ? styles.subMenuToggleOpen : styles.subMenuToggleClosed;
+
     return (
         <div onClick={this.props.handleMouseDown} className={styles.menu + ' ' + visibility}>
           <nav className={styles.navList}>
             <Link to={'/'}>Home</Link>
-            <Link to={'/stories'}>Stories</Link><div onClick={this.handleCategoryClick}>Click me!</div>
+            <Link to={'/stories'}>Stories</Link> <FontAwesomeIcon icon={"angle-right"} className={categoryToggleStyle} onClick={this.handleCategoryClick} />
             <HamburgerCategories isExpanded={this.state.isCategoriesExpanded} />
             <Link to={'/sponsored-series'}>Sponsored Series</Link>
             <Link to={'/the-feed'}>The Feed</Link>
