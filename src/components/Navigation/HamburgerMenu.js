@@ -40,7 +40,7 @@ class HamburgerMenu extends Component {
         <div onClick={this.props.handleMouseDown} className={styles.menu + ' ' + visibility}>
           <nav className={styles.navList}>
             <Link to={'/'}>Home</Link>
-            <Link to={'/stories'}>Stories</Link> <FontAwesomeIcon icon={"angle-right"} className={categoryToggleStyle} onClick={this.handleCategoryClick} />
+            <div className={styles.parentItem}><Link to={'/stories'}>Stories</Link> <FontAwesomeIcon icon={"angle-right"} className={categoryToggleStyle} onClick={this.handleCategoryClick} /></div>
             <HamburgerCategories isExpanded={this.state.isCategoriesExpanded} />
             <Link to={'/sponsored-series'}>Sponsored Series</Link>
             <Link to={'/the-feed'}>The Feed</Link>

@@ -74,7 +74,7 @@ $transition_speed: 0.5s;
 
 @mixin subMenuToggle() {
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   transition: transform $transition_speed;
 }
 
@@ -86,4 +86,9 @@ $transition_speed: 0.5s;
 .subMenuToggleClosed {
   @include subMenuToggle();
   transform: rotate(0deg);
+}
+
+.parentItem {
+  text-align: left;
+  margin-bottom: 13px;
 }
