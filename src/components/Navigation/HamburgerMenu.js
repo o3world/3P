@@ -16,14 +16,16 @@ class HamburgerMenu extends Component {
 
   toggleCategoryMenu() {
     this.setState({
-      isCategoriesExpanded: !this.state.isCategoriesExpanded
+      isCategoriesExpanded: !this.state.isCategoriesExpanded,
     });
   }
 
   handleCategoryClick(e) {
     this.toggleCategoryMenu();
+    console.log(`Category toggle was clicked. It's set to ${this.state.isCategoriesExpanded}`);
     e.stopPropagation();
   }
+
   render() {
     let visibility = styles.hide;
 
@@ -35,8 +37,8 @@ class HamburgerMenu extends Component {
         <div onClick={this.props.handleMouseDown} className={styles.menu + ' ' + visibility}>
           <nav className={styles.navList}>
             <Link to={'/'}>Home</Link>
-            <Link to={'/stories'}>Stories</Link>
-            <HamburgerCategories />
+            <Link to={'/stories'}>Stories</Link><div onClick={this.handleCategoryClick}>Click me!</div>
+            <HamburgerCategories isExpanded={this.state.isCategoriesExpanded} />
             <Link to={'/sponsored-series'}>Sponsored Series</Link>
             <Link to={'/the-feed'}>The Feed</Link>
             <a target={'_blank'} rel={'noopener noreferrer'} href={'http://www.3blforum.com/brands-taking-stands-newsletter'}>Brands Taking Stands</a>

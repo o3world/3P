@@ -41,7 +41,13 @@
   }
 }
 
-.subnavigation {
+@mixin subnavigation() {
+  -moz-transition: max-height $transition_speed;
+  -ms-transition: max-height $transition_speed;
+  -o-transition: max-height $transition_speed;
+  -webkit-transition: max-height $transition_speed;
+  transition: max-height $transition_speed linear;
+  overflow: hidden;
   
   li {
       text-align: left;
@@ -51,4 +57,17 @@
       font-size: 12px;
     }
   }
+}
+
+$transition_speed: 0.5s;
+
+.HamburgerCategoriesOpen {
+  @include subnavigation();
+  height: auto;
+  max-height: 200px;
+}
+
+.HamburgerCategoriesClosed {
+  @include subnavigation();
+  max-height: 0;
 }
