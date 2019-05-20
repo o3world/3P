@@ -7,7 +7,7 @@ class HamburgerNav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false
+      visible: false,
     };
 
     this.toggleMenu = this.toggleMenu.bind(this);

@@ -29,7 +29,7 @@ const category_query = gql`
         }
     }`
 
-const HamburgerCategories = () => {
+const HamburgerCategories = (props) => {
     
     return (
         <Query query = {category_query}>{({ loading, error, data }) => {
@@ -37,9 +37,11 @@ const HamburgerCategories = () => {
                 <LoadingSpinner/>
             );
             if (error) return `Error! ${error.message}`;
+
+            const categoriesClass = props.isExpanded ? styles.HamburgerCategoriesOpen : styles.HamburgerCategoriesClosed;
   
             return (
-                <section className={styles.subnavigation}>
+                <section className={categoriesClass}>
                     { data.categories.entities.map((category) => {
                         let catCleanName = category.name.replace(/&/g, ' ').replace(/\s+/g, '-').toLowerCase();
                         

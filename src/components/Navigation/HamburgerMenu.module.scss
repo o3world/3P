@@ -41,7 +41,13 @@
   }
 }
 
-.subnavigation {
+@mixin subnavigation() {
+  -moz-transition: max-height $transition_speed;
+  -ms-transition: max-height $transition_speed;
+  -o-transition: max-height $transition_speed;
+  -webkit-transition: max-height $transition_speed;
+  transition: max-height $transition_speed;
+  overflow: hidden;
   
   li {
       text-align: left;
@@ -51,4 +57,38 @@
       font-size: 12px;
     }
   }
+}
+
+$transition_speed: 0.5s;
+
+.HamburgerCategoriesOpen {
+  @include subnavigation();
+  height: auto;
+  max-height: 200px;
+}
+
+.HamburgerCategoriesClosed {
+  @include subnavigation();
+  max-height: 0;
+}
+
+@mixin subMenuToggle() {
+  color: white;
+  font-size: 20px;
+  transition: transform $transition_speed;
+}
+
+.subMenuToggleOpen {
+  @include subMenuToggle();
+  transform: rotate(90deg);
+}
+
+.subMenuToggleClosed {
+  @include subMenuToggle();
+  transform: rotate(0deg);
+}
+
+.parentItem {
+  text-align: left;
+  margin-bottom: 13px;
 }
