@@ -15,11 +15,13 @@ class Header extends Component {
         super(props);
         this.state = {
             isSearchVisible: false,
-            isNewsletterSignupVisible: false
+            isNewsletterSignupVisible: false,
+            isTallHeader: this.props.location.pathname === '/' ? true : false,
         };
 
         this.toggleSearchForm = this.toggleSearchForm.bind(this);
         this.toggleNewsletterForm = this.toggleNewsletterForm.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
     }
 
     toggleSearchForm() {
@@ -36,17 +38,28 @@ class Header extends Component {
         })
     }
 
-    render() {
+    componentDidMount = () => {
 
-      var logo = logo__small;
-      var logoStyle = styles.logoThin;
-      if (this.props.location.pathname === '/') {
-        logo = logo__large;
-        logoStyle = styles.logo;
-      }
+      window.addEventListener('scroll', this.handleScroll);
+
+    }
+
+    handleScroll = () => {
+          if (window.pageYOffset > 100) {
+              this.setState({ isTallHeader: false });
+            //   document.getElementsByClassName('App').style.marginTop = "75px";
+          }
+          else if(this.props.location.pathname === '/') {
+              this.setState({ isTallHeader: true });
+          }
+
+    }
+
+    render() {
+        
         return (
-            <header className={styles.wrapper}>
-                <Link to={'/'}><img className={logoStyle} src={logo} alt={'3bl logo'} /></Link>
+            <header className={this.state.isTallHeader ? styles.headerTall : styles.headerShort}>
+                <Link to={'/'}><img className={styles.logo} src={this.state.isTallHeader ? logo__large : logo__small} alt={'3bl logo'} /></Link>
                 <HeaderSubscribeToggle className={styles.subscribeToggle} handleClick={this.toggleNewsletterForm} visible={this.state.isNewsletterSignupVisible}/>
                 <SearchButton className={styles.searchButton} handleClick={this.toggleSearchForm} visible={this.state.isSearchVisible}/>
                 <HamburgerNav/>

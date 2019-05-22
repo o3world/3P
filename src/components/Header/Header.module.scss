@@ -3,7 +3,9 @@ $medium_breakpoint: 720px;
 $large_breakpoint: 980px;
 
 .wrapper {
+  width: 100%;
   max-width: 1366px;
+  z-index: 9999;
   margin: 0 auto;
   display: grid;
   grid-template-columns: min-content 1fr min-content min-content min-content;
@@ -11,34 +13,51 @@ $large_breakpoint: 980px;
     "search-form search-form search-form search-form search-form"
     "subscribe-form subscribe-form subscribe-form subscribe-form subscribe-form";
   padding: 40px 130px 24px;
+  background-color: white;
 
   @media only screen and (max-width: $medium_breakpoint) {
     padding: 40px 5px 14px;
   }
+  
 }
 
-.logo {
-  width: 210px;
-  grid-area: logo;
+.headerTall {
+  @extend .wrapper;
 
-  @media only screen and (max-width: $medium_breakpoint) {
-    width: 150px;
+  .logo {
+    width: 210px;
+    grid-area: logo;
+
+    @media only screen and (max-width: $medium_breakpoint) {
+      width: 150px;
+    }
   }
 }
 
-.logoThin {
-  width: 500px;
-  grid-area: logo;
-  margin-top: 8px;
+.headerShort {
+  @extend .wrapper;
+  position: fixed;
+  top: 0;
+  padding: 20px 130px;
 
-  @media only screen and (max-width: $large_breakpoint) {
-    width: 350px;
+  .logo {
+    width: 500px;
+    grid-area: logo;
+    margin-top: 8px;
+
+    @media only screen and (max-width: $large_breakpoint) {
+      width: 350px;
+    }
+    @media only screen and (max-width: $medium_breakpoint) {
+      width: 300px;
+    }
+    @media only screen and (max-width: $small_breakpoint) {
+      width: 200px;
+    }
   }
-  @media only screen and (max-width: $medium_breakpoint) {
-    width: 300px;
-  }
-  @media only screen and (max-width: $small_breakpoint) {
-    width: 200px;
+
+  :global(:root .App) {
+    margin-top: 70px;
   }
 }
 
