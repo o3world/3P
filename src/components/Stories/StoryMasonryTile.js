@@ -11,7 +11,7 @@ const StoryMasonryTile = (props) => {
 
   let backgroundImage = "";
   if (story.tallImage) {
-    backgroundImage =  story.tallImage.url
+    backgroundImage =  story.tallImage.derivative.url
   }
 
   let sponsored;
