@@ -43,20 +43,24 @@ query storyQuery {
           processed
         }
       tallImage: fieldFeaturedImageTall {
+        derivative(style: RATIO23) {
+          width
+          height
+          url
+        }
         targetId
         alt
         title
-        width
-        height
-        url
       }
       wideImage: fieldFeaturedImageWide {
+        derivative(style: RATIO32) {
+          width
+          height
+          url
+        }
         targetId
         alt
         title
-        width
-        height
-        url
       }
       }
     }

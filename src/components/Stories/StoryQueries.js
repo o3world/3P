@@ -57,19 +57,25 @@ query story($id:String!) {
           publishedAtOrNow
         }
         squareImage: fieldFeaturedImageSquare {
-          url
-          width
-          height
+          derivative(style: RATIO11) {
+            url
+            width
+            height
+          }
         }
         wideImage: fieldFeaturedImageWide {
-          url
-          width
-          height
+          derivative(style: RATIO32) {
+            url
+            width
+            height
+          }
         }
         tallImage: fieldFeaturedImageTall {
-          url
-          width
-          height
+          derivative(style: RATIO23) {
+            url
+            width
+            height
+          }
         }
         body: fieldContent {
           text: processed
@@ -142,19 +148,25 @@ query stories($categoryId: String!, $storyId: [String] = "", $limit: Int = 100) 
           }
         }
         squareImage: fieldFeaturedImageSquare {
+          derivative(style: RATIO11) {
           url
           width
           height
+          }
         }
         wideImage: fieldFeaturedImageWide {
+          derivative(style: RATIO32) {
           url
           width
           height
+          }
         }
         tallImage: fieldFeaturedImageTall {
+          derivative(style: RATIO23) {
           url
           width
           height
+          }
         }
         body: fieldContent {
           text: processed
@@ -205,19 +217,25 @@ query story {
           }
         }
         squareImage: fieldFeaturedImageSquare {
-          url
-          width
-          height
+          derivative(style: RATIO11) {
+            url
+            width
+            height
+          }
         }
         wideImage: fieldFeaturedImageWide {
-          url
-          width
-          height
+          derivative(style: RATIO32) {
+            url
+            width
+            height
+          }
         }
         tallImage: fieldFeaturedImageTall {
-          url
-          width
-          height
+          derivative(style: RATIO23) {
+            url
+            width
+            height
+          }
         }
         body: fieldContent {
           text: processed
@@ -275,14 +293,18 @@ query story($id: String!) {
           last: fieldLastName
         }
         wideImage: fieldFeaturedImageWide {
-          url
-          width
-          height
+          derivative(style: RATIO32) {
+            url
+            width
+            height
+          }
         }
         tallImage: fieldFeaturedImageTall {
-          url
-          width
-          height
+          derivative(style: RATIO23) {
+            url
+            width
+            height
+          }
         }
       }
 

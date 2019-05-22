@@ -5,8 +5,8 @@ import {Link} from "react-router-dom";
 
 const PrimeStoryHero = (props) => {
   const heroImageStyle = {
-      "--tall-bg-image": `url(${props.tallImage.url})`,
-      "--wide-bg-image": `url(${props.wideImage.url})`
+      "--tall-bg-image": `url(${props.tallImage.derivative.url})`,
+      "--wide-bg-image": `url(${props.wideImage.derivative.url})`
   };
   const link = '/story/' + new Date(props.date.value * 1000).getFullYear() + props.entityUrl.path + '/' + props.id + '/';
 

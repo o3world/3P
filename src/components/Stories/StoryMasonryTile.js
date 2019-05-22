@@ -10,7 +10,7 @@ const StoryMasonryTile = (props) => {
   const link = '/story/' + new Date(story.date.value * 1000).getFullYear() + story.entityUrl.path + '/' + story.id + '/';
 
   let backgroundImage = "";
-  if(story.tallImage) {
+  if (story.tallImage) {
     backgroundImage =  story.tallImage.url
   }
 
