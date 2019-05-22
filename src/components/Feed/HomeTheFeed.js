@@ -15,23 +15,23 @@ class HomeTheFeed extends Component {
   componentDidMount() {
     fetch('https://www.3blmedia.com/feeds/fmr/csrwire')
         .then(response => response.json())
-        .then(data => this.setState({ data: data.data.results }));
+        .then(data => this.setState({ data: data.data.results.slice(0,4) }));
   }
 
   render() {
 
     return (
-        <div className={styles.container}>
-          <div className={styles.titleWrapper}>
-            <h3 className={styles.title}>The Feed</h3>
-            <p className={styles.subtitle}>Latest News from Leaders in Corporate Social Responsibility</p>
-          </div>
-          <div className={styles.feed}>
-            {this.state.data.map(feeditem =>
-                <HomeFeedItem {...feeditem} key={feeditem.id}/>
-            )}
-          </div>
+      <div className={styles.container}>
+        <div className={styles.titleWrapper}>
+          <h3 className={styles.title}>The Feed</h3>
+          <p className={styles.subtitle}>Latest News from Leaders in Corporate Social Responsibility</p>
         </div>
+        <div className={styles.feed}>
+          {this.state.data.map(feeditem =>
+            <HomeFeedItem {...feeditem} key={feeditem.id} />
+          )}
+        </div>
+      </div>
     );
   }
 }
