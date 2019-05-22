@@ -72,11 +72,11 @@ class SingleStoryPage extends Component {
         if (story.wideImage) {
           wideImage =
               <div className={styles.imageWrapper}>
-                <img className={styles.hero} src={story.wideImage.url} alt={'hero'} />
+                <img className={styles.hero} src={story.wideImage.derivative.url} alt={'hero'} />
               </div>;
-          wideImageURL = story.wideImage.url;
-          imageHeight = story.wideImage.height;
-          imageWidth = story.wideImage.width;
+          wideImageURL = story.wideImage.derivative.url;
+          imageHeight = story.wideImage.derivative.height;
+          imageWidth = story.wideImage.derivative.width;
         }
 
         const authorName = (story.author.first && story.author.last) ? `${story.author.first} ${story.author.last}` : story.author.name;

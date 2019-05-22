@@ -6,8 +6,8 @@ import Moment from 'react-moment';
 
 const PrimeStory = (props) => {
         const storyStyle = {
-            "--tall-bg-image": `url(${props.tallImage.url})`,
-            "--wide-bg-image": `url(${props.wideImage.url})`
+            "--tall-bg-image": `url(${props.tallImage.derivative.url})`,
+            "--wide-bg-image": `url(${props.wideImage.derivative.url})`
         };
         const link = '/story/' + new Date(props.date.value * 1000).getFullYear() + props.entityUrl.path + '/' + props.id + '/';
         const storyClass = (props.index === '1') ? styles.primeStorySecond : styles.primeStory;
