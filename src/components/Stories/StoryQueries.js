@@ -183,7 +183,10 @@ query story {
       limit: 100,
       filter:{
         conditions: [
-          {field:"type", value:"story"},
+          {
+            field:"type", 
+            value:"story"
+          },
         ]
       },
       sort: [{ field: "published_at" direction: DESC }]
