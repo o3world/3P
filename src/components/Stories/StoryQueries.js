@@ -149,23 +149,23 @@ query stories($categoryId: String!, $storyId: [String] = "", $limit: Int = 100) 
         }
         squareImage: fieldFeaturedImageSquare {
           derivative(style: RATIO11) {
-          url
-          width
-          height
+            url
+            width
+            height
           }
         }
         wideImage: fieldFeaturedImageWide {
           derivative(style: RATIO32) {
-          url
-          width
-          height
+            url
+            width
+            height
           }
         }
         tallImage: fieldFeaturedImageTall {
           derivative(style: RATIO23) {
-          url
-          width
-          height
+            url
+            width
+            height
           }
         }
         body: fieldContent {
