@@ -7,24 +7,10 @@ $tp_color--primary: #006BFF;
     grid-template-rows: 1fr min-content;
     background-image: var(--wide-bg-image);
     background-size: cover;
-  text-decoration: none;
-
-    --aspect-ratio: 2/3;
-
-  &::before {
-    height: 0;
-    content: "";
-    display: inline-block;
-    padding-bottom: calc(100% * var(--aspect-ratio));
-    grid-area: 1/1/-1/-1;
-  }
+    text-decoration: none;
 
   @media only screen and (max-width: 1000px) {
     grid-template-columns: 1fr;
-
-    &::before {
-      grid-area: 1/1/2/2;
-    }
 
     .meta {
       grid-area: 2/1/3/3;
@@ -97,4 +83,12 @@ $tp_color--primary: #006BFF;
   color: white;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.8rem;
+}
+
+.testHero {
+  grid-area: 1/1/-1/-1;
+
+  img {
+    width: 100%;
+  }
 }

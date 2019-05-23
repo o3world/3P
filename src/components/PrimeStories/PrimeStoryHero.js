@@ -4,14 +4,14 @@ import Moment from "react-moment";
 import {Link} from "react-router-dom";
 
 const PrimeStoryHero = (props) => {
-  const heroImageStyle = {
-      "--tall-bg-image": `url(${props.tallImage.derivative.url})`,
-      "--wide-bg-image": `url(${props.wideImage.derivative.url})`
-  };
   const link = '/story/' + new Date(props.date.value * 1000).getFullYear() + props.entityUrl.path + '/' + props.id + '/';
 
   return (
-    <Link to={link} className={styles.wrapper} style={heroImageStyle}>
+    <Link to={link} className={styles.wrapper}>
+      <picture className={styles.testHero} alt={''} >
+        <source srcset={props.tallImage.derivative.url} media="(max-width: 600px)" />
+        <img src={props.wideImage.derivative.url}/>
+      </picture>
       <div className={styles.meta}>
         <h3 className={styles.name}><span>{props.title}</span></h3>
         <p className={styles.author}>Words by {props.author.first} {props.author.last}</p>
