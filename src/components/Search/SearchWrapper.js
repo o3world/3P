@@ -14,7 +14,9 @@ const SearchWrapper = (props) => (
                     value: new Date(obj.published_at).getTime() / 1000, // Convert ISO date format to epoch
                 },
                 tallImage: {
-                    url: obj.field_featured_image_tall
+                    derivative: {
+                        url: obj.field_featured_image_tall
+                    }
                 },
                 entityUrl: {
                     path: obj.url
