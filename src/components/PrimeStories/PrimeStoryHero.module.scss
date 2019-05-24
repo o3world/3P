@@ -43,6 +43,14 @@ $tp_color--primary: #006BFF;
     }
 }
 
+.heroImage {
+  grid-area: 1/1/-1/-1;
+
+  img {
+    width: 100%;
+  }
+}
+
 .meta {
     grid-area: 2/2/3/3;
     background-color: $tp_color--primary;
@@ -83,12 +91,4 @@ $tp_color--primary: #006BFF;
   color: white;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.8rem;
-}
-
-.testHero {
-  grid-area: 1/1/-1/-1;
-
-  img {
-    width: 100%;
-  }
 }

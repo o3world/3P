@@ -5,10 +5,6 @@ import {Link} from "react-router-dom";
 import Moment from 'react-moment';
 
 const PrimeStory = (props) => {
-        const storyStyle = {
-            "--tall-bg-image": `url(${props.tallImage.derivative.url})`,
-            "--wide-bg-image": `url(${props.wideImage.derivative.url})`
-        };
         const link = '/story/' + new Date(props.date.value * 1000).getFullYear() + props.entityUrl.path + '/' + props.id + '/';
         const storyClass = (props.index === '1') ? styles.primeStorySecond : styles.primeStory;
 
@@ -18,7 +14,11 @@ const PrimeStory = (props) => {
         }
 
         return (
-          <Link to={link} className={storyClass} style={storyStyle}>
+          <Link to={link} className={storyClass}>
+            <picture className={styles.backgroundImage} alt={''} >
+              <source srcset={props.tallImage.derivative.url} media="(max-width: 600px)" />
+              <img src={props.wideImage.derivative.url}/>
+            </picture>
             <div className={styles.content}>
               <h3 className={styles.title}><span>{props.title}</span></h3>
               <p className={styles.author}>Words by {props.author.first} {props.author.last}</p>

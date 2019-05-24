@@ -8,7 +8,7 @@ const PrimeStoryHero = (props) => {
 
   return (
     <Link to={link} className={styles.wrapper}>
-      <picture className={styles.testHero} alt={''} >
+      <picture className={styles.heroImage} alt={''} >
         <source srcset={props.tallImage.derivative.url} media="(max-width: 600px)" />
         <img src={props.wideImage.derivative.url}/>
       </picture>
