@@ -13,11 +13,19 @@ const PrimeStory = (props) => {
             category = <p className={styles.category}>{props.category.entity.name}</p>;
         }
 
+        // The first non-hero prime story is wide in wide viewports. All others are tall always.
+        let backgroundImage = props.tallImage.derivative.url;
+        if (props.index === "1") {
+          backgroundImage = props.wideImage.derivative.url;
+        }
+
         return (
           <Link to={link} className={storyClass}>
             <picture className={styles.backgroundImage} alt={''} >
               <source srcset={props.tallImage.derivative.url} media="(max-width: 600px)" />
-              <img src={props.wideImage.derivative.url}/>
+              <source srcset={props.tallImage.derivative.url + '.webp'} media="(max-width: 600px)" type="image/webp" />
+              <source type="image/webp" srcset={backgroundImage + '.webp'} />
+              <img src={backgroundImage} alt={''} />
             </picture>
             <div className={styles.content}>
               <h3 className={styles.title}><span>{props.title}</span></h3>

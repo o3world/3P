@@ -72,7 +72,10 @@ class SingleStoryPage extends Component {
         if (story.wideImage) {
           wideImage =
               <div className={styles.imageWrapper}>
-                <img className={styles.hero} src={story.wideImage.derivative.url} alt={'hero'} />
+                <picture>
+                  <source srcset={story.wideImage.derivative.url + '.webp'} type="image/webp" />
+                  <img className={styles.hero} src={story.wideImage.derivative.url} alt={'hero'} />
+                </picture>
               </div>;
           wideImageURL = story.wideImage.derivative.url;
           imageHeight = story.wideImage.derivative.height;
