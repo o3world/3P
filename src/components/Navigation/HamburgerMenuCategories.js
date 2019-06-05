@@ -46,7 +46,7 @@ const HamburgerCategories = (props) => {
                         let catCleanName = category.name.replace(/&/g, ' ').replace(/\s+/g, '-').toLowerCase();
                         
                         return (
-                            <li><Link to={`/category/${catCleanName}/${category.categoryID}`}>{category.name}</Link></li>
+                            <li key={category.categoryID}><Link to={`/category/${catCleanName}/${category.categoryID}`}>{category.name}</Link></li>
                         )
                     }
                     ) }

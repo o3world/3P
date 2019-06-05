@@ -9,10 +9,6 @@ const StoryMasonryTile = (props) => {
   const story = {...props.data};
   const link = '/story/' + new Date(story.date.value * 1000).getFullYear() + story.entityUrl.path + '/' + story.id + '/';
 
-  let backgroundImage = "";
-  if (story.tallImage) {
-    backgroundImage =  story.tallImage.derivative.url
-  }
 
   let sponsored;
   if (story.sponsoredBy && props.context !== 'singleSeries') {
@@ -31,8 +27,11 @@ const StoryMasonryTile = (props) => {
   return (
     <LazyLoad height={200}>
       <Link to={link} className={styles.tileAnchor}>
-        <div className={styles.tile}
-             style={{backgroundImage: `url(` + backgroundImage + `)`}}>
+        <div className={styles.tile}>
+          <picture className={styles.backgroundImage}>
+            <source srcSet={story.tallImage.derivative.url + '.webp'} type="image/webp" />
+            <img src={story.tallImage.derivative.url} alt={''} />
+          </picture>
           <h2 className={styles.title}><span dangerouslySetInnerHTML={{__html: story.title}}/></h2>
           {category}
           {sponsored}

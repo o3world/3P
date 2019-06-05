@@ -32,3 +32,18 @@
         color: inherit;
     }
 }
+
+.itemNoImage {
+    @extend .item;
+    border: 2px solid darkgray;
+
+    .metaContainer {
+        background-color: inherit;
+        color: black;
+        grid-area: 1/1/-1/-1;
+    }
+
+    .title {
+        font-size: 1.4rem;
+    }
+}
