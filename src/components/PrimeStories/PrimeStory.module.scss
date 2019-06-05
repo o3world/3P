@@ -6,12 +6,13 @@
   text-decoration: none;
 }
 
-.primeStory::before {
-    height: 0;
-    content: "";
-    display: inline-block;
-    padding-bottom: calc(100% * var(--aspect-ratio));
-    grid-area: 1/1/-1/-1;
+.backgroundImage {
+  grid-area: 1/1/-1/-1;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .primeStorySecond {
