@@ -73,7 +73,7 @@ class SingleStoryPage extends Component {
           wideImage =
               <div className={styles.imageWrapper}>
                 <picture>
-                  <source srcSet={story.wideImage.derivative.url + '.webp'} type="image/webp" />
+                  {/* <source srcSet={story.wideImage.derivative.url + '.webp'} type="image/webp" /> */}
                   <img className={styles.hero} src={story.wideImage.derivative.url} alt={'hero'} />
                 </picture>
               </div>;
