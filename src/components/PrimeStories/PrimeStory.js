@@ -22,9 +22,9 @@ const PrimeStory = (props) => {
         return (
           <Link to={link} className={storyClass}>
             <picture className={styles.backgroundImage} alt={''} >
-              <source srcset={props.tallImage.derivative.url} media="(max-width: 600px)" />
-              <source srcset={props.tallImage.derivative.url + '.webp'} media="(max-width: 600px)" type="image/webp" />
-              <source type="image/webp" srcset={backgroundImage + '.webp'} />
+              <source srcSet={props.tallImage.derivative.url} media="(max-width: 600px)" />
+              <source srcSet={props.tallImage.derivative.url + '.webp'} media="(max-width: 600px)" type="image/webp" />
+              <source type="image/webp" srcSet={backgroundImage + '.webp'} />
               <img src={backgroundImage} alt={''} />
             </picture>
             <div className={styles.content}>
