@@ -207,6 +207,10 @@ app.get('/rss', fetchXMLFile('https://back.3blmedia.com/sites/default/files/rss-
 // as a default, send anything else through without SSR
 app.get('/*', function (req, res) {
     res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+
+    //cache expiration to solve memory issues
+    res.setHeader('Cache-Control', 'public, max-age=300');
+    res.setHeader('Expires', new Date(Date.now() + 300).toUTCString());
 });
 
 app.listen(process.env.PORT || 5000);
