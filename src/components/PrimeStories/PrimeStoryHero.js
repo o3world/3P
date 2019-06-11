@@ -9,8 +9,8 @@ const PrimeStoryHero = (props) => {
   return (
     <Link to={link} className={styles.wrapper}>
       <picture className={styles.heroImage} alt={''} >
-        <source srcSet={props.tallImage.derivative.url + '.webp'} media="(max-width: 600px)" type="image/webp" />
-        <source srcSet={props.wideImage.derivative.url + '.webp'} type="image/webp" />
+        {/* <source srcSet={props.tallImage.derivative.url + '.webp'} media="(max-width: 600px)" type="image/webp" />
+        <source srcSet={props.wideImage.derivative.url + '.webp'} type="image/webp" /> */}
         <source srcSet={props.tallImage.derivative.url} media="(max-width: 600px)" />
         <img src={props.wideImage.derivative.url} alt={''} />
       </picture>
