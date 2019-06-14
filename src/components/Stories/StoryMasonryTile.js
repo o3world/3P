@@ -31,7 +31,7 @@ const StoryMasonryTile = (props) => {
       <Link to={link} className={styles.tileAnchor}>
         <div className={styles.tile}>
           <picture className={styles.backgroundImage}>
-            <source srcSet={backgroundImage + '.webp'} type="image/webp" />
+            {/* <source srcSet={backgroundImage + '.webp'} type="image/webp" /> */}
             <img src={backgroundImage} alt={''} />
           </picture>
           <h2 className={styles.title}><span dangerouslySetInnerHTML={{__html: story.title}}/></h2>

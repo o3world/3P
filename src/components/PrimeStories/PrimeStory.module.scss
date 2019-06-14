@@ -1,8 +1,5 @@
 .primeStory {
-    display: grid;
-    --aspect-ratio: 3/2;
-    background-image: var(--tall-bg-image);
-    background-size: cover;
+  display: grid;
   text-decoration: none;
 }
 
@@ -10,6 +7,7 @@
   grid-area: 1/1/-1/-1;
 
   img {
+    display: block;
     width: 100%;
     height: 100%;
   }
@@ -19,33 +17,11 @@
     composes: primeStory;
     grid-area: second;
     display: grid;
-    background-size: cover;
 }
 
 @media only screen and (min-width: 900px) {
     .primeStorySecond::before {
         padding-bottom: 0;
-    }
-}
-
-@media only screen and (max-width: 900px) {
-
-  .primeStorySecond {
-    --aspect-ratio: 2/3;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-
-    .primeStorySecond {
-        --aspect-ratio: 3/2;
-    }
-}
-
-@media only screen and (min-width: 600px) {
-
-    .primeStorySecond {
-        background-image: var(--wide-bg-image);
     }
 }
 
