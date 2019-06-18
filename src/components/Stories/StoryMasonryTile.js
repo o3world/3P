@@ -20,6 +20,8 @@ const StoryMasonryTile = (props) => {
     category = <p className={styles.category} dangerouslySetInnerHTML={{__html: story.category.entity.name}} />;
   }
 
+  const backgroundImage = story.tallImage ? story.tallImage.derivative.url : '';
+
   const author = story.author.first && story.author.last ? `${story.author.first} ${story.author.last}` : story.author.name;
 
   const dateFormat = new Date().getFullYear() === new Date(story.date.value * 1000).getFullYear() ? 'MMM DD' : 'MMM DD, YYYY';
@@ -29,8 +31,8 @@ const StoryMasonryTile = (props) => {
       <Link to={link} className={styles.tileAnchor}>
         <div className={styles.tile}>
           <picture className={styles.backgroundImage}>
-            {/* <source srcSet={story.tallImage.derivative.url + '.webp'} type="image/webp" /> */}
-            <img src={story.tallImage.derivative.url} alt={''} />
+            {/* <source srcSet={backgroundImage + '.webp'} type="image/webp" /> */}
+            <img src={backgroundImage} alt={''} />
           </picture>
           <h2 className={styles.title}><span dangerouslySetInnerHTML={{__html: story.title}}/></h2>
           {category}
