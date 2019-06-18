@@ -121,7 +121,6 @@ const fetchXMLFile = (remoteXML) => {
     return function(req, res) {
         if (req.path.indexOf('Object]') > 0) {
             res.end();
-            return;
         }
 
         fetch(remoteXML)
@@ -173,7 +172,6 @@ app.get('/story/*', (req, res) => {
 
     if (req.path.indexOf('Object]') > 0) {
         res.end();
-        return;
     }
 
     const context = {};
