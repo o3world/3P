@@ -38,7 +38,7 @@
     "socket.io": "^2.2.0"
   },
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node --max_old_space_size=400 server/index.js --production",
     "serve": "node server.js",
     "build": "react-scripts build",
     "devclient": "react-scripts start",
