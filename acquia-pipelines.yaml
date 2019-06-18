@@ -7,8 +7,8 @@ events:
     steps:
       - build:
           script:
-            - nvm install v6.11.1
-            - nvm use 6.11.1
+            - nvm install v8.9.4
+            - nvm use 8.9.4
             - npm install
             - npm run build
       - upload-artifact:
