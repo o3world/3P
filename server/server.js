@@ -128,7 +128,6 @@ const fetchXMLFile = (remoteXML) => {
     return function(req, res) {
         if (req.path.indexOf('Object]') > 0) {
             res.end();
-            return;
         }
 
         fetch(remoteXML)
@@ -180,7 +179,6 @@ app.get('/story/*', (req, res) => {
 
     if (req.path.indexOf('Object]') > 0) {
         res.end();
-        return;
     }
 
     const context = {};
@@ -207,7 +205,7 @@ app.get('/story/*', (req, res) => {
 
 });
 
-app.get('/sitemap-gn.xml', fetchXMLFile('https://back.3blmedia.com/sites/default/files/sitemap-google-news.xml'));
+app.get('/sitemap-gn.xml', fetchXMLFile('https://back.3blmedia.com/sites/default/files/sitemap-google-news.xml?cache=' + new Date()));
 
 app.get('/rss', fetchXMLFile('https://back.3blmedia.com/sites/default/files/rss-stories-triplepundit.xml?cache=' + new Date()));
 

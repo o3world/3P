@@ -5,8 +5,6 @@ $tp_color--primary: #006BFF;
     display: grid;
     grid-template-columns: 5% 1fr 5%;
     grid-template-rows: 1fr min-content;
-    background-image: var(--wide-bg-image);
-    background-size: cover;
     text-decoration: none;
 
   @media only screen and (max-width: 1000px) {
@@ -35,18 +33,11 @@ $tp_color--primary: #006BFF;
   }
 }
 
-@media only screen and (max-width: 600px) {
-
-    .wrapper {
-        background-image: var(--tall-bg-image);
-        --aspect-ratio: 3/2;
-    }
-}
-
 .heroImage {
   grid-area: 1/1/-1/-1;
 
   img {
+    display: block;
     width: 100%;
   }
 }
