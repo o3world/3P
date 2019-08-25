@@ -1,8 +1,16 @@
 $medium_breakpoint: 550px;
 
 .wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: "daily weekly" "email_form email_form";
+  grid-gap: 20px;
   transition: height 1s cubic-bezier(0, .52, 0, 1);
   height: 0;
+  background-color: #ebebeb;
+  margin: 0 30px;
+  padding: 25px 100px;
 
   &.open {
     height: 100px;
@@ -21,11 +29,27 @@ $medium_breakpoint: 550px;
   }
 }
 
+@mixin newsletter_selector() {
+  border: 2px solid red;
+  background-color: white;
+}
+
+.dailySelector {
+  @include newsletter_selector();
+  grid-area: daily;
+}
+
+.weeklySelector {
+  @include newsletter_selector();
+  grid-area: weekly;
+}
+
 .form {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  grid-area: email_form;
 }
 
 .emailBox {

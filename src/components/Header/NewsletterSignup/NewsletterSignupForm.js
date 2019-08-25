@@ -9,7 +9,9 @@ class NewsletterSignupForm extends React.Component {
       value: '',
       successMessage: false,
       validationMessage: '',
-      disabled: false
+      isFormEnabled: false,
+      dailySelected: false,
+      weeklySelected: false,
     };
 
     this.addEmailToSendGrid = this.addEmailToSendGrid.bind(this);
@@ -77,7 +79,7 @@ class NewsletterSignupForm extends React.Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (!this.state.successMessage) {
-      this.refs.headerSignupInput.focus();
+      //this.refs.headerSignupInput.focus();
     }
   }
 
@@ -90,14 +92,9 @@ class NewsletterSignupForm extends React.Component {
       }
       return (
           <div className={formClasses}>
-            <form onSubmit={this.handleSubmit} className={styles.form}>
-              <input ref={'headerSignupInput'} className={styles.emailBox} type="text"
-                     value={this.state.value} onChange={this.handleChange} placeholder={'Email address'}/>
-              <button className={styles.button} type="submit"
-                      disabled={this.state.disabled}>Go</button>
-              <h3>{this.state.validationMessage}</h3>
-            </form>
-            <div className={styles.privacyPolicy}>By signing up you agree to our <a href="https://www.3blmedia.com/sites/www.3blmedia.com/files/pdf/3BL_Media_privacy_policy.pdf" title="3BL Privacy Policy">privacy policy</a>. You can opt out anytime.</div>
+          <div className={styles.dailySelector}>Daily</div>
+            <div className={styles.weeklySelector}>Weekly</div>
+          <EmailForm formVisible={true} />
           </div>
       )
     }
@@ -114,5 +111,27 @@ class NewsletterSignupForm extends React.Component {
     }
   }
 }
+
+const EmailForm = (props) => {
+  if (props.formVisible) {
+    return (
+            <form onSubmit={this.handleSubmit} className={styles.form}>
+              <input ref={'headerSignupInput'} className={styles.emailBox} type="text"
+                     value={this.state.value} onChange={this.handleChange} placeholder={'Email address'}/>
+              <button className={styles.button} type="submit"
+                      disabled={this.state.disabled}>Go</button>
+              <h3>{this.state.validationMessage}</h3>
+              <div className={styles.privacyPolicy}>By signing up you agree to our <a href="https://www.3blmedia.com/sites/www.3blmedia.com/files/pdf/3BL_Media_privacy_policy.pdf" title="3BL Privacy Policy">privacy policy</a>. You can opt out anytime.</div>
+            </form>
+    )
+  }
+  else {
+    return (
+      <p>Brent is awesome!</p>
+    )
+  }
+}
+
+const 
 
 export default NewsletterSignupForm;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import HamburgerNav from '../Navigation/HamburgerNav';
@@ -45,14 +45,16 @@ class Header extends Component {
         logoStyle = styles.logo;
       }
         return (
-            <header className={styles.wrapper}>
-                <Link to={'/'}><img className={logoStyle} src={logo} alt={'3bl logo'} /></Link>
-                <HeaderSubscribeToggle className={styles.subscribeToggle} handleClick={this.toggleNewsletterForm} visible={this.state.isNewsletterSignupVisible}/>
-                <SearchButton className={styles.searchButton} handleClick={this.toggleSearchForm} visible={this.state.isSearchVisible}/>
-                <HamburgerNav/>
-                <SearchForm visible={this.state.isSearchVisible} formClass={styles.searchForm}/>
+            <Fragment>
+                <header className={styles.wrapper}>
+                    <Link to={'/'}><img className={logoStyle} src={logo} alt={'3bl logo'} /></Link>
+                    <HeaderSubscribeToggle className={styles.subscribeToggle} handleClick={this.toggleNewsletterForm} visible={this.state.isNewsletterSignupVisible}/>
+                    <SearchButton className={styles.searchButton} handleClick={this.toggleSearchForm} visible={this.state.isSearchVisible}/>
+                    <HamburgerNav/>
+                    <SearchForm visible={this.state.isSearchVisible} formClass={styles.searchForm}/>
+                </header>
                 <NewsletterSignupForm signupClass={styles.subscribeForm} visible={this.state.isNewsletterSignupVisible}/>
-            </header>
+            </Fragment>
         )
     }
 }
