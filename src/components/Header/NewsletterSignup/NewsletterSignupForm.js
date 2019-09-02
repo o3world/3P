@@ -1,15 +1,17 @@
-import React from 'react';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import styles from './NewsletterSignupForm.module.scss';
+import styles from './NewsletterSignupForm.module.scss'
 
 class NewsletterSignupForm extends React.Component {
   constructor( props ) {
     super(props);
     this.state = {
-      value: '',
+      emailAddress: '',
       successMessage: false,
       validationMessage: '',
-      isFormEnabled: false,
+      isSubscribed: false,
       dailySelected: false,
       weeklySelected: false,
     };
@@ -18,6 +20,8 @@ class NewsletterSignupForm extends React.Component {
     this.validateEmail = this.validateEmail.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleDaily = this.toggleDaily.bind(this);
+    this.toggleWeekly = this.toggleWeekly.bind(this);
   }
 
   ErrorMessage = "Something went wrong please try again";
@@ -48,22 +52,34 @@ class NewsletterSignupForm extends React.Component {
 
   handleChange(event) {
     this.setState({
-      value: event.target.value,
+      emailAddress: event.target.value,
       successMessage: false,
       validationMessage:""
+    });
+  }
+
+  toggleDaily() {
+    this.setState({
+      dailySelected: !this.state.dailySelected,
+    });
+  }
+
+  toggleWeekly() {
+    this.setState({
+      weeklySelected: !this.state.weeklySelected,
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
-    let result = this.validateEmail(this.state.value);
+    let result = this.validateEmail(this.state.emailAddress);
 
     if(result) {
       this.setState({
         disabled: true
       }, async () => {
-        await this.addEmailToSendGrid(this.state.value);
+        await this.addEmailToSendGrid(this.state.emailAddress);
         this.setState({
           successMessage: true,
           value: "",
@@ -90,11 +106,16 @@ class NewsletterSignupForm extends React.Component {
       if (this.props.visible) {
         formClasses = formClasses + ' ' + styles.open;
       }
+      let emailVisible = false;
+      if (this.state.dailySelected || this.state.weeklySelected) {
+        emailVisible = true;
+      }
       return (
           <div className={formClasses}>
-          <div className={styles.dailySelector}>Daily</div>
-            <div className={styles.weeklySelector}>Weekly</div>
-          <EmailForm formVisible={true} />
+            <DailySelection selected={this.state.dailySelected} handleClick={this.toggleDaily} />
+            <WeeklySelection selected={this.state.weeklySelected} handleClick={this.toggleWeekly} />
+            <EmailForm formVisible={emailVisible} handleChange={this.handleChange} />
+            <p className={styles.privacyPolicy}>By signing up you agree to our <Link to={'https://www.3blmedia.com/sites/www.3blmedia.com/files/pdf/3BL_Media_privacy_policy.pdf'}>privacy policy</Link>. You can opt out anytime.</p>
           </div>
       )
     }
@@ -112,26 +133,64 @@ class NewsletterSignupForm extends React.Component {
   }
 }
 
+const DailySelection = (props) => {
+  return (
+    <div className={styles.dailySelector}>
+      <img src={''} className={'logo'} alt={'logo'} />
+      <p className={styles.description}>Wake up <span className={styles.frequency}>daily</span> to our latest coverage of business done better, directly in your inbox.</p>
+      <AddButton isSelected={props.selected} handleClick={props.handleClick} subtext={'Sign me up'} />
+    </div>
+  )
+}
+
+const WeeklySelection = (props) => {
+  return (
+    <div className={styles.weeklySelector}>
+      <img src={''} className={'logo'} alt={'logo'} />
+      <p className={styles.description}>Get your <span className={styles.frequency}>weekly</span> dose of analysis on rising corporate activism.</p>
+      <AddButton isSelected={props.selected} handleClick={props.handleClick} subtext={'Yes, I\'m in'} />
+    </div>
+  )
+}
+
+const AddButton = (props) => {
+  if(!props.isSelected) {
+    return (
+      <React.Fragment>
+        <button className={styles.addButton} onClick={props.handleClick}>Add</button>
+        <p className={styles.addButtonSubtext}></p>
+    </React.Fragment>)
+  }
+  else {
+    return (
+      <React.Fragment>
+        <button className={styles.addButton_selected} onClick={props.handleClick}><FontAwesomeIcon icon={'check-circle'} /></button>
+        <p className={styles.addButtonSubtext}>{props.subtext}</p>
+      </React.Fragment>)
+  }
+}
+
 const EmailForm = (props) => {
   if (props.formVisible) {
     return (
-            <form onSubmit={this.handleSubmit} className={styles.form}>
-              <input ref={'headerSignupInput'} className={styles.emailBox} type="text"
-                     value={this.state.value} onChange={this.handleChange} placeholder={'Email address'}/>
+            <form onSubmit={props.handleSubmit} className={styles.form}>
+              <input className={styles.emailBox} type="text"
+                     value={''} onChange={props.handleChange} placeholder={'Email address'}/>
               <button className={styles.button} type="submit"
-                      disabled={this.state.disabled}>Go</button>
-              <h3>{this.state.validationMessage}</h3>
-              <div className={styles.privacyPolicy}>By signing up you agree to our <a href="https://www.3blmedia.com/sites/www.3blmedia.com/files/pdf/3BL_Media_privacy_policy.pdf" title="3BL Privacy Policy">privacy policy</a>. You can opt out anytime.</div>
+                      disabled={false}>Subscribe</button>
             </form>
     )
   }
   else {
     return (
-      <p>Brent is awesome!</p>
+      <SelectNewsletter />
     )
   }
 }
 
-const 
+const SelectNewsletter = () =>
+  <div className={styles.emailBox_noneSelected}>
+    <p>Select Newsletter</p>
+  </div>;
 
 export default NewsletterSignupForm;

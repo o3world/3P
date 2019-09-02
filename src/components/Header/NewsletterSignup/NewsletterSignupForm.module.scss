@@ -1,19 +1,21 @@
 $medium_breakpoint: 550px;
+$tp_blue: #006BFF;
 
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr auto;
-  grid-template-areas: "daily weekly" "email_form email_form";
+  grid-template-areas: "daily weekly" "email_form email_form" "privacy_policy privacy_policy";
   grid-gap: 20px;
   transition: height 1s cubic-bezier(0, .52, 0, 1);
-  height: 0;
+  height: auto;
   background-color: #ebebeb;
-  margin: 0 30px;
-  padding: 25px 100px;
+  padding: 25px;
+  width: 764px;
+  margin: 0 auto;
 
   &.open {
-    height: 100px;
+    //height: 100px;
 
     .emailBox {
       display: block;
@@ -30,8 +32,50 @@ $medium_breakpoint: 550px;
 }
 
 @mixin newsletter_selector() {
-  border: 2px solid red;
   background-color: white;
+  display: grid;
+  padding: 20px;
+
+  .description {
+    color: rgba(0,0,0,0.5);
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+
+    .frequency {
+      color: $tp_blue;
+      font-weight: bold;
+    }
+  }
+  
+  .addButton {
+    cursor: pointer;
+    background-color: $tp_blue;
+    color: white;
+    text-transform: uppercase;
+    font-family: Montserrat,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    padding: 0;
+    border-radius: 50%;
+    height: 42px;
+    width: 42px;
+    justify-self: center;
+  }
+
+  .addButton_selected {
+    @extend .addButton;
+    font-size: 26px;
+    color: $tp_blue;
+    background-color: white;
+    border: 1px solid $tp_blue;
+  }
+
+  .addButtonSubtext {
+    text-transform: uppercase;
+    font-size: 12px;
+    height: 15px;
+  }
 }
 
 .dailySelector {
@@ -47,19 +91,22 @@ $medium_breakpoint: 550px;
 .form {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   grid-area: email_form;
+  background-color: $tp_blue;
+  padding: 16px;
 }
 
 .emailBox {
-  display: none;
   width: 300px;
   height: 40px;
-  border-radius: 7px;
+  border: none;
   font-size: 25px;
   font-family: 'Montserrat', sans-serif;
   padding-left: 7px;
+  background-color: $tp_blue;
+  color: white;
 
   @media only screen and (max-width: $medium_breakpoint) {
     width: 220px;
@@ -69,16 +116,28 @@ $medium_breakpoint: 550px;
   }
 }
 
+.emailBox_noneSelected {
+  grid-area: email_form;
+  background-color: rgba(155,155,155,0.25);
+  color: white;
+  font-family: Helvetica, sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 18px;
+}
+
 .button {
-  display: none;
   height: 40px;
   background-color: #006bff;
   color: white;
   margin-left: 15px;
-  font-size: 25px;
-  border-radius: 7px;
+  font-size: 14px;
   font-weight: bold;
+  text-transform: uppercase;
   font-family: Montserrat, sans-serif;
+  border: 1px solid white;
 
   @media only screen and (max-width: $medium_breakpoint) {
     height: 30px;
@@ -109,12 +168,12 @@ $medium_breakpoint: 550px;
 }
 
 .privacyPolicy {
-  display: none;
+  grid-area: privacy_policy;
   font-family: Montserrat, sans-serif;
-  font-style: italic;
+  font-size: 12px;
   margin-top: 7px;
 
   a {
-    color: #006bff;
+    color: inherit;
   }
 }
