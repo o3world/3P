@@ -11,8 +11,13 @@ $tp_blue: #006BFF;
   height: auto;
   background-color: #ebebeb;
   padding: 25px;
-  width: 764px;
+  max-width: 764px;
   margin: 0 auto;
+
+  @media only screen and (max-width: 550px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "daily" "weekly" "email_form" "privacy_policy";
+  }
 
   &.open {
     //height: 100px;
@@ -34,7 +39,13 @@ $tp_blue: #006BFF;
 @mixin newsletter_selector() {
   background-color: white;
   display: grid;
+  grid-template-rows: 90px auto 1fr;
+  align-items: center;
+  justify-items: center;
   padding: 20px;
+
+  .logo {
+  }
 
   .description {
     color: rgba(0,0,0,0.5);
@@ -89,17 +100,20 @@ $tp_blue: #006BFF;
 }
 
 .form {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr min-content;
   align-items: center;
   grid-area: email_form;
   background-color: $tp_blue;
   padding: 16px;
+
+  @media only screen and (max-width: 550px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .emailBox {
-  width: 300px;
   height: 40px;
   border: none;
   font-size: 25px;
@@ -128,42 +142,83 @@ $tp_blue: #006BFF;
   padding: 18px;
 }
 
-.button {
-  height: 40px;
-  background-color: #006bff;
-  color: white;
-  margin-left: 15px;
-  font-size: 14px;
+.submitButton_enabled {
+  height: 32px;
+  background-color: white;
+  color: black;
+  font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
   font-family: Montserrat, sans-serif;
   border: 1px solid white;
+  padding: 8px 18px;
+  cursor: pointer;
 
-  @media only screen and (max-width: $medium_breakpoint) {
-    height: 30px;
-    margin-left: 7px;
-    font-size: 18px;
+  @media only screen and (max-width: 550px) {
+    justify-self: center;
   }
 }
 
-.thanksMessage {
-  transition: height 1s cubic-bezier(0, .52, 0, 1);
-  font-family: Montserrat, sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  color: black;
-  height: 0;
+.submitButton_disabled {
+  @extend .submitButton_enabled;
+  background-color: #006bff;
+  color: white;
+}
 
-  &.open {
-    height: 100px;
+.thankyou_container {
+  display: grid;
+  grid-area: 1/1/-1/-1;
 
-    h3 {
-      display: block;
+  .thankyou_thanks {
+    font-size: 48px;
+    font-family: 'Unna', serif;
+    font-weight: bold;
+    margin: 20px;
+  }
+
+  .thankyou_almostDone {
+    color: $tp_blue;
+    font-size: 80px;
+    font-family: Montserrat, sans-serif;
+    margin: 20px;
+  }
+
+  .thankyou_confirmationDetails {
+    font-family: Helvetica, sans-serif;
+    color: rgba(0,0,0,0.5);
+    font-size: 16px;
+    margin: 20px;
+
+    .thankyou_confirmationSent {
+      text-transform: uppercase;
+      color: black;
+      font-family: Montserrat, sans-serif;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    p {
+      margin: 5px;
     }
   }
 
-  h3 {
-    display: none;
+  @media only screen and (max-width: 550px) {
+    
+    .thankyou_thanks {
+      font-size: 32px;
+    }
+
+    .thankyou_almostDone {
+      font-size: 54px;
+    }
+
+    .thankyou_confirmationDetails {
+      font-size: 12px;
+
+      .thankyou_confirmationSent {
+        font-size: 16px;
+      }
+    }
   }
 }
 

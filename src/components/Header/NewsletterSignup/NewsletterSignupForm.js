@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import styles from './NewsletterSignupForm.module.scss'
 
+import BTS_logo from '../../../assets/images/BTS_Logo_BLK.png'
+import TBL_logo from '../../../assets/images/3P_Logo_BLK.png'
+
 class NewsletterSignupForm extends React.Component {
   constructor( props ) {
     super(props);
@@ -11,14 +14,14 @@ class NewsletterSignupForm extends React.Component {
       emailAddress: '',
       successMessage: false,
       validationMessage: '',
+      isEmailValid: false,
       isSubscribed: false,
       dailySelected: false,
       weeklySelected: false,
     };
 
     this.addEmailToSendGrid = this.addEmailToSendGrid.bind(this);
-    this.validateEmail = this.validateEmail.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleEmailInput = this.handleEmailInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleDaily = this.toggleDaily.bind(this);
     this.toggleWeekly = this.toggleWeekly.bind(this);
@@ -26,11 +29,6 @@ class NewsletterSignupForm extends React.Component {
 
   ErrorMessage = "Something went wrong please try again";
   SuccessMessage = "Thank You!!!";
-
-  validateEmail = (email) => {
-    const re = /^([a-zA-Z0-9_\-.]+)@[a-zA-Z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
-    return re.test(email)
-  };
 
   addEmailToSendGrid = async (email) => {
     try {
@@ -50,11 +48,11 @@ class NewsletterSignupForm extends React.Component {
     } catch (error) { return this.ErrorMessage }
   };
 
-  handleChange(event) {
+  handleEmailInput(event) {
+    const emailRegEx = /^([a-zA-Z0-9_\-.]+)@[a-zA-Z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
     this.setState({
       emailAddress: event.target.value,
-      successMessage: false,
-      validationMessage:""
+      isEmailValid: emailRegEx.test(event.target.value),
     });
   }
 
@@ -73,35 +71,23 @@ class NewsletterSignupForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    let result = this.validateEmail(this.state.emailAddress);
+    this.setState({
+      isSubscribed: true,
+    })
 
-    if(result) {
-      this.setState({
-        disabled: true
-      }, async () => {
-        await this.addEmailToSendGrid(this.state.emailAddress);
-        this.setState({
-          successMessage: true,
-          value: "",
-          disabled: false
-        })
-      })
-    } else {
-      this.setState({
-        validationMessage:"Please enter valid email"
-      })
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (!this.state.successMessage) {
-      //this.refs.headerSignupInput.focus();
-    }
+    // this.setState({
+    //   disabled: true
+    // }, async () => {
+    //   await this.addEmailToSendGrid(this.state.emailAddress);
+    //   this.setState({
+    //     successMessage: true,
+    //     value: "",
+    //     disabled: false
+    //   })
+    // })
   }
 
   render() {
-
-    if (!this.state.successMessage) {
       let formClasses = this.props.signupClass + ' ' + styles.wrapper;
       if (this.props.visible) {
         formClasses = formClasses + ' ' + styles.open;
@@ -110,33 +96,45 @@ class NewsletterSignupForm extends React.Component {
       if (this.state.dailySelected || this.state.weeklySelected) {
         emailVisible = true;
       }
+
+    if (!this.state.isSubscribed) {
       return (
           <div className={formClasses}>
             <DailySelection selected={this.state.dailySelected} handleClick={this.toggleDaily} />
             <WeeklySelection selected={this.state.weeklySelected} handleClick={this.toggleWeekly} />
-            <EmailForm formVisible={emailVisible} handleChange={this.handleChange} />
+            <EmailForm formVisible={emailVisible} submitHandler={this.handleSubmit} handleEmailInput={this.handleEmailInput} validEmail={this.state.isEmailValid} emailAddress={this.state.emailAddress} />
             <p className={styles.privacyPolicy}>By signing up you agree to our <Link to={'https://www.3blmedia.com/sites/www.3blmedia.com/files/pdf/3BL_Media_privacy_policy.pdf'}>privacy policy</Link>. You can opt out anytime.</p>
           </div>
       )
     }
     else {
-      let formClasses = this.props.signupClass + ' ' + styles.thanksMessage;
-      if (this.props.visible) {
-        formClasses = formClasses + ' ' + styles.open;
-      }
       return (
         <div className={formClasses}>
-          <h3>Thanks for signing up!</h3>
+          <ThankYouMessage emailAddress={this.state.emailAddress} />
         </div>
       )
     }
   }
 }
 
+const ThankYouMessage = (props) => {
+  return (
+    <div className={styles.thankyou_container}>
+      <h1 className={styles.thankyou_thanks}>Thanks for inviting us into your inbox!</h1>
+      <h2 className={styles.thankyou_almostDone}>Almost done.</h2>
+      <div className={styles.thankyou_confirmationDetails}>
+        <p className={styles.thankyou_confirmationSent}>Confirmation email sent</p>
+        <p>An email has been sent to {props.emailAddress}.</p>
+        <p>Click the confirmation link in your email to activate your account!</p>
+      </div>
+    </div>
+  )
+}
+
 const DailySelection = (props) => {
   return (
     <div className={styles.dailySelector}>
-      <img src={''} className={'logo'} alt={'logo'} />
+      <img src={TBL_logo} className={styles.logo} alt={'logo'} />
       <p className={styles.description}>Wake up <span className={styles.frequency}>daily</span> to our latest coverage of business done better, directly in your inbox.</p>
       <AddButton isSelected={props.selected} handleClick={props.handleClick} subtext={'Sign me up'} />
     </div>
@@ -146,7 +144,7 @@ const DailySelection = (props) => {
 const WeeklySelection = (props) => {
   return (
     <div className={styles.weeklySelector}>
-      <img src={''} className={'logo'} alt={'logo'} />
+      <img src={BTS_logo} className={styles.logo} alt={'logo'} />
       <p className={styles.description}>Get your <span className={styles.frequency}>weekly</span> dose of analysis on rising corporate activism.</p>
       <AddButton isSelected={props.selected} handleClick={props.handleClick} subtext={'Yes, I\'m in'} />
     </div>
@@ -173,12 +171,10 @@ const AddButton = (props) => {
 const EmailForm = (props) => {
   if (props.formVisible) {
     return (
-            <form onSubmit={props.handleSubmit} className={styles.form}>
-              <input className={styles.emailBox} type="text"
-                     value={''} onChange={props.handleChange} placeholder={'Email address'}/>
-              <button className={styles.button} type="submit"
-                      disabled={false}>Subscribe</button>
-            </form>
+      <form onSubmit={props.handleSubmit} className={styles.form}>
+        <input className={styles.emailBox} type="text" value={props.emailAddress} onInput={props.handleEmailInput} placeholder={'enter email'}/>
+        <SubmitButton submitHandler={props.submitHandler} validEmail={props.validEmail} />
+      </form>
     )
   }
   else {
@@ -192,5 +188,18 @@ const SelectNewsletter = () =>
   <div className={styles.emailBox_noneSelected}>
     <p>Select Newsletter</p>
   </div>;
+
+const SubmitButton = (props) => {
+  if (props.validEmail) {
+    return (
+      <button className={styles.submitButton_enabled} onClick={props.submitHandler}>Subscribe</button>
+    )
+  }
+  else {
+    return (
+      <div className={styles.submitButton_disabled}>Subscribe</div>
+    )
+  }
+}
 
 export default NewsletterSignupForm;
