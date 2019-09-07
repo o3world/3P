@@ -12,25 +12,20 @@ class NewsletterSignupForm extends React.Component {
     super(props);
     this.state = {
       emailAddress: '',
-      successMessage: false,
-      validationMessage: '',
       isEmailValid: false,
       isSubscribed: false,
       dailySelected: false,
       weeklySelected: false,
     };
 
-    this.addEmailToSendGrid = this.addEmailToSendGrid.bind(this);
+    this.subscribeToDaily = this.subscribeToDaily.bind(this);
     this.handleEmailInput = this.handleEmailInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleDaily = this.toggleDaily.bind(this);
     this.toggleWeekly = this.toggleWeekly.bind(this);
   }
 
-  ErrorMessage = "Something went wrong please try again";
-  SuccessMessage = "Thank You!!!";
-
-  addEmailToSendGrid = async (email) => {
+  subscribeToDaily = async (email) => {
     try {
       const url =  `https://back.3blmedia.com/subscribe3pUser/${email}`
       const response = await fetch(url, {
@@ -41,11 +36,15 @@ class NewsletterSignupForm extends React.Component {
       });
       let status = await response.json();
       if (status === 201) {
-        return this.SuccessMessage;
-      } else {
-        return this.ErrorMessage
+        return true;
       }
-    } catch (error) { return this.ErrorMessage }
+      
+      return false;
+    } 
+    
+    catch (error) {
+      return false
+    }
   };
 
   handleEmailInput(event) {
@@ -71,20 +70,27 @@ class NewsletterSignupForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    this.setState({
-      isSubscribed: true,
-    })
+    if (this.state.dailySelected) {
+      this.setState({
+        isEmailValid: false
+      }, async () => {
+        await this.subscribeToDaily(this.state.emailAddress);
+        this.setState({
+          isSubscribed: true,
+        })
+      })
+    }
 
-    // this.setState({
-    //   disabled: true
-    // }, async () => {
-    //   await this.addEmailToSendGrid(this.state.emailAddress);
+    // if (this.state.weeklySelected) {
     //   this.setState({
-    //     successMessage: true,
-    //     value: "",
-    //     disabled: false
+    //     isEmailValid: false
+    //   }, async () => {
+    //     await this.subscribeToWeekly(this.state.emailAddress);
+    //     this.setState({
+    //       isSubscribed: true,
+    //     })
     //   })
-    // })
+    // }
   }
 
   render() {
@@ -172,7 +178,7 @@ const EmailForm = (props) => {
   if (props.formVisible) {
     return (
       <form onSubmit={props.handleSubmit} className={styles.form}>
-        <input className={styles.emailBox} type="text" value={props.emailAddress} onInput={props.handleEmailInput} placeholder={'enter email'}/>
+        <input className={styles.emailBox} type="text" value={props.emailAddress} onChange={props.handleEmailInput} placeholder={'enter email'}/>
         <SubmitButton submitHandler={props.submitHandler} validEmail={props.validEmail} />
       </form>
     )
