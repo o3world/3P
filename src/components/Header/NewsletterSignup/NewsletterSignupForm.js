@@ -13,21 +13,21 @@ class NewsletterSignupForm extends React.Component {
     this.state = {
       emailAddress: '',
       isEmailValid: false,
-      isSubscribed: false,
+      isSubscribed: true,
       dailySelected: false,
       weeklySelected: false,
     };
 
-    this.subscribeToDaily = this.subscribeToDaily.bind(this);
+    this.addEmailToSendGrid = this.addEmailToSendGrid.bind(this);
     this.handleEmailInput = this.handleEmailInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleDaily = this.toggleDaily.bind(this);
     this.toggleWeekly = this.toggleWeekly.bind(this);
   }
 
-  subscribeToDaily = async (email) => {
+  addEmailToSendGrid = async (email, list) => {
     try {
-      const url =  `https://back.3blmedia.com/subscribe3pUser/${email}`
+      const url =  `https://back.3blmedia.com/${list}/${email}`
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -74,23 +74,23 @@ class NewsletterSignupForm extends React.Component {
       this.setState({
         isEmailValid: false
       }, async () => {
-        await this.subscribeToDaily(this.state.emailAddress);
+        await this.addEmailToSendGrid('3p_daily', this.state.emailAddress);
         this.setState({
           isSubscribed: true,
         })
       })
     }
 
-    // if (this.state.weeklySelected) {
-    //   this.setState({
-    //     isEmailValid: false
-    //   }, async () => {
-    //     await this.subscribeToWeekly(this.state.emailAddress);
-    //     this.setState({
-    //       isSubscribed: true,
-    //     })
-    //   })
-    // }
+    if (this.state.weeklySelected) {
+      this.setState({
+        isEmailValid: false
+      }, async () => {
+        await this.addEmailToSendGrid('3p_weekly', this.state.emailAddress);
+        this.setState({
+          isSubscribed: true,
+        })
+      })
+    }
   }
 
   render() {
@@ -127,11 +127,10 @@ const ThankYouMessage = (props) => {
   return (
     <div className={styles.thankyou_container}>
       <h1 className={styles.thankyou_thanks}>Thanks for inviting us into your inbox!</h1>
-      <h2 className={styles.thankyou_almostDone}>Almost done.</h2>
+      <h2 className={styles.thankyou_almostDone}>All set.</h2>
       <div className={styles.thankyou_confirmationDetails}>
         <p className={styles.thankyou_confirmationSent}>Confirmation email sent</p>
-        <p>An email has been sent to {props.emailAddress}.</p>
-        <p>Click the confirmation link in your email to activate your account!</p>
+        <p>A welcome email has been sent to {props.emailAddress}.</p>
       </div>
     </div>
   )
