@@ -70,11 +70,17 @@ class NewsletterSignupForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    const SendGridListID = {
+      daily: '6559011',
+      weekly: '8327946',
+      testing: '8377652',
+    };
+
     if (this.state.dailySelected) {
       this.setState({
         isEmailValid: false
       }, async () => {
-        await this.addEmailToSendGrid('3p_daily', this.state.emailAddress);
+        await this.addEmailToSendGrid(SendGridListID.daily, this.state.emailAddress);
         this.setState({
           isSubscribed: true,
         })
@@ -85,7 +91,7 @@ class NewsletterSignupForm extends React.Component {
       this.setState({
         isEmailValid: false
       }, async () => {
-        await this.addEmailToSendGrid('3p_weekly', this.state.emailAddress);
+        await this.addEmailToSendGrid(SendGridListID.weekly, this.state.emailAddress);
         this.setState({
           isSubscribed: true,
         })
