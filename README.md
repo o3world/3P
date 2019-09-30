@@ -1,4 +1,4 @@
-# Triple Pundit
+# TriplePundit
 
 ./images/logo.sample.png
 >Additional information or tag line

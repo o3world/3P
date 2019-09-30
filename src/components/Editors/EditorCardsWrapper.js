@@ -19,7 +19,7 @@ const EditorCardsWrapper = () =>
     <section className={styles.wrapper}>
       <div className={styles.titleWrapper}>
         <h3 className={styles.title}>Editorial Team</h3>
-        <h4 className={styles.subtitle}>Critical Writers & Purpose Driven News Tellers</h4>
+        <h4 className={styles.subtitle}>We report the business case for sustainability.</h4>
       </div>
       <div className={styles.editorCardsWrapper}>
         {
