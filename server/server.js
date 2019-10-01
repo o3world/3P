@@ -98,6 +98,13 @@ app.get('/20*', (req, res) => {
 
 });
 
+// editors accidentally put some URLs with an incorrect year of 2038 out into the world.
+// redirect those to a URL with 2019 instead.
+app.get('/story/2038*', (req, res) => {
+    let newurl = req.path.replace(/\/2038\//, "/2019/");
+    res.redirect(301, newurl);
+});
+
 const doRedirect = (redirect_file) => {
   return function(req, res) {
 

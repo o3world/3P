@@ -131,6 +131,7 @@ class SingleStoryPage extends Component {
                 <meta property="og:image:height" content={imageHeight} />
                 <meta property="og:image:width" content={imageWidth} />
                 <meta property="og:url" content={currentURL} />
+                <meta name={'description'} content={seo_description} />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@triplepundit" />
                 <meta name="parsely-title" content={story.title} />
