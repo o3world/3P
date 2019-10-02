@@ -7,8 +7,6 @@ $tp_blue: #006BFF;
   grid-template-rows: 1fr auto;
   grid-template-areas: "daily weekly" "email_form email_form" "privacy_policy privacy_policy";
   grid-gap: 20px;
-  transition: height 1s cubic-bezier(0, .52, 0, 1);
-  height: auto;
   background-color: #ebebeb;
   padding: 25px;
   max-width: 764px;
@@ -17,22 +15,6 @@ $tp_blue: #006BFF;
   @media only screen and (max-width: 550px) {
     grid-template-columns: 1fr;
     grid-template-areas: "daily" "weekly" "email_form" "privacy_policy";
-  }
-
-  &.open {
-    //height: 100px;
-
-    .emailBox {
-      display: block;
-    }
-
-    .button {
-      display: block;
-    }
-
-    .privacyPolicy {
-      display: block;
-    }
   }
 }
 
@@ -121,6 +103,10 @@ $tp_blue: #006BFF;
   padding-left: 7px;
   background-color: $tp_blue;
   color: white;
+
+  &::placeholder {
+    color: white;
+  }
 
   @media only screen and (max-width: $medium_breakpoint) {
     width: 220px;
