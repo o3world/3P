@@ -83,7 +83,7 @@ class NewsletterSignupForm extends React.Component {
         isEmailValid: false
       }, async () => {
         // @TODO Change this to daily for production
-        await this.addEmailToSendGrid(SendGridListID.testing, this.state.emailAddress);
+        await this.addEmailToSendGrid(this.state.emailAddress, SendGridListID.testing);
         this.setState({
           isSubscribed: true,
         })
@@ -95,7 +95,7 @@ class NewsletterSignupForm extends React.Component {
         isEmailValid: false
       }, async () => {
         // @TODO Change this to weekly for production
-        await this.addEmailToSendGrid(SendGridListID.testing, this.state.emailAddress);
+        await this.addEmailToSendGrid(this.state.emailAddress, SendGridListID.testing);
         this.setState({
           isSubscribed: true,
         })
