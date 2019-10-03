@@ -43,7 +43,7 @@ class Header extends Component {
         else {
             this.setState({
                 isNewsletterSignupVisible: true,
-                newsletterSignupHeight: document.getElementById('newsletterSignupForm').scrollHeight + 50,
+                newsletterSignupHeight: document.getElementById('newsletterSignupForm').scrollHeight,
             })
         }
     }

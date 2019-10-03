@@ -1,6 +1,16 @@
 $medium_breakpoint: 550px;
 $tp_blue: #006BFF;
 
+.expandWrapper {
+  overflow: hidden;
+  transition: height 1.0s;
+
+  &.open {
+    transition: height 1.0s;
+  }
+
+}
+
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -8,17 +18,9 @@ $tp_blue: #006BFF;
   grid-template-areas: "daily weekly" "email_form email_form" "privacy_policy privacy_policy";
   grid-gap: 20px;
   background-color: #ebebeb;
-  padding: 0 25px;
+  padding: 25px;
   max-width: 764px;
   margin: 0 auto;
-  overflow: hidden;
-  transition: height 1.0s, padding 1.0s;
-
-  &.open {
-    //max-height: 489px;
-    padding: 25px;
-    transition: height 1.0s, padding 1.0s;
-  }
 
   @media only screen and (max-width: 550px) {
     grid-template-columns: 1fr;

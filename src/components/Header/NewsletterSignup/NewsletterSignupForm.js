@@ -105,8 +105,9 @@ class NewsletterSignupForm extends React.Component {
 
   render() {
     let formClasses = this.props.signupClass + ' ' + styles.wrapper;
+    let expandWrapperClasses = styles.expandWrapper;
     if (this.props.visible) {
-      formClasses = formClasses + ' ' + styles.open;
+      expandWrapperClasses = expandWrapperClasses + ' ' + styles.open;
     }
     let emailVisible = false;
     if (this.state.dailySelected || this.state.weeklySelected) {
@@ -119,18 +120,22 @@ class NewsletterSignupForm extends React.Component {
 
     if (!this.state.isSubscribed) {
       return (
-          <div id="newsletterSignupForm" className={formClasses} style={formStyles}>
+        <div id="newsletterSignupForm" className={expandWrapperClasses} style={formStyles}>
+          <div className={formClasses}>
             <DailySelection selected={this.state.dailySelected} handleClick={this.toggleDaily} />
             <WeeklySelection selected={this.state.weeklySelected} handleClick={this.toggleWeekly} />
             <EmailForm formVisible={emailVisible} submitHandler={this.handleSubmit} handleEmailInput={this.handleEmailInput} validEmail={this.state.isEmailValid} emailAddress={this.state.emailAddress} />
             <p className={styles.privacyPolicy}>By signing up you agree to our <Link to={'https://www.3blmedia.com/sites/www.3blmedia.com/files/pdf/3BL_Media_privacy_policy.pdf'}>privacy policy</Link>. You can opt out anytime.</p>
           </div>
+        </div>
       )
     }
     else {
       return (
-        <div id="newsletterSignupForm" className={formClasses} style={formStyles}>
-          <ThankYouMessage emailAddress={this.state.emailAddress} />
+        <div id="newsletterSignupForm" className={expandWrapperClasses} style={formStyles}>
+          <div className={formClasses}>
+            <ThankYouMessage emailAddress={this.state.emailAddress} />
+          </div>
         </div>
       )
     }
