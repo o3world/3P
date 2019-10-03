@@ -15,7 +15,8 @@ class Header extends Component {
         super(props);
         this.state = {
             isSearchVisible: false,
-            isNewsletterSignupVisible: false
+            isNewsletterSignupVisible: false,
+            newsletterSignupHeight: 0,
         };
 
         this.toggleSearchForm = this.toggleSearchForm.bind(this);
@@ -31,9 +32,20 @@ class Header extends Component {
 
     toggleNewsletterForm() {
         this.setState({
-            isNewsletterSignupVisible: !this.state.isNewsletterSignupVisible,
-            isSearchVisible: false
+            isSearchVisible: false,
         })
+        if (this.state.isNewsletterSignupVisible) {
+            this.setState({
+                isNewsletterSignupVisible: false,
+                newsletterSignupHeight: 0,
+            })
+        }
+        else {
+            this.setState({
+                isNewsletterSignupVisible: true,
+                newsletterSignupHeight: document.getElementById('newsletterSignupForm').scrollHeight + 50,
+            })
+        }
     }
 
     render() {
@@ -53,7 +65,7 @@ class Header extends Component {
                     <HamburgerNav/>
                     <SearchForm visible={this.state.isSearchVisible} formClass={styles.searchForm}/>
                 </header>
-                <NewsletterSignupForm signupClass={styles.subscribeForm} visible={this.state.isNewsletterSignupVisible}/>
+                <NewsletterSignupForm signupClass={styles.subscribeForm} visible={this.state.isNewsletterSignupVisible} height={this.state.newsletterSignupHeight}/>
             </Fragment>
         )
     }

@@ -104,18 +104,22 @@ class NewsletterSignupForm extends React.Component {
   }
 
   render() {
-      let formClasses = this.props.signupClass + ' ' + styles.wrapper;
-      if (this.props.visible) {
-        formClasses = formClasses + ' ' + styles.open;
-      }
-      let emailVisible = false;
-      if (this.state.dailySelected || this.state.weeklySelected) {
-        emailVisible = true;
-      }
+    let formClasses = this.props.signupClass + ' ' + styles.wrapper;
+    if (this.props.visible) {
+      formClasses = formClasses + ' ' + styles.open;
+    }
+    let emailVisible = false;
+    if (this.state.dailySelected || this.state.weeklySelected) {
+      emailVisible = true;
+    }
+
+    let formStyles = {
+      height: this.props.height,
+    }
 
     if (!this.state.isSubscribed) {
       return (
-          <div className={formClasses}>
+          <div id="newsletterSignupForm" className={formClasses} style={formStyles}>
             <DailySelection selected={this.state.dailySelected} handleClick={this.toggleDaily} />
             <WeeklySelection selected={this.state.weeklySelected} handleClick={this.toggleWeekly} />
             <EmailForm formVisible={emailVisible} submitHandler={this.handleSubmit} handleEmailInput={this.handleEmailInput} validEmail={this.state.isEmailValid} emailAddress={this.state.emailAddress} />
@@ -125,7 +129,7 @@ class NewsletterSignupForm extends React.Component {
     }
     else {
       return (
-        <div className={formClasses}>
+        <div id="newsletterSignupForm" className={formClasses} style={formStyles}>
           <ThankYouMessage emailAddress={this.state.emailAddress} />
         </div>
       )
