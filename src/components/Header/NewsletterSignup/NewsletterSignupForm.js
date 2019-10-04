@@ -27,9 +27,7 @@ class NewsletterSignupForm extends React.Component {
 
   addEmailToSendGrid = async (email, list) => {
     try {
-      // @TODO back.3blmedia for production
-      const url =  `http://threeblmediad8stg.prod.acquia-sites.com/newsletter_signup/${list}/${email}`
-      // const url =  `https://back.3blmedia.com/newsletter_signup/${list}/${email}`
+      const url =  `https://back.3blmedia.com/newsletter_signup/${list}/${email}`
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -82,8 +80,7 @@ class NewsletterSignupForm extends React.Component {
       this.setState({
         isEmailValid: false
       }, async () => {
-        // @TODO Change this to daily for production
-        await this.addEmailToSendGrid(this.state.emailAddress, SendGridListID.testing);
+        await this.addEmailToSendGrid(this.state.emailAddress, SendGridListID.daily);
         this.setState({
           isSubscribed: true,
         })
@@ -94,8 +91,7 @@ class NewsletterSignupForm extends React.Component {
       this.setState({
         isEmailValid: false
       }, async () => {
-        // @TODO Change this to weekly for production
-        await this.addEmailToSendGrid(this.state.emailAddress, SendGridListID.testing);
+        await this.addEmailToSendGrid(this.state.emailAddress, SendGridListID.weekly);
         this.setState({
           isSubscribed: true,
         })
