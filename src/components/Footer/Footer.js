@@ -14,7 +14,7 @@ const Footer = () =>
       <Link to={'/stories'}>Stories</Link>
       <Link to={'/sponsored-series'}>Sponsored Series</Link>
       <Link to={'/the-feed'}>The Feed</Link>
-      <a target={'_blank'} rel={'noopener noreferrer'} href={'/category/brands-taking-stands/59911'}>Brands Taking Stands</a>
+      <Link to={'/category/brands-taking-stands/59911'}>Brands Taking Stands</Link>
       <a target={'_blank'} rel={'noopener noreferrer'} href={'http://www.3blassociation.com/insights/magazines'}>CR Magazine</a>
       <a target={'_blank'} rel={'noopener noreferrer'} href={'http://www.3blforum.com/'}>3BL Forum</a>
     </div>

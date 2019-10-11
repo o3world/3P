@@ -44,7 +44,7 @@ class HamburgerMenu extends Component {
             <HamburgerCategories isExpanded={this.state.isCategoriesExpanded} />
             <Link to={'/sponsored-series'}>Sponsored Series</Link>
             <Link to={'/the-feed'}>The Feed</Link>
-            <a target={'_blank'} rel={'noopener noreferrer'} href={'/category/brands-taking-stands/59911'}>Brands Taking Stands</a>
+            <Link to={'/category/brands-taking-stands/59911'}>Brands Taking Stands</Link>
             <Link to={'/archive'}>Archive</Link>
             <Link to={'/editors'}>Meet Our Editors</Link>
             <a href={'https://contact.triplepundit.com/'} target={'_blank'} rel={'noopener noreferrer'}>Contact Us</a>
