@@ -42,7 +42,7 @@ async function getUrls() {
     return await fetch('https://back.3blmedia.com/sites/default/files/sitemap.json')
         .then(res => res.json())
 }
-app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'));
+                                            // app.use(expressSitemapX  ml(getUrls, 'https://www.triplepundit.com'));
 
 const httpLink = createHttpLink({
     uri: 'https://back.3blmedia.com/graphql',
