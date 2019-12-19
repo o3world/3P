@@ -27,9 +27,9 @@ app.all('*', function(req, res, next){
         return next();
     }
     // redirect to www version
-    if (!req.hostname.startsWith('www.')) {
-        res.redirect(301, "https://www." + req.headers.host + req.url);
-    }
+                                            // if (!req.hostname.startsWith('www.')) {
+                                            //     res.redirect(301, "https://www." + req.headers.host + req.url);
+                                            // }
     else { // must return next so processing continues if not redirect.
         return next();
     }
