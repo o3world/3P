@@ -57,7 +57,7 @@ class SingleStoryPage extends Component {
           headshot = <img className={styles.headshot} src={story.author.headshot.url} alt={story.author.name + ' headshot'} />;
         }
 
-        const currentURL = 'https://www.triplepundit.com' + this.props.location.pathname;
+        const currentURL = 'https://triplepundit.com' + this.props.location.pathname;
         /* @TODO: Replace hard-coded domain */
 
         let seo_title = story.title;
