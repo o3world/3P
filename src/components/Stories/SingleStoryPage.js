@@ -45,13 +45,14 @@ class SingleStoryPage extends Component {
         if (story.category) {
           catCleanName = story.category.entity.name.replace(/&/g, ' ').replace(/\s+/g, '-').toLowerCase();
           category = <div className={styles.category}><Link to={`/category/${catCleanName}/${story.category.entity.categoryID}`}>{story.category.entity.name}</Link></div>;
-        }
-        if (story.sponsoredSeries) {
-          category =
-              <div className={styles.category}>
-                <h4 className={styles.sponsoredBy}>{story.sponsoredSeries.entity.sponsoredBy} Sponsored Series</h4>
-                <h5 className={styles.seriesTitle}><Link to={story.sponsoredSeries.entity.entityUrl.path}>{story.sponsoredSeries.entity.seriesTitle}</Link></h5>
-              </div>;
+
+          if (story.sponsoredSeries) {
+            category =
+                <div className={styles.category}>
+                  <h4 className={styles.sponsoredBy}>{story.sponsoredSeries.entity.sponsoredBy} Sponsored Series</h4>
+                  <h5 className={styles.seriesTitle}><Link to={story.sponsoredSeries.entity.entityUrl.path}>{story.sponsoredSeries.entity.seriesTitle}</Link></h5>
+                </div>;
+          }
         }
 
         let headshot;
