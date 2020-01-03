@@ -65,6 +65,7 @@ app.get('/20*', (req, res) => {
 
     if (req.path.indexOf('Object]') > 0) {
         res.status(404).end();
+        console.log(`Redirects with object: ${req.path}`);
         return false;
     }
 
@@ -113,6 +114,7 @@ const doRedirect = (redirect_file) => {
 
     if (req.path.indexOf('Object]') > 0) {
         res.status(404).end();
+        console.log(`Story from 2038 with object: ${req.path}`);
         return false;
     }
 
@@ -132,6 +134,7 @@ const fetchXMLFile = (remoteXML) => {
     return function(req, res) {
         if (req.path.indexOf('Object]') > 0) {
             res.status(404).end();
+            console.log(`FetchXMLFile with object: ${req.path}`);
             return false;
         }
 
@@ -184,6 +187,7 @@ app.get('/story/*', (req, res) => {
 
     if (req.path.indexOf('Object]') > 0) {
         res.status(404).end();
+        console.log(`Story with object: ${req.path}`);
         return false;
     }
 
