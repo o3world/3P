@@ -191,6 +191,10 @@ app.get('/story/*', (req, res) => {
         return false;
     }
 
+    if (req.path.indexOf('/Nan/') > 0) {
+        console.log(`NaN: ${req.path}`);
+    }
+
     const context = {};
     const appRendered = (
         <ApolloProvider client={client}>
