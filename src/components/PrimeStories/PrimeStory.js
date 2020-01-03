@@ -5,7 +5,8 @@ import {Link} from "react-router-dom";
 import Moment from 'react-moment';
 
 const PrimeStory = (props) => {
-        const link = '/story/' + new Date(props.date.value * 1000).getFullYear() + props.entityUrl.path + '/' + props.id + '/';
+  props.date.value = props.date.value * 1000; // Converts Unix timestamp to JavaScript timestamp (seconds to milliseconds)
+        const link = '/story/' + new Date(props.date.value).getFullYear() + props.entityUrl.path + '/' + props.id + '/';
         const storyClass = (props.index === '1') ? styles.primeStorySecond : styles.primeStory;
 
         let category;
@@ -31,7 +32,7 @@ const PrimeStory = (props) => {
               <h3 className={styles.title}><span>{props.title}</span></h3>
               <p className={styles.author}>Words by {props.author.first} {props.author.last}</p>
               {category}
-              <Moment className={styles.date} format="MMM DD">{props.date.value * 1000}</Moment>
+              <Moment className={styles.date} format="MMM DD">{props.date.value}</Moment>
             </div>
           </Link>
         );

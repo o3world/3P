@@ -3,7 +3,8 @@ import styles from './PrimeStoryHero.module.scss';
 import Moment from "react-moment";
 import {Link} from "react-router-dom";
 
-const PrimeStoryHero = (props) => {
+const PrimeStoryHero = (props) => { 
+  props.date.value = props.date.value * 1000; // Converts Unix timestamp to JavaScript timestamp (seconds to milliseconds)
   const link = '/story/' + new Date(props.date.value * 1000).getFullYear() + props.entityUrl.path + '/' + props.id + '/';
 
   return (
@@ -17,7 +18,7 @@ const PrimeStoryHero = (props) => {
       <div className={styles.meta}>
         <h3 className={styles.name}><span>{props.title}</span></h3>
         <p className={styles.author}>Words by {props.author.first} {props.author.last}</p>
-        <Moment className={styles.date} format="MMM DD">{props.date.value * 1000}</Moment>
+        <Moment className={styles.date} format="MMM DD">{props.date.value}</Moment>
       </div>
     </Link>
   );

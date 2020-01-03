@@ -11,7 +11,7 @@ const SearchWrapper = (props) => (
             let story= {
                 title: obj.title,
                 date: {
-                    value: new Date(obj.published_at).getTime() / 1000, // Convert ISO date format to epoch
+                    value: obj.published_at,
                 },
                 tallImage: {
                     derivative: {

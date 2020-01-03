@@ -7,7 +7,7 @@ import styles from './StoryMasonryTile.module.scss';
 
 const StoryMasonryTile = (props) => {
   const story = {...props.data};
-  const link = '/story/' + new Date(story.date.value * 1000).getFullYear() + story.entityUrl.path + '/' + story.id + '/';
+  const link = '/story/' + new Date(story.date.value).getFullYear() + story.entityUrl.path + '/' + story.id + '/';
 
 
   let sponsored;
@@ -24,7 +24,7 @@ const StoryMasonryTile = (props) => {
 
   const author = story.author.first && story.author.last ? `${story.author.first} ${story.author.last}` : story.author.name;
 
-  const dateFormat = new Date().getFullYear() === new Date(story.date.value * 1000).getFullYear() ? 'MMM DD' : 'MMM DD, YYYY';
+  const dateFormat = new Date().getFullYear() === new Date(story.date.value).getFullYear() ? 'MMM DD' : 'MMM DD, YYYY';
 
   return (
     <LazyLoad height={200}>
@@ -38,7 +38,7 @@ const StoryMasonryTile = (props) => {
           {category}
           {sponsored}
           <p className={styles.author}>Words by {author}</p>
-          <Moment className={styles.date} format={dateFormat}>{story.date.value * 1000}</Moment>
+          <Moment className={styles.date} format={dateFormat}>{story.date.value}</Moment>
         </div>
       </Link>
     </LazyLoad>

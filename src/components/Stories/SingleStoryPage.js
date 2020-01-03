@@ -40,6 +40,8 @@ class SingleStoryPage extends Component {
 
         const story = data.nodeQuery.entities[0];
 
+        story.date.value = story.date.value * 1000; // Convert Unix timestamp to JavaScript timestamp (seconds to milliseconds)
+
         let category;
         let catCleanName;
         if (story.category) {
@@ -143,7 +145,7 @@ class SingleStoryPage extends Component {
                 <meta name="parsely-section" content={catCleanName} />
                 <meta name="parsely-type" content="post" />
                 <meta name="parsely-author" content={authorName} />
-                <meta name="parsely-pub-date" content={new Date(story.date.value * 1000).toISOString()} />
+                <meta name="parsely-pub-date" content={new Date(story.date.value).toISOString()} />
               </Helmet>
               <div className={styles.meta}>
                 <h1 className={styles.title}>{story.title}</h1>
@@ -151,7 +153,7 @@ class SingleStoryPage extends Component {
                 <span className={styles.authorName}><Link to={authorLink}>Words by {authorName}</Link></span>
                 {category}
                 <StoryShare {...shareData}/>
-                <Moment className={styles.date} format="MMM DD, YYYY">{story.date.value * 1000}</Moment>
+                <Moment className={styles.date} format="MMM DD, YYYY">{story.date.value}</Moment>
               </div>
               <div className={styles.bodyWrapper}>
                 {wideImage}

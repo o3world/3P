@@ -64,9 +64,8 @@ app.get('/20*', (req, res) => {
     let newurl;
 
     if (req.path.indexOf('Object]') > 0) {
-        res.status(404).end();
         console.log(`Redirects with object: ${req.path}`);
-        return false;
+        res.status(404).end();
     }
 
     // First check if the path is one of the old patterns.
@@ -113,9 +112,8 @@ const doRedirect = (redirect_file) => {
   return function(req, res) {
 
     if (req.path.indexOf('Object]') > 0) {
-        res.status(404).end();
         console.log(`Story from 2038 with object: ${req.path}`);
-        return false;
+        res.status(404).end();
     }
 
     const newurl = getRedirect(req.path, redirect_file, fs);
@@ -133,9 +131,8 @@ const doRedirect = (redirect_file) => {
 const fetchXMLFile = (remoteXML) => {
     return function(req, res) {
         if (req.path.indexOf('Object]') > 0) {
-            res.status(404).end();
             console.log(`FetchXMLFile with object: ${req.path}`);
-            return false;
+            res.status(404).end();
         }
 
         fetch(remoteXML)
@@ -191,7 +188,7 @@ app.get('/story/*', (req, res) => {
 
     if (req.path.indexOf('Object]') > 0) {
         console.log(`Story with object: ${req.path}`);
-        return res.status(404).end();
+        res.status(404).end();
     }
 
     const context = {};
