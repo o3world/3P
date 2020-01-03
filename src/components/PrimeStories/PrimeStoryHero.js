@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 const PrimeStoryHero = (props) => { 
   props.date.value = props.date.value * 1000; // Converts Unix timestamp to JavaScript timestamp (seconds to milliseconds)
-  const link = '/story/' + new Date(props.date.value * 1000).getFullYear() + props.entityUrl.path + '/' + props.id + '/';
+  const link = '/story/' + new Date(props.date.value).getFullYear() + props.entityUrl.path + '/' + props.id + '/';
 
   return (
     <Link to={link} className={styles.wrapper}>
