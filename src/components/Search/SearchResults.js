@@ -35,10 +35,12 @@ class SearchResult extends React.Component {
                     message : `Results for ${this.props.match.params.searchterm}`,
                     loading : false
                 });
-            }).catch(error => {
-            this.setState({
-                message : error
             })
+            .catch(error => {
+                this.setState({
+                    message : error
+                }
+            )
         });
     };
 

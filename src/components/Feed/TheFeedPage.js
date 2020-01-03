@@ -20,7 +20,10 @@ class TheFeedPage extends Component {
     componentDidMount = () => {
       fetch('https://www.3blmedia.com/feeds/fmr/csrwire')
           .then(response => response.json())
-          .then(data => this.setState({ data: data.data.results, loading: false }));
+          .then(data => this.setState({ data: data.data.results, loading: false }))
+          .catch((error) => {
+              console.log("The Feed Page fetch error: " + error)
+          });
     };
 
 
