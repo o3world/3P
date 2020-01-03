@@ -185,37 +185,38 @@ app.get('/author/*/101', (req, res) => {
 // and finally, individual stories pages.
 app.get('/story/*', (req, res) => {
 
-    if (req.path.indexOf('Object]') > 0) {
-        res.status(404).end();
-        console.log(`Story with object: ${req.path}`);
-        return false;
-    }
-
     if (req.path.indexOf('/Nan/') > 0) {
         console.log(`NaN: ${req.path}`);
     }
 
-    const context = {};
-    const appRendered = (
-        <ApolloProvider client={client}>
-            <StaticRouter location={req.url} context={context}>
-                <App/>
-            </StaticRouter>
-        </ApolloProvider>
-    );
+    if (req.path.indexOf('Object]') > 0) {
+        res.status(404).end();
+        console.log(`Story with object: ${req.path}`);
+    }
+    else {
 
-    renderToStringWithData(appRendered).then((root) => {
-        fs.readFile('./build/index.html', 'utf8', function (err, data) {
-            if (err) throw err;
-            const helmet = Helmet.renderStatic();
-            const document = data
-                .replace('<div id="root"></div>', `<div id="root">${root}</div>`)
-                .replace(/<title>(.*?)<\/title>/, helmet.title.toString())
-                .replace('<meta name="helmet">', helmet.meta.toString());
-            // console.log('SSR: ' + req.path);
-            res.status(200).send(document);
+        const context = {};
+        const appRendered = (
+            <ApolloProvider client={client}>
+                <StaticRouter location={req.url} context={context}>
+                    <App/>
+                </StaticRouter>
+            </ApolloProvider>
+        );
+
+        renderToStringWithData(appRendered).then((root) => {
+            fs.readFile('./build/index.html', 'utf8', function (err, data) {
+                if (err) throw err;
+                const helmet = Helmet.renderStatic();
+                const document = data
+                    .replace('<div id="root"></div>', `<div id="root">${root}</div>`)
+                    .replace(/<title>(.*?)<\/title>/, helmet.title.toString())
+                    .replace('<meta name="helmet">', helmet.meta.toString());
+                // console.log('SSR: ' + req.path);
+                res.status(200).send(document);
+            });
         });
-    });
+    }
 
 });
 
