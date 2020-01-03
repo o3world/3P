@@ -89,7 +89,7 @@ app.get('/20*', (req, res) => {
 
     // if we have a redirect, go there.
     if (newurl != null) {
-        console.log('redirecting to ' + newurl);
+        // console.log('redirecting to ' + newurl);
         res.redirect(301, newurl);
     }
     else {
@@ -198,7 +198,7 @@ app.get('/story/*', (req, res) => {
                 .replace('<div id="root"></div>', `<div id="root">${root}</div>`)
                 .replace(/<title>(.*?)<\/title>/, helmet.title.toString())
                 .replace('<meta name="helmet">', helmet.meta.toString());
-            console.log('SSR: ' + req.path);
+            // console.log('SSR: ' + req.path);
             res.status(200).send(document);
         });
     });
