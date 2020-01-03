@@ -41,7 +41,7 @@ app.use(Express.static(path.join(__dirname, '../build')));
 async function getUrls() {
     return await fetch('https://back.3blmedia.com/sites/default/files/sitemap.json')
         .then(res => res.json())
-        .catch((error) => console.log("Build sitemap error: " + error))
+        .catch((error) => console.log(`Build sitemap error: ${error}`))
 }
  
 app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'));
@@ -64,7 +64,8 @@ app.get('/20*', (req, res) => {
     let newurl;
 
     if (req.path.indexOf('Object]') > 0) {
-        res.end();
+        res.status(404).end();
+        return false;
     }
 
     // First check if the path is one of the old patterns.
@@ -111,7 +112,8 @@ const doRedirect = (redirect_file) => {
   return function(req, res) {
 
     if (req.path.indexOf('Object]') > 0) {
-      res.end()
+        res.status(404).end();
+        return false;
     }
 
     const newurl = getRedirect(req.path, redirect_file, fs);
@@ -129,7 +131,8 @@ const doRedirect = (redirect_file) => {
 const fetchXMLFile = (remoteXML) => {
     return function(req, res) {
         if (req.path.indexOf('Object]') > 0) {
-            res.end();
+            res.status(404).end();
+            return false;
         }
 
         fetch(remoteXML)
@@ -180,7 +183,8 @@ app.get('/author/*/101', (req, res) => {
 app.get('/story/*', (req, res) => {
 
     if (req.path.indexOf('Object]') > 0) {
-        res.end();
+        res.status(404).end();
+        return false;
     }
 
     const context = {};
