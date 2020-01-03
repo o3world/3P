@@ -41,8 +41,10 @@ app.use(Express.static(path.join(__dirname, '../build')));
 async function getUrls() {
     return await fetch('https://back.3blmedia.com/sites/default/files/sitemap.json')
         .then(res => res.json())
+        .catch((error) => console.log("Build sitemap error: " + error))
 }
-                                            // app.use(expressSitemapX  ml(getUrls, 'https://www.triplepundit.com'));
+ 
+app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'));
 
 const httpLink = createHttpLink({
     uri: 'https://back.3blmedia.com/graphql',
