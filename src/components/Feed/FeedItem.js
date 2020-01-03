@@ -21,6 +21,11 @@ const FeedItem = (props) => {
     teaser = teaser.substr(0, teaser.lastIndexOf(' ')) + ' &hellip;';
   }
 
+  let category;
+  if (props.category) {
+    category = props.category;
+  }
+
   return (
     <div className={thumbnailClass}>
       {feedThumbnail}
@@ -28,7 +33,8 @@ const FeedItem = (props) => {
         <h2 className={styles.title}><a target='_blank' rel="noopener noreferrer" href={props.link}>{props.title}</a></h2>
         <div className={styles.description} dangerouslySetInnerHTML={{__html: teaser}}/>
         <span className={styles.company} dangerouslySetInnerHTML={ {__html: company}} />
-        <span className={styles.category}>{props.category}</span>
+
+        <span className={styles.category}>{category}</span>
         <Moment className={styles.date} format="MMM DD">{props.date}</Moment>
       </div>
     </div>
