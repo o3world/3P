@@ -26,7 +26,10 @@ const AuthorStoriesWrapper = (props) => {
 
             return (
                 <section className={styles.wrapper}>
-                  {stories.map((story, index) => <StoryMasonryTile data={story} key={index}/>)}
+                  {stories.map((story, index) => {
+                    story.date.value = story.date.value * 1000; // Converts Unix timestamp to JavaScript timestamp (seconds to milliseconds)
+                    return <StoryMasonryTile data={story} key={index}/>
+                  })}
                 </section>
             );
           }}
