@@ -208,10 +208,10 @@ app.get('/story/*', (req, res) => {
                 .replace('<div id="root"></div>', `<div id="root">${root}</div>`)
                 .replace(/<title>(.*?)<\/title>/, helmet.title.toString())
                 .replace('<meta name="helmet">', helmet.meta.toString());
-                
+
+                res.status(200).send(document);
             if(!res.headersSent) {
                 // console.log('SSR: ' + req.path);
-                res.status(200).send(document);
             }
         });
     });
