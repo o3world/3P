@@ -18,9 +18,10 @@ const SeriesStoriesMasonryWrapper = (props) => (
 
       return (
           <section className={styles.wrapper}>
-            { data.nodeQuery.entities.map((story) =>
-                <StoryMasonryTile data={story} key={story.id} context={'singleSeries'}/>
-            )}
+            { data.nodeQuery.entities.map((story) => {
+              story.date.value = story.date.value * 1000; // Converts Unix timestamp to JavaScript timestamp (seconds to milliseconds)
+              return <StoryMasonryTile data={story} key={story.id} context={'singleSeries'}/>
+            })}
           </section>
       )
     }}
