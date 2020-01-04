@@ -186,11 +186,6 @@ app.get('/story/*', (req, res) => {
         console.log(`NaN: ${req.path}`);
     }
 
-    if (req.path.indexOf('Object]') > 0) {
-        console.log(`Story with object: ${req.path}`);
-        // res.status(404).end();
-    }
-
     const context = {};
     const appRendered = (
         <ApolloProvider client={client}>
@@ -209,8 +204,15 @@ app.get('/story/*', (req, res) => {
                 .replace(/<title>(.*?)<\/title>/, helmet.title.toString())
                 .replace('<meta name="helmet">', helmet.meta.toString());
             if(!res.headersSent) {
-                res.status(200).send(document);
-                console.log('SSR: ' + req.path);
+
+                if (req.path.indexOf('Object]') > 0) {
+                    console.log(`Story with object: ${req.path}`);
+                    res.status(404).end();
+                }
+                else {
+                    // console.log('SSR: ' + req.path);
+                    res.status(200).send(document);
+                }
             }
         });
     });
