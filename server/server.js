@@ -188,7 +188,7 @@ app.get('/story/*', (req, res) => {
 
     if (req.path.indexOf('Object]') > 0) {
         console.log(`Story with object: ${req.path}`);
-        res.status(404).end();
+        // res.status(404).end();
     }
 
     const context = {};
@@ -208,8 +208,10 @@ app.get('/story/*', (req, res) => {
                 .replace('<div id="root"></div>', `<div id="root">${root}</div>`)
                 .replace(/<title>(.*?)<\/title>/, helmet.title.toString())
                 .replace('<meta name="helmet">', helmet.meta.toString());
-            // console.log('SSR: ' + req.path);
-            res.status(200).send(document);
+            if(!res.headersSent) {
+                res.status(200).send(document);
+                console.log('SSR: ' + req.path);
+            }
         });
     });
 
