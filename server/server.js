@@ -180,7 +180,7 @@ app.get('/author/*/101', (req, res) => {
 });
 
 // and finally, individual stories pages.
-app.get('/story/*', (req, res) => {
+app.get('/story/*', (req, res, next) => {
 
     if (req.path.indexOf('NaN') > 0) {
         console.log(`NaN: ${req.path}`);
@@ -189,6 +189,7 @@ app.get('/story/*', (req, res) => {
     if (req.path.indexOf('Object]') > 0) {
         console.log(`Story with object: ${req.path}`);
         res.status(404).end();
+        next();
     }
 
     const context = {};
@@ -209,10 +210,7 @@ app.get('/story/*', (req, res) => {
                 .replace(/<title>(.*?)<\/title>/, helmet.title.toString())
                 .replace('<meta name="helmet">', helmet.meta.toString());
 
-                res.status(200).send(document);
-            if(!res.headersSent) {
-                // console.log('SSR: ' + req.path);
-            }
+            res.status(200).send(document);
         });
     });
 
