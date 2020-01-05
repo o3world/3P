@@ -188,7 +188,7 @@ app.get('/story/*', (req, res, next) => {
 
     if (req.path.indexOf('Object]') > 0) {
         console.log(`Story with object: ${req.path}`);
-        res.status(404).end();
+        res.status(404);
         next();
     }
 
