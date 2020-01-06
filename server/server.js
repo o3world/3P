@@ -60,7 +60,7 @@ const client = new ApolloClient({
 app.get('*Object]', (req, res) => {
     console.log(`Object in URL: ${req.path}`)
     res.status(404).send('Object in URL')
-}
+})
 
 // have the server handle only certain paths - the rest, React can handle on the front end.
 // first, redirects that begin with the Year.
