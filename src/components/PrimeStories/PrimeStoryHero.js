@@ -1,11 +1,12 @@
-import React from 'react';
-import styles from './PrimeStoryHero.module.scss';
-import Moment from "react-moment";
-import {Link} from "react-router-dom";
+import React from 'react'
+import styles from './PrimeStoryHero.module.scss'
+import Moment from "react-moment"
+import moment from 'moment'
+import {Link} from "react-router-dom"
 
 const PrimeStoryHero = (props) => { 
   const storyDate = props.date.value * 1000; // Converts Unix timestamp to JavaScript timestamp (seconds to milliseconds)
-  const link = '/story/' + new Date(storyDate).getFullYear() + props.entityUrl.path + '/' + props.id + '/';
+  const link = '/story/' + moment(storyDate).year() + props.entityUrl.path + '/' + props.id + '/';
 
   return (
     <Link to={link} className={styles.wrapper}>

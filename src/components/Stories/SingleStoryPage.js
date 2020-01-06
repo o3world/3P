@@ -8,11 +8,13 @@ import styles from './SingleStoryPage.module.scss'
 import { StoryByIdQuery } from "./StoryQueries"
 import Ad from "../Ads/Ad"
 
-import StoryShare from './SocialShare/StoryShare';
-import LoadingSpinner from "../Common/LoadingSpinner";
-import PageTemplate from "../Common/PageTemplate";
+import moment from 'moment'
+
+import StoryShare from './SocialShare/StoryShare'
+import LoadingSpinner from "../Common/LoadingSpinner"
+import PageTemplate from "../Common/PageTemplate"
 import SingleStoryBio from './SingleStoryBio'
-import RelatedStoriesByCategory from './RelatedStoriesByCategory';
+import RelatedStoriesByCategory from './RelatedStoriesByCategory'
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -145,7 +147,7 @@ class SingleStoryPage extends Component {
                 <meta name="parsely-section" content={catCleanName} />
                 <meta name="parsely-type" content="post" />
                 <meta name="parsely-author" content={authorName} />
-                <meta name="parsely-pub-date" content={new Date(story.date.value).toISOString()} />
+                <meta name="parsely-pub-date" content={moment(story.date.value).toISOString()} />
               </Helmet>
               <div className={styles.meta}>
                 <h1 className={styles.title}>{story.title}</h1>

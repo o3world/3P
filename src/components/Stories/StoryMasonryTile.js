@@ -1,13 +1,14 @@
-import React from "react";
-import LazyLoad from 'react-lazyload';
-import {Link} from "react-router-dom";
+import React from "react"
+import LazyLoad from 'react-lazyload'
+import {Link} from "react-router-dom"
 
-import Moment from 'react-moment';
-import styles from './StoryMasonryTile.module.scss';
+import Moment from 'react-moment'
+import moment from 'moment'
+import styles from './StoryMasonryTile.module.scss'
 
 const StoryMasonryTile = (props) => {
   const story = {...props.data};
-  const link = '/story/' + new Date(story.date.value).getFullYear() + story.entityUrl.path + '/' + story.id + '/';
+  const link = '/story/' + moment(story.date.value).year() + story.entityUrl.path + '/' + story.id + '/';
 
 
   let sponsored;
@@ -24,7 +25,7 @@ const StoryMasonryTile = (props) => {
 
   const author = story.author.first && story.author.last ? `${story.author.first} ${story.author.last}` : story.author.name;
 
-  const dateFormat = new Date().getFullYear() === new Date(story.date.value).getFullYear() ? 'MMM DD' : 'MMM DD, YYYY';
+  const dateFormat = moment().year() === moment(story.date.value).year() ? 'MMM DD' : 'MMM DD, YYYY';
 
   return (
     <LazyLoad height={200}>

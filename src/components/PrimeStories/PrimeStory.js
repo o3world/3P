@@ -1,12 +1,13 @@
-import React from 'react';
-import styles from './PrimeStory.module.scss';
-import {Link} from "react-router-dom";
+import React from 'react'
+import styles from './PrimeStory.module.scss'
+import {Link} from "react-router-dom"
 
-import Moment from 'react-moment';
+import Moment from 'react-moment'
+import moment from 'moment'
 
 const PrimeStory = (props) => {
   const storyDate = props.date.value * 1000; // Converts Unix timestamp to JavaScript timestamp (seconds to milliseconds)
-        const link = '/story/' + new Date(storyDate).getFullYear() + props.entityUrl.path + '/' + props.id + '/';
+        const link = '/story/' + moment(storyDate).year() + props.entityUrl.path + '/' + props.id + '/';
         const storyClass = (props.index === '1') ? styles.primeStorySecond : styles.primeStory;
 
         let category;

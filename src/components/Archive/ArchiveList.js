@@ -1,11 +1,13 @@
-import React from 'react';
-import { Query } from "react-apollo";
+import React from 'react'
+import { Query } from "react-apollo"
 import { Link } from 'react-router-dom'
-import { StoriesByDates } from "../Stories/StoryQueries";
+import { StoriesByDates } from "../Stories/StoryQueries"
 
-import LoadingSpinner from "../Common/LoadingSpinner";
+import moment from 'moment'
 
-import styles from './ArchivePage.module.scss';
+import LoadingSpinner from "../Common/LoadingSpinner"
+
+import styles from './ArchivePage.module.scss'
 
 const ArchiveList = (props) =>
   <Query
@@ -22,7 +24,7 @@ const ArchiveList = (props) =>
       return (
           <section className={styles.storyList}>
             {stories.map((story, index) => 
-                <h5 className={styles.storyTitle}><Link to={`/story/${new Date(story.date.value * 1000).getFullYear()}${story.entityUrl.path}/${story.id}/`}>{story.title}</Link></h5>
+                <h5 className={styles.storyTitle}><Link to={`/story/${moment(story.date.value * 1000).year()}${story.entityUrl.path}/${story.id}/`}>{story.title}</Link></h5>
             )}
           </section>
       );

@@ -1,11 +1,13 @@
-import React from 'react';
-import styles from './Footer.module.scss';
-import { Link } from 'react-router-dom';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import React from 'react'
+import styles from './Footer.module.scss'
+import { Link } from 'react-router-dom'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 
-import tp_logo from '../../assets/images/triplepundit_logos.png';
+import moment from 'moment'
 
-const year = new Date().getFullYear();
+import tp_logo from '../../assets/images/triplepundit_logos.png'
+
+const year = moment().year();
 
 const Footer = () =>
   <footer className={styles.footer}>
