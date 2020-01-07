@@ -58,7 +58,7 @@ const client = new ApolloClient({
 });
 
 app.get('*Object]', (req, res) => {
-    console.log(`Object in URL: ${req.path}`)
+    // console.log(`Object in URL: ${req.path}`)
     res.redirect(404, '/404')
 })
 
@@ -173,7 +173,7 @@ app.get('/author/*/101', (req, res) => {
 app.get('/story/*', (req, res, next) => {
 
     if (req.path.indexOf('NaN') > 0) {
-        console.log(`NaN: ${req.path}`);
+        // console.log(`NaN: ${req.path}`);
     }
 
     const context = {};
