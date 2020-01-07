@@ -59,7 +59,7 @@ const client = new ApolloClient({
 
 app.get('*Object]', (req, res) => {
     console.log(`Object in URL: ${req.path}`)
-    res.status(404).send('Object in URL')
+    res.redirect(404, '/404')
 })
 
 // have the server handle only certain paths - the rest, React can handle on the front end.
@@ -67,10 +67,6 @@ app.get('*Object]', (req, res) => {
 app.get('/20*', (req, res) => {
 
     let newurl;
-
-    if (req.path.indexOf('Object]') > 0) {
-        console.log(`Redirects with object: ${req.path}`);
-    }
 
     // First check if the path is one of the old patterns.
     // if so, try to get a redirect from the appropriate redirect file.
@@ -96,7 +92,6 @@ app.get('/20*', (req, res) => {
 
     // if we have a redirect, go there.
     if (newurl != null) {
-        // console.log('redirecting to ' + newurl);
         res.redirect(301, newurl);
     }
     else {
@@ -115,10 +110,6 @@ app.get('/story/2038*', (req, res) => {
 const doRedirect = (redirect_file) => {
   return function(req, res) {
 
-    if (req.path.indexOf('Object]') > 0) {
-        console.log(`Story from 2038 with object: ${req.path}`);
-    }
-
     const newurl = getRedirect(req.path, redirect_file, fs);
 
     // if we have a redirect, go there.
@@ -133,9 +124,6 @@ const doRedirect = (redirect_file) => {
 
 const fetchXMLFile = (remoteXML) => {
     return function(req, res) {
-        if (req.path.indexOf('Object]') > 0) {
-            console.log(`FetchXMLFile with object: ${req.path}`);
-        }
 
         fetch(remoteXML)
             .then(xmlData => xmlData.text())
@@ -186,10 +174,6 @@ app.get('/story/*', (req, res, next) => {
 
     if (req.path.indexOf('NaN') > 0) {
         console.log(`NaN: ${req.path}`);
-    }
-
-    if (req.path.indexOf('Object]') > 0) {
-        console.log(`Story with object: ${req.path}`);
     }
 
     const context = {};
