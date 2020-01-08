@@ -23,7 +23,6 @@ class HamburgerMenu extends Component {
 
   handleCategoryClick(e) {
     this.toggleCategoryMenu();
-    console.log(`Category toggle was clicked. It's set to ${this.state.isCategoriesExpanded}`);
     e.stopPropagation();
   }
 

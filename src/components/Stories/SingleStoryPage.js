@@ -8,11 +8,13 @@ import styles from './SingleStoryPage.module.scss'
 import { StoryByIdQuery } from "./StoryQueries"
 import Ad from "../Ads/Ad"
 
-import StoryShare from './SocialShare/StoryShare';
-import LoadingSpinner from "../Common/LoadingSpinner";
-import PageTemplate from "../Common/PageTemplate";
+import moment from 'moment'
+
+import StoryShare from './SocialShare/StoryShare'
+import LoadingSpinner from "../Common/LoadingSpinner"
+import PageTemplate from "../Common/PageTemplate"
 import SingleStoryBio from './SingleStoryBio'
-import RelatedStoriesByCategory from './RelatedStoriesByCategory';
+import RelatedStoriesByCategory from './RelatedStoriesByCategory'
 
 class SingleStoryPage extends Component {
   constructor(props) {
@@ -38,18 +40,21 @@ class SingleStoryPage extends Component {
 
         const story = data.nodeQuery.entities[0];
 
+        story.date.value = story.date.value * 1000; // Convert Unix timestamp to JavaScript timestamp (seconds to milliseconds)
+
         let category;
         let catCleanName;
         if (story.category) {
           catCleanName = story.category.entity.name.replace(/&/g, ' ').replace(/\s+/g, '-').toLowerCase();
           category = <div className={styles.category}><Link to={`/category/${catCleanName}/${story.category.entity.categoryID}`}>{story.category.entity.name}</Link></div>;
-        }
-        if (story.sponsoredSeries) {
-          category =
-              <div className={styles.category}>
-                <h4 className={styles.sponsoredBy}>{story.sponsoredSeries.entity.sponsoredBy} Sponsored Series</h4>
-                <h5 className={styles.seriesTitle}><Link to={story.sponsoredSeries.entity.entityUrl.path}>{story.sponsoredSeries.entity.seriesTitle}</Link></h5>
-              </div>;
+
+          if (story.sponsoredSeries) {
+            category =
+                <div className={styles.category}>
+                  <h4 className={styles.sponsoredBy}>{story.sponsoredSeries.entity.sponsoredBy} Sponsored Series</h4>
+                  <h5 className={styles.seriesTitle}><Link to={story.sponsoredSeries.entity.entityUrl.path}>{story.sponsoredSeries.entity.seriesTitle}</Link></h5>
+                </div>;
+          }
         }
 
         let headshot;
@@ -140,7 +145,7 @@ class SingleStoryPage extends Component {
                 <meta name="parsely-section" content={catCleanName} />
                 <meta name="parsely-type" content="post" />
                 <meta name="parsely-author" content={authorName} />
-                <meta name="parsely-pub-date" content={new Date(story.date.value * 1000).toISOString()} />
+                <meta name="parsely-pub-date" content={moment(story.date.value).toISOString()} />
               </Helmet>
               <div className={styles.meta}>
                 <h1 className={styles.title}>{story.title}</h1>
@@ -148,7 +153,7 @@ class SingleStoryPage extends Component {
                 <span className={styles.authorName}><Link to={authorLink}>Words by {authorName}</Link></span>
                 {category}
                 <StoryShare {...shareData}/>
-                <Moment className={styles.date} format="MMM DD, YYYY">{story.date.value * 1000}</Moment>
+                <Moment className={styles.date} format="MMM DD, YYYY">{story.date.value}</Moment>
               </div>
               <div className={styles.bodyWrapper}>
                 {wideImage}

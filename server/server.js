@@ -27,9 +27,9 @@ app.all('*', function(req, res, next){
         return next();
     }
     // redirect to www version
-    if (!req.hostname.startsWith('www.')) {
-        res.redirect(301, "https://www." + req.headers.host + req.url);
-    }
+                                            // if (!req.hostname.startsWith('www.')) {
+                                            //     res.redirect(301, "https://www." + req.headers.host + req.url);
+                                            // }
     else { // must return next so processing continues if not redirect.
         return next();
     }
@@ -41,7 +41,9 @@ app.use(Express.static(path.join(__dirname, '../build')));
 async function getUrls() {
     return await fetch('https://back.3blmedia.com/sites/default/files/sitemap.json')
         .then(res => res.json())
+        .catch((error) => console.log(`Build sitemap error: ${error}`))
 }
+ 
 app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'));
 
 const httpLink = createHttpLink({
@@ -55,15 +57,16 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
+app.get('*Object]', (req, res) => {
+    // console.log(`Object in URL: ${req.path}`)
+    res.redirect(404, '/404')
+})
+
 // have the server handle only certain paths - the rest, React can handle on the front end.
 // first, redirects that begin with the Year.
 app.get('/20*', (req, res) => {
 
     let newurl;
-
-    if (req.path.indexOf('Object]') > 0) {
-        res.end();
-    }
 
     // First check if the path is one of the old patterns.
     // if so, try to get a redirect from the appropriate redirect file.
@@ -89,7 +92,6 @@ app.get('/20*', (req, res) => {
 
     // if we have a redirect, go there.
     if (newurl != null) {
-        console.log('redirecting to ' + newurl);
         res.redirect(301, newurl);
     }
     else {
@@ -108,10 +110,6 @@ app.get('/story/2038*', (req, res) => {
 const doRedirect = (redirect_file) => {
   return function(req, res) {
 
-    if (req.path.indexOf('Object]') > 0) {
-      res.end()
-    }
-
     const newurl = getRedirect(req.path, redirect_file, fs);
 
     // if we have a redirect, go there.
@@ -126,9 +124,6 @@ const doRedirect = (redirect_file) => {
 
 const fetchXMLFile = (remoteXML) => {
     return function(req, res) {
-        if (req.path.indexOf('Object]') > 0) {
-            res.end();
-        }
 
         fetch(remoteXML)
             .then(xmlData => xmlData.text())
@@ -175,10 +170,10 @@ app.get('/author/*/101', (req, res) => {
 });
 
 // and finally, individual stories pages.
-app.get('/story/*', (req, res) => {
+app.get('/story/*', (req, res, next) => {
 
-    if (req.path.indexOf('Object]') > 0) {
-        res.end();
+    if (req.path.indexOf('NaN') > 0) {
+        // console.log(`NaN: ${req.path}`);
     }
 
     const context = {};
@@ -198,7 +193,7 @@ app.get('/story/*', (req, res) => {
                 .replace('<div id="root"></div>', `<div id="root">${root}</div>`)
                 .replace(/<title>(.*?)<\/title>/, helmet.title.toString())
                 .replace('<meta name="helmet">', helmet.meta.toString());
-            console.log('SSR: ' + req.path);
+
             res.status(200).send(document);
         });
     });

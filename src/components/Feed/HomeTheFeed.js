@@ -14,8 +14,9 @@ class HomeTheFeed extends Component {
 
   componentDidMount() {
     fetch('https://www.3blmedia.com/feeds/fmr/csrwire')
-        .then(response => response.json())
-        .then(data => this.setState({ data: data.data.results.slice(0,4) }));
+      .then(response => response.json())
+      .then(data => this.setState({ data: data.data.results.slice(0,4) }))
+      .catch((error) => console.log("Home Feed fetch error: " + error))
   }
 
   render() {
