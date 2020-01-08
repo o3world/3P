@@ -3,7 +3,7 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const httpLink = createHttpLink({
-    uri: 'http://back.3blmedia.com/graphql'
+    uri: 'http://back-stage.3blmedia.com/graphql'
 });
 
 const GraphQLClient = new ApolloClient({

@@ -25,7 +25,7 @@ class SearchResult extends React.Component {
     }
 
     fetchInformation = (searchKeyword) => {
-        const url =  "https://back.3blmedia.com/search/solr/{{searchkey}}?_format=json".replace("{{searchkey}}", searchKeyword);
+        const url =  "https://back-stage.3blmedia.com/search/solr/{{searchkey}}?_format=json".replace("{{searchkey}}", searchKeyword);
         this.setState({loading: true});
         fetch(url)
             .then(response => response.json())

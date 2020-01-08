@@ -11,7 +11,7 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const httpLink = createHttpLink({
-    uri: 'https://back.3blmedia.com/graphql',
+    uri: 'https://back-stage.3blmedia.com/graphql',
 });
 
 const client = new ApolloClient({

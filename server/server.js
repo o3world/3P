@@ -39,13 +39,13 @@ app.use(Express.static(path.join(__dirname, '../build')));
 
 // Build sitemap. expressSitemapXml pulls a list of urls from the backend.
 async function getUrls() {
-    return await fetch('https://back.3blmedia.com/sites/default/files/sitemap.json')
+    return await fetch('https://back-stage.3blmedia.com/sites/default/files/sitemap.json')
         .then(res => res.json())
 }
 app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'));
 
 const httpLink = createHttpLink({
-    uri: 'https://back.3blmedia.com/graphql',
+    uri: 'https://back-stage.3blmedia.com/graphql',
     fetch: fetch
 });
 
@@ -205,9 +205,9 @@ app.get('/story/*', (req, res) => {
 
 });
 
-app.get('/sitemap-gn.xml', fetchXMLFile('https://back.3blmedia.com/sites/default/files/sitemap-google-news.xml?cache=' + new Date()));
+app.get('/sitemap-gn.xml', fetchXMLFile('https://back-stage.3blmedia.com/sites/default/files/sitemap-google-news.xml?cache=' + new Date()));
 
-app.get('/rss', fetchXMLFile('https://back.3blmedia.com/sites/default/files/rss-stories-triplepundit.xml?cache=' + new Date()));
+app.get('/rss', fetchXMLFile('https://back-stage.3blmedia.com/sites/default/files/rss-stories-triplepundit.xml?cache=' + new Date()));
 
 // as a default, send anything else through without SSR
 app.get('/*', function (req, res) {
