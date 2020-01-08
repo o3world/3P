@@ -29,7 +29,7 @@ class SingleStoryPage extends Component {
 
   render() {
 
-    return (typeof story !== 'undefined' &&
+    return (
     <Query
         query={StoryByIdQuery}
         variables={{ "id" : this.state.storyId }}
@@ -39,7 +39,9 @@ class SingleStoryPage extends Component {
         if (error) return `Error! ${error.message}`;
 
         const story = data.nodeQuery.entities[0];
-
+        if (typeof story === 'undefined') {
+          return `Error!`;
+        }
         story.date.value = story.date.value * 1000; // Convert Unix timestamp to JavaScript timestamp (seconds to milliseconds)
 
         let category;
