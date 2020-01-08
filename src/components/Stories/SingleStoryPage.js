@@ -29,7 +29,7 @@ class SingleStoryPage extends Component {
 
   render() {
 
-    return (
+    return (typeof story !== 'undefined' &&
     <Query
         query={StoryByIdQuery}
         variables={{ "id" : this.state.storyId }}
