@@ -23,7 +23,7 @@ class SingleStoryPage extends Component {
     this.state = { storyId: props.match.params.id };
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     this.setState({ storyId: props.match.params.id})
   }
 
@@ -38,10 +38,11 @@ class SingleStoryPage extends Component {
         if (loading) return <LoadingSpinner/>;
         if (error) return `Error! ${error.message}`;
 
-        const story = data.nodeQuery.entities[0];
-        if (typeof story === 'undefined') {
-          return `Error!`;
+        if (typeof data === 'undefined' || !data.nodeQuery.entities.length) {
+          return `Error!`
         }
+
+        const story = data.nodeQuery.entities[0];
         story.date.value = story.date.value * 1000; // Convert Unix timestamp to JavaScript timestamp (seconds to milliseconds)
 
         let category;
