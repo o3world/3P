@@ -170,7 +170,7 @@ app.get('/author/*/101', (req, res) => {
 });
 
 // and finally, individual stories pages.
-app.get('/story/:year/:title/:storyId(/?)', (req, res) => {
+app.get('/story/:year/:title/:storyId(\/?)', (req, res) => {
 
     const re = RegExp('[0-9]{5}')
     if (!re.test(req.params.storyId)) {
