@@ -170,34 +170,35 @@ app.get('/author/*/101', (req, res) => {
 });
 
 // and finally, individual stories pages.
-app.get('/story/*', (req, res, next) => {
+app.get('/story/:year/:title/:storyId(/?)', (req, res) => {
 
-    if (req.path.indexOf('NaN') > 0) {
-        // console.log(`NaN: ${req.path}`);
+    const re = RegExp('[0-9]{5}')
+    if (!re.test(req.params.storyId)) {
+        console.log('Error! SSR story id invalid.')
     }
+    else {
+        const context = {};
+        const appRendered = (
+            <ApolloProvider client={client}>
+                <StaticRouter location={req.url} context={context}>
+                    <App/>
+                </StaticRouter>
+            </ApolloProvider>
+        );
 
-    const context = {};
-    const appRendered = (
-        <ApolloProvider client={client}>
-            <StaticRouter location={req.url} context={context}>
-                <App/>
-            </StaticRouter>
-        </ApolloProvider>
-    );
+        renderToStringWithData(appRendered).then((root) => {
+            fs.readFile('./build/index.html', 'utf8', function (err, data) {
+                if (err) throw err;
+                const helmet = Helmet.renderStatic();
+                const document = data
+                    .replace('<div id="root"></div>', `<div id="root">${root}</div>`)
+                    .replace(/<title>(.*?)<\/title>/, helmet.title.toString())
+                    .replace('<meta name="helmet">', helmet.meta.toString());
 
-    renderToStringWithData(appRendered).then((root) => {
-        fs.readFile('./build/index.html', 'utf8', function (err, data) {
-            if (err) throw err;
-            const helmet = Helmet.renderStatic();
-            const document = data
-                .replace('<div id="root"></div>', `<div id="root">${root}</div>`)
-                .replace(/<title>(.*?)<\/title>/, helmet.title.toString())
-                .replace('<meta name="helmet">', helmet.meta.toString());
-
-            res.status(200).send(document);
+                res.status(200).send(document);
+            });
         });
-    });
-
+    }
 });
 
 app.get('/sitemap-gn.xml', fetchXMLFile('https://back.3blmedia.com/sites/default/files/sitemap-google-news.xml?cache=' + new Date()));
