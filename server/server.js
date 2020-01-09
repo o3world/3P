@@ -57,11 +57,6 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-app.get('*Object]', (req, res) => {
-    // console.log(`Object in URL: ${req.path}`)
-    res.redirect(404, '/404')
-})
-
 // have the server handle only certain paths - the rest, React can handle on the front end.
 // first, redirects that begin with the Year.
 app.get('/20*', (req, res) => {
@@ -174,7 +169,8 @@ app.get('/story/:year/:title/:storyId', (req, res) => {
 
     const re = RegExp('[0-9]{5}')
     if (!re.test(req.params.storyId)) {
-        console.log('Error! SSR story id invalid.')
+        console.log('Error! SSR story is invalid.')
+        res.redirect(404, '/404')
     }
     else {
         const context = {};
