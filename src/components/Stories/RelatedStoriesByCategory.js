@@ -9,11 +9,11 @@ import { StoriesByCategory } from "./StoryQueries"
 import styles from './RelatedStoriesByCategory.module.scss'
 
 const RelatedStoriesByCategory = (props) => {
-  
+
     return (
         <Query
             query={StoriesByCategory}
-            variables={{"storyId": props.storyId, "categoryId": props.categoryId, "limit": 12}}
+            variables={{"storyId": props.storyId, "categoryId": props.categoryId, "limit": 4}}
         >
           {({ loading, error, data }) => {
             if (loading) return (
