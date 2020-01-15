@@ -15,7 +15,12 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { renderToStringWithData } from "react-apollo";
 import fetch from 'node-fetch';
 import expressSitemapXml from 'express-sitemap-xml'
+import { IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
+import introspectionQueryResultData from '../fragmentTypes.json';
 
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData
+});
 
 const app = Express();
 
@@ -43,7 +48,7 @@ async function getUrls() {
         .then(res => res.json())
         .catch((error) => console.log(`Build sitemap error: ${error}`))
 }
- 
+
 app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'));
 
 const httpLink = createHttpLink({
@@ -54,7 +59,7 @@ const httpLink = createHttpLink({
 const client = new ApolloClient({
     ssrMode: true,
     link: httpLink,
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({ fragmentMatcher })
 });
 
 app.get('*Object]', (req, res) => {

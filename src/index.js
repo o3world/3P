@@ -9,15 +9,20 @@ import { ApolloClient } from "apollo-client";
 import { ApolloProvider } from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-
+import { IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
+import introspectionQueryResultData from '../fragmentTypes.json';
 const httpLink = createHttpLink({
     uri: 'https://back.3blmedia.com/graphql',
 });
 
+
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData
+});
 const client = new ApolloClient({
     ssrForceFetchDelay: 100,
     link: httpLink,
-    cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
+    cache: new InMemoryCache({ fragmentMatcher }).restore(window.__APOLLO_STATE__),
 });
 
 const routeChangeHandler = (previousRoute, nextRoute) => {
