@@ -1,0 +1,791 @@
+{
+  "__schema": {
+    "types": [
+      {
+        "kind": "INTERFACE",
+        "name": "Group",
+        "possibleTypes": [
+          {
+            "name": "GroupClient"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "Entity",
+        "possibleTypes": [
+          {
+            "name": "User"
+          },
+          {
+            "name": "File"
+          },
+          {
+            "name": "ApplenewsArticle"
+          },
+          {
+            "name": "ApplenewsChannel"
+          },
+          {
+            "name": "Consumer"
+          },
+          {
+            "name": "ContentModerationState"
+          },
+          {
+            "name": "SearchApiTask"
+          },
+          {
+            "name": "NodeStory"
+          },
+          {
+            "name": "BlockContentBasic"
+          },
+          {
+            "name": "CommentComment"
+          },
+          {
+            "name": "ContactMessageFeedback"
+          },
+          {
+            "name": "ContactMessagePersonal"
+          },
+          {
+            "name": "Crop3pHero"
+          },
+          {
+            "name": "CropCard"
+          },
+          {
+            "name": "CropLong"
+          },
+          {
+            "name": "CropRatio32"
+          },
+          {
+            "name": "CropRatio34"
+          },
+          {
+            "name": "CropRatio43"
+          },
+          {
+            "name": "CropRatio83"
+          },
+          {
+            "name": "CropSquare"
+          },
+          {
+            "name": "CropTall"
+          },
+          {
+            "name": "GroupClient"
+          },
+          {
+            "name": "GroupContentClientGroupMembership"
+          },
+          {
+            "name": "GroupContentClientGroupNodeBestpractice"
+          },
+          {
+            "name": "GroupContentClientGroupNodeFmr"
+          },
+          {
+            "name": "GroupContentClientGroupNodeNewsBlog"
+          },
+          {
+            "name": "GroupContentGroupContentType1ad2463ba31b5"
+          },
+          {
+            "name": "MenuLinkContentMenuLinkContent"
+          },
+          {
+            "name": "NodeAdminFields"
+          },
+          {
+            "name": "NodeAds"
+          },
+          {
+            "name": "NodeBackendPage"
+          },
+          {
+            "name": "NodeBestpractice"
+          },
+          {
+            "name": "NodeClientContent"
+          },
+          {
+            "name": "NodeContact"
+          },
+          {
+            "name": "NodeCurrentBts"
+          },
+          {
+            "name": "NodeEvent"
+          },
+          {
+            "name": "NodeFmr"
+          },
+          {
+            "name": "NodeNewsBlog"
+          },
+          {
+            "name": "NodeNewsletterMessage"
+          },
+          {
+            "name": "NodePressRelease"
+          },
+          {
+            "name": "NodeReportannouncement"
+          },
+          {
+            "name": "NodeService"
+          },
+          {
+            "name": "Oauth2TokenAccessToken"
+          },
+          {
+            "name": "Oauth2TokenAuthCode"
+          },
+          {
+            "name": "Oauth2TokenRefreshToken"
+          },
+          {
+            "name": "ShortcutDefault"
+          },
+          {
+            "name": "TaxonomyTerm3pArchive"
+          },
+          {
+            "name": "TaxonomyTerm3pCategories"
+          },
+          {
+            "name": "TaxonomyTerm3pPostTags"
+          },
+          {
+            "name": "TaxonomyTermArchiveTerms"
+          },
+          {
+            "name": "TaxonomyTermB"
+          },
+          {
+            "name": "TaxonomyTermBusinessSector"
+          },
+          {
+            "name": "TaxonomyTermCategories"
+          },
+          {
+            "name": "TaxonomyTermCsrwireCategories"
+          },
+          {
+            "name": "TaxonomyTermCsrwireTags"
+          },
+          {
+            "name": "TaxonomyTermDistributionNetwork"
+          },
+          {
+            "name": "TaxonomyTermEventType"
+          },
+          {
+            "name": "TaxonomyTermFcJobFunction"
+          },
+          {
+            "name": "TaxonomyTermFcJobRole"
+          },
+          {
+            "name": "TaxonomyTermFcRegions"
+          },
+          {
+            "name": "TaxonomyTermSpecialS"
+          },
+          {
+            "name": "UnexposedEntity"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "Url",
+        "possibleTypes": [
+          {
+            "name": "DefaultInternalUrl"
+          },
+          {
+            "name": "EntityCanonicalUrl"
+          },
+          {
+            "name": "ExternalUrl"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "Metatag",
+        "possibleTypes": [
+          {
+            "name": "MetaLink"
+          },
+          {
+            "name": "MetaProperty"
+          },
+          {
+            "name": "MetaValue"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "TaxonomyTerm",
+        "possibleTypes": [
+          {
+            "name": "TaxonomyTerm3pArchive"
+          },
+          {
+            "name": "TaxonomyTerm3pCategories"
+          },
+          {
+            "name": "TaxonomyTerm3pPostTags"
+          },
+          {
+            "name": "TaxonomyTermArchiveTerms"
+          },
+          {
+            "name": "TaxonomyTermB"
+          },
+          {
+            "name": "TaxonomyTermBusinessSector"
+          },
+          {
+            "name": "TaxonomyTermCategories"
+          },
+          {
+            "name": "TaxonomyTermCsrwireCategories"
+          },
+          {
+            "name": "TaxonomyTermCsrwireTags"
+          },
+          {
+            "name": "TaxonomyTermDistributionNetwork"
+          },
+          {
+            "name": "TaxonomyTermEventType"
+          },
+          {
+            "name": "TaxonomyTermFcJobFunction"
+          },
+          {
+            "name": "TaxonomyTermFcJobRole"
+          },
+          {
+            "name": "TaxonomyTermFcRegions"
+          },
+          {
+            "name": "TaxonomyTermSpecialS"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "EntityOwnable",
+        "possibleTypes": [
+          {
+            "name": "File"
+          },
+          {
+            "name": "Consumer"
+          },
+          {
+            "name": "ContentModerationState"
+          },
+          {
+            "name": "NodeStory"
+          },
+          {
+            "name": "CommentComment"
+          },
+          {
+            "name": "GroupClient"
+          },
+          {
+            "name": "GroupContentClientGroupMembership"
+          },
+          {
+            "name": "GroupContentClientGroupNodeBestpractice"
+          },
+          {
+            "name": "GroupContentClientGroupNodeFmr"
+          },
+          {
+            "name": "GroupContentClientGroupNodeNewsBlog"
+          },
+          {
+            "name": "GroupContentGroupContentType1ad2463ba31b5"
+          },
+          {
+            "name": "NodeAdminFields"
+          },
+          {
+            "name": "NodeAds"
+          },
+          {
+            "name": "NodeBackendPage"
+          },
+          {
+            "name": "NodeBestpractice"
+          },
+          {
+            "name": "NodeClientContent"
+          },
+          {
+            "name": "NodeContact"
+          },
+          {
+            "name": "NodeCurrentBts"
+          },
+          {
+            "name": "NodeEvent"
+          },
+          {
+            "name": "NodeFmr"
+          },
+          {
+            "name": "NodeNewsBlog"
+          },
+          {
+            "name": "NodeNewsletterMessage"
+          },
+          {
+            "name": "NodePressRelease"
+          },
+          {
+            "name": "NodeReportannouncement"
+          },
+          {
+            "name": "NodeService"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "Node",
+        "possibleTypes": [
+          {
+            "name": "NodeStory"
+          },
+          {
+            "name": "NodeAdminFields"
+          },
+          {
+            "name": "NodeAds"
+          },
+          {
+            "name": "NodeBackendPage"
+          },
+          {
+            "name": "NodeBestpractice"
+          },
+          {
+            "name": "NodeClientContent"
+          },
+          {
+            "name": "NodeContact"
+          },
+          {
+            "name": "NodeCurrentBts"
+          },
+          {
+            "name": "NodeEvent"
+          },
+          {
+            "name": "NodeFmr"
+          },
+          {
+            "name": "NodeNewsBlog"
+          },
+          {
+            "name": "NodeNewsletterMessage"
+          },
+          {
+            "name": "NodePressRelease"
+          },
+          {
+            "name": "NodeReportannouncement"
+          },
+          {
+            "name": "NodeService"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "MenuLinkContent",
+        "possibleTypes": [
+          {
+            "name": "MenuLinkContentMenuLinkContent"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "BlockContent",
+        "possibleTypes": [
+          {
+            "name": "BlockContentBasic"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "Comment",
+        "possibleTypes": [
+          {
+            "name": "CommentComment"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "ContactMessage",
+        "possibleTypes": [
+          {
+            "name": "ContactMessageFeedback"
+          },
+          {
+            "name": "ContactMessagePersonal"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "EntityRevisionable",
+        "possibleTypes": [
+          {
+            "name": "ContentModerationState"
+          },
+          {
+            "name": "NodeStory"
+          },
+          {
+            "name": "BlockContentBasic"
+          },
+          {
+            "name": "Crop3pHero"
+          },
+          {
+            "name": "CropCard"
+          },
+          {
+            "name": "CropLong"
+          },
+          {
+            "name": "CropRatio32"
+          },
+          {
+            "name": "CropRatio34"
+          },
+          {
+            "name": "CropRatio43"
+          },
+          {
+            "name": "CropRatio83"
+          },
+          {
+            "name": "CropSquare"
+          },
+          {
+            "name": "CropTall"
+          },
+          {
+            "name": "MenuLinkContentMenuLinkContent"
+          },
+          {
+            "name": "NodeAdminFields"
+          },
+          {
+            "name": "NodeAds"
+          },
+          {
+            "name": "NodeBackendPage"
+          },
+          {
+            "name": "NodeBestpractice"
+          },
+          {
+            "name": "NodeClientContent"
+          },
+          {
+            "name": "NodeContact"
+          },
+          {
+            "name": "NodeCurrentBts"
+          },
+          {
+            "name": "NodeEvent"
+          },
+          {
+            "name": "NodeFmr"
+          },
+          {
+            "name": "NodeNewsBlog"
+          },
+          {
+            "name": "NodeNewsletterMessage"
+          },
+          {
+            "name": "NodePressRelease"
+          },
+          {
+            "name": "NodeReportannouncement"
+          },
+          {
+            "name": "NodeService"
+          },
+          {
+            "name": "TaxonomyTerm3pArchive"
+          },
+          {
+            "name": "TaxonomyTerm3pCategories"
+          },
+          {
+            "name": "TaxonomyTerm3pPostTags"
+          },
+          {
+            "name": "TaxonomyTermArchiveTerms"
+          },
+          {
+            "name": "TaxonomyTermB"
+          },
+          {
+            "name": "TaxonomyTermBusinessSector"
+          },
+          {
+            "name": "TaxonomyTermCategories"
+          },
+          {
+            "name": "TaxonomyTermCsrwireCategories"
+          },
+          {
+            "name": "TaxonomyTermCsrwireTags"
+          },
+          {
+            "name": "TaxonomyTermDistributionNetwork"
+          },
+          {
+            "name": "TaxonomyTermEventType"
+          },
+          {
+            "name": "TaxonomyTermFcJobFunction"
+          },
+          {
+            "name": "TaxonomyTermFcJobRole"
+          },
+          {
+            "name": "TaxonomyTermFcRegions"
+          },
+          {
+            "name": "TaxonomyTermSpecialS"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "Crop",
+        "possibleTypes": [
+          {
+            "name": "Crop3pHero"
+          },
+          {
+            "name": "CropCard"
+          },
+          {
+            "name": "CropLong"
+          },
+          {
+            "name": "CropRatio32"
+          },
+          {
+            "name": "CropRatio34"
+          },
+          {
+            "name": "CropRatio43"
+          },
+          {
+            "name": "CropRatio83"
+          },
+          {
+            "name": "CropSquare"
+          },
+          {
+            "name": "CropTall"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "GroupContent",
+        "possibleTypes": [
+          {
+            "name": "GroupContentClientGroupMembership"
+          },
+          {
+            "name": "GroupContentClientGroupNodeBestpractice"
+          },
+          {
+            "name": "GroupContentClientGroupNodeFmr"
+          },
+          {
+            "name": "GroupContentClientGroupNodeNewsBlog"
+          },
+          {
+            "name": "GroupContentGroupContentType1ad2463ba31b5"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "Shortcut",
+        "possibleTypes": [
+          {
+            "name": "ShortcutDefault"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "Oauth2Token",
+        "possibleTypes": [
+          {
+            "name": "Oauth2TokenAccessToken"
+          },
+          {
+            "name": "Oauth2TokenAuthCode"
+          },
+          {
+            "name": "Oauth2TokenRefreshToken"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "EntityPublishable",
+        "possibleTypes": [
+          {
+            "name": "NodeStory"
+          },
+          {
+            "name": "BlockContentBasic"
+          },
+          {
+            "name": "CommentComment"
+          },
+          {
+            "name": "MenuLinkContentMenuLinkContent"
+          },
+          {
+            "name": "NodeAdminFields"
+          },
+          {
+            "name": "NodeAds"
+          },
+          {
+            "name": "NodeBackendPage"
+          },
+          {
+            "name": "NodeBestpractice"
+          },
+          {
+            "name": "NodeClientContent"
+          },
+          {
+            "name": "NodeContact"
+          },
+          {
+            "name": "NodeCurrentBts"
+          },
+          {
+            "name": "NodeEvent"
+          },
+          {
+            "name": "NodeFmr"
+          },
+          {
+            "name": "NodeNewsBlog"
+          },
+          {
+            "name": "NodeNewsletterMessage"
+          },
+          {
+            "name": "NodePressRelease"
+          },
+          {
+            "name": "NodeReportannouncement"
+          },
+          {
+            "name": "NodeService"
+          },
+          {
+            "name": "TaxonomyTerm3pArchive"
+          },
+          {
+            "name": "TaxonomyTerm3pCategories"
+          },
+          {
+            "name": "TaxonomyTerm3pPostTags"
+          },
+          {
+            "name": "TaxonomyTermArchiveTerms"
+          },
+          {
+            "name": "TaxonomyTermB"
+          },
+          {
+            "name": "TaxonomyTermBusinessSector"
+          },
+          {
+            "name": "TaxonomyTermCategories"
+          },
+          {
+            "name": "TaxonomyTermCsrwireCategories"
+          },
+          {
+            "name": "TaxonomyTermCsrwireTags"
+          },
+          {
+            "name": "TaxonomyTermDistributionNetwork"
+          },
+          {
+            "name": "TaxonomyTermEventType"
+          },
+          {
+            "name": "TaxonomyTermFcJobFunction"
+          },
+          {
+            "name": "TaxonomyTermFcJobRole"
+          },
+          {
+            "name": "TaxonomyTermFcRegions"
+          },
+          {
+            "name": "TaxonomyTermSpecialS"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "InternalUrl",
+        "possibleTypes": [
+          {
+            "name": "DefaultInternalUrl"
+          },
+          {
+            "name": "EntityCanonicalUrl"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "EntityDescribable",
+        "possibleTypes": []
+      }
+    ]
+  }
+}
