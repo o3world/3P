@@ -43,18 +43,12 @@ async function getUrls() {
         .then(res => res.json())
         .catch((error) => console.log(`Build sitemap error: ${error}`))
 }
- 
+
 app.use(expressSitemapXml(getUrls, 'https://www.triplepundit.com'));
 
 const httpLink = createHttpLink({
     uri: 'https://back.3blmedia.com/graphql',
     fetch: fetch
-});
-
-const client = new ApolloClient({
-    ssrMode: true,
-    link: httpLink,
-    cache: new InMemoryCache(),
 });
 
 app.get('*Object]', (req, res) => {
@@ -177,6 +171,11 @@ app.get('/story/*', (req, res, next) => {
     }
 
     const context = {};
+    const client = new ApolloClient({
+        ssrMode: true,
+        link: httpLink,
+        cache: new InMemoryCache(),
+    });
     const appRendered = (
         <ApolloProvider client={client}>
             <StaticRouter location={req.url} context={context}>
